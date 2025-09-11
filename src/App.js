@@ -1,23 +1,77 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Career from "./Dashboard/Career"
+import Home from "./Dashboard/Home";
+import About from "./Dashboard/About";
+import Services from "./Dashboard/services";
+import SignUp from "./Dashboard/SignUp";
+import SignIn from "./Dashboard/SignIn";
+import Aayurcareicon from ".//Images/aayuricon.jpg"
+import Contact from "./Dashboard/Contact";
+
+
+
 
 function App() {
+  const [page, setPage] = useState("home");
+  const [serviceType, setServiceType] = useState(null); 
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const renderPage = () => {
+
+
+    if (page === "home") return <Home />;
+    if (page === "about") return <About />;
+    if (page === "services") return <Services serviceType={serviceType} setServiceType={setServiceType} />;
+    if (page === "signup") return <SignUp setPage={setPage} />;
+    if (page === "signin") return <SignIn setPage={setPage} />;
+    if(page === "career") return <Career setPage={setPage}/>;
+    if(page==="contact") return <Contact/>;
+    
+
+  };
+
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <ul className="navbar">
+         <li className="logo">
+          <img src={Aayurcareicon} alt="Aayur Care" />
+        </li>
+
+        <li onClick={() => setPage("home")}>Home</li>
+        <li onClick={() => setPage("about")}>About</li>
+
+        {/* Services with dropdown */}
+        
+
+        <li
+          className="dropdown"
+          onMouseEnter={() => setShowDropdown(true)}
+          onMouseLeave={() => setShowDropdown(false)}
         >
-          Learn React
-        </a>
-      </header>
+          Services ▾
+          {showDropdown && (
+            <ul className="dropdown-menu">
+
+              <li onClick={() => { setPage("services"); setServiceType("individual"); }}>Individual</li>
+              <li onClick={() => { setPage("services"); setServiceType("corporate"); }}>Corporate</li>
+            </ul>
+          )}
+        </li>
+
+       <li onClick={() => setPage("career")}>Career</li> 
+        {/* <li>ContactUs</li> */}
+          <li onClick={() => setPage("contact")}>Contact</li> 
+        <li onClick={() => setPage("signin")}>Sign In</li>
+        <li onClick={() => setPage("signup")}>Sign Up</li>
+     
+      </ul>
+
+      
+      {/* Render content */}
+      <div>{renderPage()}</div>
     </div>
   );
 }
