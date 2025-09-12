@@ -254,12 +254,12 @@ else  if(totalValue === 505000)
 {
   if (age < 20) return 7236;
     if (age >= 21 && age <= 35) return 9901;
-    if (age >= 36 && age <= 45) return 8557;
-    if (age >= 46 && age <= 55) return 11685 ;
-    if (age >= 56 && age <= 60) return 15168 ;
-    if (age >= 61 && age <= 70) return 210401;
-    if (age >= 71 && age <= 80) return 26104;
-    if (age > 80) return 30185;
+    if (age >= 36 && age <= 45) return 11451;
+    if (age >= 46 && age <= 55) return 17457 ;
+    if (age >= 56 && age <= 60) return 21853 ;
+    if (age >= 61 && age <= 70) return 31689;
+    if (age >= 71 && age <= 80) return 38973;
+    if (age > 80) return 44451;
 }
 else  if(totalValue === 505001)
 {
