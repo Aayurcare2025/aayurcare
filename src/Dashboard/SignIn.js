@@ -22,6 +22,7 @@ function SignIn({ setPage }) {
         if (data.token) {
           localStorage.setItem("token", data.token);
         }
+        
 
         // redirect to home/dashboard
 
