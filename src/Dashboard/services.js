@@ -78,6 +78,7 @@ const [age, setAge] = useState("");
               } else {
                 setStep(3);
               }
+              
             }}
           >
             <label>I want to buy</label>
@@ -136,11 +137,6 @@ const [age, setAge] = useState("");
     <option key={i}>{i + 18}</option>
   ))}
 </select>
-
-
-
-      
-
             <label>My email address is</label>
             <input type="email" placeholder="Email Address" />
 
@@ -157,7 +153,7 @@ const [age, setAge] = useState("");
         )}
 
         {/* Step 2 – Pre-existing diseases */}
-        {step === 2 && insured === "Myself" && (
+        {step === 2 && (
           <div className="form-container">
             <button onClick={() => setStep(1)} className="back-btn">
               ← Back
@@ -192,7 +188,7 @@ const [age, setAge] = useState("");
         )}
 
         {/* Step 3 – Final Plans */}
-    {step === 3 && insured === "Myself" && preExisting === "no" && (() => {
+    {step === 6 && (() => {
   const cleanNumber = (val) =>
     val ? parseInt(val.replace(/,/g, ""), 10) : 0;
 
@@ -265,7 +261,7 @@ else  if(totalValue === 505000)
     if (age >= 71 && age <= 80) return 26104;
     if (age > 80) return 30185;
 }
-else  if(totalValue === 505000)
+else  if(totalValue === 505001)
 {
   if (age < 20) return 5647;
     if (age >= 21 && age <= 35) return 7562;
@@ -375,19 +371,9 @@ else  if(totalValue === 605000)
     if (age >= 71 && age <= 80) return 26104;
     if (age > 80) return 30185;
   }
- 
-
-
- 
-
 
 
 }
-
-
-
-  
-
   // You already have age input in Step 1
   // For simplicity, capture age in state
   // (Add this in your state: const [age, setAge] = useState("");)
@@ -395,7 +381,7 @@ else  if(totalValue === 605000)
 
   return (
     <div className="form-container">
-      <button onClick={() => setStep(2)} className="back-btn">
+      <button onClick={() => setStep(5)} className="back-btn">
         ← Back
       </button>
 
@@ -447,8 +433,11 @@ else  if(totalValue === 605000)
 
       
         {/* Step 4 – Proposer details */}
-        {step === 4 && (
+        {step === 3 && (
           <div className="form-container">
+            <button onClick={() => setStep(2)} className="back-btn">
+              ← Back
+            </button>
             <h3>Proposer Details</h3>
             <input
               type="text"
@@ -493,8 +482,11 @@ else  if(totalValue === 605000)
         )}
 
         {/* Step 5 – Self details */}
-        {step === 5 && (
+        {step === 4 && (
           <div className="form-container">
+            <button onClick={() => setStep(3)} className="back-btn">
+              ← Back
+            </button>
             <h3>Self Details</h3>
             <input
               type="text"
@@ -518,8 +510,11 @@ else  if(totalValue === 605000)
         )}
 
         {/* Step 6 – Nominee details */}
-        {step === 6 && (
+        {step === 5 && (
           <div className="form-container">
+            <button onClick={() => setStep(4)} className="back-btn">
+              ← Back
+            </button>
             <h3>Nominee Details</h3>
             <input
               type="text"
@@ -546,10 +541,11 @@ else  if(totalValue === 605000)
               <option value="parent">Parent</option>
             </select>
 
-            <button onClick={() => setStep(5)} className="back-btn">
-              ← Back
+            
+            {/* <button className="submit-btn">Proceed to Payment</button> */}
+            <button onClick={() => setStep(6)} className="submit-btn">
+              Next →
             </button>
-            <button className="submit-btn">Proceed to Payment</button>
           </div>
         )}
       </div>
