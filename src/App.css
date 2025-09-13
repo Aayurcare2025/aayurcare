@@ -102,7 +102,7 @@
     justify-content: flex-start;
     min-height: 100vh;
     /* background: linear-gradient(135deg, #74ebd5, #acb6e5); */
-    background-image:url("../src/Images/signimg.png");
+    background-image:url("../src/images/signimg.png");
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 60px 10px 20px; 
   }
@@ -164,8 +164,9 @@
     align-items: center;
     justify-content: flex;
     min-height: 100vh;
-    background-image:url("../src/Images/signimg.png");
+    background-image:url("../src/images/signimg.png");
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     padding: 60px 10px 20px; 
   }
 
 
@@ -943,4 +944,45 @@
     flex-direction: column;
     gap: 10px;
   }
+}
+.complaint-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 12px;
+  /* background: #f9f9f9; */
+  text-align: center;
+  border: 2px solid teal;
+  
+
+}
+
+.complaint-container h2{
+  color: teal;
+}
+.complaint-container textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+ border: 2px solid teal;
+  
+}
+
+.complaint-container button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.complaint-container button:hover {
+  background: #0056b3;
+}
+
+.thank-you {
+  color: green;
+  font-weight: bold;
 }

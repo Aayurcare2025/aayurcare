@@ -6,9 +6,10 @@ import About from "./Dashboard/About";
 import Services from "./Dashboard/services";
 import SignUp from "./Dashboard/SignUp";
 import SignIn from "./Dashboard/SignIn";
-import Aayurcareicon from ".//Images/aayuricon.jpg"
+import Aayurcareicon from ".//images/aayuricon.jpg"
 import Contact from "./Dashboard/Contact";
 import Claims from "./Dashboard/Claims";
+import Complaint from "./Dashboard/Complaints";
 
 
 
@@ -28,6 +29,7 @@ function App() {
     if(page === "career") return <Career setPage={setPage}/>;
     if(page==="contact") return <Contact/>;
     if (page === "claims") return <Claims />;
+    if(page==="complaint") return <Complaint/>;
     
 
   };
@@ -63,7 +65,7 @@ function App() {
      <li onClick={() => setPage("claims")}>Claims</li>
 
        <li onClick={() => setPage("career")}>Career</li> 
-       <li onClick={() => setPage("career")}>Complain</li> 
+       <li onClick={() => setPage("complaint")}>Complain</li> 
         {/* <li>ContactUs</li> */}
           <li onClick={() => setPage("contact")}>Contact</li> 
         <li onClick={() => setPage("signin")}>Sign In</li>
