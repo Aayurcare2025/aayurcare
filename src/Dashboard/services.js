@@ -729,6 +729,7 @@ else  if(totalValue === 655000)
         <option value="400000">4,00,000 </option>
         <option value="450000">4,50,000 </option>
         <option value="500000">5,00,000 </option>
+         <option value="1000000">10,00,000 </option>
       </select>
 
       <select value={AccidentValue} onChange={(e) => setAccidentValue(e.target.value)}>
@@ -743,6 +744,10 @@ else  if(totalValue === 655000)
       <select value={OPDValue} onChange={(e) => setOPDValue(e.target.value)}>
         <option value="">Select OPD Value</option>
         <option value="5000">5,000 </option>
+        <option value="4000">4,000 </option>
+        <option value="4500">4,500 </option>
+        <option value="3000">3,000 </option>
+        
       </select>
 
       <div className="plans-grid">
