@@ -62,27 +62,8 @@ const [age, setAge] = useState("");
   // };
 
 
-  const handleNext = () => {
-  const hasIPD = !!IPDValue;
-  const hasAccident = !!AccidentValue;
-  const hasOPD = !!OPDValue;
-  const hasWellness = !!WellnessValue;
+  
 
-  // Condition checks
-  if (hasIPD && hasAccident && hasOPD) {
-    setStep(6); // Jump to step 6
-  } else if (hasIPD && hasOPD) {
-    setStep(5); // Example: Step 5 for IPD + OPD
-  } else if (hasAccident && hasWellness) {
-    setStep(4); // Example: Step 4 for Accident + Wellness
-  } else if (hasIPD) {
-    setStep(2); // Example: Step 2 for only IPD
-  } else if (hasOPD) {
-    setStep(3); // Example: Step 3 for only OPD
-  } else {
-    setStep(step + 1); // default next
-  }
-};
 
 
   // ---------------- Health Form ----------------
@@ -130,6 +111,9 @@ const [age, setAge] = useState("");
                 </select>
               </>
             )}
+
+
+
 
             <label>I’d like to insure</label>
             <select value={insured} onChange={(e) => setInsured(e.target.value)}>
