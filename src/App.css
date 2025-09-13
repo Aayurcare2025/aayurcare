@@ -164,7 +164,7 @@
     align-items: center;
     justify-content: flex;
     min-height: 100vh;
-    background-image:url("../src/Images/SignInSignUpImg.png");
+    background-image:url("../src/Images/signimg.png");
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
