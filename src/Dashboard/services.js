@@ -11,6 +11,8 @@ function Services({ serviceType }) {
   const [wellnessType, setWellnessType] = useState("");
 const [age, setAge] = useState("");
 
+
+//code of kirthana
   // const [familyMembers, setFamilyMembers] = useState([
   //   { relation: "", age: "" },
   // ]);
