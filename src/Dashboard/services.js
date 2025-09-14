@@ -50,18 +50,7 @@ const [age, setAge] = useState("");
     });
   };
 
-  // const handleAddMember = () => {
-  //   setFamilyMembers([...familyMembers, { relation: "", age: "" }]);
-  // };
-
-  // const handleFamilyChange = (index, field, value) => {
-  //   const updated = [...familyMembers];
-  //   updated[index][field] = value;
-  //   setFamilyMembers(updated);
-  
-  // }
-
-
+ 
   // ---------------- Health Form ----------------
   if (selectedPlan === "health") {
     return (
@@ -107,10 +96,6 @@ const [age, setAge] = useState("");
                 </select>
               </>
             )}
-
-
-
-
             <label>I’d like to insure</label>
             <select value={insured} onChange={(e) => setInsured(e.target.value)}>
               <option value="">Select</option>
@@ -192,7 +177,7 @@ const [age, setAge] = useState("");
           </div>
         )}
 
-        {/* Step 3 – Final Plans */}
+
     {step === 6 && (() => {
   const cleanNumber = (val) =>
     val ? parseInt(val.replace(/,/g, ""), 10) : 0;
@@ -769,9 +754,8 @@ else  if(totalValue === 655000)
 
 
 
-      
-        {/* Step 4 – Proposer details */}
-        {step === 3 && (
+{/* need to do when prexisting is yes  */}
+        {step === 3 && insured === "Myself"&& preExisting === "no" && (
           <div className="form-container">
             <button onClick={() => setStep(2)} className="back-btn">
               ← Back
@@ -809,7 +793,7 @@ else  if(totalValue === 655000)
               placeholder="Occupation"
               value={formData.proposer.occupation}
               onChange={(e) =>
-                handleChange("proposer", "occupation", e.target.value)
+                handleChange("proposer", "occupatixon", e.target.value)
               }
             />
 
@@ -819,7 +803,7 @@ else  if(totalValue === 655000)
           </div>
         )}
 
-        {/* Step 5 – Self details */}
+   
         {step === 4 && (
           <div className="form-container">
             <button onClick={() => setStep(3)} className="back-btn">
@@ -847,7 +831,7 @@ else  if(totalValue === 655000)
           </div>
         )}
 
-        {/* Step 6 – Nominee details */}
+    
         {step === 5 && (
           <div className="form-container">
             <button onClick={() => setStep(4)} className="back-btn">
@@ -911,3 +895,4 @@ else  if(totalValue === 655000)
 }
 
 export default Services;
+
