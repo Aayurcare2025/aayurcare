@@ -782,7 +782,7 @@ else  if(totalValue === 655000)
               onChange={(e) =>
                 handleChange("proposer", "lastName", e.target.value)
               }
-            />
+            />g
             <input
               type="date"
               value={formData.proposer.dob}
