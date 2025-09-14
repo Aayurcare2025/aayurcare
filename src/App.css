@@ -102,7 +102,9 @@
     justify-content: flex-start;
     min-height: 100vh;
     /* background: linear-gradient(135deg, #74ebd5, #acb6e5); */
-    background-image:url("../src/images/signimg.png");
+    /* background-image:url("../src/images/signimg.png"); */
+    background-image: url("./Images/signimg.png");
+
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 60px 10px 20px; 
   }
@@ -164,7 +166,9 @@
     align-items: center;
     justify-content: flex;
     min-height: 100vh;
-    background-image:url("../src/images/signimg.png");
+    /* background-image:url("../src/images/signimg.png"); */
+    background-image: url("./Images/signimg.png");
+
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
      padding: 60px 10px 20px; 
   }

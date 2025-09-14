@@ -6,7 +6,9 @@ import About from "./Dashboard/About";
 import Services from "./Dashboard/services";
 import SignUp from "./Dashboard/SignUp";
 import SignIn from "./Dashboard/SignIn";
-import Aayurcareicon from ".//images/aayuricon.jpg"
+import Aayurcareicon from "./Images/aayuricon.jpg";
+
+
 import Contact from "./Dashboard/Contact";
 import Claims from "./Dashboard/Claims";
 import Complaint from "./Dashboard/Complaints";
