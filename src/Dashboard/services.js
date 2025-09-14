@@ -703,6 +703,7 @@ else  if(totalValue === 655000)
         ← Back
       </button>
 
+    {["ipd", "opd-ipd", "opd-ipd-accident"].includes(product) && (
       <select value={IPDValue} onChange={(e) => setIPDValue(e.target.value)}>
         <option value="">Select IPD Value</option>
         <option value="100000">1,00,000 </option>
@@ -714,41 +715,46 @@ else  if(totalValue === 655000)
         <option value="400000">4,00,000 </option>
         <option value="450000">4,50,000 </option>
         <option value="500000">5,00,000 </option>
-         <option value="1000000">10,00,000 </option>
+        <option value="1000000">10,00,000 </option>
       </select>
+    )}
 
+    {["accident", "opd-ipd-accident"].includes(product) && (
       <select value={AccidentValue} onChange={(e) => setAccidentValue(e.target.value)}>
         <option value="">Select Accident Value</option>
         <option value="200000">2,00,000 </option>
-         <option value="400000">4,00,000 </option>
-          <option value="600000">6,00,000 </option>
-           <option value="800000">8,00,000 </option>
-            <option value="100000">10,00,000 </option>
+        <option value="400000">4,00,000 </option>
+        <option value="600000">6,00,000 </option>
+        <option value="800000">8,00,000 </option>
+        <option value="1000000">10,00,000 </option>
       </select>
+    )}
 
+    {["opd", "opd-ipd", "opd-ipd-accident"].includes(product) && (
       <select value={OPDValue} onChange={(e) => setOPDValue(e.target.value)}>
         <option value="">Select OPD Value</option>
         <option value="5000">5,000 </option>
         <option value="4000">4,000 </option>
         <option value="4500">4,500 </option>
         <option value="3000">3,000 </option>
-        
       </select>
+    )}
 
-      <div className="plans-grid">
-        <div className="plan-card">
-          <h4>Medi Coverage </h4>
-          <p>Total Coverage: ₹{totalValue.toLocaleString()}</p>
-          <p>
-            Annual Premium:{" "}
-            {premium ? `₹${premium.toLocaleString()}` : ""}
-          </p>
-          <button disabled={!premium} onClick={() => setStep(4)}>
-            Buy Now
-          </button>
-        </div>
+    <div className="plans-grid">
+      <div className="plan-card">
+        <h4>Medi Coverage </h4>
+        <p>Total Coverage: ₹{totalValue.toLocaleString()}</p>
+        <p>Annual Premium: {premium ? `₹${premium.toLocaleString()}` : ""}</p>
+        <button disabled={!premium} onClick={() => setStep(4)}>
+          Buy Now
+        </button>
       </div>
     </div>
+  </div>
+
+      
+
+      
   );
 })()}
 
