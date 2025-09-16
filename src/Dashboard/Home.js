@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import Family from "../images/1.png";
+import Family from "../images/1.png"
 
 function Home() {
   return (
