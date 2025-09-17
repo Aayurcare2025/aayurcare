@@ -6,7 +6,7 @@ import About from "./Dashboard/About";
 import Services from "./Dashboard/services";
 import SignUp from "./Dashboard/SignUp";
 import SignIn from "./Dashboard/SignIn";
-import Aayurcareicon from ".//images/aayuricon.jpg"
+// import Aayurcareicon from "./images/aayuricon.jpg"
 import Contact from "./Dashboard/Contact";
 import Claims from "./Dashboard/Claims";
 import Complaint from "./Dashboard/Complaints";
@@ -39,9 +39,9 @@ function App() {
   return (
     <div className="App">
       <ul className="navbar">
-         <li className="logo">
+         {/* <li className="logo">
           <img src={Aayurcareicon} alt="Aayur Care" />
-        </li>
+        </li> */}
 
         <li onClick={() => setPage("home")}>Home</li>
         <li onClick={() => setPage("about")}>About</li>
