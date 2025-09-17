@@ -3,7 +3,7 @@ import "../App.css";
 
 function Claims() {
   const [step, setStep] = useState(1);
-
+// bcjbe
   const nextStep = () => setStep(step + 1);
   const prevStep = () => setStep(step - 1);
 
