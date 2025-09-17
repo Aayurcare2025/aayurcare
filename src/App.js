@@ -16,12 +16,13 @@ import Complaint from "./Dashboard/Complaints";
 function App() {
   const [page, setPage] = useState("home");
   const [serviceType, setServiceType] = useState(null); 
-  const [showDropdown, setShowDropdown] = useState(false);
+  // const [showDropdown, setShowDropdown] = useState(false);
 
   const renderPage = () => {
 
 
     if (page === "home") return <Home />;
+    //disable buttons
     if (page === "about") return <About />;
     if (page === "services") return <Services serviceType={serviceType} setServiceType={setServiceType} />;
     if (page === "signup") return <SignUp setPage={setPage} />;
@@ -44,10 +45,11 @@ function App() {
         </li> */}
 
         <li onClick={() => setPage("home")}>Home</li>
-        <li onClick={() => setPage("about")}>About</li>
+        {/* <li onClick={() => setPage("about")}>About</li> */}
+        <li>About</li>
 
         {/* Services with dropdown */}
-        <li
+        {/* <li
           className="dropdown"
           onMouseEnter={() => setShowDropdown(true)}
           onMouseLeave={() => setShowDropdown(false)}
@@ -60,16 +62,23 @@ function App() {
               <li onClick={() => { setPage("services"); setServiceType("corporate"); }}>Corporate</li>
             </ul>
           )}
-        </li>
-    
-     <li onClick={() => setPage("claims")}>Claims</li>
+        </li> */}
+      <li>Services</li>
+       <li>Claims</li>
 
-       <li onClick={() => setPage("career")}>Career</li> 
-       <li onClick={() => setPage("complaint")}>Complain</li> 
+     {/* <li onClick={() => setPage("claims")}>Claims</li> */}
+
+       {/* <li onClick={() => setPage("career")}>Career</li>  */}
+       <li>Career</li>
+       {/* <li onClick={() => setPage("complaint")}>Complain</li>  */}
+       <li>Complain</li>
         {/* <li>ContactUs</li> */}
-          <li onClick={() => setPage("contact")}>Contact</li> 
-        <li onClick={() => setPage("signin")}>Sign In</li>
-        <li onClick={() => setPage("signup")}>Sign Up</li>
+          {/* <li onClick={() => setPage("contact")}>Contact</li>  */}
+          <li>Contact</li>
+          <li>Sign In</li>
+          <li>Sign Out</li>
+        {/* <li onClick={() => setPage("signin")}>Sign In</li> */}
+        {/* <li onClick={() => setPage("signup")}>Sign Up</li> */}
      
       </ul>
 
