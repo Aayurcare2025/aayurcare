@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 // import Family from "../images/1.png";
-
+// code
 function Home() {
   return (
     <div className="main-page">

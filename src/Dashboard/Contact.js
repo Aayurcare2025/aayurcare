@@ -1,7 +1,7 @@
 import React from "react";
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock } from "react-icons/fa";
 import "../App.css";
-
+//contact
 function Contact() {
   return (
     <div className="contact-page">
