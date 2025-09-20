@@ -345,7 +345,7 @@ function App() {
         {/* navbar starts here */}
         <li className="logo">
           {/* brand logo  left side top in navbar*/}
-          <img src={Aayurcareicon} alt="Aayur Care" />
+          {/* <img src={Aayurcareicon} alt="Aayur Care" /> */}
         </li>
         <li onClick={() => setPage("home")}>Home</li>
         <li onClick={() => setPage("about")}>About</li>
