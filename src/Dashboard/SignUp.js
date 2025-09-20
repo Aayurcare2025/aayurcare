@@ -19,7 +19,7 @@ function SignUp({ setPage }) {
         }
 //http://52.66.82.186:5001/
         try {
-            const response = await fetch("https://api.aayurcare.com:5001/user/register", {
+            const response = await fetch("https://api.aayurcare.com/user/register", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
