@@ -1,18 +1,37 @@
 import { useState } from "react";
 import "../App.css";
-function SignUp({ setPage }) {
 
-     
+function SignUp({ setPage }) {
+    const [fullName, setFullName] = useState("");
+    const [email, setEmail] = useState("");
+    // const [mobile, setMobile] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+
     const handleSignup = async (e) => {
         e.preventDefault();
+
+        // Basic validation
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return;
+        }
+//http://52.66.82.186:5001/
         try {
-            const response = await fetch("http://localhost:5000/user/register", {
+            const response = await fetch("http://52.66.82.186:5001/user/register", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ username, password }),
+                body: JSON.stringify({
+                    fullName,
+                    email,
+                    // mobile,
+                    username,
+                    password,
+                     confirmPassword, 
+                }),
             });
+
             const data = await response.json();
             if (response.ok) {
                 alert(data.message || "Signup successful!");
@@ -21,39 +40,61 @@ function SignUp({ setPage }) {
                 alert(data.message || "Signup failed");
             }
         } catch (err) {
-            
+            console.log(err)
             alert("Signup failed: " + err.message);
         }
     };
 
     return (
         <section className="signup">
-            
             <h1>Sign Up</h1>
             <form onSubmit={handleSignup}>
-                <input type="text"
-                    placeholder="Enter username"
+                <input
+                    type="text"
+                    placeholder="Full Name"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    required
+                />
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+                {/* <input
+                    type="tel"
+                    placeholder="Mobile Number"
+                    value={mobile}
+                    onChange={(e) => setMobile(e.target.value)}
+                    required
+                /> */}
+                <input
+                    type="text"
+                    placeholder="Username"
                     value={username}
-                    // onChange={(e) => setUsername(e.target.value)}
-                    onChange={(e) => {
-                        setUsername(e.target.value);
-                        console.log("Username typing:", e.target.value);
-                    }}
-
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
                 />
-               
-                <input type="password"
-                    placeholder="Enter password"
+                <input
+                    type="password"
+                    placeholder="Password"
                     value={password}
-                    onChange={(e) => {setPassword(e.target.value);
-                        console.log("password typing:",e.target.value)
-                    }}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
                 />
-                <button>SignUp</button>
+                <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                />
+                <button type="submit">Sign Up</button>
             </form>
-          
         </section>
-    )
+    );
 }
-export default SignUp
 
+export default SignUp;
