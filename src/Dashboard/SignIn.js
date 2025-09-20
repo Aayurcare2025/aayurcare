@@ -70,7 +70,7 @@ function SignIn({ setPage, setIsLoggedIn }) {
   const handleSignin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://52.66.82.186:5001/user/login", {
+      const response = await fetch("https://api.aayurcare.com/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
