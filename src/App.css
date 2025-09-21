@@ -26,9 +26,10 @@
 
 /* Who We Are */
 .who-section {
-  background: #f5f5f5;
+  background: #003366;;
   text-align: center;
   padding: 40px;
+
 }
 .who-content {
   max-width: 800px;
@@ -36,12 +37,12 @@
 .who-section h1 {
   font-size: 3rem;
   margin-bottom: 20px;
-  color: #003366;
+  color: white;
 }
 .who-section p {
   font-size: 1.2rem;
   line-height: 1.8;
-  color: #333;
+  color:white;
 }
 
 /* Plans Section */
