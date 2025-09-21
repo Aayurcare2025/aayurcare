@@ -31,7 +31,7 @@ function Home() {
         <div className="plans-grid">
           <div className="plan-box">
             <h3>OPD Reimbursement</h3>
-            <p>Doctor visits, tests, medicines, and minor treatments.</p>
+            <p>Doctor consultations, tests, medicines, and minor treatments.</p>
           </div>
           <div className="plan-box">
             <h3>IPD Coverage</h3>
