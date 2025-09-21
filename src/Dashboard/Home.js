@@ -40,7 +40,7 @@ function Home() {
     formData.append("file", file);
 
     try {
-      const response = await fetch("https://api.aayurcare.com/user/upload-excel/Ipd/Opd", {
+      const response = await fetch("https://api.aayurcare.com/user/upload-excel", {
         method: "POST",
         body: formData,
       });
