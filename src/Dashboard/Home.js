@@ -31,7 +31,7 @@ function Home() {
         <div className="plans-grid">
           <div className="plan-box">
             <h3>OPD Reimbursement</h3>
-            <p>Doctor consultations, tests, medicines, and minor treatments.</p>
+            <p>Doctor consultation, tests, medicines, and minor treatments.</p>
           </div>
           <div className="plan-box">
             <h3>IPD Coverage</h3>
@@ -60,7 +60,7 @@ function Home() {
           <div className="trust-box">Comprehensive Coverage</div>
           <div className="trust-box">Member -First Approach</div>
           <div className="trust-box">24/7 Support</div>
-          <div className="trust-box">Easy Digital Access</div>
+          {/* <div className="trust-box">Easy Digital Access</div> */}
           <div className="trust-box">Trusted by Corporates & Families</div>
         </div>
       </section>
