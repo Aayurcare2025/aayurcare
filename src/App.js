@@ -294,13 +294,13 @@
 
 import React, { useState } from "react";
 import "./App.css";
-import Career from "./Dashboard/Career";
+// import Career from "./Dashboard/Career";
 import Home from "./Dashboard/Home";
 import About from "./Dashboard/About";
 import Services from "./Dashboard/services";
-import SignUp from "./Dashboard/SignUp";   // ✅ Fix here
+import SignUp from "./Dashboard/SignUp";  
 import SignIn from "./Dashboard/SignIn"; 
-// import Aayurcareicon from "./Images/1.png";
+import Aayurcareicon from "./Images/logo.png";
 import Contact from "./Dashboard/Contact";
 import Claims from "./Dashboard/Claims";
 import Complaint from "./Dashboard/Complaints";
@@ -331,7 +331,7 @@ function App() {
       return <SignUp setPage={setPage} setIsLoggedIn={setIsLoggedIn} />;
     if (page === "signin")
       return <SignIn setPage={setPage} setIsLoggedIn={setIsLoggedIn} />;
-    if (page === "career") return <Career setPage={setPage} />;
+    // if (page === "career") return <Career setPage={setPage} />;
     if (page === "contact") return <Contact />;
     if (page === "claims") return <Claims />;
     if (page === "complaint") return <Complaint />;
@@ -345,7 +345,7 @@ function App() {
         {/* navbar starts here */}
         <li className="logo">
           {/* brand logo  left side top in navbar*/}
-          {/* <img src={Aayurcareicon} alt="Aayur Care" /> */}
+          <img src={Aayurcareicon} alt="Aayur Care" />
         </li>
         <li onClick={() => setPage("home")}>Home</li>
         <li onClick={() => setPage("about")}>About</li>
@@ -386,8 +386,8 @@ function App() {
         >
           Claims
         </li>
-        <li onClick={() => setPage("career")}>Career</li>
-        <li onClick={() => setPage("complaint")}>Complaints</li>
+        {/* <li onClick={() => setPage("career")}>Career</li> */}
+        {/* <li onClick={() => setPage("complaint")}>Complaints</li> */}
         <li onClick={() => setPage("contact")}>Contact</li>
 
         {!isLoggedIn ? (
