@@ -300,7 +300,7 @@ import About from "./Dashboard/About";
 import Services from "./Dashboard/services";
 import SignUp from "./Dashboard/SignUp";   // ✅ Fix here
 import SignIn from "./Dashboard/SignIn"; 
-import Aayurcareicon from "./Images/1.png";
+// import Aayurcareicon from "./Images/1.png";
 import Contact from "./Dashboard/Contact";
 import Claims from "./Dashboard/Claims";
 import Complaint from "./Dashboard/Complaints";
