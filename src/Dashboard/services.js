@@ -979,11 +979,11 @@ useEffect(() => {
       if (product === "ipd-accident") {
         // ✅ IPD + Accident flow only
         if (!IPDValue || !AccidentValue) return; 
-        url = `http://52.66.82.186:5001/user/insurance/${IPDValue}/${AccidentValue}/${age}`;
+        url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${age}`;
       } else {
         // ✅ Default flow (IPD + OPD + Accident)
         if (!IPDValue || !AccidentValue || !OPDValue) return;
-        url = `http://52.66.82.186:5001/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
+        url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
       }
       
 
