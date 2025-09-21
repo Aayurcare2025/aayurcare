@@ -171,24 +171,10 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
 7338146712.</p>
   </div>
 
-  <div className="faq-item">
-    <h3>6. How do I claim reimbursement?</h3>
-    <p>Upload bills & prescriptions via our portal/email. Claims team verifies documents. Eligible amount is reimbursed within 20-30 working days.</p>
-  </div>
 
-  <div className="faq-item">
-    <h3>7. What documents are required for a claim?</h3>
-    <ul>
-      <li>Doctor’s consultation slip</li>
-      <li>Prescription (if medicines/tests advised)</li>
-      <li>Original bills (pharmacy/diagnostics/consultation)</li>
-    </ul>
-  </div>
 
-  <div className="faq-item">
-    <h3>8. How fast will I get reimbursed?</h3>
-    <p>Claims are usually settled within 20-30 working days once documents are verified.</p>
-  </div>
+  
+
 
  
 </section>
