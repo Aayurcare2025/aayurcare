@@ -26,13 +26,15 @@
 
 /* Who We Are */
 .who-section {
-  background: #003366;
+  background: #181e52;
+   /* background-image: url('Images/bk.jpg'); */
  text-align: center;
   padding: 20px 0px; /* increased top padding to move it up slightly */
   margin-top: -50px;
 
 }
 .who-content {
+
   max-width: 800px;
    margin: 0 auto;
 }
