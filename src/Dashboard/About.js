@@ -1,9 +1,13 @@
 import "../App.css";
-
+// import A from "../Images/about.png";
+//import Family from "../Images/Home.png";
 function About()
 {
     return(
          <div className="page-section">
+           {/* <section className="about-image">
+        <img src={A} alt="Family" className="hero-image" />
+      </section> */}
           <h2>About Us</h2>
           <p>
             Aayur Care is a professionally managed medical disbursement company
