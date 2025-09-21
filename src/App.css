@@ -189,7 +189,7 @@ color: #007bff;
   /* background:#f9f9f9 ; */
    background: #003366;
   text-align: center;
-  padding: 00px 20px;
+  padding: 0px 20px;
 }
 .testimonials-section h2 {
   font-size: 2.5rem;
@@ -213,17 +213,89 @@ color: #007bff;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
+/* FAQ Section */
+.faq-section {
+  background-color: #003366; /* Blue background */
+  color: white; /* White text */
+  padding: 60px 20px;
+}
+
+.faq-section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+}
+
+.faq-item {
+  margin-bottom: 25px;
+   justify-content: center;
+}
+
+.faq-item h3 {
+  font-size: H1.5rem;
+  margin-bottom: 10px;
+}
+
+.faq-item p,
+.faq-item ul {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.faq-item ul {
+  padding-left: 20px;
+}
+
+.faq-item ul li {
+  margin-bottom: 8px;
+}
+
+/* Optional: Add some spacing for smaller screens */
+@media (max-width: 768px) {
+  .faq-section {
+    padding: 40px 15px;
+  }
+
+  .faq-section h2 {
+    font-size: 2rem;
+  }
+
+  .faq-item h3 {
+    font-size: 1.3rem;
+  }
+}
+
 /* Footer */
 .footer {
   background: #003366;
   color: white;
   text-align: center;
   padding: 40px 20px;
+  font-family: Arial, sans-serif;
 }
+
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+}
+
 .footer-links {
-  margin-top: 15px;
-  font-size: 0.9rem;
-  opacity: 0.8;
+   color: white;           /* ensures the link is white */
+  text-decoration: none;  /* removes underline */
+  margin: 0 10px;         /* spacing between links */
+  transition: color 0.3s;
+}
+
+.footer-links a {
+  color:#ffcc00;           /* ensures the link is white */
+  text-decoration: none;  /* removes underline */
+  margin: 0 10px;         /* spacing between links */
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #ffcc00;         /* changes color on hover */
+  text-decoration: underline;
 }
 
 

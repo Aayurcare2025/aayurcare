@@ -1,7 +1,12 @@
 import React from "react";
 import "../App.css";
 import Family from "../Images/Home.png";
+import D from "../Images/D.pdf";
+import RC from "../Images/RC.pdf";
+import W from "../Images/WTC.pdf";
+import TC from "../Images/TC.pdf";
 
+//
 function Home() {
   return (
     <div className="main-page">
@@ -120,13 +125,90 @@ function Home() {
         </div>
       </section>
 
+
+<section className="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  
+  <div className="faq-item">
+    <h3>1. What is Aayur Care?</h3>
+    <p>
+     Aayur Care is a medical disbursement company that offers OPD reimbursement plans and
+comprehensive health, mediclaim, and accident insurance solutions. We cover day-to-day
+medical expenses, such as doctor consultations, diagnostics, and medicines, along with
+critical insurance needs. mediclaim, and accident coverage.
+    </p>
+  </div>
+
+  <div className="faq-item">
+    <h3>2. How is Aayur Care different from health insurance?</h3>
+    <p>
+    Unlike traditional health insurance, which mainly covers hospitalization, Aayur Care focuses
+on OPD expenses like consultations, diagnostics, and medicines. We also provide bundled
+coverage with health, mediclaim, and accident insurance for a complete healthcare solution.
+    </p>
+  </div>
+
+  <div className="faq-item">
+    <h3>3. Who can buy Aayur Care plans?</h3>
+    <p>
+     Aayur Care offers plans suitable for individuals, families, and corporate employees, ranging
+from newborns to senior citizens. We provide tailored solutions for everyone, from gig
+workers to executives, as well as group medical plans for organizations.
+    </p>
+  </div>
+
+  <div className="faq-item">
+    <h3>4. What expenses are covered under Aayur Care?</h3>
+    <p>Aayur Care covers doctor consultations, diagnostic tests, medicines, preventive health
+check-ups, and select daycare procedures. Plans also include IPD & insurance coverage for
+hospitalization and critical care.</p>
+  </div>
+
+  <div className="faq-item">
+    <h3>5.How do I enroll or get in touch with Aayur Care?</h3>
+   <p>You can enroll through our website, email, or phone. For more details or to discuss
+corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
+7338146712.</p>
+  </div>
+
+  <div className="faq-item">
+    <h3>6. How do I claim reimbursement?</h3>
+    <p>Upload bills & prescriptions via our portal/email. Claims team verifies documents. Eligible amount is reimbursed within 20-30 working days.</p>
+  </div>
+
+  <div className="faq-item">
+    <h3>7. What documents are required for a claim?</h3>
+    <ul>
+      <li>Doctor’s consultation slip</li>
+      <li>Prescription (if medicines/tests advised)</li>
+      <li>Original bills (pharmacy/diagnostics/consultation)</li>
+    </ul>
+  </div>
+
+  <div className="faq-item">
+    <h3>8. How fast will I get reimbursed?</h3>
+    <p>Claims are usually settled within 20-30 working days once documents are verified.</p>
+  </div>
+
+ 
+</section>
+
+
+      
+
       {/* Footer */}
-      <footer className="footer full-page">
-        <p>AayurCare – Providing smart and hassle-free medical reimbursement for a healthier you.</p>
-        {/* <div className="footer-links">
-          <p>Quick Links | Legal | Follow us</p>
-        </div> */}
-      </footer>
+    <footer className="footer full-page">
+  <p>AayurCare – Providing smart and hassle-free medical reimbursement for a healthier you.</p>
+  <div className="footer-links">
+    <a href={D} target="_blank" rel="noopener noreferrer">Disclaimer</a>
+    <a href={W} target="_blank" rel="noopener noreferrer">Website Terms</a>
+    <a href={TC} target="_blank" rel="noopener noreferrer">AayurCare Terms & Conditions</a>
+     <a href={RC} target="_blank" rel="noopener noreferrer">Refund policy</a>
+    
+
+  </div>
+</footer>
+
     </div>
   );
 }
