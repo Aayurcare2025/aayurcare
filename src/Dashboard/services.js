@@ -65,7 +65,6 @@ useEffect(() => {
   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${age}`;
 } else if (product === "ipd-accident-opd") {
   if (!IPDValue || !AccidentValue || !OPDValue) return;
-  // console.log("going in this section or not just checking",IPDValue,AccidentValue,OPDValue,age);
   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
 }
 
@@ -76,17 +75,10 @@ useEffect(() => {
       const response = await fetch(url);
 
       
-      // if (!response.ok) throw new Error("Failed to fetch premium");
+      if (!response.ok) throw new Error("Failed to fetch premium");
       const data = await response.json();
 
-      // console.log("Premium Data:", data); 
-
-      
-if (!response.ok) {
-  const text = await response.text(); 
-  throw new Error(`HTTP ${response.status}: ${text}`);
-}
-
+      console.log("Premium Data:", data); 
 
       setPremium(data.premium);
       setTotalSumInsured(data.total_sum_insured);
