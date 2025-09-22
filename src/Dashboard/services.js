@@ -63,7 +63,7 @@ useEffect(() => {
       if (product === "ipd-accident") {
   if (!IPDValue || !AccidentValue) return;
   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${age}`;
-} else if (product === "ipd-accident-opd") {
+} else if (product === "opd-ipd-accident") {
   if (!IPDValue || !AccidentValue || !OPDValue) return;
   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
 }
@@ -422,7 +422,7 @@ useEffect(() => {
               placeholder="Occupation"
               value={formData.proposer.occupation}
               onChange={(e) =>
-                handleChange("proposer", "occupatixon", e.target.value)
+                handleChange("proposer", "occupation", e.target.value)
               }
             />
 
