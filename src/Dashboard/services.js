@@ -70,7 +70,7 @@ useEffect(() => {
 
       
 
-      console.log("Fetching from:", url);
+      // console.log("Fetching from:", url);
 
       const response = await fetch(url);
 
@@ -78,12 +78,12 @@ useEffect(() => {
       if (!response.ok) throw new Error("Failed to fetch premium");
       const data = await response.json();
 
-      console.log("Premium Data:", data); 
+      // console.log("Premium Data:", data); 
 
       setPremium(data.premium);
       setTotalSumInsured(data.total_sum_insured);
     } catch (err) {
-      console.error("Error fetching premium:", err);
+      // console.error("Error fetching premium:", err);
       setPremium(null);
       setTotalSumInsured(null);
     }
