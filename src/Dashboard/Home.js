@@ -5,7 +5,8 @@ import D from "../Images/D.pdf";
 import RC from "../Images/RC.pdf";
 import W from "../Images/WTC.pdf";
 import TC from "../Images/TC.pdf";
-
+// import About from "./About.js";
+// import { Link } from "react-router-dom";
 //
 function Home() {
   return (
@@ -183,7 +184,7 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
       
 
       {/* Footer */}
-    <footer className="footer full-page">
+    {/* <footer className="footer full-page">
   <p>AayurCare – Providing smart and hassle-free medical reimbursement for a healthier you.</p>
   <div className="footer-links">
     <a href={D} target="_blank" rel="noopener noreferrer">Disclaimer</a>
@@ -193,7 +194,59 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
     
 
   </div>
+</footer> */}
+
+
+
+
+<footer className="footer">
+  {/* Left side */}
+  <div className="footer-left">
+    <h2 className="footer-logo">AayurCare</h2>
+    <p >
+      Providing smart and hassle-free medical reimbursement for a healthier you.
+    </p>
+
+    <p>Copyright@2025 Aayurcare-All Right Reserved</p>
+    <p>Powered by Aayur Enterprises</p>
+  </div>
+
+  {/* Right side */}
+  <div className="footer-right">
+    {/* Quick Links */}
+    <div >
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+    {/* <p>  Powered by Aayur Enterprises</p> */}
+   
+{/* <ul>
+  <li><Link to="/">Home</Link></li>
+  <li><Link to="/about.js">About</Link></li>
+  <li><Link to="/services">Services</Link></li>
+  <li><Link to="/claims">Claims</Link></li>
+  <li><Link to="/contact">Contact</Link></li>
+  <li><Link to="/careers">Careers</Link></li>
+</ul> */}
+
+    </div>
+
+    {/* Legal */}
+    <div className="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href={W} target="_blank" rel="noopener noreferrer">Website Terms</a></li>
+        <li><a href={TC} target="_blank" rel="noopener noreferrer">AayurCare Terms & Conditions</a></li>
+        <li><a href={RC} target="_blank" rel="noopener noreferrer">Refund Policy</a></li>
+        <li><a href={D} target="_blank" rel="noopener noreferrer">Disclaimer</a></li>
+      </ul>
+    </div>
+  </div>
 </footer>
+
 
     </div>
   );
