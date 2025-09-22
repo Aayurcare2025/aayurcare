@@ -29,6 +29,23 @@ function Home() {
             they need without financial worries. At Aayur Care, we put our members first, always.
           </p>
         </div>
+
+        <div className="network-content"> 
+        
+          <h1>Strong network,trusted service,proven results.</h1>
+          <h2>3300+</h2>
+          <h3>Cashless providers</h3>
+
+
+           <h2>8000+</h2>
+          <h3>Opd Clients</h3>
+
+
+           <h2>87%</h2>
+          <h3>Opd claim settlement</h3>
+
+        </div>
+
       </section>
 
       {/* Plans Section */}
@@ -105,6 +122,9 @@ function Home() {
           </div>
         </div>
       </section>
+
+
+      
 
 
       {/* Testimonials */}
