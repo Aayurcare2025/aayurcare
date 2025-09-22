@@ -51,13 +51,23 @@ useEffect(() => {
     try {
       let url = "";
 
+      // if (product === "ipd-accident") {
+      //   // ✅ IPD + Accident flow only
+      //   if (!IPDValue || !AccidentValue) return; 
+      //   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${age}`;
+      // } else if (!IPDValue || !AccidentValue || !OPDValue) return ;{
+      //   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
+      // }
+
+
       if (product === "ipd-accident") {
-        // ✅ IPD + Accident flow only
-        if (!IPDValue || !AccidentValue) return; 
-        url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${age}`;
-      } else if (!IPDValue || !AccidentValue || !OPDValue) return ;{
-        url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
-      }
+  if (!IPDValue || !AccidentValue) return;
+  url = `https://api.aayurcare.com/user/insurance/basic/${IPDValue}/${AccidentValue}/${age}`;
+} else if (product === "ipd-accident-opd") {
+  if (!IPDValue || !AccidentValue || !OPDValue) return;
+  url = `https://api.aayurcare.com/user/insurance/full/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
+}
+
       
 
       console.log("Fetching from:", url);
