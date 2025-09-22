@@ -65,7 +65,7 @@ useEffect(() => {
   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${age}`;
 } else if (product === "ipd-accident-opd") {
   if (!IPDValue || !AccidentValue || !OPDValue) return;
-  console.log("going in this section or not just checking",IPDValue,AccidentValue,OPDValue,age);
+  // console.log("going in this section or not just checking",IPDValue,AccidentValue,OPDValue,age);
   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
 }
 
