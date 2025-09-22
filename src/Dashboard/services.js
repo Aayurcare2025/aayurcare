@@ -73,10 +73,19 @@ useEffect(() => {
       console.log("Fetching from:", url);
 
       const response = await fetch(url);
-      if (!response.ok) throw new Error("Failed to fetch premium");
+
+      
+      // if (!response.ok) throw new Error("Failed to fetch premium");
       const data = await response.json();
 
-      console.log("Premium Data:", data); 
+      // console.log("Premium Data:", data); 
+
+      
+if (!response.ok) {
+  const text = await response.text(); 
+  throw new Error(`HTTP ${response.status}: ${text}`);
+}
+
 
       setPremium(data.premium);
       setTotalSumInsured(data.total_sum_insured);
