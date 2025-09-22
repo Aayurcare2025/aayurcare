@@ -221,8 +221,7 @@ color: #007bff;
 
 /* FAQ Section */
 .faq-section {
-  /* background-color: #003366;  */
-   background: #181e52;
+  background: #181e52;/* Blue background */
   color: white; /* White text */
   padding: 60px 20px;
 }
