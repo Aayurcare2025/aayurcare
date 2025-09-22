@@ -62,10 +62,10 @@ useEffect(() => {
 
       if (product === "ipd-accident") {
   if (!IPDValue || !AccidentValue) return;
-  url = `https://api.aayurcare.com/user/insurance/basic/${IPDValue}/${AccidentValue}/${age}`;
+  url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${age}`;
 } else if (product === "ipd-accident-opd") {
   if (!IPDValue || !AccidentValue || !OPDValue) return;
-  url = `https://api.aayurcare.com/user/insurance/full/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
+  url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
 }
 
       
