@@ -1429,7 +1429,7 @@ useEffect(() => {
       {serviceType === "corporate" && (
         <div className="big-health-card">
           <h3>Corporate Insurance Plans</h3>
-          <p>Coming soon...</p>
+          <p>Get and Quote</p>
         </div>
       )}
     </div>
