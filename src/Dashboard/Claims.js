@@ -9,7 +9,7 @@ function Claims() {
 
   return (
     <div className="claims-container">
-      <h2 className="form-title">Claim</h2>
+      <h2 className="form-title">Claims</h2>
       <p className="form-subtitle">Submit your claim in simple steps</p>
 
       <div className="steps">

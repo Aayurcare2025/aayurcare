@@ -238,7 +238,7 @@ color: #007bff;
 }
 
 .faq-item h3 {
-  font-size: H1.5rem;
+  font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
@@ -361,18 +361,17 @@ color: #007bff;
   }
 }
 
-.about-image
+/* .about-image
 {
-  width: 100%;
-  height: 100vh;
-  /* object-fit: cover; */
-   overflow: hidden;
+    width: 100vw;   
+  height: auto;
+  overflow: hidden;
 }
 .about-image img {
-  width: 100%;
-  height: 100%;
+    width: 100vw;   
+  height: auto;   
   object-fit: cover;
-}
+} */
   /* Navbar Styles */
 .navbar {
   display: flex;
@@ -501,7 +500,7 @@ color: #007bff;
   .signup h1 {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: #2d2d2d;
+    color: teal;
     font-weight: 600;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
   }
@@ -576,7 +575,7 @@ color: #007bff;
     font-size: 2rem;
     margin-bottom: 15px;
     text-align: center;
-    color: #2d2d2d;
+    color: teal;;
     font-weight: 600;
   }
 
@@ -647,16 +646,24 @@ color: #007bff;
     height:800;
   } */
   .page-section {
-
-    max-width: 800px;
+  background: white;
+    max-width: 1400px;
+  min-height: 100vh;
     margin: auto;
     text-align: center;
+    color:black;
+    padding: 40px 20px;
+     text-align: left;
+
   }
+
 
 
   .page-section h2 {
     font-size: 34px;
     margin-bottom: 15px;
+    text-align: center;
+    color:teal;
   }
 
   .page-section p {
@@ -716,7 +723,7 @@ color: #007bff;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
   }
   .big-health-card {
-    width: 300px;
+    width: 500px;
     height: 400px;
     border: 2px solid teal;
     
@@ -1038,7 +1045,7 @@ color: #007bff;
 
   .contact-title {
     font-size: 38px;
-    color: black;
+    color: teal;
     margin-bottom: 10px;
     font-weight: 700;
   }
@@ -1062,7 +1069,7 @@ color: #007bff;
     padding: 30px 25px;
     box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-    border: 2px solid black;
+    border: 2px solid teal;
   }
 
   .contact-card:hover {
@@ -1072,7 +1079,7 @@ color: #007bff;
 
   .section-heading {
     font-size: 22px;
-    color: black;
+    color:teal;
     margin: 15px 0 10px 0;
   }
 
@@ -1084,7 +1091,7 @@ color: #007bff;
 
   .contact-icon {
     font-size: 35px;
-    color: color;
+    color: teal;
     margin-bottom: 12px;
   }
 
