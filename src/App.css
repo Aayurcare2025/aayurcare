@@ -18,11 +18,53 @@
   position: relative;
   width: 100%;
 }
+
+
 .hero-image {
   width: 100%;
   height: 100vh;
   object-fit: cover;
 }
+
+
+
+
+.network-content {
+  margin-top: 40px;
+  color: white;
+  text-align: center;
+}
+
+.network-content h1 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.network-row {
+  display: flex;
+  justify-content: space-around; /* space evenly between items */
+  align-items: center;
+  text-align: center;
+  gap: 20px; 
+  flex-wrap: wrap; /* responsive */
+}
+
+.network-item h2 {
+  font-size: 36px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.network-item h3 {
+  font-size: 18px;
+  margin: 5px 0 0 0;
+  font-weight: 500;
+}
+
+
+
+
+
 
 /* Who We Are */
 .who-section {
@@ -38,10 +80,7 @@
   max-width: 800px;
    margin: 0 auto;
 }
-.network-content {
-  margin-top: 20px;
-  color: white;
-}
+
 .who-section h1 {
   font-size: 3.2rem;
   margin-bottom: 25px;
@@ -657,31 +696,7 @@ color: #007bff;
     width:1000;
     height:800;
   } */
-  .page-section {
-  background: white;
-    max-width: 1400px;
-  min-height: 100vh;
-    margin: auto;
-    text-align: center;
-    color:black;
-    padding: 40px 20px;
-     text-align: left;
-
-  }
-
-
-
-  .page-section h2 {
-    font-size: 34px;
-    margin-bottom: 15px;
-    text-align: center;
-    color:teal;
-  }
-
-  .page-section p {
-    font-size: 18px;
-    line-height: 1.6;
-  }
+ 
   .service-box
   {
     align-items:center;
@@ -690,6 +705,64 @@ color: #007bff;
 
 
   }
+
+  .page-section {
+  background: #fff;
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 0px 10px;
+  color: #333;
+  line-height: 1.6;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.page-section h2 {
+  font-size: 36px;
+  margin-bottom: 25px;
+  text-align: center;
+  color: teal;
+  font-weight: 700;
+}
+
+.core-values {
+  font-size: 28px;
+  color: #00796b;
+  margin: 40px 0 20px 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.value-box {
+  background: #f0f7f7;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.value-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.value-box h4 {
+  font-size: 22px;
+  color: #004d40;
+  margin-bottom: 10px;
+}
+
+.value-box p {
+  font-size: 16px;
+  color: #333;
+}
+
   .plans-grid {
     display: flex;
     flex-wrap: wrap;

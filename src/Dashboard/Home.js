@@ -30,11 +30,12 @@ function Home() {
           </p>
         </div>
 
-        <div className="network-content"> 
+        {/* <div className="network-content"> 
         
           <h1>Strong network,trusted service,proven results.</h1>
           <h2>3300+</h2>
           <h3>Cashless providers</h3>
+          
 
 
            <h2>8000+</h2>
@@ -44,7 +45,30 @@ function Home() {
            <h2>87%</h2>
           <h3>Opd claim settlement</h3>
 
-        </div>
+        </div> */}
+
+
+
+
+        <div className="network-content">
+  <h1>Strong Network, Trusted Service, Proven Results</h1>
+  
+  <div className="network-row">
+    <div className="network-item">
+      <h2>3300+</h2>
+      <h3>Cashless Providers</h3>
+    </div>
+    <div className="network-item">
+      <h2>8000+</h2>
+      <h3>OPD Clients</h3>
+    </div>
+    <div className="network-item">
+      <h2>87%</h2>
+      <h3>OPD Claim Settlement</h3>
+    </div>
+  </div>
+</div>
+
 
       </section>
 
