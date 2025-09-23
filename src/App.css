@@ -715,26 +715,25 @@ color: #007bff;
 }
 
 .page-section h2 {
-  font-size: 36px;
-  margin-bottom: 25px;
+  font-size: 30px;
+  margin-bottom: 0px;
   text-align: center;
   color: teal;
   font-weight: 700;
 }
 
 .core-values {
-  font-size: 28px;
-  color: #00796b;
-  margin: 40px 0 20px 0;
+  font-size: 22px;
+  color: teal;
   text-align: center;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .values-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 25px;
-  margin-top: 20px;
+  margin-top: 18px;
 }
 
 .value-box {
@@ -751,9 +750,10 @@ color: #007bff;
 }
 
 .value-box h4 {
-  font-size: 22px;
+  font-size: 16px;
   color: #004d40;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .value-box p {
@@ -1130,7 +1130,7 @@ color: #007bff;
   }
 
   .contact-title {
-    font-size: 38px;
+    font-size: 25px;
     color: teal;
     margin-bottom: 10px;
     font-weight: 700;
@@ -1164,21 +1164,21 @@ color: #007bff;
   }
 
   .section-heading {
-    font-size: 22px;
+    font-size: 15px;
     color:teal;
     margin: 15px 0 10px 0;
   }
 
   .contact-card p {
-    font-size: 16px;
+    font-size: 14px;
     color: #333;
     line-height: 1.6;
   }
 
   .contact-icon {
-    font-size: 35px;
+    font-size: 20px;
     color: teal;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .contact-icon.small {

@@ -14,12 +14,19 @@ function Contact() {
         <div className="contact-card">
           <FaMapMarkerAlt className="contact-icon" />
           <h2 className="section-heading">Office Address</h2>
+          <h5>Operating Address</h5>
           <p>
-            AAYUR CARE <br />
-            BHIVE Premium Koramangala (Near Nexus Mall), <br />
-            Hosur Main Road, next to Forum Mall, Adugodi, <br />
+            BHIVE Premium Koramangala (Near Nexus Mall),
+            Hosur Main Road, next to Forum Mall, Adugodi,
             Koramangala, Bengaluru, Karnataka, India
           </p>
+          <h5>Registered Address</h5>
+          <p>
+           Crescent Workspace, next to Karnataka Bank, HRBR Layout 1st Block, Bank Avenue Colony,
+ Banaswadi, Bengaluru, Karnataka– 560043, India
+          </p>
+
+
         </div>
 
         <div className="contact-card">

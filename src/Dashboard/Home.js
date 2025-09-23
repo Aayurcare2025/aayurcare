@@ -7,6 +7,9 @@ import W from "../Images/WTC.pdf";
 import TC from "../Images/TC.pdf";
 // import About from "./About.js";
 // import { Link } from "react-router-dom";
+// import {WebisteTerms} from "../Dashboard/webisteterms.js"
+// import  WebisteTerms from "./webisteterms";
+
 //
 function Home() {
   return (
@@ -215,12 +218,6 @@ hospitalization and critical care.</p>
 corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
 7338146712.</p>
   </div>
-
-
-
-  
-
-
  
 </section>
 
@@ -283,6 +280,8 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
       <h3>Legal</h3>
       <ul>
         <li><a href={W} target="_blank" rel="noopener noreferrer">Website Terms</a></li>
+        {/* <li onClick={WebisteTerms}>Website Terms</li> */}
+       {/* <li onClick={WebisteTerms}><a></a></li> */}
         <li><a href={TC} target="_blank" rel="noopener noreferrer">AayurCare Terms & Conditions</a></li>
         <li><a href={RC} target="_blank" rel="noopener noreferrer">Refund Policy</a></li>
         <li><a href={D} target="_blank" rel="noopener noreferrer">Disclaimer</a></li>
