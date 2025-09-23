@@ -1385,10 +1385,10 @@ color: #007bff;
   }
 
   .plan-card {
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     padding: 15px;
     border-radius: 12px;
-    background: #fafafa;
+    /* background: #fafafa; */
     flex: 1;
   }
 /* ================= CLAIMS PAGE ================= */
