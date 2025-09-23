@@ -27,8 +27,6 @@
 }
 
 
-
-
 .network-content {
   margin-top: 40px;
   color: white;
@@ -1308,7 +1306,7 @@ color: #007bff;
 
   .plan-card {
     border: 1px solid #ddd;
-    padding: 15px;
+    padding: 50px;
     border-radius: 8px;
     background: #f9f9f9;
     text-align: center;
