@@ -281,7 +281,7 @@ useEffect(() => {
 
 {product === "accident" && (
         <>
-          <select value={AccidentValue} onChange={(e) => setOPDValue(e.target.value)}>
+          <select value={AccidentValue} onChange={(e) => setAccidentValue(e.target.value)}>
             <option value="">Select Accident Plan</option>
             <option value="2lakhs">200000</option>
             <option value="4lakhs">400000</option>
