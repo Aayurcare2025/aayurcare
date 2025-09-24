@@ -403,7 +403,7 @@ useEffect(() => {
 
 
         <div className="plans-grid">
-  {product !== "opd" && (
+  {product !== "opd"    && product!=="accident" && (
     <div className="plan-card">
       <h4>Medi Coverage</h4>
       <p>
