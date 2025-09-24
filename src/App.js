@@ -26,6 +26,7 @@ const [showWebsiteTerms, setShowWebsiteTerms] = useState(false);
 const[showAayurcareTerms,setShowAayurcareTerms]=useState(false);
 const[showRefundPolicy,setShowRefundPolicy]=useState(false);
 const[showDisclaimer,setShowDisclaimer]=useState(false);
+const[showSignUp,setShowSignUp] = useState(false);
   // Function to render the appropriate page based on state 
 
   const renderPage = () => {
@@ -40,6 +41,9 @@ const[showDisclaimer,setShowDisclaimer]=useState(false);
 
        if(showDisclaimer) return <Disclaimer goBack={() => setShowDisclaimer(false)} />;
 
+       if(showSignUp) return <SignUp goBack={() => setShowSignUp(false)} setPage={setPage} 
+    
+        />;
        
     if (!isLoggedIn && (page === "services" || page === "claims")) {
       return (
@@ -55,6 +59,7 @@ const[showDisclaimer,setShowDisclaimer]=useState(false);
       setShowAayurcareTerms={setShowAayurcareTerms}
       setShowRefundPolicy={setShowRefundPolicy}
       setShowDisclaimer={setShowDisclaimer} 
+      setShowSignUp={setShowSignUp}
      />;
 
     if (page === "about") return <About />;

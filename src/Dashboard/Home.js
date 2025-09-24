@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
-import Family from "../Images/Home.png";
+import Family from "../Images/main.png";
+// import Signup from "./SignUp"
 // import D from "../Images/D.pdf";
 // import RC from "../Images/RC.pdf";
 // import W from "../Images/WTC.pdf";
@@ -9,14 +10,13 @@ import Family from "../Images/Home.png";
 // import { Link } from "react-router-dom";
 // import {WebisteTerms} from "../Dashboard/webisteterms.js"
 // import  WebisteTerms from "./webisteterms";
-
-
-function Home({ setPage, setShowWebsiteTerms,setShowAayurcareTerms,setShowRefundPolicy,setShowDisclaimer }) {
+function Home({ setPage, setShowWebsiteTerms,setShowAayurcareTerms,setShowRefundPolicy,setShowDisclaimer ,setShowSignUp}) {
   return (
     <div className="main-page">
       {/* Hero Section */}
       <section className="hero-section full-page">
         <img src={Family} alt="Family" className="hero-image" />
+        <button  onClick={()=>setShowSignUp(true)}  class="overlay-button">Enroll Now</button>
       </section>
 
       {/* Who We Are */}
