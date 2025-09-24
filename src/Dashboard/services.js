@@ -68,6 +68,7 @@ useEffect(() => {
   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
 }
 
+
       // console.log("Fetching from:", url);
 
       const response = await fetch(url);
@@ -275,6 +276,86 @@ useEffect(() => {
              </div>
         </>
       )}
+
+
+
+{product === "accident" && (
+        <>
+          <select value={AccidentValue} onChange={(e) => setOPDValue(e.target.value)}>
+            <option value="">Select OPD Plan</option>
+            <option value="2lakhs">200000</option>
+            <option value="4lakhs">400000</option>
+            <option value="6lakhs">600000</option>
+            <option  value="8lakhs">800000</option>
+            <option value="10lakhs">1000000</option>
+          </select>
+
+          <div className="plans-grid">
+            {OPDValue === "2lakhs" && (
+              <div className="plan-card">
+                <p>Total Coverage: ₹200000</p>
+                <p>Annual Premium: ₹172</p>
+                <button onClick={() => alert("Proceed to Payment")}>
+                  Buy Now
+                </button>
+              </div>
+            )}
+
+            {OPDValue === "4lakhs" && (
+              <div className="plan-card">
+                <p>Total Coverage:₹400000</p>
+                <p>Annual Premium:₹411</p>
+                <button onClick={() => alert("Proceed to Payment")}>
+                  Buy Now
+                </button>
+              </div>
+            )}
+
+            {OPDValue === "6lakhs" && (
+              <div className="plan-card">
+                <p>Total Coverage: ₹600000</p>
+                <p>Annual Premium: ₹521</p>
+                <button onClick={() => alert("Proceed to Payment")}>
+                  Buy Now
+                </button> 
+              </div>
+            )}
+
+            {OPDValue === "8lakhs" && (
+              <div className="plan-card">
+                <p>Total Coverage: ₹800000</p>    
+                <p>Annual Premium: ₹700</p>
+                <button onClick={() => alert("Proceed to Payment")}>        
+                  Buy Now
+                </button>
+              </div>
+            )}  
+
+
+            {OPDValue === "10lakhs" && (            
+              <div className="plan-card">
+                <p>Total Coverage: ₹1000000</p>
+                <p>Annual Premium: ₹1000</p>           
+                <button onClick={() => alert("Proceed to Payment")}>
+                  Buy Now
+                </button>
+              </div>
+            )}
+
+             </div>
+
+
+             
+
+
+
+
+        </>
+      )}
+
+
+
+
 
               
 
@@ -519,7 +600,18 @@ useEffect(() => {
       {serviceType === "corporate" && (
         <div className="big-health-card">
           <h3>Corporate Insurance Plans</h3>
-         <button>Get a Quote</button>
+         <button >Get a Quote</button>
+
+         <button>Group Medical</button>
+
+
+
+
+         <button>Opd</button>
+
+
+
+
         </div>
       )}
     </div>
