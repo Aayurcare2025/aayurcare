@@ -1,40 +1,40 @@
-import React from "react";
-function GroupMedical() {
-  return (
-   <div className="medical-container">
+// import React from "react";
+// function GroupMedical() {
+//   return (
+//    <div className="medical-container">
 
-  <label>Company Name</label>
-  <select>
-    <option>Select Company Name</option>
-    <option value="">1</option>
-    <option value="">2</option>
-    <option value="">3</option>
-  </select>
+//   <label>Company Name</label>
+//   <select>
+//     <option>Select Company Name</option>
+//     <option value="">1</option>
+//     <option value="">2</option>
+//     <option value="">3</option>
+//   </select>
 
 
-  <label> HR name</label>
-  <input type="text" placeholder="Enter HR name" />
+//   <label> HR name</label>
+//   <input type="text" placeholder="Enter HR name" />
 
-  <label>HR mailid</label>
-  <input type="email" placeholder="Enter HR mailid" />
+//   <label>HR mailid</label>
+//   <input type="email" placeholder="Enter HR mailid" />
 
-  <label>Phone no </label>
-  <input type="tel" placeholder="Enter phone number" />
+//   <label>Phone no </label>
+//   <input type="tel" placeholder="Enter phone number" />
 
-  <label>Number of Employees</label>
-  <input type="number" placeholder="Enter number of employees" />
+//   <label>Number of Employees</label>
+//   <input type="number" placeholder="Enter number of employees" />
 
-  <label>Location</label>
-  <select>
-    <option value="">Select Location</option>
-    <option value=""> Bangalore</option>
-  </select>
-
-//data 
+//   <label>Location</label>
+//   <select>
+//     <option value="">Select Location</option>
+//     <option value=""> Bangalore</option>
+//   </select>
 
 
 
-  <button>Submit</button>
+
+
+//   <button>Submit</button>
 
   
 
@@ -59,8 +59,8 @@ function GroupMedical() {
 
       
    
-    </div>
-  );
-}
+//     </div>
+//   );
+// }
 
-export default GroupMedical;
+// export default GroupMedical;

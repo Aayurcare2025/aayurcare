@@ -4,9 +4,9 @@ function Disclaimer({ goBack }) {
    <div>
 
 
-      <button onClick={goBack} className="back-btn">
+      {/* <button onClick={goBack} className="back-btn">
         ← Go Back
-      </button>
+      </button> */}
 
 
       

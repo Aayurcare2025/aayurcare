@@ -4,9 +4,9 @@ function AayurcareTerms({goBack}) {
     <div className="aayurcareterms-section">
 
 
-        <button onClick={goBack} className="back-btn">
+        {/* <button onClick={goBack} className="back-btn">
         ← Go Back
-      </button>
+      </button> */}
 
 
         <h1>Terms and Conditions</h1>

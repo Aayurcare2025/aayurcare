@@ -4,9 +4,9 @@ function RefundPolicy({goBack}) {
     <div className="Refund-section">
 
 
-        <button onClick={goBack} className="back-btn">
+        {/* <button onClick={goBack} className="back-btn">
         ← Go Back
-      </button>
+      </button> */}
 
         <h1>Refund and Cancellation Policy</h1>
         <p>This Refund and Cancellation Policy (“Policy”) governs the terms and conditions applicable

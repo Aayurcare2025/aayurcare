@@ -5,10 +5,10 @@ function WebisteTerms({goBack}) {
 
 
     {/* GO BACK */}
-
+{/* 
          <button onClick={goBack} className="back-btn">
         ← Go Back
-      </button>
+      </button> */}
 
       <h1>Website Terms of Use</h1>
       <p> This website, located at https://www.aayurcare.com

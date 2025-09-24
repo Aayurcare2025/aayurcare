@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
+// import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+function Services() {
 
-function Services({ serviceType }) {
+
+    const navigate = useNavigate();
+      const { type } = useParams(); // "individual" or "corporate"
+  const serviceType = type;
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [step, setStep] = useState(1);
   const [totalSumInsured, setTotalSumInsured] = useState(null);
@@ -594,20 +601,58 @@ useEffect(() => {
         </div>
       )}
 
-      {serviceType === "corporate" && (
+      {/* {serviceType === "corporate" && (
         <div className="big-health-card">
           <h3>Corporate Insurance Plans</h3>
          <button >Get a Quote</button>
            <br></br>
-         <button>Group Medical</button>
-         <br></br>
+      
+<button onClick={() => {
+  setSelectedPlan(null); 
+  navigate("/groupmedical");
+}}>
+  Group Medical
+</button>
          <button>Opd</button>
-
-
-
-
         </div>
-      )}
+      )} */}
+
+
+      {serviceType === "corporate" && (
+  <div className="big-health-card">
+    <h3>Corporate Insurance Plans</h3>
+    
+    {/* State to show/hide options */}
+    <button onClick={() => setSelectedPlan("corporate-options")}>
+      Get a Quote
+    </button>
+
+
+    <br></br>
+
+    {selectedPlan === "corporate-options" && (
+      <div className="quote-options">
+        <button
+          onClick={() => {
+            setSelectedPlan(null);
+            navigate("/groupmedical");
+          }}
+        >
+          Group Medical
+        </button>
+        <button
+          onClick={() => {
+            setSelectedPlan(null);
+            navigate("/corporate-opd");
+          }}
+        >
+          Opd
+        </button>
+      </div>
+    )}
+  </div>
+)}
+
     </div>
   );
 }
