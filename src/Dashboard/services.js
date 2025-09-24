@@ -282,7 +282,7 @@ useEffect(() => {
 {product === "accident" && (
         <>
           <select value={AccidentValue} onChange={(e) => setOPDValue(e.target.value)}>
-            <option value="">Select OPD Plan</option>
+            <option value="">Select Accident Plan</option>
             <option value="2lakhs">200000</option>
             <option value="4lakhs">400000</option>
             <option value="6lakhs">600000</option>
@@ -291,7 +291,7 @@ useEffect(() => {
           </select>
 
           <div className="plans-grid">
-            {OPDValue === "2lakhs" && (
+            {AccidentValue === "2lakhs" && (
               <div className="plan-card">
                 <p>Total Coverage: ₹200000</p>
                 <p>Annual Premium: ₹172</p>
@@ -301,7 +301,7 @@ useEffect(() => {
               </div>
             )}
 
-            {OPDValue === "4lakhs" && (
+            {AccidentValue === "4lakhs" && (
               <div className="plan-card">
                 <p>Total Coverage:₹400000</p>
                 <p>Annual Premium:₹411</p>
@@ -311,7 +311,7 @@ useEffect(() => {
               </div>
             )}
 
-            {OPDValue === "6lakhs" && (
+            {AccidentValue === "6lakhs" && (
               <div className="plan-card">
                 <p>Total Coverage: ₹600000</p>
                 <p>Annual Premium: ₹521</p>
@@ -321,7 +321,7 @@ useEffect(() => {
               </div>
             )}
 
-            {OPDValue === "8lakhs" && (
+            {AccidentValue === "8lakhs" && (
               <div className="plan-card">
                 <p>Total Coverage: ₹800000</p>    
                 <p>Annual Premium: ₹700</p>
@@ -332,7 +332,7 @@ useEffect(() => {
             )}  
 
 
-            {OPDValue === "10lakhs" && (            
+            {AccidentValue === "10lakhs" && (            
               <div className="plan-card">
                 <p>Total Coverage: ₹1000000</p>
                 <p>Annual Premium: ₹1000</p>           
@@ -385,7 +385,7 @@ useEffect(() => {
               )}
 
               {/* Accident Dropdown */}
-              {["accident", "opd-ipd-accident","ipd-accident"].includes(product) && (
+              {/* {["accident", "opd-ipd-accident","ipd-accident"].includes(product) && (
                 <select
                   value={AccidentValue}
                   onChange={(e) => setAccidentValue(e.target.value)}
@@ -397,38 +397,9 @@ useEffect(() => {
                   <option value="800000">8,00,000 </option>
                   <option value="1000000">10,00,000 </option>
                 </select>
-              )}
+              )} */}
 
-              {/* Plan Card */}
-              {/* <div className="plans-grid">
-                <div className="plan-card">
-                  
-                  <h4>Medi Coverage</h4>
-                  <p>
-                    Total Coverage: ₹
-                    {totalSumInsured
-                      ? totalSumInsured.toLocaleString()
-                      : "Select values to calculate"}
-                  </p>
-
-                  <p>
-                    Annual Premium:{" "}
-                    {premium
-                      ? `₹${premium.toLocaleString()}`
-
-                      : "Select values to calculate"}
-                  </p>
-                  <button
-                    disabled={!premium}
-                    onClick={() => alert("Proceed to Payment")}
-                  >
-                    Buy Now
-                  </button>
-                </div>
-              </div>
-            </div>
-          );
-        })()} */}
+             
 
 
         <div className="plans-grid">
