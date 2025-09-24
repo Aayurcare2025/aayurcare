@@ -68,8 +68,6 @@ useEffect(() => {
   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
 }
 
-      
-
       // console.log("Fetching from:", url);
 
       const response = await fetch(url);
@@ -426,6 +424,10 @@ useEffect(() => {
               }
             />
 
+              <label>Upload Documents</label>
+          <input type="file" multiple />
+
+
             <button onClick={() => setStep(5)} className="submit-btn">
               Next →
             </button>
@@ -514,7 +516,7 @@ useEffect(() => {
       {serviceType === "corporate" && (
         <div className="big-health-card">
           <h3>Corporate Insurance Plans</h3>
-          <p>Get and Quote</p>
+         <button>Get a Quote</button>
         </div>
       )}
     </div>

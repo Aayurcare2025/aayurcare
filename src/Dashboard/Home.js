@@ -248,6 +248,7 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
     {/* Legal */}
     <div className="footer-section">
       <h3>Legal</h3>
+      
       <ul>
         {/* <li><a href={W} target="_blank" rel="noopener noreferrer">Website Terms</a></li> */}
         {/* <li onClick={WebisteTerms}>Website Terms</li> */}
