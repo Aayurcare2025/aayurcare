@@ -41,7 +41,8 @@ const[showSignUp,setShowSignUp] = useState(false);
 
        if(showDisclaimer) return <Disclaimer goBack={() => setShowDisclaimer(false)} />;
 
-       if(showSignUp) return <SignUp goBack={() => setShowSignUp(false)} setPage={setPage} 
+      //  if(showSignUp) return <SignUp goBack={() => setShowSignUp(false)} setPage={setPage} 
+      if(showSignUp) return <SignUp goBack={() => setShowSignUp(false)} setPage={setPage} setIsLoggedIn={setIsLoggedIn}
     
         />;
        
