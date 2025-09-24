@@ -257,7 +257,7 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
         <br></br>
     <li className="footer-link" onClick={() =>setShowAayurcareTerms (true)}>AayurCare Terms & Condition</li>
     <br></br>
-   <li className="footer-link" onClick={()=>setShowRefundPolicy(true)}>Refund Policy</li>
+   <li className="footer-link" onClick={()=>setShowRefundPolicy(true)}>Refund and Cancellation Policy</li>
     <br></br>
   <li className="footer-link" onClick={()=>setShowDisclaimer(true)}>Disclaimer</li>
 
