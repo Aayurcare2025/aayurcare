@@ -288,6 +288,8 @@ useEffect(() => {
             <option value="6lakhs">600000</option>
             <option  value="8lakhs">800000</option>
             <option value="10lakhs">1000000</option>
+            <option value="20lakhs">2000000</option>
+            <option value="25lakhs">2500000</option>
           </select>
 
           <div className="plans-grid">
@@ -341,6 +343,30 @@ useEffect(() => {
                 </button>
               </div>
             )}
+
+
+              {AccidentValue === "20lakhs" && (            
+              <div className="plan-card">    
+                <button>Get a Quote</button>
+              </div>
+            )}
+
+
+
+               {AccidentValue === "20lakhs" && (            
+              <div className="plan-card">    
+                <button>Get a Quote</button>
+              </div>
+            )}
+
+
+
+
+         
+
+            
+
+
 
              </div>
 
@@ -572,12 +598,9 @@ useEffect(() => {
         <div className="big-health-card">
           <h3>Corporate Insurance Plans</h3>
          <button >Get a Quote</button>
-
+           <br></br>
          <button>Group Medical</button>
-
-
-
-
+         <br></br>
          <button>Opd</button>
 
 
