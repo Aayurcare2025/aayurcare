@@ -406,7 +406,7 @@ useEffect(() => {
             />
             <input
               type="date"
-              placeholder="Select  Date of Birth"
+              placeholder="Enter Date of Birth"
               value={formData.proposer.dob}
               onChange={(e) => handleChange("proposer", "dob", e.target.value)}
             />
@@ -427,10 +427,8 @@ useEffect(() => {
 
 
 
-              {/* <label>Upload Documents</label> */}
-          <input type="file"
-          placeholder="Upload Document"
-           multiple />
+              <label>Upload Documents</label>
+          <input type="file" multiple />
 
 
             <button onClick={() => setStep(5)} className="submit-btn">
