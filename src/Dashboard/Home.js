@@ -1,17 +1,17 @@
 import React from "react";
 import "../App.css";
 import Family from "../Images/Home.png";
-import D from "../Images/D.pdf";
-import RC from "../Images/RC.pdf";
-import W from "../Images/WTC.pdf";
-import TC from "../Images/TC.pdf";
+// import D from "../Images/D.pdf";
+// import RC from "../Images/RC.pdf";
+// import W from "../Images/WTC.pdf";
+// import TC from "../Images/TC.pdf";
 // import About from "./About.js";
 // import { Link } from "react-router-dom";
 // import {WebisteTerms} from "../Dashboard/webisteterms.js"
 // import  WebisteTerms from "./webisteterms";
 
-//
-function Home() {
+
+function Home({ setPage, setShowWebsiteTerms,setShowAayurcareTerms,setShowRefundPolicy,setShowDisclaimer }) {
   return (
     <div className="main-page">
       {/* Hero Section */}
@@ -33,42 +33,27 @@ function Home() {
           </p>
         </div>
 
-        {/* <div className="network-content"> 
-        
-          <h1>Strong network,trusted service,proven results.</h1>
-          <h2>3300+</h2>
-          <h3>Cashless providers</h3>
-          
-
-
-           <h2>8000+</h2>
-          <h3>Opd Clients</h3>
-
-
-           <h2>87%</h2>
-          <h3>Opd claim settlement</h3>
-
-        </div> */}
-
-
-
-
         <div className="network-content">
   <h1>Strong Network, Trusted Service, Proven Results</h1>
+
   
   <div className="network-row">
     <div className="network-item">
       <h2>3300+</h2>
       <h3>Cashless Providers</h3>
     </div>
+
     <div className="network-item">
       <h2>8000+</h2>
       <h3>OPD Clients</h3>
     </div>
+
     <div className="network-item">
       <h2>87%</h2>
       <h3>OPD Claim Settlement</h3>
     </div>
+
+
   </div>
 </div>
 
@@ -115,17 +100,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Simple Steps */}
-      {/* <section className="steps-section full-page">
-        <h2>Simple Steps to Get Covered</h2>
-        <ol className="steps-list">
-          <li><strong>Choose a Plan</strong> – Select the perfect plan for you or your family.</li>
-          <li><strong>Become a Member</strong> – Sign up online quickly and easily.</li>
-          <li><strong>Get Medical Care</strong> – Visit any doctor, clinic, or hospital and keep bills.</li>
-          <li><strong>Submit Bills & Get Reimbursed</strong> – Upload bills online and get reimbursed promptly.</li>
-        </ol>
-      </section> */}
-
 
             {/* Simple Steps */}
       <section className="steps-section full-page">
@@ -151,8 +125,7 @@ function Home() {
       </section>
 
 
-      
-
+    
 
       {/* Testimonials */}
       <section className="testimonials-section full-page">
@@ -237,9 +210,6 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
   </div>
 </footer> */}
 
-
-
-
 <footer className="footer">
   {/* Left side */}
   <div className="footer-left">
@@ -279,12 +249,24 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
     <div className="footer-section">
       <h3>Legal</h3>
       <ul>
-        <li><a href={W} target="_blank" rel="noopener noreferrer">Website Terms</a></li>
+        {/* <li><a href={W} target="_blank" rel="noopener noreferrer">Website Terms</a></li> */}
         {/* <li onClick={WebisteTerms}>Website Terms</li> */}
        {/* <li onClick={WebisteTerms}><a></a></li> */}
-        <li><a href={TC} target="_blank" rel="noopener noreferrer">AayurCare Terms & Conditions</a></li>
-        <li><a href={RC} target="_blank" rel="noopener noreferrer">Refund Policy</a></li>
-        <li><a href={D} target="_blank" rel="noopener noreferrer">Disclaimer</a></li>
+        {/* <Link to="/websiteterms">Website Terms</Link> */}
+        <li className="footer-link" onClick={() => setShowWebsiteTerms(true)}>Website Terms</li>
+        <br></br>
+    <li className="footer-link" onClick={() =>setShowAayurcareTerms (true)}>AayurCare Terms & Condition</li>
+    <br></br>
+   <li className="footer-link" onClick={()=>setShowRefundPolicy(true)}>Refund Policy</li>
+    <br></br>
+  <li className="footer-link" onClick={()=>setShowDisclaimer(true)}>Disclaimer</li>
+
+
+
+
+        {/* <li><a href={TC} target="_blank" rel="noopener noreferrer">AayurCare Terms & Conditions</a></li> */}
+        {/* <li><a href={RC} target="_blank" rel="noopener noreferrer">Refund Policy</a></li> */}
+        {/* <li><a href={D} target="_blank" rel="noopener noreferrer">Disclaimer</a></li> */}
       </ul>
     </div>
   </div>

@@ -13,15 +13,34 @@ import Aayurcareicon from "./Images/logo.png";
 import Contact from "./Dashboard/Contact";
 import Claims from "./Dashboard/Claims";
 import Complaint from "./Dashboard/Complaints";
-
+import WebisteTerms from "./Dashboard/webisteterms";
+import AayurcareTerms from "./Dashboard/Aayurcareterms";
+import RefundPolicy from "./Dashboard/RefundPolicy";
+import Disclaimer from "./Dashboard/Disclaimer";
 function App() {
   const [page, setPage] = useState("home");
   const [serviceType, setServiceType] = useState(null);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+const [showWebsiteTerms, setShowWebsiteTerms] = useState(false);
+const[showAayurcareTerms,setShowAayurcareTerms]=useState(false);
+const[showRefundPolicy,setShowRefundPolicy]=useState(false);
+const[showDisclaimer,setShowDisclaimer]=useState(false);
+  // Function to render the appropriate page based on state 
 
   const renderPage = () => {
     // Show warning if not logged in
+
+      // if (showWebsiteTerms) return <WebisteTerms />;
+       if (showWebsiteTerms) return <WebisteTerms goBack={() => setShowWebsiteTerms(false)} />;
+        
+       if(showAayurcareTerms) return <AayurcareTerms goBack={() => setShowAayurcareTerms(false)} />;
+
+       if(showRefundPolicy) return <RefundPolicy goBack={() => setShowRefundPolicy(false)} />;
+
+       if(showDisclaimer) return <Disclaimer goBack={() => setShowDisclaimer(false)} />;
+
+       
     if (!isLoggedIn && (page === "services" || page === "claims")) {
       return (
         <p style={{ color: "red", textAlign: "center", marginTop: "50px" }}>
@@ -31,7 +50,13 @@ function App() {
     }
 
     // if (page === "home") return <Home />;
-    if (page === "home") return <Home setPage={setPage} />;
+    if (page === "home") 
+      return <Home setPage={setPage} setShowWebsiteTerms={setShowWebsiteTerms}
+      setShowAayurcareTerms={setShowAayurcareTerms}
+      setShowRefundPolicy={setShowRefundPolicy}
+      setShowDisclaimer={setShowDisclaimer} 
+     />;
+
     if (page === "about") return <About />;
     if (page === "services")
       return (
@@ -45,7 +70,10 @@ function App() {
     if (page === "contact") return <Contact />;
     if (page === "claims") return <Claims />;
     if (page === "complaint") return <Complaint />;
-
+    // if(page==="websiteterms") return <WebisteTerms/>;
+    // if(page==="aayurcareterms") return <AayurcareTerms/>;
+    // if(page==="refundpolicy") return <RefundPolicy/>;
+    // if(page==="disclaimer") return <Disclaimer/>;
     return <Home />;
   };
 
