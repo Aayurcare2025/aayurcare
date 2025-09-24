@@ -424,6 +424,8 @@ useEffect(() => {
               }
             />
 
+
+
               <label>Upload Documents</label>
           <input type="file" multiple />
 
@@ -453,9 +455,9 @@ useEffect(() => {
               value={formData.self.weight}
               onChange={(e) => handleChange("self", "weight", e.target.value)}
             />
-            <button onClick={() => setStep(4)} className="back-btn">
+            {/* <button onClick={() => setStep(4)} className="back-btn">
               ← Back
-            </button>
+            </button> */}
             <button onClick={() => setStep(6)} className="submit-btn">
               Next →
             </button>
