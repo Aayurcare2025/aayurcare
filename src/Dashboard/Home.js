@@ -518,6 +518,17 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
     <p>Powered by Aayur Enterprises</p>
   </div>
 
+
+      <div className="footer-middle">
+       <p>Partnered with Vibe Insurance Broking </p>
+
+        <p>IRDAI License No. 904</p>
+      </div>
+
+
+
+
+
   {/* Right side */}
   <div className="footer-right">
     {/* Quick Links */}
@@ -555,10 +566,6 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
    <li className="footer-link" onClick={()=>navigate("refundandcancellation")}>Refund and Cancellation Policy</li>
     <br></br>
   <li className="footer-link" onClick={()=>navigate("disclaimer")}>Disclaimer</li>
-
-
-
-
        
       </ul>
     </div>
