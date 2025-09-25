@@ -628,8 +628,7 @@ useEffect(() => {
     <button onClick={() => setSelectedPlan("corporate-options")}>
       Get a Quote
     </button>
-
-
+    
     <br></br>
 
     {selectedPlan === "corporate-options" && (

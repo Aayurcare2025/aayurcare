@@ -3,6 +3,7 @@ import { State, City } from "country-state-city";
 
 function GroupMedical() {
   const [states, setStates] = useState([]);
+  
   const [cities, setCities] = useState([]);
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
@@ -24,13 +25,17 @@ function GroupMedical() {
   }, [selectedState]);
 
   return (
+
+
+    <div className="health-form">
+        <h2 className="form-title">Group Medical</h2>
     <div className="form-container">
       <label>Company Name</label>
       <select>
         <option>Select Company Name</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
+        <option value="1">Google</option>
+        <option value="2">Amazon</option>
+        <option value="3">Facebook</option>
       </select>
 
       <label>HR Name</label>
@@ -73,6 +78,7 @@ function GroupMedical() {
       </select>
 
       <button>Submit</button>
+    </div>
     </div>
   );
 }

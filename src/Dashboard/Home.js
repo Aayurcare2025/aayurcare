@@ -341,7 +341,7 @@ function Home() {
 
     <div className="network-item">
       <h2>8000+</h2>
-      <h3>OPD Clients</h3>
+      <h3>OPD Customers</h3>
     </div>
 
     <div className="network-item">
