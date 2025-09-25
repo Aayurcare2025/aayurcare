@@ -418,7 +418,9 @@ useEffect(() => {
               )}
 
               {/* Accident Dropdown */}
-              {/* {["accident", "opd-ipd-accident","ipd-accident"].includes(product) && (
+
+
+              {[ "opd-ipd-accident","ipd-accident"].includes(product) && (
                 <select
                   value={AccidentValue}
                   onChange={(e) => setAccidentValue(e.target.value)}
@@ -430,7 +432,7 @@ useEffect(() => {
                   <option value="800000">8,00,000 </option>
                   <option value="1000000">10,00,000 </option>
                 </select>
-              )} */}
+              )}
 
              
 

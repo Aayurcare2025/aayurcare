@@ -1600,3 +1600,24 @@ color: #007bff;
 .footer-link:hover {
   color: #0056b3;         
 }
+.quote-options {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* .quote-options button {
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.quote-options button:hover {
+  background: #f5f5f5;
+  border-color: #ccc;
+} */
