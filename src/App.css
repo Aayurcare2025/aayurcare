@@ -1613,6 +1613,19 @@ color: #007bff;
   margin-top: 10px;
 }
 
+.footer-down
+{
+  padding-left:100px;
+}
+ @keyframes moveText {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(100px); } /* or any desired movement */
+    }
+
+    .moving-text {
+      animation: moveText 2s infinite alternate;
+    }
+
 /* .quote-options button {
   padding: 6px 14px;
   font-size: 14px;

@@ -397,6 +397,9 @@ function Home() {
       </section>
 
 
+
+
+
             {/* Simple Steps */}
       <section className="steps-section full-page">
         <h2>Simple Steps to Get Covered</h2>
@@ -509,7 +512,7 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
 <footer className="footer">
   {/* Left side */}
   <div className="footer-left">
-    <h2 className="footer-logo">AayurCare</h2>
+    <h2 className="footer-logo">Aayur Care</h2>
     <p >
       Providing smart and hassle-free medical reimbursement for a healthier you.
     </p>
@@ -523,11 +526,8 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
        <p>Partnered with Vibe Insurance Broking </p>
 
         <p>IRDAI License No. 904</p>
+        
       </div>
-
-
-
-
 
   {/* Right side */}
   <div className="footer-right">
@@ -540,25 +540,18 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
       <br></br>
       <br></br>
     {/* <p>  Powered by Aayur Enterprises</p> */}
-   
-{/* <ul>
-  <li><Link to="/">Home</Link></li>
-  <li><Link to="/about.js">About</Link></li>
-  <li><Link to="/services">Services</Link></li>
-  <li><Link to="/claims">Claims</Link></li>
-  <li><Link to="/contact">Contact</Link></li>
-  <li><Link to="/careers">Careers</Link></li>
-</ul> */}
+  
 
     </div>
+
+
+
 
     {/* Legal */}
     <div className="footer-section">
       <h3>Legal</h3>
-      
-      <ul>
 
-    
+      <ul>
         <li className="footer-link" onClick={() => navigate("/websiteterms")}>Website Terms</li>
         <br></br>
     <li className="footer-link" onClick={() =>navigate("/aayurcaretermsandcondition")}>AayurCare Terms & Condition</li>
@@ -569,13 +562,24 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
        
       </ul>
     </div>
+
+
+    {/* <div className="footer-down">
+
+      <p className="moving-text">
+        Channel partners:Google,Facebook,Amazon,Microsoft,flipkart.
+        </p>
+
+    </div> */}
   </div>
 </footer>
-
-
-
-
     </div>
+
+
+
+
+
+
   );
 }
 
