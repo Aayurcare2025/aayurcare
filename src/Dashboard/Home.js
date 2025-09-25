@@ -286,7 +286,7 @@
 
 import React from "react";
 import "../App.css";
-import Family from "../Images/main.png";
+import Family from "../Images/homeimg.png";
 // import Signup from "./SignUp"
 // import D from "../Images/D.pdf";
 // import RC from "../Images/RC.pdf";
