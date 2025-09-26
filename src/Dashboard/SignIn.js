@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 // function SignIn({ setPage }) {
 //   const [username, setUsername] = useState("");
 //   const [password, setPassword] = useState("");
@@ -66,7 +66,7 @@ import { useState } from "react";
 function SignIn({ setPage, setIsLoggedIn }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   const handleSignin = async (e) => {
     e.preventDefault();
     try {
@@ -89,7 +89,9 @@ function SignIn({ setPage, setIsLoggedIn }) {
         setIsLoggedIn(true);
 
         // ✅ redirect after login
-        setPage("services");
+        // setPage("services");
+        // setPage("services")
+        navigate("/services")
       } else {
         alert(data.message || "Login failed");
       }
