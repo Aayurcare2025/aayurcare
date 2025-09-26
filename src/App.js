@@ -237,8 +237,6 @@ function App() {
         )}
       </ul>
 
- 
-
 
       <Routes>
         <Route path="/" element={<Home />} />

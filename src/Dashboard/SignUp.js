@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../App.css";
 
 function SignUp({ setPage }) {
@@ -8,7 +9,7 @@ function SignUp({ setPage }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-
+      const navigate = useNavigate();
     const handleSignup = async (e) => {
         e.preventDefault();
 
@@ -35,7 +36,8 @@ function SignUp({ setPage }) {
             const data = await response.json();
             if (response.ok) {
                 alert(data.message || "Signup successful!");
-                setPage("signin");
+                // setPage("signin");
+                navigate("/signin");
             } else {
                 alert(data.message || "Signup failed");
             }
