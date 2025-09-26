@@ -189,14 +189,14 @@ import Disclaimer from "./Dashboard/Disclaimer";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-
+  const [page, setPage] = useState("home");
   const navigate = useNavigate();
 
   return (
     <div className="App">
       <ul className="navbar">
         <li className="logo">
-         <img src={Aayurcareicon} alt="Aayur Care" />        </li>
+         <img src={Aayurcareicon} alt="Aayur Care" />  </li>
        
        
         <li onClick={() => navigate("/")}>Home</li>
@@ -243,7 +243,8 @@ function App() {
         <Route path="/claims" element={<Claims />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/groupmedical" element={<GroupMedical />} />
-        <Route path="/signup" element={<SignUp />} />
+        {/* <Route path="/signup" element={<SignUp />} /> */}
+        <Route path="/signup" element={<SignUp setPage={setPage} />} />
         <Route path="/signin" element={<SignIn />} />
            <Route path="/websiteterms" element={<WebsiteTerms />} />
       <Route path="/aayurcaretermsandcondition" element={<AayurcareTermsAndCondition />} />
