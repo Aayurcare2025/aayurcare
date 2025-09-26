@@ -191,6 +191,7 @@ function App() {
   const [showDropdown, setShowDropdown] = useState(false);
   const [page, setPage] = useState("home");
   const navigate = useNavigate();
+     console.log("Current page:", page);
 
   return (
     <div className="App">
@@ -235,6 +236,9 @@ function App() {
           <li onClick={() => setIsLoggedIn(false)}>Sign Out</li>
         )}
       </ul>
+
+ 
+
 
       <Routes>
         <Route path="/" element={<Home />} />
