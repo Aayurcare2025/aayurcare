@@ -87,7 +87,8 @@ function SignIn({ setPage, setIsLoggedIn }) {
 
         // ✅ set login status
         setIsLoggedIn(true);
-           navigate("/");  
+          //  navigate("/");  
+          navigate("/services");
 
         // ✅ redirect after login
         // setPage("services");
