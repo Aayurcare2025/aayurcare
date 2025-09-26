@@ -165,11 +165,6 @@
 //   );
 // }
 // export default App;
-
-
-
-
-
 import { Routes, Route, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import "./App.css";
@@ -186,6 +181,7 @@ import WebsiteTerms from "./Dashboard/webisteterms";
 import AayurcareTermsAndCondition from "./Dashboard/Aayurcareterms";    
 import RefundAndCancellation from "./Dashboard/RefundPolicy"; 
 import Disclaimer from "./Dashboard/Disclaimer";      
+import ProtectedRoute from "./Dashboard/ProtectedRoute";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -241,8 +237,30 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/services/:type" element={<Services />} />
-        <Route path="/claims" element={<Claims />} />
+        {/* <Route path="/services/:type" element={<Services />} />
+        <Route path="/claims" element={<Claims />} /> */}
+ <Route
+    path="/services/:type"
+    element={
+      <ProtectedRoute isLoggedIn={isLoggedIn}>
+        <Services />
+      </ProtectedRoute>
+    }
+  />
+
+
+
+
+    <Route
+    path="/claims"
+    element={
+      <ProtectedRoute isLoggedIn={isLoggedIn}>
+        <Claims />
+      </ProtectedRoute>
+    }
+  />
+
+
         <Route path="/contact" element={<Contact />} />
         <Route path="/groupmedical" element={<GroupMedical />} />
         {/* <Route path="/signup" element={<SignUp />} /> */}
