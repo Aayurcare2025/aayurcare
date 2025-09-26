@@ -87,11 +87,12 @@ function SignIn({ setPage, setIsLoggedIn }) {
 
         // ✅ set login status
         setIsLoggedIn(true);
+           navigate("/");  
 
         // ✅ redirect after login
         // setPage("services");
         // setPage("services")
-        navigate("/services")
+        // navigate("/services")
       } else {
         alert(data.message || "Login failed");
       }
