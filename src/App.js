@@ -247,7 +247,8 @@ function App() {
         <Route path="/groupmedical" element={<GroupMedical />} />
         {/* <Route path="/signup" element={<SignUp />} /> */}
         <Route path="/signup" element={<SignUp setPage={setPage} />} />
-        <Route path="/signin" element={<SignIn />} />
+        {/* <Route path="/signin" element={<SignIn />} /> */}
+         <Route path="/signin" element={<SignIn   setPage={setPage} />} />
            <Route path="/websiteterms" element={<WebsiteTerms />} />
       <Route path="/aayurcaretermsandcondition" element={<AayurcareTermsAndCondition />} />
       <Route path="/refundandcancellation" element={<RefundAndCancellation />} />
