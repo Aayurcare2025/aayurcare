@@ -12,13 +12,15 @@ function SignUp({ setPage }) {
       const navigate = useNavigate();
     const handleSignup = async (e) => {
         e.preventDefault();
-
+        
+        //
         // Basic validation
         if (password !== confirmPassword) {
             alert("Passwords do not match!");
             return;
         }
-        //http://52.66.82.186:5001/
+       
+        
         try {
             const response = await fetch("https://api.aayurcare.com/user/register", {
                 method: "POST",

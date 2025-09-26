@@ -312,7 +312,7 @@ import test2 from "../Images/l.jpg"
 import test3 from "../Images/o.png"
 import test4 from "../Images/s.png" 
 import test5 from "../Images/a.png"
-// import test6 from "../Images/care.png"
+import test6 from "../Images/cura.png"
 // import test7 from "../Images/9.png"
 // import test8 from "../Images/n.png"
 // import test9 from "../Images/11.png"
@@ -451,8 +451,8 @@ function Home() {
     <img src={test2} alt="partner3" />
     <img src={test3} alt="partner4" />
     <img src={test4} alt="partner5" />
-     <img src={test5} axlt="partner6" />
-    {/* <img src ={test6} alt="partner7" /> */}
+     <img src={test5} alt="partner6" />
+    <img src ={test6} alt="partner7" />
   </div>
 </div>
       </section>

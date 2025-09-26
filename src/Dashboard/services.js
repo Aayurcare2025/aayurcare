@@ -4,8 +4,6 @@ import "../App.css";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 function Services() {
-
-
     const navigate = useNavigate();
       const { type } = useParams(); // "individual" or "corporate"
   const serviceType = type;

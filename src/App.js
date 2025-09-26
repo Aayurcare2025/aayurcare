@@ -182,6 +182,7 @@ import AayurcareTermsAndCondition from "./Dashboard/Aayurcareterms";
 import RefundAndCancellation from "./Dashboard/RefundPolicy"; 
 import Disclaimer from "./Dashboard/Disclaimer";      
 import ProtectedRoute from "./Dashboard/ProtectedRoute";
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -247,10 +248,6 @@ function App() {
       </ProtectedRoute>
     }
   />
-
-
-
-
     <Route
     path="/claims"
     element={
