@@ -311,7 +311,7 @@ import test1 from "../Images/n.png"
 import test2 from "../Images/l.jpg"
 import test3 from "../Images/o.png"
 import test4 from "../Images/s.png" 
-// import test5 from "../Images/7.png"
+import test5 from "../Images/a.png"
 // import test6 from "../Images/8.png"
 // import test7 from "../Images/9.png"
 // import test8 from "../Images/n.png"
@@ -537,10 +537,10 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
     <img src={test2} alt="partner3" />
     <img src={test3} alt="partner4" />
     <img src={test4} alt="partner5" />
-    {/* <img src={test5} alt="partner6" />
-    <img src={test6} alt="partner7" />
+     <img src={test5} alt="partner6" />
+    {/* <img src={test6} alt="partner7" />
     <img src={test7} alt="partner8" />
-    <img src={test8} alt="partner9" /> */}
+    <img src={test8} alt="partner9" />  */}
     {/* <img src={Sakra} alt="partner10" /> */}
   </div>
 </div>
