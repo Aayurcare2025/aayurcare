@@ -312,7 +312,7 @@ import test2 from "../Images/l.jpg"
 import test3 from "../Images/o.png"
 import test4 from "../Images/s.png" 
 import test5 from "../Images/a.png"
-// import test6 from "../Images/8.png"
+// import test6 from "../Images/care.png"
 // import test7 from "../Images/9.png"
 // import test8 from "../Images/n.png"
 // import test9 from "../Images/11.png"
@@ -439,12 +439,30 @@ function Home() {
           </div>
         </div>
       </section>
-      {/* <section className="channel-section">
-        <h2>Channel Partners</h2>
-       <div className="partnersicon">
-        <img  src={test} alt=""></img>
-        </div>
-      </section> */}
+
+
+
+       <section className="channel-page">
+     <div className="channel-partners-section">
+      <h2>Our Channel Partners</h2>
+  <div className="scrolling-logos">
+    <img src={test} alt="partner1" />
+    <img src={test1} alt="partner2" />
+    <img src={test2} alt="partner3" />
+    <img src={test3} alt="partner4" />
+    <img src={test4} alt="partner5" />
+     <img src={test5} axlt="partner6" />
+    {/* <img src ={test6} alt="partner7" /> */}
+  </div>
+</div>
+      </section>
+
+
+
+
+
+
+
       {/* Testimonials */}
       <section className="testimonials-section full-page">
         <h2>What Our Members Say</h2>
@@ -463,6 +481,10 @@ function Home() {
           </blockquote>
         </div>
       </section>
+
+
+
+    
 
 
 <section className="faq-section">
@@ -527,9 +549,7 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
         </p>  */}
 
 
-        <div className="channel-partners-section">
-  {/* <p className="channel-heading">Channel Partners</p> */}
-
+        {/* <div className="channel-partners-section">
   <div className="scrolling-logos">
     <p>Channel Partners:</p>
     <img src={test} alt="partner1" />
@@ -538,12 +558,9 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
     <img src={test3} alt="partner4" />
     <img src={test4} alt="partner5" />
      <img src={test5} alt="partner6" />
-    {/* <img src={test6} alt="partner7" />
-    <img src={test7} alt="partner8" />
-    <img src={test8} alt="partner9" />  */}
-    {/* <img src={Sakra} alt="partner10" /> */}
+    <img src={test6} alt="partner7" />
   </div>
-</div>
+</div> */}
 
   </div>
 
