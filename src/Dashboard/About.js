@@ -1,8 +1,12 @@
 import "../App.css";
-
+// import about from "../Images/about.png";
 function About() {
   return (
     <div className="page-section">
+      <div className="about-img">
+        {/* <img src={about} alt=""></img> */}
+
+      </div>
       <h2>About Us</h2>
       <p>
         Aayur Care is a professionally managed medical disbursement company,

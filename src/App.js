@@ -48,13 +48,13 @@
     
 //         />;
        
-//     // if (!isLoggedIn && (page === "services" || page === "claims")) {
-//     //   return (
-//     //     <p style={{ color: "red", textAlign: "center", marginTop: "50px" }}>
-//     //       ⚠️ Please sign in to access this section.
-//     //     </p>
-//     //   );
-//     // }
+    // if (!isLoggedIn && (page === "services" || page === "claims")) {
+    //   return (
+    //     <p style={{ color: "red", textAlign: "center", marginTop: "50px" }}>
+    //       ⚠️ Please sign in to access this section.
+    //     </p>
+    //   );
+    // }
 
 //     // if (page === "home") return <Home />;
 //     if (page === "home") 

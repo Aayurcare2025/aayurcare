@@ -303,6 +303,23 @@ import { useNavigate } from "react-router-dom";
 // import Disclaimer from "./Disclaimer";
 // import { Route } from "react-router-dom";
 // import { Routes } from "react-router-dom";
+// import Vibe from "../Images/VIBE.png";     
+// import Orange from "../Images/ORANGE.png"  
+// import Sakra from "../Images/sak.jpg"
+import test  from "../Images/vv.png"
+import test1 from "../Images/n.png"
+import test2 from "../Images/l.jpg"
+import test3 from "../Images/o.png"
+import test4 from "../Images/s.png" 
+// import test5 from "../Images/7.png"
+// import test6 from "../Images/8.png"
+// import test7 from "../Images/9.png"
+// import test8 from "../Images/n.png"
+// import test9 from "../Images/11.png"
+// import Sakra from "../Images/s.png"
+
+
+// import alllogo from "../Images/alllogo.jpg"
 
 function Home() {
   const navigate=useNavigate();
@@ -422,10 +439,12 @@ function Home() {
           </div>
         </div>
       </section>
-
-
-    
-
+      {/* <section className="channel-section">
+        <h2>Channel Partners</h2>
+       <div className="partnersicon">
+        <img  src={test} alt=""></img>
+        </div>
+      </section> */}
       {/* Testimonials */}
       <section className="testimonials-section full-page">
         <h2>What Our Members Say</h2>
@@ -493,22 +512,6 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
  
 </section>
 
-
-      
-
-      {/* Footer */}
-    {/* <footer className="footer full-page">
-  <p>AayurCare – Providing smart and hassle-free medical reimbursement for a healthier you.</p>
-  <div className="footer-links">
-    <a href={D} target="_blank" rel="noopener noreferrer">Disclaimer</a>
-    <a href={W} target="_blank" rel="noopener noreferrer">Website Terms</a>
-    <a href={TC} target="_blank" rel="noopener noreferrer">AayurCare Terms & Conditions</a>
-     <a href={RC} target="_blank" rel="noopener noreferrer">Refund policy</a>
-    
-
-  </div>
-</footer> */}
-
 <footer className="footer">
   {/* Left side */}
   <div className="footer-left">
@@ -516,15 +519,36 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
     <p >
       Providing smart and hassle-free medical reimbursement for a healthier you.
     </p>
-
     <p>Copyright@2025 Aayurcare-All Right Reserved</p>
     <p>Powered by Aayur Enterprises</p>
-  </div>
 
+        {/* <p className="moving-text">
+        Channel Partners:<img className="vibe" src={test} alt=""></img>
+        </p>  */}
+
+
+        <div className="channel-partners-section">
+  {/* <p className="channel-heading">Channel Partners</p> */}
+
+  <div className="scrolling-logos">
+    <p>Channel Partners:</p>
+    <img src={test} alt="partner1" />
+    <img src={test1} alt="partner2" />
+    <img src={test2} alt="partner3" />
+    <img src={test3} alt="partner4" />
+    <img src={test4} alt="partner5" />
+    {/* <img src={test5} alt="partner6" />
+    <img src={test6} alt="partner7" />
+    <img src={test7} alt="partner8" />
+    <img src={test8} alt="partner9" /> */}
+    {/* <img src={Sakra} alt="partner10" /> */}
+  </div>
+</div>
+
+  </div>
 
       <div className="footer-middle">
        <p>Partnered with Vibe Insurance Broking </p>
-
         <p>IRDAI License No. 904</p>
         
       </div>
@@ -539,18 +563,11 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
       <br></br>
       <br></br>
       <br></br>
-    {/* <p>  Powered by Aayur Enterprises</p> */}
   
-
     </div>
-
-
-
-
     {/* Legal */}
     <div className="footer-section">
       <h3>Legal</h3>
-
       <ul>
         <li className="footer-link" onClick={() => navigate("/websiteterms")}>Website Terms</li>
         <br></br>
@@ -566,9 +583,7 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
 
     {/* <div className="footer-down">
 
-      <p className="moving-text">
-        Channel partners:Google,Facebook,Amazon,Microsoft,flipkart.
-        </p>
+    
 
     </div> */}
   </div>
