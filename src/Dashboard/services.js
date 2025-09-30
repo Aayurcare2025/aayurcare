@@ -57,32 +57,77 @@ const[phone,setPhoneno]=useState("");
 
   
 
-  const handleSubmit = async () => {
-  const payload = {
-    insured,
-    product,
-    wellnessType,
-    age,
-    preExisting,
-    premium,
-    totalSumInsured,
-    IPDValue,
-    OPDValue,
-    AccidentValue,
-    formData, // proposer, self, nominee
-    pincode, // add a state for this
-    email,   // add a state for this
-    phone,   // add a state for this
-  };
+//   const handleSubmit = async () => {
+//   const payload = {
+//     insured,
+//     product,
+//     wellnessType,
+//     age,
+//     preExisting,
+//     premium,
+//     totalSumInsured,
+//     IPDValue,
+//     OPDValue,
+//     AccidentValue,
+//     formData, // proposer, self, nominee
+//     pincode, // add a state for this
+//     email,   // add a state for this
+//     phone,   // add a state for this
+//   };
 
   
+//   try {
+//     const response = await fetch("https://api.aayurcare.com/health/apply  ", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(payload),
+//     });
+
+//     const result = await response.json();
+//     console.log("Saved Successfully:", result);
+//     alert("Your proposal is submitted!");
+//   } catch (err) {
+//     console.error("Error:", err);
+//     alert("Something went wrong!");
+//   }
+// };
+
+
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const formDataObj = new FormData();
+
+  // append normal fields
+  formDataObj.append("insured", insured);
+  formDataObj.append("product", product);
+  formDataObj.append("wellnessType", wellnessType);
+  formDataObj.append("age", age);
+  formDataObj.append("preExisting", preExisting);
+  formDataObj.append("premium", premium);
+  formDataObj.append("totalSumInsured", totalSumInsured);
+  formDataObj.append("IPDValue", IPDValue);
+  formDataObj.append("OPDValue", OPDValue);
+  formDataObj.append("AccidentValue", AccidentValue);
+  formDataObj.append("pincode", pincode);
+  formDataObj.append("email", email);
+  formDataObj.append("phone", phone);
+
+  // append nested form data (convert to JSON string)
+  formDataObj.append("formData", JSON.stringify(formData));
+
+  // append file (example: Aadhaar photo)
+  if (selectedFile) {
+    formDataObj.append("file", selectedFile);
+  }
+
   try {
-    const response = await fetch("https://api.aayurcare.com/health/apply  ", {
+    const response = await fetch("https://api.aayurcare.com/health/apply", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
+      body: formDataObj,
     });
 
     const result = await response.json();
@@ -93,6 +138,8 @@ const[phone,setPhoneno]=useState("");
     alert("Something went wrong!");
   }
 };
+
+
 
 
 useEffect(() => {
@@ -571,7 +618,10 @@ useEffect(() => {
 
 
               <label>Upload Documents</label>
-          <input type="file" multiple />
+            <input 
+  type="file" 
+  onChange={(e) => setSelectedFile(e.target.files[0])}
+/>
 
 
             <button onClick={() => setStep(5)} className="submit-btn">
