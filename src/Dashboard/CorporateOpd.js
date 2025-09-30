@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 function CorporateOpd() {
 
     return (
 
         <div className="health-form">
-            <h2 className="form-title">Individual OPD</h2>
-          <label>Company Name</label>
-          <div className="form-container">
+            <h2 className="form-title">OPD</h2>
+    
+        <div className="form-container">
+        <label>Company Name</label>
       <select>
         <option>Select Company Name</option>
         <option value="1">Google</option>
@@ -33,15 +34,9 @@ function CorporateOpd() {
     {/* //self or dependant */}
 
 
-    
-
-
-
-
-
         </div>
     </div>
     );
 }
 
-export default CorporateOpd;
+export default CorporateOpd

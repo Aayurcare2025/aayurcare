@@ -458,11 +458,6 @@ function Home() {
       </section>
 
 
-
-
-
-
-
       {/* Testimonials */}
       <section className="testimonials-section full-page">
         <h2>What Our Members Say</h2>

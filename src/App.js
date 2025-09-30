@@ -182,6 +182,7 @@ import AayurcareTermsAndCondition from "./Dashboard/Aayurcareterms";
 import RefundAndCancellation from "./Dashboard/RefundPolicy"; 
 import Disclaimer from "./Dashboard/Disclaimer";      
 import ProtectedRoute from "./Dashboard/ProtectedRoute";
+import CorporateOpd from  "./Dashboard/CorporateOpd"
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -195,8 +196,6 @@ function App() {
       <ul className="navbar">
         <li className="logo">
          <img src={Aayurcareicon} alt="Aayur Care" />  </li>
-       
-       
         <li onClick={() => navigate("/")}>Home</li>
         <li onClick={() => navigate("/about")}>About</li>
         {/* <li className="dropdown">
@@ -221,7 +220,6 @@ function App() {
     </ul>
   )}
 </li>
-
         <li onClick={() => navigate("/claims")}>Claims</li>
         <li onClick={() => navigate("/contact")}>Contact</li>
         {!isLoggedIn ? (
@@ -233,8 +231,6 @@ function App() {
           <li onClick={() => setIsLoggedIn(false)}>Sign Out</li>
         )}
       </ul>
-
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -243,7 +239,7 @@ function App() {
  <Route
     path="/services/:type"
     element={
-      <ProtectedRoute isLoggedIn={isLoggedIn}>
+       <ProtectedRoute isLoggedIn={isLoggedIn}>
         <Services />
       </ProtectedRoute>
     }
@@ -256,17 +252,15 @@ function App() {
       </ProtectedRoute>
     }
   />
-
-
         <Route path="/contact" element={<Contact />} />
         <Route path="/groupmedical" element={<GroupMedical />} />
+        <Route path="/CorporateOpd" element={<CorporateOpd/>} />
         {/* <Route path="/signup" element={<SignUp />} /> */}
         <Route path="/signup" element={<SignUp setPage={setPage} />} />
         {/* <Route path="/signin" element={<SignIn />} /> */}
          {/* <Route path="/signin" element={<SignIn   setPage={setPage} />} /> */}
          <Route path="/signin" element={<SignIn setIsLoggedIn={setIsLoggedIn} />} />
-
-           <Route path="/websiteterms" element={<WebsiteTerms />} />
+          <Route path="/websiteterms" element={<WebsiteTerms />} />
       <Route path="/aayurcaretermsandcondition" element={<AayurcareTermsAndCondition />} />
       <Route path="/refundandcancellation" element={<RefundAndCancellation />} />
       <Route path="/disclaimer" element={<Disclaimer />} />  

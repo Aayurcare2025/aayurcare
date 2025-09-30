@@ -364,15 +364,6 @@ useEffect(() => {
               </div>
             )}
 
-
-
-
-         
-
-            
-
-
-
              </div>
 
 
@@ -618,7 +609,7 @@ useEffect(() => {
       )} */}
 
 
-      {serviceType === "corporate" && (
+  {serviceType === "corporate" && (
   <div className="big-health-card">
     <h3>Corporate Insurance Plans</h3>
     
@@ -626,9 +617,7 @@ useEffect(() => {
     <button onClick={() => setSelectedPlan("corporate-options")}>
       Get a Quote
     </button>
-    
     <br></br>
-
     {selectedPlan === "corporate-options" && (
       <div className="quote-options">
         <button
@@ -640,17 +629,52 @@ useEffect(() => {
           Group Medical
         </button>
 
-        
         <button
           onClick={() => {
-            setSelectedPlan(null);
-            navigate("/corporate-opd");
+            setSelectedPlan("corporate-opd-options");
+            navigate("/CorporateOpd");
           }}
         >
-          Opd
+          OPD
         </button>
       </div>
     )}
+
+
+
+     {/* State to show/hide options */}
+    {/* <button onClick={() => setSelectedPlan("corporate-opd-options")}>
+      OPD
+    </button>
+    <br></br> */}
+    {/* {selectedPlan === "corporate-opd-options" && (
+      <div className="quote-options">
+        <button
+          onClick={() => {
+            setSelectedPlan(null);
+            navigate("/CorporateIndividualOpd");
+          }}
+        >
+          Individual OPD
+        </button>
+
+        <button
+          onClick={() => {
+            setSelectedPlan(null);
+           
+          }}
+        >
+          Group OPD
+        </button>
+      </div>
+    )} */}
+
+
+
+
+
+
+
   </div>
 )}
 
