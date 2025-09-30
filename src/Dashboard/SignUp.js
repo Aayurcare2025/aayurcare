@@ -9,6 +9,7 @@ function SignUp({ setPage }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    // const[phonenumber,setPhonenumber]=useState("");
       const navigate = useNavigate();
     const handleSignup = async (e) => {
         e.preventDefault();
@@ -95,6 +96,17 @@ function SignUp({ setPage }) {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
                 />
+
+
+                {/* <input type="tel"
+                placeholder="Phone number"
+                value={phonenumber}
+                onChange={(e) => setPhonenumber(e.target.value)}
+                required
+                /> */}
+
+               
+               
                 <button type="submit">Sign Up</button>
             </form>
         </section>

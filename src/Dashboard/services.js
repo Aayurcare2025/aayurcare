@@ -20,6 +20,9 @@ function Services() {
   const [IPDValue, setIPDValue] = useState("");
   const [AccidentValue, setAccidentValue] = useState("");
   const [OPDValue, setOPDValue] = useState("");
+const[pincode,setPincode]=useState("");
+const[email,setEmail]=useState("");
+const[phone,setPhoneno]=useState("");
 
   // proposer / self / nominee details
   const [formData, setFormData] = useState({
@@ -48,6 +51,46 @@ function Services() {
       [section]: { ...formData[section], [field]: value },
     });
   };
+
+
+
+  const handleSubmit = async () => {
+  const payload = {
+    insured,
+    product,
+    wellnessType,
+    age,
+    preExisting,
+    premium,
+    totalSumInsured,
+    IPDValue,
+    OPDValue,
+    AccidentValue,
+    formData, // proposer, self, nominee
+    pincode, // add a state for this
+    email,   // add a state for this
+    phone,   // add a state for this
+  };
+
+  
+  try {
+    const response = await fetch("https://api.aayurcare.com/insurance/apply", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const result = await response.json();
+    console.log("Saved Successfully:", result);
+    alert("Your proposal is submitted!");
+  } catch (err) {
+    console.error("Error:", err);
+    alert("Something went wrong!");
+  }
+};
+
 
 useEffect(() => {
   const fetchPremium = async () => {
@@ -150,7 +193,7 @@ useEffect(() => {
               <option>Parents</option>
             </select>
 
-            <label>My pincode is</label>
+            <label>My pincode is {setPincode}</label>
             <input type="text" placeholder="Enter pincode" />
 
             <label>I am</label>
@@ -162,7 +205,7 @@ useEffect(() => {
                 <input type="radio" name="gender" /> Female
               </label>
             </div>
-
+   
             <label>My age is</label>
             <select value={age} onChange={(e) => setAge(e.target.value)}>
               <option>Select</option>
@@ -170,10 +213,10 @@ useEffect(() => {
                 <option key={i}>{i + 18}</option>
               ))}
             </select>
-            <label>My email address is</label>
+            <label>My email address is{setEmail}</label>
             <input type="email" placeholder="Email Address" />
 
-            <label>My phone number is</label>
+            <label>My phone number is{setPhoneno}</label>
             <div className="phone-input">
               <span>+91</span>
               <input type="text" placeholder="Phone number" />
@@ -251,7 +294,9 @@ useEffect(() => {
                 <h4>Essential Care</h4>
                 <p>Total Coverage: ₹5,000</p>
                 <p>Annual Premium: ₹1,399</p>
-                <button onClick={() => alert("Proceed to Payment")}>
+                <button
+                //  onClick={() => alert("Proceed to Payment")}>
+                     onClick={(handleSubmit)}>
                   Buy Now
                 </button>
               </div>
@@ -262,7 +307,9 @@ useEffect(() => {
                 <h4>Wellness Shield</h4>
                 <p>Total Coverage: ₹10,000</p>
                 <p>Annual Premium: ₹2,499</p>
-                <button onClick={() => alert("Proceed to Payment")}>
+                <button 
+                // onClick={() => alert("Proceed to Payment")}>
+                    onClick={(handleSubmit)}>
                   Buy Now
                 </button>
               </div>
@@ -273,7 +320,9 @@ useEffect(() => {
                 <h4>Consult + Care</h4>
                 <p>Total Coverage: ₹15,000</p>
                 <p>Annual Premium: ₹3,799</p>
-                <button onClick={() => alert("Proceed to Payment")}>
+                <button 
+                // onClick={() => alert("Proceed to Payment")}>
+                    onClick={(handleSubmit)}>
                   Buy Now
                 </button>
               </div>
@@ -302,9 +351,13 @@ useEffect(() => {
               <div className="plan-card">
                 <p>Total Coverage: ₹200000</p>
                 <p>Annual Premium: ₹172</p>
-                <button onClick={() => alert("Proceed to Payment")}>
+                <button 
+                // onClick={() => alert("Proceed to Payment")}>
+                    onClick={(handleSubmit)}>
                   Buy Now
                 </button>
+
+                
               </div>
             )}
 
@@ -312,7 +365,9 @@ useEffect(() => {
               <div className="plan-card">
                 <p>Total Coverage:₹400000</p>
                 <p>Annual Premium:₹411</p>
-                <button onClick={() => alert("Proceed to Payment")}>
+                <button 
+                // onClick={() => alert("Proceed to Payment")}>
+                  onClick={(handleSubmit)}>
                   Buy Now
                 </button>
               </div>
@@ -322,7 +377,9 @@ useEffect(() => {
               <div className="plan-card">
                 <p>Total Coverage: ₹600000</p>
                 <p>Annual Premium: ₹521</p>
-                <button onClick={() => alert("Proceed to Payment")}>
+                <button 
+                // onClick={() => alert("Proceed to Payment")}>
+                  onClick={(handleSubmit)}>
                   Buy Now
                 </button> 
               </div>
@@ -332,7 +389,9 @@ useEffect(() => {
               <div className="plan-card">
                 <p>Total Coverage: ₹800000</p>    
                 <p>Annual Premium: ₹700</p>
-                <button onClick={() => alert("Proceed to Payment")}>        
+                <button
+                //  onClick={() => alert("Proceed to Payment")}>
+                  onClick={(handleSubmit)}>        
                   Buy Now
                 </button>
               </div>
@@ -343,7 +402,9 @@ useEffect(() => {
               <div className="plan-card">
                 <p>Total Coverage: ₹1000000</p>
                 <p>Annual Premium: ₹1000</p>           
-                <button onClick={() => alert("Proceed to Payment")}>
+                <button 
+                // onClick={() => alert("Proceed to Payment")}>
+                  onClick={(handleSubmit)}>
                   Buy Now
                 </button>
               </div>
@@ -443,9 +504,12 @@ useEffect(() => {
           ? `₹${premium.toLocaleString()}`
           : "Select values to calculate"}
       </p>
+
+    {/* ---------------------------testing----------------------- */}
       <button
         disabled={!premium}
-        onClick={() => alert("Proceed to Payment")}
+        // onClick={() => alert("Proceed to Payment")}
+        onClick={(handleSubmit)}
       >
         Buy Now
       </button>
