@@ -33,7 +33,7 @@ const[phone,setPhoneno]=useState("");
       dob: "",
       mobile: "",
       occupation: "",
-    },
+    },  
     self: {
       height: "",
       weight: "",
