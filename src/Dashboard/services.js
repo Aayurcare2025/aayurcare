@@ -24,6 +24,7 @@ const[pincode,setPincode]=useState("");
 const[email,setEmail]=useState("");
 const[phone,setPhoneno]=useState("");
 
+//
   // proposer / self / nominee details
   const [formData, setFormData] = useState({
     proposer: {
@@ -54,6 +55,8 @@ const[phone,setPhoneno]=useState("");
 
 
 
+  
+
   const handleSubmit = async () => {
   const payload = {
     insured,
@@ -74,7 +77,7 @@ const[phone,setPhoneno]=useState("");
 
   
   try {
-    const response = await fetch("https://api.aayurcare.com/insurance/apply", {
+    const response = await fetch("https://api.aayurcare.com/health/apply  ", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
