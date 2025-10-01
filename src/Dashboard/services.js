@@ -132,6 +132,7 @@ const handleSubmit = async (e) => {
     });
 
     const result = await response.json();
+    console.log("response",response);
     console.log("Saved Successfully:", result);
     // alert("Your proposal is submitted!");
   } catch (err) {
@@ -250,7 +251,7 @@ useEffect(() => {
 
 
 
-    <label>My pincode is {pincode}</label>
+    <label>My pincode </label>
     <input 
       type="text" 
       value={pincode} 
