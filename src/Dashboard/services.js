@@ -23,6 +23,7 @@ function Services() {
 const[pincode,setPincode]=useState("");
 const[email,setEmail]=useState("");
 const[phone,setPhoneno]=useState("");
+const [selectedFile, setSelectedFile] = useState(null);
 
 //
   // proposer / self / nominee details
@@ -243,8 +244,19 @@ useEffect(() => {
               <option>Parents</option>
             </select>
 
-            <label>My pincode is {setPincode}</label>
-            <input type="text" placeholder="Enter pincode" />
+            {/* <label>My pincode is {setPincode}</label>
+            
+            <input type="text" placeholder="Enter pincode" /> */}
+
+
+
+    <label>My pincode is {pincode}</label>
+    <input 
+      type="text" 
+      value={pincode} 
+      onChange={(e) => setPincode(e.target.value)} 
+      placeholder="Enter pincode" 
+    />
 
             <label>I am</label>
             <div className="radio-group">
@@ -263,14 +275,39 @@ useEffect(() => {
                 <option key={i}>{i + 18}</option>
               ))}
             </select>
-            <label>My email address is{setEmail}</label>
-            <input type="email" placeholder="Email Address" />
+            {/* <label>My email address is{setEmail}</label>
+            <input type="email" placeholder="Email Address" /> */}
 
-            <label>My phone number is{setPhoneno}</label>
+
+
+            <label>My email address is {email}</label>
+          <input 
+            type="email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            placeholder="Email Address" 
+          />
+
+            {/* <label>My phone number is{setPhoneno}</label>
             <div className="phone-input">
               <span>+91</span>
               <input type="text" placeholder="Phone number" />
-            </div>
+            </div> */}
+
+
+            <label>My phone number is {phone}</label>
+<div className="phone-input">
+  <span>+91</span>
+  <input 
+    type="text" 
+    value={phone} 
+    onChange={(e) => setPhoneno(e.target.value)} 
+    placeholder="Phone number" 
+  />
+</div>
+
+
+
 
             <button type="submit" className="submit-btn">
               Next →
@@ -346,7 +383,11 @@ useEffect(() => {
                 <p>Annual Premium: ₹1,399</p>
                 <button
                 //  onClick={() => alert("Proceed to Payment")}>
-                     onClick={(handleSubmit)}>
+                    //  onClick={(handleSubmit)}>
+
+
+                      onClick={(e) => handleSubmit(e)}>
+
                   Buy Now
                 </button>
               </div>
@@ -359,7 +400,11 @@ useEffect(() => {
                 <p>Annual Premium: ₹2,499</p>
                 <button 
                 // onClick={() => alert("Proceed to Payment")}>
-                    onClick={(handleSubmit)}>
+                    // onClick={(handleSubmit)}>
+
+
+                      onClick={(e) => handleSubmit(e)}>
+
                   Buy Now
                 </button>
               </div>
@@ -372,7 +417,8 @@ useEffect(() => {
                 <p>Annual Premium: ₹3,799</p>
                 <button 
                 // onClick={() => alert("Proceed to Payment")}>
-                    onClick={(handleSubmit)}>
+                    // onClick={(handleSubmit)}>
+                      onClick={(e) => handleSubmit(e)}>
                   Buy Now
                 </button>
               </div>
@@ -403,7 +449,12 @@ useEffect(() => {
                 <p>Annual Premium: ₹172</p>
                 <button 
                 // onClick={() => alert("Proceed to Payment")}>
-                    onClick={(handleSubmit)}>
+                    // onClick={(handleSubmit)}>
+
+
+
+                      onClick={(e) => handleSubmit(e)}>
+
                   Buy Now
                 </button>
 
@@ -417,7 +468,11 @@ useEffect(() => {
                 <p>Annual Premium:₹411</p>
                 <button 
                 // onClick={() => alert("Proceed to Payment")}>
-                  onClick={(handleSubmit)}>
+                  // onClick={(handleSubmit)}>
+
+
+                    onClick={(e) => handleSubmit(e)}>
+
                   Buy Now
                 </button>
               </div>
@@ -429,7 +484,11 @@ useEffect(() => {
                 <p>Annual Premium: ₹521</p>
                 <button 
                 // onClick={() => alert("Proceed to Payment")}>
-                  onClick={(handleSubmit)}>
+                  // onClick={(handleSubmit)}>
+
+
+                    onClick={(e) => handleSubmit(e)}>
+
                   Buy Now
                 </button> 
               </div>
@@ -441,7 +500,11 @@ useEffect(() => {
                 <p>Annual Premium: ₹700</p>
                 <button
                 //  onClick={() => alert("Proceed to Payment")}>
-                  onClick={(handleSubmit)}>        
+                  // onClick={(handleSubmit)}>     
+
+
+                  onClick={(e) => handleSubmit(e)}>
+   
                   Buy Now
                 </button>
               </div>
@@ -454,7 +517,9 @@ useEffect(() => {
                 <p>Annual Premium: ₹1000</p>           
                 <button 
                 // onClick={() => alert("Proceed to Payment")}>
-                  onClick={(handleSubmit)}>
+                  // onClick={(handleSubmit)}>
+                    onClick={(e) => handleSubmit(e)}>
+
                   Buy Now
                 </button>
               </div>
@@ -559,8 +624,12 @@ useEffect(() => {
       <button
         disabled={!premium}
         // onClick={() => alert("Proceed to Payment")}
-        onClick={(handleSubmit)}
-      >
+        // onClick={(handleSubmit)}
+
+
+        onClick={(e) => handleSubmit(e)}>
+
+    
         Buy Now
       </button>
     </div>
