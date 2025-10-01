@@ -16,7 +16,6 @@ function Services() {
   const [wellnessType, setWellnessType] = useState("");
   const [age, setAge] = useState("");
   const [premium, setPremium] = useState(null);
-
   const [IPDValue, setIPDValue] = useState("");
   const [AccidentValue, setAccidentValue] = useState("");
   const [OPDValue, setOPDValue] = useState("");
@@ -123,12 +122,15 @@ const handleSubmit = async (e) => {
   // append file (example: Aadhaar photo)
   if (selectedFile) {
     formDataObj.append("file", selectedFile);
+    
   }
+
 
   try {
     const response = await fetch("https://api.aayurcare.com/health/apply", {
       method: "POST",
       body: formDataObj,
+
     });
 
     const result = await response.json();
@@ -181,6 +183,7 @@ useEffect(() => {
 
       setPremium(data.premium);
       setTotalSumInsured(data.total_sum_insured);
+
     } catch (err) {
       // console.error("Error fetching premium:", err);
       setPremium(null);
@@ -237,6 +240,7 @@ useEffect(() => {
                 </select>
               </>
             )}
+            
             <label>I’d like to insure</label>
             <select value={insured} onChange={(e) => setInsured(e.target.value)}>
               <option value="">Select</option>
@@ -281,7 +285,8 @@ useEffect(() => {
 
 
 
-            <label>My email address is {email}</label>
+
+            <label>My email address is</label>
           <input 
             type="email" 
             value={email} 
@@ -296,7 +301,7 @@ useEffect(() => {
             </div> */}
 
 
-            <label>My phone number is {phonenumber}</label>
+            <label>My phone number is</label>
 <div className="phone-input">
   <span>+91</span>
   <input 
@@ -312,6 +317,7 @@ useEffect(() => {
             </button>
           </form>
         )}
+
 
         {/* Step 2 – Pre-existing diseases */}
         {step === 2 && (
@@ -483,10 +489,7 @@ useEffect(() => {
                 <button 
                 // onClick={() => alert("Proceed to Payment")}>
                   // onClick={(handleSubmit)}>
-
-
                     onClick={(e) => handleSubmit(e)}>
-
                   Buy Now
                 </button> 
               </div>
@@ -661,6 +664,7 @@ useEffect(() => {
                 handleChange("proposer", "lastName", e.target.value)
               }
             />
+
             <input
               type="date"
               placeholder="Enter Date of Birth"
