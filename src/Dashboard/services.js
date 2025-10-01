@@ -22,7 +22,7 @@ function Services() {
   const [OPDValue, setOPDValue] = useState("");
 const[pincode,setPincode]=useState("");
 const[email,setEmail]=useState("");
-const[phone,setPhoneno]=useState("");
+const[phonenumber,setPhoneno]=useState("");
 const [selectedFile, setSelectedFile] = useState(null);
 
 //
@@ -115,7 +115,7 @@ const handleSubmit = async (e) => {
   formDataObj.append("AccidentValue", AccidentValue);
   formDataObj.append("pincode", pincode);
   formDataObj.append("email", email);
-  formDataObj.append("phone", phone);
+  formDataObj.append("phone", phonenumber);
 
   // append nested form data (convert to JSON string)
   formDataObj.append("formData", JSON.stringify(formData));
@@ -296,19 +296,16 @@ useEffect(() => {
             </div> */}
 
 
-            <label>My phone number is {phone}</label>
+            <label>My phone number is {phonenumber}</label>
 <div className="phone-input">
   <span>+91</span>
   <input 
     type="text" 
-    value={phone} 
+    value={phonenumber} 
     onChange={(e) => setPhoneno(e.target.value)} 
     placeholder="Phone number" 
   />
 </div>
-
-
-
 
             <button type="submit" className="submit-btn">
               Next →
