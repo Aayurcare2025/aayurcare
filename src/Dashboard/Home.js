@@ -313,6 +313,8 @@ import test3 from "../Images/o.png"
 import test4 from "../Images/s.png" 
 import test5 from "../Images/a.png"
 import test6 from "../Images/cura.png"
+import test7 from "../Images/redhealth.png"
+// import test8 from "../Images/atma.jpg"
 // import test7 from "../Images/9.png"
 // import test8 from "../Images/n.png"
 // import test9 from "../Images/11.png"
@@ -453,6 +455,8 @@ function Home() {
     <img src={test4} alt="partner5" />
      <img src={test5} alt="partner6" />
     <img src ={test6} alt="partner7" />
+    <img src={test7} alt="partner8"/>
+    {/* <img src={test8} alt="partner9"></img> */}
   </div>
 </div>
       </section>
