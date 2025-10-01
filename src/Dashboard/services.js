@@ -132,7 +132,7 @@ const handleSubmit = async (e) => {
 
     const result = await response.json();
     console.log("Saved Successfully:", result);
-    alert("Your proposal is submitted!");
+    // alert("Your proposal is submitted!");
   } catch (err) {
     console.error("Error:", err);
     alert("Something went wrong!");
