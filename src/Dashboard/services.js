@@ -21,7 +21,7 @@ function Services() {
   const [OPDValue, setOPDValue] = useState("");
 const[pincode,setPincode]=useState("");
 const[email,setEmail]=useState("");
-const[phonenumber,setPhoneno]=useState("");
+// const[phonenumber,setPhoneno]=useState("");
 const [selectedFile, setSelectedFile] = useState(null);
 
 //
@@ -114,7 +114,7 @@ const handleSubmit = async (e) => {
   formDataObj.append("AccidentValue", AccidentValue);
   formDataObj.append("pincode", pincode);
   formDataObj.append("email", email);
-  formDataObj.append("phone", phonenumber);
+  // formDataObj.append("phone", phonenumber);
 
   // append nested form data (convert to JSON string)
   formDataObj.append("formData", JSON.stringify(formData));
@@ -125,12 +125,10 @@ const handleSubmit = async (e) => {
     
   }
 
-
   try {
     const response = await fetch("https://api.aayurcare.com/health/apply", {
       method: "POST",
       body: formDataObj,
-
     });
 
     const result = await response.json();
@@ -183,7 +181,6 @@ useEffect(() => {
 
       setPremium(data.premium);
       setTotalSumInsured(data.total_sum_insured);
-
     } catch (err) {
       // console.error("Error fetching premium:", err);
       setPremium(null);
@@ -301,7 +298,7 @@ useEffect(() => {
             </div> */}
 
 
-            <label>My phone number is</label>
+  {/* <label>My phone number is</label>
 <div className="phone-input">
   <span>+91</span>
   <input 
@@ -310,14 +307,13 @@ useEffect(() => {
     onChange={(e) => setPhoneno(e.target.value)} 
     placeholder="Phone number" 
   />
-</div>
+</div> */}
 
             <button type="submit" className="submit-btn">
               Next →
             </button>
           </form>
         )}
-
 
         {/* Step 2 – Pre-existing diseases */}
         {step === 2 && (
@@ -489,7 +485,9 @@ useEffect(() => {
                 <button 
                 // onClick={() => alert("Proceed to Payment")}>
                   // onClick={(handleSubmit)}>
+
                     onClick={(e) => handleSubmit(e)}>
+
                   Buy Now
                 </button> 
               </div>
