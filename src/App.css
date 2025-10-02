@@ -30,8 +30,8 @@
 .overlay-button
 {
   position: absolute; 
-  top: 82%;          
-  left: 13%;         
+  top: 77%;          
+  left: 10%;         
   transform: translate(-50%, -50%); 
   z-index: 1;         
   
