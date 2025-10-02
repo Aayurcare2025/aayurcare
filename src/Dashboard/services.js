@@ -268,6 +268,9 @@ useEffect(() => {
               <label>
                 <input type="radio" name="gender" /> Female
               </label>
+                 <label>
+                <input type="radio" name="gender" /> Others
+              </label>
             </div>
    
             <label>My age is</label>
