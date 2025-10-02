@@ -13,7 +13,7 @@ function Services() {
   const [insured, setInsured] = useState("");
   const [preExisting, setPreExisting] = useState(null);
   const [product, setProduct] = useState("");
-  const [wellnessType, setWellnessType] = useState("");
+  // const [wellnessType, setWellnessType] = useState("");
   const [age, setAge] = useState("");
   const [premium, setPremium] = useState(null);
   const [IPDValue, setIPDValue] = useState("");
@@ -104,7 +104,7 @@ const handleSubmit = async (e) => {
   // append normal fields
   formDataObj.append("insured", insured);
   formDataObj.append("product", product);
-  formDataObj.append("wellnessType", wellnessType);
+  // formDataObj.append("wellnessType", wellnessType);
   formDataObj.append("age", age);
   formDataObj.append("preExisting", preExisting);
   formDataObj.append("premium", premium);
@@ -220,10 +220,10 @@ useEffect(() => {
               <option value="ipd-accident"> IPD & Accident</option>
               <option value="opd-ipd-accident">OPD & IPD & Accident</option>
               <option value="accident">Accident</option>
-              <option value="wellness">Wellness</option>
+              {/* <option value="wellness">Wellness</option> */}
             </select>
 
-            {product === "wellness" && (
+            {/* {product === "wellness" && (
               <>
                 <label>Select Wellness Type</label>
                 <select
@@ -236,7 +236,7 @@ useEffect(() => {
                   <option value="ai-screening">AI Screening</option>
                 </select>
               </>
-            )}
+            )} */}
             
             <label>I’d like to insure</label>
             <select value={insured} onChange={(e) => setInsured(e.target.value)}>
