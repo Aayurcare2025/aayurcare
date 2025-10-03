@@ -314,7 +314,7 @@ import test4 from "../Images/s.png"
 import test5 from "../Images/a.png"
 import test6 from "../Images/cura.png"
 import test7 from "../Images/red_health_1.png"
-// import test8 from "../Images/atma.jpg"
+import test8 from "../Images/atma_yoga.jpeg"
 // import test7 from "../Images/9.png"
 // import test8 from "../Images/n.png"
 // import test9 from "../Images/11.png"
@@ -414,11 +414,7 @@ function Home() {
           <div className="trust-box">Trusted by Corporates & Families</div>
         </div>
       </section>
-
-
-
-
-
+      
             {/* Simple Steps */}
       <section className="steps-section full-page">
         <h2>Simple Steps to Get Covered</h2>
@@ -456,7 +452,7 @@ function Home() {
      <img src={test5} alt="partner6" />
     <img src ={test6} alt="partner7" />
     <img src={test7} alt="partner8"/>
-    {/* <img src={test8} alt="partner9"></img> */}
+    <img src={test8} alt="partner9"/>
   </div>
 </div>
       </section>
