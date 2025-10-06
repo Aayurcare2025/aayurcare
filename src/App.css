@@ -6,7 +6,7 @@
 
 /* Make each section full screen */
 .full-page {
-  min-height: 100vh;
+  min-height: 100vh; /* full viewport height */
   display: flex;
   justify-content: center;
   align-items: center;
