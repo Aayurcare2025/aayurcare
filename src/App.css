@@ -6,7 +6,7 @@
 
 /* Make each section full screen */
 .full-page {
-  min-height: 100vh; /* full viewport height */
+  /* min-height: 100vh;  */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,20 +32,20 @@
 
 .hero-image {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: contain;
   display: block;
   max-width: 100%;
 }
 
 /* Desktop/Laptop */
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .hero-image {
     height: 100vh;
     object-fit: cover;
-    /* object-fit: contain; */
   }
- .overlay-button
+
+  .overlay-button
 {
   position: absolute; 
   top: 79%;          
@@ -63,21 +63,6 @@
 
 }
 
-/* .overlay-button
-{
-  position: absolute; 
-  top: 77%;          
-  left: 10%;         
-  transform: translate(-50%, -50%); 
-  z-index: 1;         
-  
-  background-color:#181e52;
-  color: white;
-  padding: 20px 25px;
-  border: 1px solid white;
-  border-radius: 5px;
-  cursor: pointer;
-} */
 
 
 .network-content {
@@ -319,6 +304,7 @@ color: #007bff;
 
 
 /* Testimonials */
+
 .testimonials-section {
   /* background:#f9f9f9 ; */
    /* background: #003366; */
@@ -332,20 +318,27 @@ color: #007bff;
   /* color: #003366; */
   color:white;
 }
+
+
 .testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  display: flex;
+  flex-wrap: wrap; /* ensures boxes stay inside on smaller screens */
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 0 auto; /* centers grid inside blue box */
+  box-sizing: border-box;
 }
 .testimonials-grid blockquote {
   background: white;
   padding: 20px;
-  border-left: 5px solid #007bff;
-  border-radius: 10px;
-  font-style: italic;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  flex: 1 1 300px; /* responsive box width */
+  max-width: 320px;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 /* FAQ Section */
@@ -1684,11 +1677,19 @@ color: #007bff;
 {
   height: 50%;
 }
-.channel-partners-section {
+/* .channel-partners-section {
   margin-top: 15px;
   text-align: center;
   background-color: white;
 
+} */
+
+.channel-partners-section {
+  max-width: 1000px; /* limit the width of the section */
+  margin: 0 auto; /* center it */
+  padding: 20px;
+  text-align: center;
+  overflow: hidden; /* prevents children from overflowing */
 }
 
 
