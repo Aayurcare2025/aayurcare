@@ -178,93 +178,93 @@ function Services() {
 
 
 
-  // useEffect(() => {
-  //   const fetchPremium = async () => {
-  //     if (!age) return;
-
-  //     try {
-  //       let url = "";
-
-  //       // if (product === "ipd-accident") {
-  //       //   // ✅ IPD + Accident flow only
-  //       //   if (!IPDValue || !AccidentValue) return; 
-  //       //   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${age}`;
-  //       // } else if (!IPDValue || !AccidentValue || !OPDValue) return ;{
-  //       //   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
-  //       // }
-
-
-  //       if (product === "ipd-accident") {
-  //         if (!IPDValue || !AccidentValue) return;
-  //         url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${age}`;
-  //       } else if (product === "opd-ipd-accident") {
-  //         if (!IPDValue || !AccidentValue || !OPDValue) return;
-  //         url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
-  //       }
-
-
-  //       // console.log("Fetching from:", url);
-
-  //       const response = await fetch(url);
-
-
-  //       if (!response.ok) throw new Error("Failed to fetch premium");
-  //       const data = await response.json();
-
-  //       // console.log("Premium Data:", data); 
-
-  //       setPremium(data.premium);
-  //       setTotalSumInsured(data.total_sum_insured);
-  //     } catch (err) {
-  //       // console.error("Error fetching premium:", err);
-  //       setPremium(null);
-  //       setTotalSumInsured(null);
-  //     }
-  //   };
-
-  //   fetchPremium();
-  // }, [product, IPDValue, AccidentValue, OPDValue, age]);
-
-
-
   useEffect(() => {
-  const getAllAges = () => {
-    let allAges = [Number(age)];
-    dependants.forEach(dep => {
-      if (dep.age) allAges.push(Number(dep.age));
-    });
-    return allAges;
-  };
+    const fetchPremium = async () => {
+      if (!age) return;
 
-  const fetchPremium = async () => {
-    if (!age) return;
+      try {
+        let url = "";
 
-    const allAges = getAllAges(); // self + dependants
-    try {
-      let url = "";
+        // if (product === "ipd-accident") {
+        //   // ✅ IPD + Accident flow only
+        //   if (!IPDValue || !AccidentValue) return; 
+        //   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${age}`;
+        // } else if (!IPDValue || !AccidentValue || !OPDValue) return ;{
+        //   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
+        // }
 
-      if (product === "ipd-accident") {
-        if (!IPDValue || !AccidentValue) return;
-        url = `https://api.aayurcare.com/user/insurance2/${IPDValue}/${AccidentValue}/${allAges.join(",")}`;
-      } else if (product === "opd-ipd-accident") {
-        if (!IPDValue || !AccidentValue || !OPDValue) return;
-        url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${allAges.join(",")}`;
+
+        if (product === "ipd-accident") {
+          if (!IPDValue || !AccidentValue) return;
+          url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${age}`;
+        } else if (product === "opd-ipd-accident") {
+          if (!IPDValue || !AccidentValue || !OPDValue) return;
+          url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
+        }
+
+
+        // console.log("Fetching from:", url);
+
+        const response = await fetch(url);
+
+
+        if (!response.ok) throw new Error("Failed to fetch premium");
+        const data = await response.json();
+
+        // console.log("Premium Data:", data); 
+
+        setPremium(data.premium);
+        setTotalSumInsured(data.total_sum_insured);
+      } catch (err) {
+        // console.error("Error fetching premium:", err);
+        setPremium(null);
+        setTotalSumInsured(null);
       }
+    };
 
-      const response = await fetch(url);
-      if (!response.ok) throw new Error("Failed to fetch premium");
-      const data = await response.json();
+    fetchPremium();
+  }, [product, IPDValue, AccidentValue, OPDValue, age]);
 
-      setPremium(data.premium);
-      setTotalSumInsured(data.total_sum_insured);
-    } catch (err) {
-      setPremium(null);
-      setTotalSumInsured(null);
-    }
-  };
 
-  fetchPremium();
-}, [product, IPDValue, AccidentValue, OPDValue, age, dependants]);
+
+//   useEffect(() => {
+//   const getAllAges = () => {
+//     let allAges = [Number(age)];
+//     dependants.forEach(dep => {
+//       if (dep.age) allAges.push(Number(dep.age));
+//     });
+//     return allAges;
+//   };
+
+//   const fetchPremium = async () => {
+//     if (!age) return;
+
+//     const allAges = getAllAges(); // self + dependants
+//     try {
+//       let url = "";
+
+//       if (product === "ipd-accident") {
+//         if (!IPDValue || !AccidentValue) return;
+//         url = `https://api.aayurcare.com/user/insurance2/${IPDValue}/${AccidentValue}/${allAges.join(",")}`;
+//       } else if (product === "opd-ipd-accident") {
+//         if (!IPDValue || !AccidentValue || !OPDValue) return;
+//         url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${allAges.join(",")}`;
+//       }
+
+//       const response = await fetch(url);
+//       if (!response.ok) throw new Error("Failed to fetch premium");
+//       const data = await response.json();
+
+//       setPremium(data.premium);
+//       setTotalSumInsured(data.total_sum_insured);
+//     } catch (err) {
+//       setPremium(null);
+//       setTotalSumInsured(null);
+//     }
+//   };
+
+//   fetchPremium();
+// }, [product, IPDValue, AccidentValue, OPDValue, age, dependants]);
 
 
 

@@ -47,6 +47,7 @@ function Home() {
     <div className="main-page">
       {/* Hero Section */}
       <section className="hero-section full-page">
+      
         <img src={Family} alt="Family" className="hero-image" />
         <button  onClick={()=>navigate("/signup")} class="overlay-button">Enroll Now</button>
       </section>
