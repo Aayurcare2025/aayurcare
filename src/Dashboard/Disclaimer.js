@@ -8,8 +8,6 @@ function Disclaimer({ goBack }) {
         ← Go Back
       </button> */}
 
-
-      
     <h1>Disclaimer</h1>
     <p> OPD Plans: Aayur Care’s OPD reimbursement plans stand apart from any of the insurance policy. Coverage, claims, and
  reimbursements under OPD plans are managed solely by Aayur Care and are not linked to any insurer.

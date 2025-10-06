@@ -702,8 +702,11 @@ function Services() {
 
         {/* Step 6 - Buy Page */}
 
-if myself family
-
+{/* if clicked on myself and family then we need self age
+and dependant age wise we  wil want coverage plan and 
+annual premium :- accordance to age and data:-
+//data wise:-
+ */}
 
          {step === 6 && insured === "Myself and my family" && (() => {
           

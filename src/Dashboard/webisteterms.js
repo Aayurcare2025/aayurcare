@@ -148,7 +148,7 @@ function WebisteTerms({goBack}) {
  Operating Address: BHIVE Premium Koramangala (Near Nexus Mall), Hosur Main Road, next to Forum Mall, Adugodi,
  Koramangala, Bengaluru, Karnataka– 560030, India
  Official Email for Contact & Communication: info@aayurcare.com</p>
-
+  
 
 
 
