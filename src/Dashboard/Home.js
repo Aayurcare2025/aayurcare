@@ -335,6 +335,7 @@ function Home() {
       </section>
 
       {/* Who We Are */}
+      
       <section className="who-section full-page">
         <div className="who-content">
           <h1>Who We Are</h1>
@@ -347,6 +348,9 @@ function Home() {
             they need without financial worries. At Aayur Care, we put our members first, always.
           </p>
         </div>
+
+
+        
 
         <div className="network-content">
   <h1>Strong Network, Trusted Service, Proven Results</h1>

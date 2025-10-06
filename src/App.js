@@ -220,7 +220,7 @@ function App() {
     </ul>
   )}
 </li>
-        <li onClick={() => navigate("/claims")}>Claims</li>
+        <li onClick={() => navigate("/claims")}>OPD Claims</li>
         <li onClick={() => navigate("/contact")}>Contact</li>
         {!isLoggedIn ? (
           <>
@@ -238,11 +238,12 @@ function App() {
         <Route path="/claims" element={<Claims />} /> */}
  <Route
     path="/services/:type"
-    element={
-       <ProtectedRoute isLoggedIn={isLoggedIn}>
-        <Services />
-      </ProtectedRoute>
-    }
+    element={<Services/>}
+    // element={
+    //    <ProtectedRoute isLoggedIn={isLoggedIn}>
+    //     <Services />
+    //   </ProtectedRoute>
+    // }
   />
     <Route
     path="/claims"

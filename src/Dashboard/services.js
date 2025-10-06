@@ -4,8 +4,8 @@ import "../App.css";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 function Services() {
-    const navigate = useNavigate();
-      const { type } = useParams(); // "individual" or "corporate"
+  const navigate = useNavigate();
+  const { type } = useParams(); // "individual" or "corporate"
   const serviceType = type;
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [step, setStep] = useState(1);
@@ -19,12 +19,45 @@ function Services() {
   const [IPDValue, setIPDValue] = useState("");
   const [AccidentValue, setAccidentValue] = useState("");
   const [OPDValue, setOPDValue] = useState("");
-const[pincode,setPincode]=useState("");
-const[email,setEmail]=useState("");
-const[phonenumber,setPhoneno]=useState("");
-const [selectedFile, setSelectedFile] = useState(null);
+  const [pincode, setPincode] = useState("");
+  const [email, setEmail] = useState("");
+  const [phonenumber, setPhoneno] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
 
-//
+  const [dependants, setDependants] = useState([]);
+
+  // const handleDependantChange = (index, field, value) => {
+  //   const updated = [...dependants];
+  //   updated[index][field] = value;
+  //   setDependants(updated);
+  // };
+
+
+  const handleDependantChange = (index, field, value) => {
+  const updated = [...dependants];
+  if (field === "age") {
+    updated[index][field] = Number(value); // convert to number
+  } else {
+    updated[index][field] = value;
+  }
+  setDependants(updated);
+};
+
+  const addDependant = () => {
+    setDependants([...dependants, { name: "", dob: "", age: "", relation: "" }]);
+  };
+
+  const removeDependant = (index) => {
+    const updated = [...dependants];
+    updated.splice(index, 1);
+    setDependants(updated);
+  };
+
+
+
+ 
+
+  //
   // proposer / self / nominee details
   const [formData, setFormData] = useState({
     proposer: {
@@ -34,7 +67,7 @@ const [selectedFile, setSelectedFile] = useState(null);
       dob: "",
       mobile: "",
       occupation: "",
-    },  
+    },
     self: {
       height: "",
       weight: "",
@@ -55,141 +88,183 @@ const [selectedFile, setSelectedFile] = useState(null);
 
 
 
-  
-
-//   const handleSubmit = async () => {
-//   const payload = {
-//     insured,
-//     product,
-//     wellnessType,
-//     age,
-//     preExisting,
-//     premium,
-//     totalSumInsured,
-//     IPDValue,
-//     OPDValue,
-//     AccidentValue,
-//     formData, // proposer, self, nominee
-//     pincode, // add a state for this
-//     email,   // add a state for this
-//     phone,   // add a state for this
-//   };
-
-  
-//   try {
-//     const response = await fetch("https://api.aayurcare.com/health/apply  ", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(payload),
-//     });
-
-//     const result = await response.json();
-//     console.log("Saved Successfully:", result);
-//     alert("Your proposal is submitted!");
-//   } catch (err) {
-//     console.error("Error:", err);
-//     alert("Something went wrong!");
-//   }
-// };
 
 
+  //   const handleSubmit = async () => {
+  //   const payload = {
+  //     insured,
+  //     product,
+  //     wellnessType,
+  //     age,
+  //     preExisting,
+  //     premium,
+  //     totalSumInsured,
+  //     IPDValue,
+  //     OPDValue,
+  //     AccidentValue,
+  //     formData, // proposer, self, nominee
+  //     pincode, // add a state for this
+  //     email,   // add a state for this
+  //     phone,   // add a state for this
+  //   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
 
-  const formDataObj = new FormData();
+  //   try {
+  //     const response = await fetch("https://api.aayurcare.com/health/apply  ", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(payload),
+  //     });
 
-  // append normal fields
-  formDataObj.append("insured", insured);
-  formDataObj.append("product", product);
-  // formDataObj.append("wellnessType", wellnessType);
-  formDataObj.append("age", age);
-  formDataObj.append("preExisting", preExisting);
-  formDataObj.append("premium", premium);
-  formDataObj.append("totalSumInsured", totalSumInsured);
-  formDataObj.append("IPDValue", IPDValue);
-  formDataObj.append("OPDValue", OPDValue);
-  formDataObj.append("AccidentValue", AccidentValue);
-  formDataObj.append("pincode", pincode);
-  formDataObj.append("email", email);
-  formDataObj.append("phone", phonenumber);
+  //     const result = await response.json();
+  //     console.log("Saved Successfully:", result);
+  //     alert("Your proposal is submitted!");
+  //   } catch (err) {
+  //     console.error("Error:", err);
+  //     alert("Something went wrong!");
+  //   }
+  // };
 
-  // append nested form data (convert to JSON string)
-  formDataObj.append("formData", JSON.stringify(formData));
 
-  // append file (example: Aadhaar photo)
-  if (selectedFile) {
-    formDataObj.append("file", selectedFile);
-    
-  }
 
-  try {
-    const response = await fetch("https://api.aayurcare.com/health/apply", {
-      method: "POST",
-      body: formDataObj,
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formDataObj = new FormData();
+
+    // append normal fields
+    formDataObj.append("insured", insured);
+    formDataObj.append("product", product);
+    // formDataObj.append("wellnessType", wellnessType);
+    formDataObj.append("age", age);
+    formDataObj.append("preExisting", preExisting);
+    formDataObj.append("premium", premium);
+    formDataObj.append("totalSumInsured", totalSumInsured);
+    formDataObj.append("IPDValue", IPDValue);
+    formDataObj.append("OPDValue", OPDValue);
+    formDataObj.append("AccidentValue", AccidentValue);
+    formDataObj.append("pincode", pincode);
+    formDataObj.append("email", email);
+    formDataObj.append("phone", phonenumber);
+
+    // append nested form data (convert to JSON string)
+    formDataObj.append("formData", JSON.stringify(formData));
+
+    // append file (example: Aadhaar photo)
+    if (selectedFile) {
+      formDataObj.append("file", selectedFile);
+
+    }
+
+    try {
+      // const response = await fetch("https://api.aayurcare.com/health/apply", {
+       const response = await fetch("http://localhost:5000/health/apply", {
+        method: "POST",
+        body: formDataObj,
+      });
+
+      const result = await response.json();
+      console.log("response", response);
+      console.log("Saved Successfully:", result);
+      // alert("Your proposal is submitted!");
+    } catch (err) {
+      console.error("Error:", err);
+      alert("Something went wrong!");
+    }
+  };
+
+
+
+
+  // useEffect(() => {
+  //   const fetchPremium = async () => {
+  //     if (!age) return;
+
+  //     try {
+  //       let url = "";
+
+  //       // if (product === "ipd-accident") {
+  //       //   // ✅ IPD + Accident flow only
+  //       //   if (!IPDValue || !AccidentValue) return; 
+  //       //   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${age}`;
+  //       // } else if (!IPDValue || !AccidentValue || !OPDValue) return ;{
+  //       //   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
+  //       // }
+
+
+  //       if (product === "ipd-accident") {
+  //         if (!IPDValue || !AccidentValue) return;
+  //         url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${age}`;
+  //       } else if (product === "opd-ipd-accident") {
+  //         if (!IPDValue || !AccidentValue || !OPDValue) return;
+  //         url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
+  //       }
+
+
+  //       // console.log("Fetching from:", url);
+
+  //       const response = await fetch(url);
+
+
+  //       if (!response.ok) throw new Error("Failed to fetch premium");
+  //       const data = await response.json();
+
+  //       // console.log("Premium Data:", data); 
+
+  //       setPremium(data.premium);
+  //       setTotalSumInsured(data.total_sum_insured);
+  //     } catch (err) {
+  //       // console.error("Error fetching premium:", err);
+  //       setPremium(null);
+  //       setTotalSumInsured(null);
+  //     }
+  //   };
+
+  //   fetchPremium();
+  // }, [product, IPDValue, AccidentValue, OPDValue, age]);
+
+
+
+  useEffect(() => {
+  const getAllAges = () => {
+    let allAges = [Number(age)];
+    dependants.forEach(dep => {
+      if (dep.age) allAges.push(Number(dep.age));
     });
+    return allAges;
+  };
 
-    const result = await response.json();
-    console.log("response",response);
-    console.log("Saved Successfully:", result);
-    // alert("Your proposal is submitted!");
-  } catch (err) {
-    console.error("Error:", err);
-    alert("Something went wrong!");
-  }
-};
-
-
-
-
-useEffect(() => {
   const fetchPremium = async () => {
     if (!age) return;
 
+    const allAges = getAllAges(); // self + dependants
     try {
       let url = "";
 
-      // if (product === "ipd-accident") {
-      //   // ✅ IPD + Accident flow only
-      //   if (!IPDValue || !AccidentValue) return; 
-      //   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${age}`;
-      // } else if (!IPDValue || !AccidentValue || !OPDValue) return ;{
-      //   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
-      // }
-
-
       if (product === "ipd-accident") {
-  if (!IPDValue || !AccidentValue) return;
-  url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${age}`;
-} else if (product === "opd-ipd-accident") {
-  if (!IPDValue || !AccidentValue || !OPDValue) return;
-  url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
-}
-
-
-      // console.log("Fetching from:", url);
+        if (!IPDValue || !AccidentValue) return;
+        url = `https://api.aayurcare.com/user/insurance2/${IPDValue}/${AccidentValue}/${allAges.join(",")}`;
+      } else if (product === "opd-ipd-accident") {
+        if (!IPDValue || !AccidentValue || !OPDValue) return;
+        url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${allAges.join(",")}`;
+      }
 
       const response = await fetch(url);
-
-      
       if (!response.ok) throw new Error("Failed to fetch premium");
       const data = await response.json();
-
-      // console.log("Premium Data:", data); 
 
       setPremium(data.premium);
       setTotalSumInsured(data.total_sum_insured);
     } catch (err) {
-      // console.error("Error fetching premium:", err);
       setPremium(null);
       setTotalSumInsured(null);
     }
   };
 
   fetchPremium();
-}, [product, IPDValue, AccidentValue, OPDValue, age]);
+}, [product, IPDValue, AccidentValue, OPDValue, age, dependants]);
 
 
 
@@ -206,12 +281,19 @@ useEffect(() => {
             className="form-container"
             onSubmit={(e) => {
               e.preventDefault();
-              if (insured === "Myself" || insured === "Myself and my family") {
-                setStep(2);
-              } else {
-                setStep(3);
-              }
+              // if (insured === "Myself") {
+              //   setStep(2);
+              // } else {
+              //   setStep(3);
+              // }
+              setStep(2);
+
             }}
+
+
+
+
+
           >
             <label>I want to buy</label>
             <select value={product} onChange={(e) => setProduct(e.target.value)}>
@@ -237,8 +319,16 @@ useEffect(() => {
                 </select>
               </>
             )} */}
-            
+
             <label>I’d like to insure</label>
+            {/* <select value={insured} onChange={(e) => setInsured(e.target.value)}>
+              <option value="">Select</option>
+              <option>Myself</option>
+              <option>Myself and my family</option>
+              <option>Parents</option>
+            </select> */}
+
+
             <select value={insured} onChange={(e) => setInsured(e.target.value)}>
               <option value="">Select</option>
               <option>Myself</option>
@@ -246,19 +336,20 @@ useEffect(() => {
               <option>Parents</option>
             </select>
 
+
             {/* <label>My pincode is {setPincode}</label>
             
             <input type="text" placeholder="Enter pincode" /> */}
 
 
 
-    <label>My pincode </label>
-    <input 
-      type="text" 
-      value={pincode} 
-      onChange={(e) => setPincode(e.target.value)} 
-      placeholder="Enter pincode" 
-    />
+            <label>My pincode </label>
+            <input
+              type="text"
+              value={pincode}
+              onChange={(e) => setPincode(e.target.value)}
+              placeholder="Enter pincode"
+            />
 
             <label>I am</label>
             <div className="radio-group">
@@ -268,11 +359,11 @@ useEffect(() => {
               <label>
                 <input type="radio" name="gender" /> Female
               </label>
-                 <label>
+              <label>
                 <input type="radio" name="gender" /> Others
               </label>
             </div>
-   
+
             <label>My age is</label>
             <select value={age} onChange={(e) => setAge(e.target.value)}>
               <option>Select</option>
@@ -287,12 +378,12 @@ useEffect(() => {
 
 
             <label>My email address is</label>
-          <input 
-            type="email" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
-            placeholder="Email Address" 
-          />
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email Address"
+            />
 
             {/* <label>My phone number is{setPhoneno}</label>
             <div className="phone-input">
@@ -301,16 +392,16 @@ useEffect(() => {
             </div> */}
 
 
-   <label>My phone number is</label>
-<div className="phone-input">
-  <span>+91</span>
-  <input 
-    type="text" 
-    value={phonenumber} 
-    onChange={(e) => setPhoneno(e.target.value)} 
-    placeholder="Phone number" 
-  />
-</div> 
+            <label>My phone number is</label>
+            <div className="phone-input">
+              <span>+91</span>
+              <input
+                type="text"
+                value={phonenumber}
+                onChange={(e) => setPhoneno(e.target.value)}
+                placeholder="Phone number"
+              />
+            </div>
 
             <button type="submit" className="submit-btn">
               Next →
@@ -351,213 +442,175 @@ useEffect(() => {
               Next →
             </button>
           </div>
+
+
         )}
 
         {/* Step 6 - Buy Page */}
-        {step === 6 && (() => {
-          // const cleanNumber = (val) =>
-          //   val ? parseInt(val.replace(/,/g, ""), 10) : 0;
-
-          // const totalValue =
-          //   cleanNumber(IPDValue) +
-          //   cleanNumber(AccidentValue) +
-          //   cleanNumber(OPDValue);
-
+        {step === 6 && insured === "Myself" && (() => {
+          
           return (
             <div className="form-container">
-              <button onClick={() => setStep(5)} className="back-btn">
+              <button onClick={() => setStep(4)} className="back-btn">
                 ← Back
               </button>
 
-{product === "opd" && (
-        <>
-          <select value={OPDValue} onChange={(e) => setOPDValue(e.target.value)}>
-            <option value="">Select OPD Plan</option>
-            <option value="essential">Essential Care</option>
-            <option value="wellness">Wellness Shield</option>
-            <option value="consult">Consult + Care</option>
-          </select>
+              {product === "opd" && (
+                <>
+                  <select value={OPDValue} onChange={(e) => setOPDValue(e.target.value)}>
+                    <option value="">Select OPD Plan</option>
+                    <option value="essential">Essential Care</option>
+                    <option value="wellness">Wellness Shield</option>
+                    <option value="consult">Consult + Care</option>
+                  </select>
 
-          <div className="plans-grid">
-            {OPDValue === "essential" && (
-              <div className="plan-card">
-                <h4>Essential Care</h4>
-                <p>Total Coverage: ₹5,000</p>
-                <p>Annual Premium: ₹1,399</p>
-                <button
-                //  onClick={() => alert("Proceed to Payment")}>
-                    //  onClick={(handleSubmit)}>
+                  <div className="plans-grid">
+                    {OPDValue === "essential" && (
+                      <div className="plan-card">
+                        <h4>Essential Care</h4>
+                        <p>Total Coverage: ₹5,000</p>
+                        <p>Annual Premium: ₹1,399</p>
+                        <button
+                          onClick={(e) => handleSubmit(e)}>
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
 
+                    {OPDValue === "wellness" && (
+                      <div className="plan-card">
+                        <h4>Wellness Shield</h4>
+                        <p>Total Coverage: ₹10,000</p>
+                        <p>Annual Premium: ₹2,499</p>
+                        <button
 
-                      onClick={(e) => handleSubmit(e)}>
+                          onClick={(e) => handleSubmit(e)}>
 
-                  Buy Now
-                </button>
-              </div>
-            )}
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
 
-            {OPDValue === "wellness" && (
-              <div className="plan-card">
-                <h4>Wellness Shield</h4>
-                <p>Total Coverage: ₹10,000</p>
-                <p>Annual Premium: ₹2,499</p>
-                <button 
-                // onClick={() => alert("Proceed to Payment")}>
-                    // onClick={(handleSubmit)}>
-
-
-                      onClick={(e) => handleSubmit(e)}>
-
-                  Buy Now
-                </button>
-              </div>
-            )}
-
-            {OPDValue === "consult" && (
-              <div className="plan-card">
-                <h4>Consult + Care</h4>
-                <p>Total Coverage: ₹15,000</p>
-                <p>Annual Premium: ₹3,799</p>
-                <button 
-                // onClick={() => alert("Proceed to Payment")}>
-                    // onClick={(handleSubmit)}>
-                      onClick={(e) => handleSubmit(e)}>
-                  Buy Now
-                </button>
-              </div>
-            )}
-             </div>
-        </>
-      )}
+                    {OPDValue === "consult" && (
+                      <div className="plan-card">
+                        <h4>Consult + Care</h4>
+                        <p>Total Coverage: ₹15,000</p>
+                        <p>Annual Premium: ₹3,799</p>
+                        <button
+                          onClick={(e) => handleSubmit(e)}>
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </>
+              )}
 
 
 
-{product === "accident" && (
-        <>
-          <select value={AccidentValue} onChange={(e) => setAccidentValue(e.target.value)}>
-            <option value="">Select Accident Plan</option>
-            <option value="2lakhs">200000</option>
-            <option value="4lakhs">400000</option>
-            <option value="6lakhs">600000</option>
-            <option  value="8lakhs">800000</option>
-            <option value="10lakhs">1000000</option>
-            <option value="20lakhs">2000000</option>
-            <option value="25lakhs">2500000</option>
-          </select>
+              {product === "accident" && (
+                <>
+                  <select value={AccidentValue} onChange={(e) => setAccidentValue(e.target.value)}>
+                    <option value="">Select Accident Plan</option>
+                    <option value="2lakhs">200000</option>
+                    <option value="4lakhs">400000</option>
+                    <option value="6lakhs">600000</option>
+                    <option value="8lakhs">800000</option>
+                    <option value="10lakhs">1000000</option>
+                    <option value="20lakhs">2000000</option>
+                    <option value="25lakhs">2500000</option>
+                  </select>
 
-          <div className="plans-grid">
-            {AccidentValue === "2lakhs" && (
-              <div className="plan-card">
-                <p>Total Coverage: ₹200000</p>
-                <p>Annual Premium: ₹172</p>
-                <button 
-                // onClick={() => alert("Proceed to Payment")}>
-                    // onClick={(handleSubmit)}>
+                  <div className="plans-grid">
+                    {AccidentValue === "2lakhs" && (
+                      <div className="plan-card">
+                        <p>Total Coverage: ₹200000</p>
+                        <p>Annual Premium: ₹172</p>
+                        <button
+                          onClick={(e) => handleSubmit(e)}>
 
-
-
-                      onClick={(e) => handleSubmit(e)}>
-
-                  Buy Now
-                </button>
-
-                
-              </div>
-            )}
-
-            {AccidentValue === "4lakhs" && (
-              <div className="plan-card">
-                <p>Total Coverage:₹400000</p>
-                <p>Annual Premium:₹411</p>
-                <button 
-                // onClick={() => alert("Proceed to Payment")}>
-                  // onClick={(handleSubmit)}>
+                          Buy Now
+                        </button>
 
 
-                    onClick={(e) => handleSubmit(e)}>
+                      </div>
+                    )}
 
-                  Buy Now
-                </button>
-              </div>
-            )}
-
-            {AccidentValue === "6lakhs" && (
-              <div className="plan-card">
-                <p>Total Coverage: ₹600000</p>
-                <p>Annual Premium: ₹521</p>
-                <button 
-                // onClick={() => alert("Proceed to Payment")}>
-                  // onClick={(handleSubmit)}>
-
-                    onClick={(e) => handleSubmit(e)}>
-
-                  Buy Now
-                </button> 
-              </div>
-            )}
-
-            {AccidentValue === "8lakhs" && (
-              <div className="plan-card">
-                <p>Total Coverage: ₹800000</p>    
-                <p>Annual Premium: ₹700</p>
-                <button
-                //  onClick={() => alert("Proceed to Payment")}>
-                  // onClick={(handleSubmit)}>     
-
-
-                  onClick={(e) => handleSubmit(e)}>
-   
-                  Buy Now
-                </button>
-              </div>
-            )}  
-
-
-            {AccidentValue === "10lakhs" && (            
-              <div className="plan-card">
-                <p>Total Coverage: ₹1000000</p>
-                <p>Annual Premium: ₹1000</p>           
-                <button 
-                // onClick={() => alert("Proceed to Payment")}>
-                  // onClick={(handleSubmit)}>
-                    onClick={(e) => handleSubmit(e)}>
-
-                  Buy Now
-                </button>
-              </div>
-            )}
-
-
-              {AccidentValue === "20lakhs" && (            
-              <div className="plan-card">    
-                <button>Get a Quote</button>
-              </div>
-            )}
+                    {AccidentValue === "4lakhs" && (
+                      <div className="plan-card">
+                        <p>Total Coverage:₹400000</p>
+                        <p>Annual Premium:₹411</p>
+                        <button
 
 
 
-               {AccidentValue === "20lakhs" && (            
-              <div className="plan-card">    
-                <button>Get a Quote</button>
-              </div>
-            )}
+                          onClick={(e) => handleSubmit(e)}>
 
-             </div>
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
+
+                    {AccidentValue === "6lakhs" && (
+                      <div className="plan-card">
+                        <p>Total Coverage: ₹600000</p>
+                        <p>Annual Premium: ₹521</p>
+                        <button
+
+                          onClick={(e) => handleSubmit(e)}>
+
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
+
+                    {AccidentValue === "8lakhs" && (
+                      <div className="plan-card">
+                        <p>Total Coverage: ₹800000</p>
+                        <p>Annual Premium: ₹700</p>
+                        <button
+
+                          onClick={(e) => handleSubmit(e)}>
+
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
 
 
-             
+                    {AccidentValue === "10lakhs" && (
+                      <div className="plan-card">
+                        <p>Total Coverage: ₹1000000</p>
+                        <p>Annual Premium: ₹1000</p>
+                        <button
+
+                          onClick={(e) => handleSubmit(e)}>
+
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
 
 
-
-
-        </>
-      )}
+                    {AccidentValue === "20lakhs" && (
+                      <div className="plan-card">
+                        <button>Get a Quote</button>
+                      </div>
+                    )}
 
 
 
 
 
-              
+                  </div>
+                </>
+              )}
+
+
+
+
+
+
 
               {/* OPD Dropdown */}
               {["opd-ipd", "opd-ipd-accident"].includes(product) && (
@@ -568,7 +621,7 @@ useEffect(() => {
               )}
 
               {/* IPD Dropdown */}
-              {["opd-ipd", "opd-ipd-accident","ipd-accident"].includes(product) && (
+              {["opd-ipd", "opd-ipd-accident", "ipd-accident"].includes(product) && (
                 <select value={IPDValue} onChange={(e) => setIPDValue(e.target.value)}>
                   <option value="">Select IPD Value</option>
                   <option value="100000">1,00,000 </option>
@@ -587,7 +640,7 @@ useEffect(() => {
               {/* Accident Dropdown */}
 
 
-              {[ "opd-ipd-accident","ipd-accident"].includes(product) && (
+              {["opd-ipd-accident", "ipd-accident"].includes(product) && (
                 <select
                   value={AccidentValue}
                   onChange={(e) => setAccidentValue(e.target.value)}
@@ -601,45 +654,303 @@ useEffect(() => {
                 </select>
               )}
 
-             
 
 
-        <div className="plans-grid">
-  {product !== "opd"    && product!=="accident" && (
-    <div className="plan-card">
-      <h4>Medi Coverage</h4>
-      <p>
-        Total Coverage: ₹
-        {totalSumInsured
-          ? totalSumInsured.toLocaleString()
-          : "Select values to calculate"}
-      </p>
 
-      <p>
-        Annual Premium:{" "}
-        {premium
-          ? `₹${premium.toLocaleString()}`
-          : "Select values to calculate"}
-      </p>
+              <div className="plans-grid">
+                {product !== "opd" && product !== "accident" && (
+                  <div className="plan-card">
+                    <h4>Medi Coverage</h4>
+                    <p>
+                      Total Coverage: ₹
+                      {totalSumInsured
+                        ? totalSumInsured.toLocaleString()
+                        : "Select values to calculate"}
+                    </p>
 
-    {/* ---------------------------testing----------------------- */}
-      <button
-        disabled={!premium}
-        // onClick={() => alert("Proceed to Payment")}
-        // onClick={(handleSubmit)}
+                    <p>
+                      Annual Premium:{" "}
+                      {premium
+                        ? `₹${premium.toLocaleString()}`
+                        : "Select values to calculate"}
+                    </p>
+
+                    {/* ---------------------------testing----------------------- */}
+                    <button
+                      disabled={!premium}
+                      // onClick={() => alert("Proceed to Payment")}
+                      // onClick={(handleSubmit)}
 
 
-        onClick={(e) => handleSubmit(e)}>
+                      onClick={(e) => handleSubmit(e)}>
 
-    
-        Buy Now
-      </button>
-    </div>
-  )}
-</div>
-</div>
-);
-})()}
+
+                      Buy Now
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })()}
+
+
+        {/* Step 6 - Buy Page */}
+
+
+
+
+         {step === 6 && insured === "Myself and my family" && (() => {
+          
+          return (
+            <div className="form-container">
+              <button onClick={() => setStep(4)} className="back-btn">
+                ← Back
+              </button>
+
+              {product === "opd" && (
+                <>
+                  <select value={OPDValue} onChange={(e) => setOPDValue(e.target.value)}>
+                    <option value="">Select OPD Plan</option>
+                    <option value="essential">Essential Care</option>
+                    <option value="wellness">Wellness Shield</option>
+                    <option value="consult">Consult + Care</option>
+                  </select>
+
+                  <div className="plans-grid">
+                    {OPDValue === "essential" && (
+                      <div className="plan-card">
+                        <h4>Essential Care</h4>
+                        <p>Total Coverage: ₹5,000</p>
+                        <p>Annual Premium: ₹1,399</p>
+                        <button
+                          onClick={(e) => handleSubmit(e)}>
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
+
+                    {OPDValue === "wellness" && (
+                      <div className="plan-card">
+                        <h4>Wellness Shield</h4>
+                        <p>Total Coverage: ₹10,000</p>
+                        <p>Annual Premium: ₹2,499</p>
+                        <button
+
+                          onClick={(e) => handleSubmit(e)}>
+
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
+
+                    {OPDValue === "consult" && (
+                      <div className="plan-card">
+                        <h4>Consult + Care</h4>
+                        <p>Total Coverage: ₹15,000</p>
+                        <p>Annual Premium: ₹3,799</p>
+                        <button
+                          onClick={(e) => handleSubmit(e)}>
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </>
+              )}
+
+
+
+              {product === "accident" && (
+                <>
+                  <select value={AccidentValue} onChange={(e) => setAccidentValue(e.target.value)}>
+                    <option value="">Select Accident Plan</option>
+                    <option value="2lakhs">200000</option>
+                    <option value="4lakhs">400000</option>
+                    <option value="6lakhs">600000</option>
+                    <option value="8lakhs">800000</option>
+                    <option value="10lakhs">1000000</option>
+                    <option value="20lakhs">2000000</option>
+                    <option value="25lakhs">2500000</option>
+                  </select>
+
+                  <div className="plans-grid">
+                    {AccidentValue === "2lakhs" && (
+                      <div className="plan-card">
+                        <p>Total Coverage: ₹200000</p>
+                        <p>Annual Premium: ₹172</p>
+                        <button
+                          onClick={(e) => handleSubmit(e)}>
+
+                          Buy Now
+                        </button>
+
+
+                      </div>
+                    )}
+
+                    {AccidentValue === "4lakhs" && (
+                      <div className="plan-card">
+                        <p>Total Coverage:₹400000</p>
+                        <p>Annual Premium:₹411</p>
+                        <button
+
+
+
+                          onClick={(e) => handleSubmit(e)}>
+
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
+
+                    {AccidentValue === "6lakhs" && (
+                      <div className="plan-card">
+                        <p>Total Coverage: ₹600000</p>
+                        <p>Annual Premium: ₹521</p>
+                        <button
+
+                          onClick={(e) => handleSubmit(e)}>
+
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
+
+                    {AccidentValue === "8lakhs" && (
+                      <div className="plan-card">
+                        <p>Total Coverage: ₹800000</p>
+                        <p>Annual Premium: ₹700</p>
+                        <button
+
+                          onClick={(e) => handleSubmit(e)}>
+
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
+
+
+                    {AccidentValue === "10lakhs" && (
+                      <div className="plan-card">
+                        <p>Total Coverage: ₹1000000</p>
+                        <p>Annual Premium: ₹1000</p>
+                        <button
+
+                          onClick={(e) => handleSubmit(e)}>
+
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
+
+
+                    {AccidentValue === "20lakhs" && (
+                      <div className="plan-card">
+                        <button>Get a Quote</button>
+                      </div>
+                    )}
+
+
+
+
+
+                  </div>
+                </>
+              )}
+
+
+
+
+
+
+
+              {/* OPD Dropdown */}
+              {["opd-ipd", "opd-ipd-accident"].includes(product) && (
+                <select value={OPDValue} onChange={(e) => setOPDValue(e.target.value)}>
+                  <option value="">Select OPD Value</option>
+                  <option value="5000">5,000</option>
+                </select>
+              )}
+
+              {/* IPD Dropdown */}
+              {["opd-ipd", "opd-ipd-accident", "ipd-accident"].includes(product) && (
+                <select value={IPDValue} onChange={(e) => setIPDValue(e.target.value)}>
+                  <option value="">Select IPD Value</option>
+                  <option value="100000">1,00,000 </option>
+                  <option value="150000">1,50,000 </option>
+                  <option value="200000">2,00,000 </option>
+                  <option value="250000">2,50,000 </option>
+                  <option value="300000">3,00,000 </option>
+                  <option value="350000">3,50,000 </option>
+                  <option value="400000">4,00,000 </option>
+                  <option value="450000">4,50,000 </option>
+                  <option value="500000">5,00,000 </option>
+                  {/* <option value="1000000">10,00,000 </option> */}
+                </select>
+              )}
+
+              {/* Accident Dropdown */}
+
+
+              {["opd-ipd-accident", "ipd-accident"].includes(product) && (
+                <select
+                  value={AccidentValue}
+                  onChange={(e) => setAccidentValue(e.target.value)}
+                >
+                  <option value="">Select Accident Value</option>
+                  <option value="200000">2,00,000 </option>
+                  <option value="400000">4,00,000 </option>
+                  <option value="600000">6,00,000 </option>
+                  <option value="800000">8,00,000 </option>
+                  <option value="1000000">10,00,000 </option>
+                </select>
+              )}
+
+
+
+
+              <div className="plans-grid">
+                {product !== "opd" && product !== "accident" && (
+                  <div className="plan-card">
+                    <h4>Medi Coverage</h4>
+                    <p>
+                      Total Coverage: ₹
+                      {totalSumInsured
+                        ? totalSumInsured.toLocaleString()
+                        : "Select values to calculate"}
+                    </p>
+
+                    <p>
+                      Annual Premium:{" "}
+                      {premium
+                        ? `₹${premium.toLocaleString()}`
+                        : "Select values to calculate"}
+                    </p>
+
+                    {/* ---------------------------testing----------------------- */}
+                    <button
+                      disabled={!premium}
+                      // onClick={() => alert("Proceed to Payment")}
+                      // onClick={(handleSubmit)}
+
+
+                      onClick={(e) => handleSubmit(e)}>
+
+
+                      Buy Now
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })()}
+
+
+
+        
+   
 
 
         {/* Step 3 - Proposal */}
@@ -666,6 +977,21 @@ useEffect(() => {
               }
             />
 
+
+
+            <label>I am</label>
+            <div className="radio-group">
+              <label>
+                <input type="radio" name="gender" /> Male
+              </label>
+              <label>
+                <input type="radio" name="gender" /> Female
+              </label>
+              <label>
+                <input type="radio" name="gender" /> Others
+              </label>
+            </div>
+
             <input
               type="date"
               placeholder="Enter Date of Birth"
@@ -689,21 +1015,154 @@ useEffect(() => {
 
 
 
-              <label>Upload Documents</label>
-            <input 
-  type="file" 
-  onChange={(e) => setSelectedFile(e.target.files[0])}
-/>
+            <label>Upload Documents</label>
+            <input
+              type="file"
+              onChange={(e) => setSelectedFile(e.target.files[0])}
+            />
 
 
-            <button onClick={() => setStep(5)} className="submit-btn">
+            <button onClick={() => setStep(4)} className="submit-btn">
               Next →
             </button>
           </div>
         )}
 
+
+
+        {/* Step 3 – Proposal Details (Family flow) */}
+        {step === 3 && insured === "Myself and my family" && preExisting === "no" && (
+          <div className="form-container">
+            <button onClick={() => setStep(2)} className="back-btn">← Back</button>
+            <h3>Proposer Details</h3>
+            <input
+              type="text"
+              placeholder="First Name"
+              value={formData.proposer.firstName}
+              onChange={(e) =>
+                handleChange("proposer", "firstName", e.target.value)
+              }
+            />
+            <input
+              type="text"
+              placeholder="Last Name"
+              value={formData.proposer.lastName}
+              onChange={(e) =>
+                handleChange("proposer", "lastName", e.target.value)
+              }
+            />
+
+
+
+            <label>I am</label>
+            <div className="radio-group">
+              <label>
+                <input type="radio" name="gender" /> Male
+              </label>
+              <label>
+                <input type="radio" name="gender" /> Female
+              </label>
+              <label>
+                <input type="radio" name="gender" /> Others
+              </label>
+            </div>
+
+
+
+
+
+            <input
+              type="date"
+              placeholder="Enter Date of Birth"
+              value={formData.proposer.dob}
+              onChange={(e) => handleChange("proposer", "dob", e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Mobile Number"
+              value={formData.proposer.mobile}
+              onChange={(e) => handleChange("proposer", "mobile", e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Occupation"
+              value={formData.proposer.occupation}
+              onChange={(e) =>
+                handleChange("proposer", "occupation", e.target.value)
+              }
+            />
+
+
+
+            <label>Upload Documents</label>
+            <input
+              type="file"
+              onChange={(e) => setSelectedFile(e.target.files[0])}
+            />
+
+            <button onClick={() => setStep(4)} className="submit-btn">Next →</button>
+          </div>
+        )}
+
+        {/* Step 4 – Dependants */}
+        {step === 4 && insured === "Myself and my family" && preExisting === "no" && (
+          <div className="form-container">
+            <button onClick={() => setStep(3)} className="back-btn">← Back</button>
+            <h3>Dependant Details</h3>
+
+            {dependants.map((dep, index) => (
+              <div key={index} className="dependant-card">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  value={dep.name}
+                  onChange={(e) => handleDependantChange(index, "name", e.target.value)}
+                />
+                <input
+                  type="date"
+                  value={dep.dob}
+                  onChange={(e) => handleDependantChange(index, "dob", e.target.value)}
+                />
+
+                <input
+                  type="number"
+                  placeholder="Age"
+                  value={dep.age}
+                  onChange={(e) => handleDependantChange(index, "age", e.target.value)}
+                />
+
+                <select
+                  value={dep.relation}
+                  onChange={(e) => handleDependantChange(index, "relation", e.target.value)}
+                >
+                  <option value="">Relation</option>
+                  <option value="spouse">Spouse</option>
+                  <option value="child">Child</option>
+                  <option value="parent">Parent</option>
+                </select>
+                <button type="button" onClick={() => removeDependant(index)}>Remove</button>
+              </div>
+            ))}
+
+            <button type="button" onClick={addDependant}>+ Add Dependant</button>
+            <button onClick={() => setStep(6)} className="submit-btn">Next →</button>
+          </div>
+        )}
+
+        {/* Step 5 – Buy */}
+
+
+
+
+
+
+
+
+
+
+
         {/* Step 4 - Self Details */}
-        {step === 4 && (
+        {step === 4 && insured === "Myself" && preExisting === "no" && (
           <div className="form-container">
             <button onClick={() => setStep(3)} className="back-btn">
               ← Back
@@ -731,7 +1190,7 @@ useEffect(() => {
         )}
 
         {/* Step 5 - Nominee */}
-        {step === 5 && (
+        {/* {step === 5 && (
           <div className="form-container">
             <button onClick={() => setStep(4)} className="back-btn">
               ← Back
@@ -766,7 +1225,11 @@ useEffect(() => {
               Next →
             </button>
           </div>
-        )}
+        )} */}
+
+
+
+
       </div>
     );
   }
@@ -798,45 +1261,45 @@ useEffect(() => {
       )} */}
 
 
-  {serviceType === "corporate" && (
-  <div className="big-health-card">
-    <h3>Corporate Insurance Plans</h3>
-    
-    {/* State to show/hide options */}
-    <button onClick={() => setSelectedPlan("corporate-options")}>
-      Get a Quote
-    </button>
-    <br></br>
-    {selectedPlan === "corporate-options" && (
-      <div className="quote-options">
-        <button
-          onClick={() => {
-            setSelectedPlan(null);
-            navigate("/groupmedical");
-          }}
-        >
-          Group Medical
-        </button>
+      {serviceType === "corporate" && (
+        <div className="big-health-card">
+          <h3>Corporate Insurance Plans</h3>
 
-        <button
-          onClick={() => {
-            setSelectedPlan("corporate-opd-options");
-            navigate("/CorporateOpd");
-          }}
-        >
-          OPD
-        </button>
-      </div>
-    )}
+          {/* State to show/hide options */}
+          <button onClick={() => setSelectedPlan("corporate-options")}>
+            Get a Quote
+          </button>
+          <br></br>
+          {selectedPlan === "corporate-options" && (
+            <div className="quote-options">
+              <button
+                onClick={() => {
+                  setSelectedPlan(null);
+                  navigate("/groupmedical");
+                }}
+              >
+                Group Medical
+              </button>
+
+              <button
+                onClick={() => {
+                  setSelectedPlan("corporate-opd-options");
+                  navigate("/CorporateOpd");
+                }}
+              >
+                OPD
+              </button>
+            </div>
+          )}
 
 
 
-     {/* State to show/hide options */}
-    {/* <button onClick={() => setSelectedPlan("corporate-opd-options")}>
+          {/* State to show/hide options */}
+          {/* <button onClick={() => setSelectedPlan("corporate-opd-options")}>
       OPD
     </button>
     <br></br> */}
-    {/* {selectedPlan === "corporate-opd-options" && (
+          {/* {selectedPlan === "corporate-opd-options" && (
       <div className="quote-options">
         <button
           onClick={() => {
@@ -864,8 +1327,8 @@ useEffect(() => {
 
 
 
-  </div>
-)}
+        </div>
+      )}
 
     </div>
   );

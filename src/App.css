@@ -6,7 +6,7 @@
 
 /* Make each section full screen */
 .full-page {
-  min-height: 100vh; /* full viewport height */
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,15 +19,52 @@
 .hero-section {
   position: relative;
   width: 100%;
+  height:100vh;
   display: inline-block;
 }
 
-.hero-image {
+/* .hero-image {
   width: 100%;
   height: 95vh;
   object-fit: cover;
+} */
+
+
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  max-width: 100%;
 }
-.overlay-button
+
+/* Desktop/Laptop */
+@media (min-width: 768px) {
+  .hero-image {
+    height: 100vh;
+    object-fit: cover;
+    /* object-fit: contain; */
+  }
+ .overlay-button
+{
+  position: absolute; 
+  top: 79%;          
+  left: 10%;         
+  transform: translate(-50%, -50%); 
+  z-index: 1;         
+  
+  background-color:#181e52;
+  color: white;
+  padding: 20px 25px;
+  border: 1px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+}
+
+/* .overlay-button
 {
   position: absolute; 
   top: 77%;          
@@ -41,7 +78,7 @@
   border: 1px solid white;
   border-radius: 5px;
   cursor: pointer;
-}
+} */
 
 
 .network-content {
