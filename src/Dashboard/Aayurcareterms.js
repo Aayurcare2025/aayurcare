@@ -169,7 +169,7 @@ function AayurcareTerms({goBack}) {
 <br></br>
 Aayur Care
 <br></br>
-Website: www.aayurcare.co
+Website: www.aayurcare.com
 <br></br>
 Email:contact@aayurcare.com
 <br></br>

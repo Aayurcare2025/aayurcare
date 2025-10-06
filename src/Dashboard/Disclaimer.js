@@ -1,7 +1,7 @@
 import React from "react";
 function Disclaimer({ goBack }) {
   return (
-   <div>
+   <div className="disclaimer">
 
 
       {/* <button onClick={goBack} className="back-btn">

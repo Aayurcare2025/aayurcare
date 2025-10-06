@@ -129,6 +129,8 @@ function Services() {
 
 
 
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -351,6 +353,8 @@ function Services() {
               placeholder="Enter pincode"
             />
 
+
+
             <label>I am</label>
             <div className="radio-group">
               <label>
@@ -363,6 +367,7 @@ function Services() {
                 <input type="radio" name="gender" /> Others
               </label>
             </div>
+
 
             <label>My age is</label>
             <select value={age} onChange={(e) => setAge(e.target.value)}>
@@ -697,7 +702,7 @@ function Services() {
 
         {/* Step 6 - Buy Page */}
 
-
+if myself family
 
 
          {step === 6 && insured === "Myself and my family" && (() => {
@@ -1109,6 +1114,8 @@ function Services() {
           <div className="form-container">
             <button onClick={() => setStep(3)} className="back-btn">← Back</button>
             <h3>Dependant Details</h3>
+
+            
 
             {dependants.map((dep, index) => (
               <div key={index} className="dependant-card">

@@ -141,8 +141,10 @@ function WebisteTerms({goBack}) {
 
  <h3>18. Contact Information</h3>
  <p> Company Name:AayurCare (poweredby Aayur Enterprises)
+  <br></br>
  Registered Address: Crescent Workspace, next to Karnataka Bank, HRBR Layout 1st Block, Bank Avenue Colony,
  Banaswadi, Bengaluru, Karnataka– 560043, India
+ <br></br>
  Operating Address: BHIVE Premium Koramangala (Near Nexus Mall), Hosur Main Road, next to Forum Mall, Adugodi,
  Koramangala, Bengaluru, Karnataka– 560030, India
  Official Email for Contact & Communication: info@aayurcare.com</p>
