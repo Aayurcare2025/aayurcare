@@ -161,6 +161,7 @@ function Services() {
         body: formDataObj,
       });
 
+
       const result = await response.json();
       console.log("response", response);
       console.log("Saved Successfully:", result);
@@ -222,55 +223,51 @@ function Services() {
 
 
   //self and dependant age we should get annual premium:-
-  useEffect(() => {
-  const getAllAges = () => {
-    let allAges = [Number(age)];
-    dependants.forEach(dep => {
-      if (dep.age) allAges.push(Number(dep.age));
-    });
-    return allAges;
-  };
+//   useEffect(() => {
+//   const getAllAges = () => {
+//     let allAges = [Number(age)];
+//     dependants.forEach(dep => {
+//       if (dep.age) allAges.push(Number(dep.age));
+//     });
+//     return allAges;
+//   };
 
-
-
-
-  //fetch for myself and family:-
-  const fetchPremium = async () => {
+//   //fetch for myself and family:-
+//   const fetchPremium = async () => {
   
-    if (!age) return;
+//     if (!age) return;
 
-    const allAges = getAllAges();
-    console.log("getAllAges",allAges);
+//     const allAges = getAllAges();
+//     console.log("getAllAges",allAges);
 
-    try {
-      let url = "";
+//     try {
+//       let url = "";
 
-      if (product === "ipd-accident") {
-        if (!IPDValue || !AccidentValue) return;
-        url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${allAges.join(",")}`;
-      } else if (product === "opd-ipd-accident") {
-        if (!IPDValue || !AccidentValue || !OPDValue) return;
-        url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${allAges.join(",")}`;
-      }
+//       if (product === "ipd-accident") {
+//         if (!IPDValue || !AccidentValue) return;
+//         url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${allAges.join(",")}`;
+//       } else if (product === "opd-ipd-accident") {
+//         if (!IPDValue || !AccidentValue || !OPDValue) return;
+//         url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${allAges.join(",")}`;
+//       }
       
-      
-      const response = await fetch(url);
-      console.log("response",response);
-      if (!response.ok) throw new Error("Failed to fetch premium");
-      const data = await response.json();
-      console.log("data",data);
+//       const response = await fetch(url);
+//       console.log("response",response);
+//       if (!response.ok) throw new Error("Failed to fetch premium");
+//       const data = await response.json();
+//       console.log("data",data);
       
 
-      setPremium(data.premium);
-      setTotalSumInsured(data.total_sum_insured);
-    } catch (err) {
-      setPremium(null);
-      setTotalSumInsured(null);
-    }
-  };
+//       setPremium(data.premium);
+//       setTotalSumInsured(data.total_sum_insured);
+//     } catch (err) {
+//       setPremium(null);
+//       setTotalSumInsured(null);
+//     }
+//   };
 
-  fetchPremium();
-}, [product, IPDValue, AccidentValue, OPDValue, age, dependants]);
+//   fetchPremium();
+// }, [product, IPDValue, AccidentValue, OPDValue, age, dependants]);
 
 
 
@@ -515,8 +512,6 @@ function Services() {
                 </>
               )}
 
-
-
               {product === "accident" && (
                 <>
                   <select value={AccidentValue} onChange={(e) => setAccidentValue(e.target.value)}>
@@ -529,6 +524,7 @@ function Services() {
                     <option value="20lakhs">2000000</option>
                     <option value="25lakhs">2500000</option>
                   </select>
+
 
                   <div className="plans-grid">
                     {AccidentValue === "2lakhs" && (
@@ -868,11 +864,6 @@ annual premium :- accordance to age and data:-
                   </div>
                 </>
               )}
-
-
-
-
-
 
 
               {/* OPD Dropdown */}
