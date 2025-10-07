@@ -36,7 +36,7 @@ function Services() {
   const handleDependantChange = (index, field, value) => {
   const updated = [...dependants];
   if (field === "age") {
-    updated[index][field] = Number(value); 
+    updated[index][field] = Number(value); // convert to number
   } else {
     updated[index][field] = value;
   }
@@ -48,11 +48,14 @@ function Services() {
   };
 
   const removeDependant = (index) => {
-
     const updated = [...dependants];
     updated.splice(index, 1);
     setDependants(updated);
   };
+
+
+
+ 
 
   //
   // proposer / self / nominee details
@@ -82,6 +85,10 @@ function Services() {
       [section]: { ...formData[section], [field]: value },
     });
   };
+
+
+
+
 
   //   const handleSubmit = async () => {
   //   const payload = {
@@ -124,7 +131,6 @@ function Services() {
 
 
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -153,14 +159,13 @@ function Services() {
       formDataObj.append("file", selectedFile);
 
     }
-    
+
     try {
       const response = await fetch("https://api.aayurcare.com/health/apply", {
       //  const response = await fetch("http://localhost:5000/health/apply", {
         method: "POST",
         body: formDataObj,
       });
-
 
       const result = await response.json();
       console.log("response", response);
@@ -172,7 +177,8 @@ function Services() {
     }
   };
 
-//this is for myself 
+
+
 
   useEffect(() => {
     const fetchPremium = async () => {
@@ -222,7 +228,7 @@ function Services() {
   }, [product, IPDValue, AccidentValue, OPDValue, age]);
 
 
-  //self and dependant age we should get annual premium:-
+
 //   useEffect(() => {
 //   const getAllAges = () => {
 //     let allAges = [Number(age)];
@@ -232,31 +238,24 @@ function Services() {
 //     return allAges;
 //   };
 
-//   //fetch for myself and family:-
 //   const fetchPremium = async () => {
-  
 //     if (!age) return;
 
-//     const allAges = getAllAges();
-//     console.log("getAllAges",allAges);
-
+//     const allAges = getAllAges(); // self + dependants
 //     try {
 //       let url = "";
 
 //       if (product === "ipd-accident") {
 //         if (!IPDValue || !AccidentValue) return;
-//         url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${allAges.join(",")}`;
+//         url = `https://api.aayurcare.com/user/insurance2/${IPDValue}/${AccidentValue}/${allAges.join(",")}`;
 //       } else if (product === "opd-ipd-accident") {
 //         if (!IPDValue || !AccidentValue || !OPDValue) return;
 //         url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${allAges.join(",")}`;
 //       }
-      
+
 //       const response = await fetch(url);
-//       console.log("response",response);
 //       if (!response.ok) throw new Error("Failed to fetch premium");
 //       const data = await response.json();
-//       console.log("data",data);
-      
 
 //       setPremium(data.premium);
 //       setTotalSumInsured(data.total_sum_insured);
@@ -512,6 +511,8 @@ function Services() {
                 </>
               )}
 
+
+
               {product === "accident" && (
                 <>
                   <select value={AccidentValue} onChange={(e) => setAccidentValue(e.target.value)}>
@@ -524,7 +525,6 @@ function Services() {
                     <option value="20lakhs">2000000</option>
                     <option value="25lakhs">2500000</option>
                   </select>
-
 
                   <div className="plans-grid">
                     {AccidentValue === "2lakhs" && (
@@ -595,6 +595,8 @@ function Services() {
                         </button>
                       </div>
                     )}
+
+
                     {AccidentValue === "20lakhs" && (
                       <div className="plan-card">
                         <button>Get a Quote</button>
@@ -864,6 +866,11 @@ annual premium :- accordance to age and data:-
                   </div>
                 </>
               )}
+
+
+
+
+
 
 
               {/* OPD Dropdown */}
