@@ -36,7 +36,7 @@ function Services() {
   const handleDependantChange = (index, field, value) => {
   const updated = [...dependants];
   if (field === "age") {
-    updated[index][field] = Number(value); // convert to number
+    updated[index][field] = Number(value); 
   } else {
     updated[index][field] = value;
   }
@@ -48,14 +48,11 @@ function Services() {
   };
 
   const removeDependant = (index) => {
+
     const updated = [...dependants];
     updated.splice(index, 1);
     setDependants(updated);
   };
-
-
-
- 
 
   //
   // proposer / self / nominee details
@@ -85,10 +82,6 @@ function Services() {
       [section]: { ...formData[section], [field]: value },
     });
   };
-
-
-
-
 
   //   const handleSubmit = async () => {
   //   const payload = {
@@ -131,6 +124,7 @@ function Services() {
 
 
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -159,7 +153,7 @@ function Services() {
       formDataObj.append("file", selectedFile);
 
     }
-
+    
     try {
       const response = await fetch("https://api.aayurcare.com/health/apply", {
       //  const response = await fetch("http://localhost:5000/health/apply", {
@@ -177,8 +171,7 @@ function Services() {
     }
   };
 
-
-
+//this is for myself 
 
   useEffect(() => {
     const fetchPremium = async () => {
@@ -228,45 +221,56 @@ function Services() {
   }, [product, IPDValue, AccidentValue, OPDValue, age]);
 
 
+  //self and dependant age we should get annual premium:-
+  useEffect(() => {
+  const getAllAges = () => {
+    let allAges = [Number(age)];
+    dependants.forEach(dep => {
+      if (dep.age) allAges.push(Number(dep.age));
+    });
+    return allAges;
+  };
 
-//   useEffect(() => {
-//   const getAllAges = () => {
-//     let allAges = [Number(age)];
-//     dependants.forEach(dep => {
-//       if (dep.age) allAges.push(Number(dep.age));
-//     });
-//     return allAges;
-//   };
 
-//   const fetchPremium = async () => {
-//     if (!age) return;
 
-//     const allAges = getAllAges(); // self + dependants
-//     try {
-//       let url = "";
 
-//       if (product === "ipd-accident") {
-//         if (!IPDValue || !AccidentValue) return;
-//         url = `https://api.aayurcare.com/user/insurance2/${IPDValue}/${AccidentValue}/${allAges.join(",")}`;
-//       } else if (product === "opd-ipd-accident") {
-//         if (!IPDValue || !AccidentValue || !OPDValue) return;
-//         url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${allAges.join(",")}`;
-//       }
+  //fetch for myself and family:-
+  const fetchPremium = async () => {
+  
+    if (!age) return;
 
-//       const response = await fetch(url);
-//       if (!response.ok) throw new Error("Failed to fetch premium");
-//       const data = await response.json();
+    const allAges = getAllAges();
+    console.log("getAllAges",allAges);
 
-//       setPremium(data.premium);
-//       setTotalSumInsured(data.total_sum_insured);
-//     } catch (err) {
-//       setPremium(null);
-//       setTotalSumInsured(null);
-//     }
-//   };
+    try {
+      let url = "";
 
-//   fetchPremium();
-// }, [product, IPDValue, AccidentValue, OPDValue, age, dependants]);
+      if (product === "ipd-accident") {
+        if (!IPDValue || !AccidentValue) return;
+        url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${allAges.join(",")}`;
+      } else if (product === "opd-ipd-accident") {
+        if (!IPDValue || !AccidentValue || !OPDValue) return;
+        url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${allAges.join(",")}`;
+      }
+      
+      
+      const response = await fetch(url);
+      console.log("response",response);
+      if (!response.ok) throw new Error("Failed to fetch premium");
+      const data = await response.json();
+      console.log("data",data);
+      
+
+      setPremium(data.premium);
+      setTotalSumInsured(data.total_sum_insured);
+    } catch (err) {
+      setPremium(null);
+      setTotalSumInsured(null);
+    }
+  };
+
+  fetchPremium();
+}, [product, IPDValue, AccidentValue, OPDValue, age, dependants]);
 
 
 
@@ -595,8 +599,6 @@ function Services() {
                         </button>
                       </div>
                     )}
-
-
                     {AccidentValue === "20lakhs" && (
                       <div className="plan-card">
                         <button>Get a Quote</button>
