@@ -244,6 +244,7 @@ function Services() {
     if (!age) return;
 
     const allAges = getAllAges(); // self + dependants
+    console.log("ages of all people",allAges);
     try {
       let url = "";
 
@@ -252,7 +253,7 @@ function Services() {
         url = `https://api.aayurcare.com/user/insurance2/${IPDValue}/${AccidentValue}/${allAges.join(",")}`;
       } else if (product === "opd-ipd-accident") {
         if (!IPDValue || !AccidentValue || !OPDValue) return;
-        url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${allAges.join(",")}`;
+        url = `https://api.aayurcare.com/user/insurance/family/${IPDValue}/${AccidentValue}/${OPDValue}/${allAges.join(",")}`;
       }
 
       const response = await fetch(url);
