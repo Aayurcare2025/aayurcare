@@ -177,6 +177,8 @@ function Services() {
     }
   };
 
+  
+
 
 
 
@@ -229,44 +231,44 @@ function Services() {
 
 
 
-//   useEffect(() => {
-//   const getAllAges = () => {
-//     let allAges = [Number(age)];
-//     dependants.forEach(dep => {
-//       if (dep.age) allAges.push(Number(dep.age));
-//     });
-//     return allAges;
-//   };
+  useEffect(() => {
+  const getAllAges = () => {
+    let allAges = [Number(age)];
+    dependants.forEach(dep => {
+      if (dep.age) allAges.push(Number(dep.age));
+    });
+    return allAges;
+  };
 
-//   const fetchPremium = async () => {
-//     if (!age) return;
+  const fetchPremium = async () => {
+    if (!age) return;
 
-//     const allAges = getAllAges(); // self + dependants
-//     try {
-//       let url = "";
+    const allAges = getAllAges(); // self + dependants
+    try {
+      let url = "";
 
-//       if (product === "ipd-accident") {
-//         if (!IPDValue || !AccidentValue) return;
-//         url = `https://api.aayurcare.com/user/insurance2/${IPDValue}/${AccidentValue}/${allAges.join(",")}`;
-//       } else if (product === "opd-ipd-accident") {
-//         if (!IPDValue || !AccidentValue || !OPDValue) return;
-//         url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${allAges.join(",")}`;
-//       }
+      if (product === "ipd-accident") {
+        if (!IPDValue || !AccidentValue) return;
+        url = `https://api.aayurcare.com/user/insurance2/${IPDValue}/${AccidentValue}/${allAges.join(",")}`;
+      } else if (product === "opd-ipd-accident") {
+        if (!IPDValue || !AccidentValue || !OPDValue) return;
+        url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${allAges.join(",")}`;
+      }
 
-//       const response = await fetch(url);
-//       if (!response.ok) throw new Error("Failed to fetch premium");
-//       const data = await response.json();
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Failed to fetch premium");
+      const data = await response.json();
 
-//       setPremium(data.premium);
-//       setTotalSumInsured(data.total_sum_insured);
-//     } catch (err) {
-//       setPremium(null);
-//       setTotalSumInsured(null);
-//     }
-//   };
+      setPremium(data.premium);
+      setTotalSumInsured(data.total_sum_insured);
+    } catch (err) {
+      setPremium(null);
+      setTotalSumInsured(null);
+    }
+  };
 
-//   fetchPremium();
-// }, [product, IPDValue, AccidentValue, OPDValue, age, dependants]);
+  fetchPremium();
+}, [product, IPDValue, AccidentValue, OPDValue, age, dependants]);
 
 
 
