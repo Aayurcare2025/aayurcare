@@ -23,7 +23,6 @@ function Services() {
   const [email, setEmail] = useState("");
   const [phonenumber, setPhoneno] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-
   const [dependants, setDependants] = useState([]);
 
   // const handleDependantChange = (index, field, value) => {
@@ -89,6 +88,8 @@ function Services() {
 
 
 
+
+  //data has to be given:--
 
   //   const handleSubmit = async () => {
   //   const payload = {
@@ -181,6 +182,8 @@ function Services() {
 
 
 
+//myself 
+
 
   // useEffect(() => {
   //   const fetchPremium = async () => {
@@ -188,7 +191,6 @@ function Services() {
 
   //     try {
   //       let url = "";
-
   //       // if (product === "ipd-accident") {
   //       //   // ✅ IPD + Accident flow only
   //       //   if (!IPDValue || !AccidentValue) return; 
@@ -196,14 +198,14 @@ function Services() {
   //       // } else if (!IPDValue || !AccidentValue || !OPDValue) return ;{
   //       //   url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
   //       // }
-
+  //       //https://api.aayurcare.com
 
   //       if (product === "ipd-accident") {
   //         if (!IPDValue || !AccidentValue) return;
-  //         url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${age}`;
+  //         url = `http://localhost:5000/user/insurance/${IPDValue}/${AccidentValue}/${age}`;
   //       } else if (product === "opd-ipd-accident") {
   //         if (!IPDValue || !AccidentValue || !OPDValue) return;
-  //         url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
+  //         url = `http://localhost:5000/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${age}`;
   //       }
 
 
@@ -231,50 +233,123 @@ function Services() {
 
 
 
-  useEffect(() => {
-  const getAllAges = () => {
-    let allAges = [Number(age)];
-    dependants.forEach(dep => {
-      if (dep.age) allAges.push(Number(dep.age));
-    });
-    return allAges;
-  };
+  // useEffect(() => {
+  // // const getAllAges = () => {
+  // //   let allAges = [Number(age)];
+  // //   dependants.forEach(dep => {
+  // //     if (dep.age) allAges.push(Number(dep.age));
+  // //   });
+  // //   return allAges;
+  // // };
 
+
+
+  //myself and family 
+//   const fetchPremium = async () => {
+//     if (!age) return;
+
+//     const allAges = [Number(age), ...dependants.map(dep => Number(dep.age) || 0)];
+//     console.log("allages",allAges);
+
+
+//     const selfAge=Number(age);
+//     const dependentsAges = dependants.map(dep => Number(dep.age)).filter(a => a > 0);
+//     const dependentsParam = dependentsAges.join(",");
+
+//     // const allAges = getAllAges();
+//     // console.log("ages of all people",allAges);
+
+//     try {
+//       let url = "";
+
+//       //tell me for myself i have commented okay,for myself and family  i t is working to do both simultaneously how i can do??
+//       if (product === "ipd-accident") {
+//         if (!IPDValue || !AccidentValue) return;
+//         url = `http://localhost:5000/user/insurance/combinedIpdAnAccident/${IPDValue}/${AccidentValue}/${selfAge}/${dependentsParam}`;
+//       } else if (product === "opd-ipd-accident") {
+//         //ipd,opd,and accident:--
+//         if (!IPDValue || !AccidentValue || !OPDValue) return;
+//         // url = `https://api.aayurcare.com/user/insurance/combined/${IPDValue}/${AccidentValue}/${OPDValue}/${allAges.join(",")}`;
+       
+//   // url = `https://api.aayurcare.com/user/insurance/combined/${IPDValue}/${AccidentValue}/${OPDValue}/${allAges.join(",")}`;
+//       // url = `http://localhost:5000/user/insurance/combined/${IPDValue}/${AccidentValue}/${OPDValue}/${allAges.join(",")}`;
+//        url = `http://localhost:5000/user/insurance/combined/${IPDValue}/${AccidentValue}/${OPDValue}/${selfAge}/${dependentsParam}`;
+//        //http://localhost:5000
+//       }
+
+      
+//       //data has to been successfully completed:-
+
+//       const response = await fetch(url);
+//       if (!response.ok) throw new Error("Failed to fetch premium");
+      
+//       //fetch data:----
+//       const data = await response.json();
+//       console.log("data",data);
+      
+//      //setPremium(data.premium);
+//       setPremium(data.total_annual_premium);
+//       setTotalSumInsured(data.total_sum_insured);
+
+//     } catch (err) {
+//       setPremium(null);
+//       setTotalSumInsured(null);
+//     }
+//   };
+
+//   fetchPremium();
+// }, [product, IPDValue, AccidentValue, OPDValue, age, dependants]);
+
+useEffect(() => {
   const fetchPremium = async () => {
     if (!age) return;
 
-    const allAges = getAllAges();
-    console.log("ages of all people",allAges);
+    const selfAge = Number(age);
+    const dependentsAges = dependants.map(dep => Number(dep.age)).filter(a => a > 0);
+    const dependentsParam = dependentsAges.join(",");
 
     try {
       let url = "";
 
-      if (product === "ipd-accident") {
-        if (!IPDValue || !AccidentValue) return;
-        url = `https://api.aayurcare.com/user/insurance2/${IPDValue}/${AccidentValue}/${allAges.join(",")}`;
-      } else if (product === "opd-ipd-accident") {
-        //ipd,opd,and accident:--
-        if (!IPDValue || !AccidentValue || !OPDValue) return;
-        // url = `https://api.aayurcare.com/user/insurance/combined/${IPDValue}/${AccidentValue}/${OPDValue}/${allAges.join(",")}`;
-       url = `https://api.aayurcare.com/user/insurance/combined/${IPDValue}/${AccidentValue}/${OPDValue}/${selfAge}/${dependents.join(",")}`;
+      if (insured === "Myself") {
+        if (product === "ipd-accident") {
+          if (!IPDValue || !AccidentValue) return;
+          url = `http://localhost:5000/user/insurance/${IPDValue}/${AccidentValue}/${selfAge}`;
+        } else if (product === "opd-ipd-accident") {
+          if (!IPDValue || !AccidentValue || !OPDValue) return;
+          url = `http://localhost:5000/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${selfAge}`;
+        }
+      } else if (insured === "Myself and my family") {
+        if (product === "ipd-accident") {
+          if (!IPDValue || !AccidentValue) return;
+          url = `http://localhost:5000/user/insurance/combinedIpdAnAccident/${IPDValue}/${AccidentValue}/${selfAge}/${dependentsParam}`;
+        } else if (product === "opd-ipd-accident") {
+          if (!IPDValue || !AccidentValue || !OPDValue) return;
+          url = `http://localhost:5000/user/insurance/combined/${IPDValue}/${AccidentValue}/${OPDValue}/${selfAge}/${dependentsParam}`;
+        }
       }
 
-      //data has to been successfully completed:-
       const response = await fetch(url);
       if (!response.ok) throw new Error("Failed to fetch premium");
-      const data = await response.json();
-      console.log("data",data);
 
-      setPremium(data.premium);
+      const data = await response.json();
+      console.log("Premium Data:", data);
+
+      setPremium(data.total_annual_premium || data.premium);
       setTotalSumInsured(data.total_sum_insured);
     } catch (err) {
+      console.error(err);
       setPremium(null);
       setTotalSumInsured(null);
     }
   };
 
   fetchPremium();
-}, [product, IPDValue, AccidentValue, OPDValue, age, dependants]);
+}, [product, IPDValue, AccidentValue, OPDValue, age, dependants, insured]);
+
+
+
+
 
 
 
@@ -380,15 +455,12 @@ function Services() {
             <label>My age is</label>
             <select value={age} onChange={(e) => setAge(e.target.value)}>
               <option>Select</option>
-              {[...Array(83)].map((_, i) => (
-                <option key={i}>{i + 18}</option>
+              {[...Array(65)].map((_, i) => (
+                <option key={i}>{i + 1}</option>
               ))}
             </select>
             {/* <label>My email address is{setEmail}</label>
             <input type="email" placeholder="Email Address" /> */}
-
-
-
 
             <label>My email address is</label>
             <input
