@@ -31,18 +31,13 @@ import test6 from "../Images/cura.png"
 import test7 from "../Images/red_health_1.png"
 import test8 from "../Images/atma_yoga.jpeg"
 import royal from "../Images/R6.png"
-// import test7 from "../Images/9.png"
-// import test8 from "../Images/n.png"
-// import test9 from "../Images/11.png"
-// import Sakra from "../Images/s.png"
+import test9 from "../Images/clove.png"
 
 
 // import alllogo from "../Images/alllogo.jpg"
 
 function Home() {
   const navigate=useNavigate();
-
-
 
   return (
     <div className="main-page">
@@ -177,6 +172,8 @@ function Home() {
     <img src ={test6} alt="partner7" />
     <img src={test7} alt="partner8"/>
     <img src={test8} alt="partner9"/>
+    <img src={test9} alt="partner10"/>
+
   </div>
 </div>
       </section>

@@ -290,7 +290,7 @@ color: #007bff;
 
 
 .channel-section {
-  background:white;
+  background:blue;
   text-align: center;
   padding: 40px 20px;
   color:white;
@@ -1717,6 +1717,7 @@ color: #007bff;
   display: flex;
   gap: 40px;  /* space between images */
   animation: scrollLeft 25s linear infinite;
+  color:blue;
 }
 
 .scrolling-logos img {
@@ -1754,4 +1755,9 @@ font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 .disclaimer
 {
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+.channel-page
+{
+  
 }
