@@ -266,6 +266,8 @@ function App() {
       <Route path="/refundandcancellation" element={<RefundAndCancellation />} />
       <Route path="/disclaimer" element={<Disclaimer />} />  
       </Routes>
+
+      
     </div>
   );
 }

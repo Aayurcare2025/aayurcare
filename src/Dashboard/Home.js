@@ -30,6 +30,7 @@ import test5 from "../Images/a.png"
 import test6 from "../Images/cura.png"
 import test7 from "../Images/red_health_1.png"
 import test8 from "../Images/atma_yoga.jpeg"
+import royal from "../Images/R3.png"
 // import test7 from "../Images/9.png"
 // import test8 from "../Images/n.png"
 // import test9 from "../Images/11.png"
@@ -166,6 +167,7 @@ function Home() {
      <div className="channel-partners-section">
       <h2>Our Channel Partners</h2>
   <div className="scrolling-logos">
+     <img src={royal} alt="royal"/>
     <img src={test} alt="partner1" />
     <img src={test1} alt="partner2" />
     <img src={test2} alt="partner3" />
@@ -264,25 +266,6 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
     </p>
     <p>Copyright@2025 Aayurcare-All Right Reserved</p>
     <p>Powered by Aayur Enterprises</p>
-
-        {/* <p className="moving-text">
-        Channel Partners:<img className="vibe" src={test} alt=""></img>
-        </p>  */}
-
-
-        {/* <div className="channel-partners-section">
-  <div className="scrolling-logos">
-    <p>Channel Partners:</p>
-    <img src={test} alt="partner1" />
-    <img src={test1} alt="partner2" />
-    <img src={test2} alt="partner3" />
-    <img src={test3} alt="partner4" />
-    <img src={test4} alt="partner5" />
-     <img src={test5} alt="partner6" />
-    <img src={test6} alt="partner7" />
-  </div>
-</div> */}
-
   </div>
 
       <div className="footer-middle">

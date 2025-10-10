@@ -11,9 +11,10 @@ function CorporateOpd() {
         <label>Company Name</label>
       <select>
         <option>Select Company Name</option>
-        <option value="1">Google</option>
+        {/* <option value="1">Google</option>
         <option value="2">Amazon</option>
-        <option value="3">Facebook</option>
+        <option value="3">Facebook</option> */}
+         <input type="text" placeholder="Enter Company Name" />
       </select> 
 
       <label>Employee Name</label>

@@ -303,6 +303,7 @@ function Services() {
 useEffect(() => {
   const fetchPremium = async () => {
     if (!age) return;
+    
 
     const selfAge = Number(age);
     const dependentsAges = dependants.map(dep => Number(dep.age)).filter(a => a > 0);
@@ -319,6 +320,7 @@ useEffect(() => {
           if (!IPDValue || !AccidentValue || !OPDValue) return;
           url = `http://localhost:5000/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${selfAge}`;
         }
+        
       } else if (insured === "Myself and my family") {
         if (product === "ipd-accident") {
           if (!IPDValue || !AccidentValue) return;
