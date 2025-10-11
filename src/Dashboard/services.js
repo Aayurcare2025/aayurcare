@@ -162,8 +162,8 @@ function Services() {
     }
 
     try {
-      // const response = await fetch("https://api.aayurcare.com/health/apply", {
-       const response = await fetch("https://api.aayurcare.com/health/apply", {
+      const response = await fetch("https://api.aayurcare.com/health/apply", {
+      //  const response = await fetch("http://localhost:5000/health/apply", {
         method: "POST",
         body: formDataObj,
       });
