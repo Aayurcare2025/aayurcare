@@ -162,8 +162,8 @@ function Services() {
     }
 
     try {
-      const response = await fetch("https://api.aayurcare.com/health/apply", {
-      //  const response = await fetch("http://localhost:5000/health/apply", {
+      // const response = await fetch("https://api.aayurcare.com/health/apply", {
+       const response = await fetch("https://api.aayurcare.com/health/apply", {
         method: "POST",
         body: formDataObj,
       });
@@ -315,19 +315,19 @@ useEffect(() => {
       if (insured === "Myself") {
         if (product === "ipd-accident") {
           if (!IPDValue || !AccidentValue) return;
-          url = `http://localhost:5000/user/insurance/${IPDValue}/${AccidentValue}/${selfAge}`;
+          url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${selfAge}`;
         } else if (product === "opd-ipd-accident") {
           if (!IPDValue || !AccidentValue || !OPDValue) return;
-          url = `http://localhost:5000/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${selfAge}`;
+          url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${selfAge}`;
         }
         
       } else if (insured === "Myself and my family") {
         if (product === "ipd-accident") {
           if (!IPDValue || !AccidentValue) return;
-          url = `http://localhost:5000/user/insurance/combinedIpdAnAccident/${IPDValue}/${AccidentValue}/${selfAge}/${dependentsParam}`;
+          url = `https://api.aayurcare.com/user/insurance/combinedIpdAnAccident/${IPDValue}/${AccidentValue}/${selfAge}/${dependentsParam}`;
         } else if (product === "opd-ipd-accident") {
           if (!IPDValue || !AccidentValue || !OPDValue) return;
-          url = `http://localhost:5000/user/insurance/combined/${IPDValue}/${AccidentValue}/${OPDValue}/${selfAge}/${dependentsParam}`;
+          url = `https://api.aayurcare.com/insurance/combined/${IPDValue}/${AccidentValue}/${OPDValue}/${selfAge}/${dependentsParam}`;
         }
       }
 
