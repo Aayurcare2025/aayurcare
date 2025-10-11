@@ -629,7 +629,7 @@ color: #007bff;
   .signup h1 {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: teal;
+    color: #181e52;
     font-weight: 600;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
   }
@@ -655,7 +655,7 @@ color: #007bff;
   }
 
   .signup input:focus {
-    border-color: #4facfe;
+    border-color: #181e52;
     box-shadow: 0 0 8px rgba(79, 172, 254, 0.4);
   }
 
@@ -704,7 +704,7 @@ color: #007bff;
     font-size: 2rem;
     margin-bottom: 15px;
     text-align: center;
-    color: teal;;
+    color: #181e52;
     font-weight: 600;
   }
 
@@ -798,13 +798,13 @@ color: #007bff;
   font-size: 30px;
   margin-bottom: 0px;
   text-align: center;
-  color:  teal;
+  color:  #181e52;;
   font-weight: 700;
 }
 
 .core-values {
   font-size: 22px;
-  color: teal;
+  color: #181e52;;
   text-align: center;
   font-weight: 700;
 }
@@ -891,7 +891,7 @@ color: #007bff;
   .big-health-card {
     width: 500px;
     height: 400px;
-    border: 2px solid teal;
+    border: 2px solid #181e52;;
     
     border-radius: 12px;
     display: flex;
@@ -908,7 +908,7 @@ color: #007bff;
   .big-health-card h3 {
     font-size: 28px;  
     font-weight: normal;  
-    color: teal;
+    color: #181e52;;
     margin-bottom: 20px;
   }
 
@@ -919,7 +919,7 @@ color: #007bff;
   }
 
   .big-health-card button {
-    background: teal;
+    background: #181e52;;
     color: white;
     border: none;
     padding: 14px 28px;
@@ -930,7 +930,7 @@ color: #007bff;
   }
 
   .big-health-card button:hover {
-    background: darkcyan;
+    background: #181e52;;
     
   }
   .big-health-card p {
@@ -948,9 +948,12 @@ color: #007bff;
   }
 
   .form-title {
-    color: teal;
+    color: #181e52;
     font-size: 26px;
     margin-bottom: 5px;
+  }
+  .form-title h2{
+    color:#181e52;
   }
 
   .form-subtitle {
@@ -978,7 +981,7 @@ color: #007bff;
   }
 
   .step.active {
-    background: teal;
+    background: #181e52;
   }
 
   .arrow {
@@ -1027,7 +1030,7 @@ color: #007bff;
   .submit-btn {
     margin-top: 20px;
     padding: 12px;
-    background:darkcyan;
+    background:#181e52;;
     color: white;
     border: none;
     border-radius: 8px;
@@ -1036,7 +1039,7 @@ color: #007bff;
   }
 
   .submit-btn:hover {
-    background: darkcyan;
+    background: #181e52;;
   }
   .form-container {
     max-width: 600px;
@@ -1047,7 +1050,7 @@ color: #007bff;
   }
 
   .form-title {
-    color: #009688;
+    color: #181e52;;
     font-size: 28px;
     margin-bottom: 10px;
   }
@@ -1071,7 +1074,7 @@ color: #007bff;
     padding: 12px 20px;
     margin: 10px;
     font-size: 18px;
-    background: #009688;
+    background: #181e52;;
     color: white;
     border: none;
     border-radius: 6px;
@@ -1080,7 +1083,7 @@ color: #007bff;
   }
 
   .btn:hover {
-    background: #00796b;
+    background: #181e52;;
   }
 
   .back-btn {
@@ -1212,7 +1215,7 @@ color: #007bff;
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 10px;
-  color: teal; /* main theme */
+  color: #181e52; /* main theme */
 }
 
 .contact-subtitle {
@@ -1244,7 +1247,7 @@ color: #007bff;
 
 .contact-icon {
   font-size: 2rem;
-  color: teal;
+  color: #181e52;;
   margin-bottom: 15px;
 }
 
@@ -1256,7 +1259,7 @@ color: #007bff;
 .section-heading {
   font-size: 1.5rem;
   margin-bottom: 12px;
-  color: teal;
+  color: #181e52;
 }
 
 .contact-card p, 
@@ -1466,7 +1469,7 @@ color: #007bff;
 }
 
 .claims-container h2 {
-  color: teal;
+  color: #181e52;
   text-align: center;
   margin-bottom: 10px;
   font-size: 28px;
@@ -1536,7 +1539,7 @@ color: #007bff;
 }
 
 .complaint-container h2 {
-  color: teal;
+  color: #181e52;;
   font-size: 28px;
   margin-bottom: 20px;
   font-weight: 600;
@@ -1554,7 +1557,7 @@ color: #007bff;
 }
 
 .complaint-container textarea:focus {
-  border-color: #00796b;
+  border-color: #181e52;;
   box-shadow: 0 0 10px rgba(0, 150, 136, 0.2);
 }
 

@@ -348,7 +348,7 @@ useEffect(() => {
 
   fetchPremium();
 }, [product, IPDValue, AccidentValue, OPDValue, age, dependants, insured]);
-
+  
 
 
 

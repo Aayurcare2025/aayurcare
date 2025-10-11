@@ -183,6 +183,7 @@ import RefundAndCancellation from "./Dashboard/RefundPolicy";
 import Disclaimer from "./Dashboard/Disclaimer";      
 import ProtectedRoute from "./Dashboard/ProtectedRoute";
 import CorporateOpd from  "./Dashboard/CorporateOpd"
+import PrivacyPolicy from "./Dashboard/Privacypolicy";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -265,6 +266,7 @@ function App() {
       <Route path="/aayurcaretermsandcondition" element={<AayurcareTermsAndCondition />} />
       <Route path="/refundandcancellation" element={<RefundAndCancellation />} />
       <Route path="/disclaimer" element={<Disclaimer />} />  
+      <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>}/>
       </Routes>
 
       
