@@ -382,13 +382,18 @@ useEffect(() => {
 
 
           >
+
+
+
+
+            {/* <option value="ipd-accident"> IPD & Accident</option>
+              <option value="opd-ipd-accident">OPD & IPD & Accident</option>
+              <option value="accident">Accident</option> */}
             <label>I want to buy</label>
             <select value={product} onChange={(e) => setProduct(e.target.value)}>
               <option value="">Select</option>
               <option value="opd">OPD</option>
-              <option value="ipd-accident"> IPD & Accident</option>
-              <option value="opd-ipd-accident">OPD & IPD & Accident</option>
-              <option value="accident">Accident</option>
+              
               {/* <option value="wellness">Wellness</option> */}
             </select>
 
@@ -1353,6 +1358,7 @@ annual premium :- accordance to age and data:-
       )} */}
 
 
+{/* this is wokring */}
       {serviceType === "corporate" && (
         <div className="big-health-card">
           <h3>Corporate Insurance Plans</h3>

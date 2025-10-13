@@ -182,7 +182,7 @@ import AayurcareTermsAndCondition from "./Dashboard/Aayurcareterms";
 import RefundAndCancellation from "./Dashboard/RefundPolicy"; 
 import Disclaimer from "./Dashboard/Disclaimer";      
 import ProtectedRoute from "./Dashboard/ProtectedRoute";
-import CorporateOpd from  "./Dashboard/CorporateOpd"
+// import CorporateOpd from  "./Dashboard/CorporateOpd"
 import PrivacyPolicy from "./Dashboard/Privacypolicy";
 
 function App() {
@@ -217,7 +217,7 @@ function App() {
   {showDropdown && (
     <ul className="dropdown-menu">
       <li onClick={() => navigate("/services/individual")}>Individual</li>
-      <li onClick={() => navigate("/services/corporate")}>Corporate</li>
+      {/* <li onClick={() => navigate("/services/corporate")}>Corporate</li> */}
     </ul>
   )}
 </li>
@@ -256,7 +256,7 @@ function App() {
   />
         <Route path="/contact" element={<Contact />} />
         <Route path="/groupmedical" element={<GroupMedical />} />
-        <Route path="/CorporateOpd" element={<CorporateOpd/>} />
+        {/* <Route path="/CorporateOpd" element={<CorporateOpd/>} /> */}
         {/* <Route path="/signup" element={<SignUp />} /> */}
         <Route path="/signup" element={<SignUp setPage={setPage} />} />
         {/* <Route path="/signin" element={<SignIn />} /> */}
