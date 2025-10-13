@@ -215,8 +215,7 @@ function Home() {
     <p>
      Aayur Care is a medical disbursement company that offers OPD reimbursement plans and
 comprehensive health, mediclaim, and accident insurance solutions. We cover day-to-day
-medical expenses, such as doctor consultations, diagnostics, and medicines, along with
-critical insurance needs. mediclaim, and accident coverage.
+medical expenses such as doctor consultations, diagnostics, and medicines.
     </p>
   </div>
 
@@ -224,8 +223,7 @@ critical insurance needs. mediclaim, and accident coverage.
     <h3>2. How is Aayur Care different from health insurance?</h3>
     <p>
     Unlike traditional health insurance, which mainly covers hospitalization, Aayur Care focuses
-on OPD expenses like consultations, diagnostics, and medicines. We also provide bundled
-coverage with health, mediclaim, and accident insurance for a complete healthcare solution.
+on OPD expenses like consultations, diagnostics, and medicines.
     </p>
   </div>
 
@@ -234,15 +232,14 @@ coverage with health, mediclaim, and accident insurance for a complete healthcar
     <p>
      Aayur Care offers plans suitable for individuals, families, and corporate employees, ranging
 from newborns to senior citizens. We provide tailored solutions for everyone, from gig
-workers to executives, as well as group medical plans for organizations.
+workers to executives, as well as group membership plans for organizations.
     </p>
   </div>
 
   <div className="faq-item">
     <h3>4. What expenses are covered under Aayur Care?</h3>
     <p>Aayur Care covers doctor consultations, diagnostic tests, medicines, preventive health
-check-ups, and select daycare procedures. Plans also include IPD & insurance coverage for
-hospitalization and critical care.</p>
+check-ups, and select daycare procedures.</p>
   </div>
 
   <div className="faq-item">
