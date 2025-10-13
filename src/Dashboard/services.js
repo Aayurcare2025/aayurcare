@@ -162,7 +162,7 @@ function Services() {
     }
 
     try {
-      const response = await fetch("https://api.aayurcare.com/health/apply", {
+      const response = await fetch("http://localhost:5000/health/apply", {
       //  const response = await fetch("http://localhost:5000/health/apply", {
         method: "POST",
         body: formDataObj,
@@ -318,7 +318,7 @@ useEffect(() => {
           url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${selfAge}`;
         } else if (product === "opd-ipd-accident") {
           if (!IPDValue || !AccidentValue || !OPDValue) return;
-          url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${selfAge}`;
+          url = `http://localhost:5000/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${selfAge}`;
         }
         
       } else if (insured === "Myself and my family") {
