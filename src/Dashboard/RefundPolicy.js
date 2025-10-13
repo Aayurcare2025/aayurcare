@@ -81,7 +81,7 @@ refundable, except as specifically provided herein
 5.2 Upon receipt of a valid request, Aayur Care shall review the case and communicate its
  decision within five (5) working days.
  <br></br>
- 5.3 Approved refunds shall ordinarily be processed within seven (7) to ten (10) working days
+ 5.3 Approved refunds shall ordinarily be credited within seven (7) to ten (10) working days
  to the original payment method.
  <br></br>
  5.4 The decision of Aayur Care regarding refund or cancellation eligibility shall be final and
