@@ -101,10 +101,11 @@ function Home() {
             <h3>OPD Reimbursement</h3>
             <p>Doctor consultation, tests, medicines, and minor treatments.</p>
           </div>
-          <div className="plan-box">
+          <br></br>
+          {/* <div className="plan-box">
             <h3>IPD Coverage</h3>
             <p>Hospitalization, surgeries, and inpatient care expenses.</p>
-          </div>
+          </div> */}
           <div className="plan-box">
             <h3>Corporate Health Plans</h3>
             <p>Flexible OPD Plans</p>
@@ -290,8 +291,8 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
     <br></br>
    <li className="footer-link" onClick={()=>navigate("refundandcancellation")}>Refund and Cancellation Policy</li>
     <br></br>
-  <li className="footer-link" onClick={()=>navigate("disclaimer")}>Disclaimer</li>
-       <br></br>
+  {/* <li className="footer-link" onClick={()=>navigate("disclaimer")}>Disclaimer</li> */}
+       {/* <br></br> */}
         <li className="footer-link" onClick={()=>navigate("PrivacyPolicy")}>Privacy Policy</li>
       </ul>
     </div>

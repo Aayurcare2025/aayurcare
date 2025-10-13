@@ -22,7 +22,7 @@ function PrivacyPolicy({ goBack }) {
      
      <p>A. Personal Information Provided by You</p>
 
-     <p>When you engage with our services—such as visiting our website, contacting us, filling out forms, or subscribing to updates—you may voluntarily provide personal information, including your contact details (name, phone number, email, postal address), identity details (date of birth, gender, government-issued ID when required for specific services), health-related information for medical reimbursement, OPD/IPD plans, or other healthcare services, employment or insurance details for corporate plans, payment and billing information, and any other information submitted through forms, feedback, or inquiries</p>
+     <p>When you engage with our services—such as visiting our website, contacting us, filling out forms, or subscribing to updates—you may voluntarily provide personal information, including your contact details (name, phone number, email, postal address), identity details (date of birth, gender, government-issued ID when required for specific services), health-related information for medical reimbursement, OPD plans, or other healthcare services, employment  for corporate plans, payment and billing information, and any other information submitted through forms, feedback, or inquiries</p>
 
      <p>B. Information Automatically Collected</p>
 

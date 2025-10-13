@@ -179,8 +179,7 @@ import Claims from "./Dashboard/Claims";
 import GroupMedical from "./Dashboard/GroupMedical";    
 import WebsiteTerms from "./Dashboard/webisteterms";  
 import AayurcareTermsAndCondition from "./Dashboard/Aayurcareterms";    
-import RefundAndCancellation from "./Dashboard/RefundPolicy"; 
-import Disclaimer from "./Dashboard/Disclaimer";      
+import RefundAndCancellation from "./Dashboard/RefundPolicy";     
 import ProtectedRoute from "./Dashboard/ProtectedRoute";
 // import CorporateOpd from  "./Dashboard/CorporateOpd"
 import PrivacyPolicy from "./Dashboard/Privacypolicy";
@@ -265,7 +264,7 @@ function App() {
           <Route path="/websiteterms" element={<WebsiteTerms />} />
       <Route path="/aayurcaretermsandcondition" element={<AayurcareTermsAndCondition />} />
       <Route path="/refundandcancellation" element={<RefundAndCancellation />} />
-      <Route path="/disclaimer" element={<Disclaimer />} />  
+      {/* <Route path="/disclaimer" element={<Disclaimer />} />   */}
       <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>}/>
       </Routes>
 

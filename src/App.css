@@ -845,8 +845,7 @@ color: #007bff;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
-    margin-top: 30px;
+    
   }
 
 
@@ -870,6 +869,14 @@ color: #007bff;
     cursor: pointer;
     border-radius: 5px;
   }
+  .plan-box {
+  flex: 1;           /* all boxes take equal width */
+  min-width: 250px;  /* optional: make them responsive */
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  text-align: center;
+}
   .services {
     
     display: flex;
