@@ -239,12 +239,12 @@ function App() {
         <Route path="/claims" element={<Claims />} /> */}
  <Route
     path="/services/:type"
-    element={<Services/>}
-    // element={
-    //    <ProtectedRoute isLoggedIn={isLoggedIn}>
-    //     <Services />
-    //   </ProtectedRoute>
-    // }
+    // element={<Services/>}
+    element={
+       <ProtectedRoute isLoggedIn={isLoggedIn}>
+        <Services />
+      </ProtectedRoute>
+    }
   />
     <Route
     path="/claims"
