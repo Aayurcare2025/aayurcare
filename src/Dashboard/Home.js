@@ -107,11 +107,11 @@ function Home() {
           </div>
           <div className="plan-box">
             <h3>Corporate Health Plans</h3>
-            <p>Flexible OPD & IPD plans for employees and their families.</p>
+            <p>Flexible OPD Plans</p>
           </div>
           <div className="plan-box">
             <h3>Customized Memberships</h3>
-            <p>Build your own plan with OPD, IPD, and accidental coverage.</p>
+            <p>Build your own plan with OPD</p>
           </div>
         </div>
       </section>
