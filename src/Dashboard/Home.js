@@ -263,11 +263,11 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
     <p>Powered by Aayur Enterprises</p>
   </div>
 
-      {/* <div className="footer-middle">
+      <div className="footer-middle">
        <p>Partnered with Vibe Insurance Broking </p>
         <p>IRDAI License No. 904</p>
         
-      </div> */}
+      </div>
 
   {/* Right side */}
   <div className="footer-right">
