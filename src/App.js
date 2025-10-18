@@ -248,9 +248,9 @@ function App() {
     <Route
     path="/claims"
     element={
-      <ProtectedRoute isLoggedIn={isLoggedIn}>
+      // <ProtectedRoute isLoggedIn={isLoggedIn}>
         <Claims />
-      </ProtectedRoute>
+      // </ProtectedRoute>
     }
   />
         <Route path="/contact" element={<Contact />} />
