@@ -1,7 +1,7 @@
 
 import React from "react";
 import "../App.css";
-import Family from "../Images/homeim.jpeg";
+import Family from "../Images/home-main.jpg";
 // import Signup from "./SignUp"
 // import D from "../Images/D.pdf";
 // import RC from "../Images/RC.pdf";
