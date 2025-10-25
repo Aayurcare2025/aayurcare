@@ -425,7 +425,7 @@ useEffect(() => {
               <option value="">Select</option>
               <option>Myself</option>
               <option>Myself and my family</option>
-              <option>Parents</option>
+              <option>Family</option>
             </select>
 
 
