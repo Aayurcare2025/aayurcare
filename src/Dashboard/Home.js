@@ -32,6 +32,7 @@ import test7 from "../Images/red_health_1.png"
 import test8 from "../Images/atma_yoga.jpeg"
 import royal from "../Images/R6.png"
 import test9 from "../Images/clove.png"
+import sparsh from "../Images/sparsh.png"
 
 
 // import alllogo from "../Images/alllogo.jpg"
@@ -174,6 +175,9 @@ function Home() {
     <img src={test7} alt="partner8"/>
     <img src={test8} alt="partner9"/>
     <img src={test9} alt="partner10"/>
+    {/* <img src={test10} alt="partner11"/> */}
+    <img src={sparsh} alt="partner12"/>
+
 
   </div>
 </div>
@@ -291,7 +295,7 @@ corporate partnerships, contact us at info@aayurcare.com or call/WhatsApp: +91
     <br></br>
    <li className="footer-link" onClick={()=>navigate("refundandcancellation")}>Refund and Cancellation Policy</li>
     <br></br>
-  {/* <li className="footer-link" onClick={()=>navigate("disclaimer")}>Disclaimer</li> */}
+  {/* <li className=  "footer-link" onClick={()=>navigate("disclaimer")}>Disclaimer</li> */}
        {/* <br></br> */}
         <li className="footer-link" onClick={()=>navigate("PrivacyPolicy")}>Privacy Policy</li>
       </ul>
