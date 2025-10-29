@@ -412,7 +412,7 @@ useEffect(() => {
               </>
             )} */}
 
-            <label>I’d like to insure</label>
+            <label>I’d like to subscribe </label>
             {/* <select value={insured} onChange={(e) => setInsured(e.target.value)}>
               <option value="">Select</option>
               <option>Myself</option>
