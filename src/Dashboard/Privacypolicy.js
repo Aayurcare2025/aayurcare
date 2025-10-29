@@ -29,7 +29,9 @@ function PrivacyPolicy({ goBack }) {
      <p>We automatically collect certain information when you visit, use, or navigate our website. This information does not reveal your specific identity (such as your name or contact information) but may include: This includes IP address, browser type and version, device type and operating system, referring and exit pages, date and time of access, pages viewed, time spent on our site, general geographic location, and website usage patterns via cookies and similar technologies. This information helps us analyze trends, maintain security and performance, and enhance the user experience</p>
 
      <p>C. Sensitive Personal Data </p>
-<p>In limited circumstances—such as when you use our healthcare-related services—we may collect sensitive personal data, including health information or insurance identifiers. We collect and process such data only with your explicit consent or where permitted or required under applicable law.</p>
+<p>In limited circumstances—such as when you use our healthcare-related services—we may collect sensitive personal data, including health information 
+   {/* insurance identifiers. */}
+    We collect and process such data only with your explicit consent or where permitted or required under applicable law.</p>
 
 
 
@@ -46,13 +48,17 @@ function PrivacyPolicy({ goBack }) {
 
 <p>2.Purpose of Processing</p>
 
-<p>We process your information for lawful purposes, including delivering services (verifying identity, processing reimbursements, facilitating insurance claims, and managing customer relationships), handling transactions (billing, payments, refunds, and settlements), complying with legal and regulatory obligations, providing customer support, improving our platform and services, ensuring security and preventing fraud, communicating updates or promotions with your consent, and conducting data analytics and research to optimise services without revealing personally identifiable information.</p>
+<p>We process your information for lawful purposes, including delivering services (verifying identity, processing reimbursements, 
+  {/* facilitating insurance claims, */}
+   and managing customer relationships), handling transactions (billing, payments, refunds, and settlements), complying with legal and regulatory obligations, providing customer support, improving our platform and services, ensuring security and preventing fraud, communicating updates or promotions with your consent, and conducting data analytics and research to optimise services without revealing personally identifiable information.</p>
 
 <p>3. Methods of Processing</p>
 <p>We process your information using secure systems, including manual processing (physical verification of documents and claims), automated processing (data validation, eligibility checks, and payment handling), and hybrid processing (a combination of manual review and automated tools for claim verification and fraud prevention).</p>
 
 <p>4. Sharing & Disclosure</p>
-<p>Your information may be shared with service partners and vendors (hospitals, insurance companies, diagnostic centres, payment gateways, and IT providers), regulatory or government authorities when legally required, and affiliates or group entities for internal purposes. Other sharing occurs only with your consent or as mandated by law. We do not sell your personal information.</p>
+<p>Your information may be shared with service partners and vendors (hospitals, 
+  {/* insurance companies,  */}
+  diagnostic centres, payment gateways, and IT providers), regulatory or government authorities when legally required, and affiliates or group entities for internal purposes. Other sharing occurs only with your consent or as mandated by law. We do not sell your personal information.</p>
 
 
 <p>5. Data Storage & Retention</p>
@@ -67,7 +73,9 @@ function PrivacyPolicy({ goBack }) {
 <p>We process personal information only when there is a valid and lawful basis, which may include your consent, service fulfillment, regulatory compliance, legitimate business purposes, or protection of vital interests such as health and safety in emergencies.</p>
 
 <h3>When and With Whom Do We Share Your Personal Information?</h3>
-<p>We share your personal information only when necessary for the purposes described in this Privacy Policy, always securely and lawfully, and limited to what is relevant. This may include trusted service partners and vendors such as hospitals, clinics, diagnostic centres, insurance companies, TPAs, payment gateways, and technology providers; regulatory and legal authorities when required by law or legal process; group companies or affiliates for administrative or reporting purposes; or as part of business transactions like mergers, acquisitions, or restructuring, with continued protection under this Privacy Policy. Additionally, we may share information with other parties only with your explicit consent. We do not sell, rent, or trade your personal information, and all sharing is conducted under confidentiality agreements, secure transfer protocols, and applicable data protection laws.We do not sell, rent, or trade your personal information to third parties for marketing purposes. Any sharing is conducted under confidentiality agreements, secure data transfer protocols, and in compliance with applicable data protection laws.</p>
+<p>We share your personal information only when necessary for the purposes described in this Privacy Policy, always securely and lawfully, and limited to what is relevant. This may include trusted service partners and vendors such as hospitals, clinics, diagnostic centres
+  {/* , insurance companies */}
+  ,TPAs, payment gateways, and technology providers; regulatory and legal authorities when required by law or legal process; group companies or affiliates for administrative or reporting purposes; or as part of business transactions like mergers, acquisitions, or restructuring, with continued protection under this Privacy Policy. Additionally, we may share information with other parties only with your explicit consent. We do not sell, rent, or trade your personal information, and all sharing is conducted under confidentiality agreements, secure transfer protocols, and applicable data protection laws.We do not sell, rent, or trade your personal information to third parties for marketing purposes. Any sharing is conducted under confidentiality agreements, secure data transfer protocols, and in compliance with applicable data protection laws.</p>
 
 
 <h3>Do We Use Cookies and Other Tracking Technologies?</h3>
