@@ -1126,6 +1126,7 @@ annual premium :- accordance to age and data:-
 
 
         {/* Step 3 – Proposal Details (Family flow) */}
+        
         {step === 3 && insured === "Myself and my family" && preExisting === "no" && (
           <div className="form-container">
             <button onClick={() => setStep(2)} className="back-btn">← Back</button>
@@ -1161,9 +1162,6 @@ annual premium :- accordance to age and data:-
                 <input type="radio" name="gender" /> Others
               </label>
             </div>
-
-
-
 
 
             <input
@@ -1245,6 +1243,10 @@ annual premium :- accordance to age and data:-
             <button onClick={() => setStep(6)} className="submit-btn">Next →</button>
           </div>
         )}
+
+
+
+        
 
         {/* Step 5 – Buy */}
 
