@@ -55,7 +55,7 @@ function WebisteTerms({goBack}) {
 </p>
 
 
-<h3>Privacy Policy</h3>
+<h3>5. Privacy Policy</h3>
 <p> Your use of the Site is governed by our Privacy Policy, which outlines how we collect, use, and protect your personal
  information in accordance with the Information Technology Act, 2000 and the SPDI Rules.</p>
 
@@ -66,12 +66,14 @@ function WebisteTerms({goBack}) {
  Enterprises, uses this intellectual property solely in accordance with the rights granted by Aayur Enterprises.</p>
 
 
- <h3> 7. Medical Reimbursement Disclaime</h3>
- <p> The Site provides access to medical reimbursement services and related information. Insurance-related services,
+ <h3> 7. Medical Reimbursement Disclaimer</h3>
+ <p> The Site provides access to medical reimbursement services and related information.
+   {/* Insurance-related services,
  where applicable, are facilitated through licensed intermediaries under arrangements compliant with the regulatory
- framework of the Insurance Regulatory and Development Authority of India (IRDAI). Use of this Site does not
+ framework of the Insurance Regulatory and Development Authority of India (IRDAI). */}
+  Use of this Site does not
  constitute a guarantee of claim settlement. All claims are subject to verification, documentation, and compliance
- with applicable laws, policies, and the terms of our service partners</p>
+ with applicable laws, policies, and the terms of our service partners.</p>
 
  <h3>8. Cookies</h3>
  <p> We use cookies to enhance user experience and analyze site traffic. By using the Site, you consent to our use of
@@ -85,9 +87,12 @@ function WebisteTerms({goBack}) {
  to review the terms and privacy policies of such third-party platforms before use.</p>
 
  <h3>10. Legal & Compliance</h3>
- <p>All insurance-related services are provided through Vibe Insurance under IRDAI guidelines. Aayur Care acts as a
+ {/* <p>All insurance-related services are provided through Vibe Insurance under IRDAI guidelines. Aayur Care acts as a
  support and advisory platform under the POSP (Point of Sales Person) framework. It does not underwrite or directly
- sell insurance policies</p>
+ sell insurance policies</p> */}
+ <p>All services other than opd providing through our channel partners.Aayurcare acts as a facilitator 
+  framework only.
+ </p>
 
  <h3>11. Limitation of Liability</h3>
  <p> To the fullest extent permitted under applicable Indian law, Aayur Care (operating under Aayur Enterprises) shall not
