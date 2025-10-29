@@ -19,7 +19,7 @@ function About() {
         Founded with the vision of redefining healthcare affordability, Aayur Care
         aims to create a trusted and transparent reimbursement ecosystem. Our
         platform simplifies medical reimbursements, providing seamless support for outpatient consultations, 
-        inpatient treatments, diagnostics, preventive care, wellness services, and more.
+        diagnostics, preventive care, wellness services, and more.
       </p>
       <p>
         With a strong focus on financial inclusion, we are committed to making
