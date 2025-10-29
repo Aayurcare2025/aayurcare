@@ -116,7 +116,7 @@ function WebisteTerms({goBack}) {
  Upon termination, all rights granted to you under these Terms shall immediately cease, and you must discontinue all
  use of the Site</p>
 
- <h3>Governing Law and Jurisdiction</h3>
+ <h3>14. Governing Law and Jurisdiction</h3>
  <p>These Terms shall be governed by and interpreted in accordance with the laws of India. Any disputes arising out of
  or in connection with these Terms, the Site, or its services shall be subject to the exclusive jurisdiction of the courts
  located in Bangalore, Karnataka.</p>
