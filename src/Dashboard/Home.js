@@ -219,7 +219,7 @@ function Home() {
     <h3>1. What is Aayur Care?</h3>
     <p>
      Aayur Care is a medical disbursement company that offers OPD reimbursement plans and
-comprehensive health, mediclaim, and accident insurance solutions. We cover day-to-day
+comprehensive health, mediclaim solutions. We cover day-to-day
 medical expenses such as doctor consultations, diagnostics, and medicines.
     </p>
   </div>
