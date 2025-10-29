@@ -21,6 +21,7 @@ refundable, except as specifically provided herein
 <br></br>
 1.2 Customers are advised to carefully review plan details and terms of service prior to
  making any payment
+ <br></br>
   1.3 The Company reserves the right to accept or reject any cancellation or refund request at its
  sole discretion.</p>
 
@@ -31,12 +32,11 @@ refundable, except as specifically provided herein
      <br></br>
       If a cancellation request is received prior to plan activation, the Customer may be eligible for
  a full refund of the membership fee, subject to verification
+ <br></br>
   2.2 After Activation:
   <br></br>
    Once a plan has been activated and benefits made available, the membership is deemed
- utilized and cancellations will not be permitted.
- <br></br>
-  No refund will be issued for voluntary cancellation after activation
+ utilized and cancellations will not be permitted.No refund will be issued for voluntary cancellation after activation
  </p>
 
 
