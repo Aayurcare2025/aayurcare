@@ -180,7 +180,7 @@ import GroupMedical from "./Dashboard/GroupMedical";
 import WebsiteTerms from "./Dashboard/webisteterms";  
 import AayurcareTermsAndCondition from "./Dashboard/Aayurcareterms";    
 import RefundAndCancellation from "./Dashboard/RefundPolicy";     
-// import ProtectedRoute from "./Dashboard/ProtectedRoute";
+import ProtectedRoute from "./Dashboard/ProtectedRoute";
 // import CorporateOpd from  "./Dashboard/CorporateOpd"
 import PrivacyPolicy from "./Dashboard/Privacypolicy";
 
@@ -239,21 +239,21 @@ function App() {
  <Route
     path="/services/:type"
     // element={<Services/>}
-    // element={
-    //    <ProtectedRoute isLoggedIn={isLoggedIn}>
-    //     <Services />
-    //   </ProtectedRoute>
-    // }
     element={
-      <Services />  
+       <ProtectedRoute isLoggedIn={isLoggedIn}>
+        <Services />
+      </ProtectedRoute>
     }
+    // element={
+    //   <Services />  
+    // }
   />
     <Route
     path="/claims"
     element={
-      // <ProtectedRoute isLoggedIn={isLoggedIn}>
+      <ProtectedRoute isLoggedIn={isLoggedIn}>
         <Claims />
-      // </ProtectedRoute>
+       </ProtectedRoute>
     }
   />
         <Route path="/contact" element={<Contact />} />
