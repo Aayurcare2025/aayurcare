@@ -554,6 +554,12 @@ useEffect(() => {
                     <option value="essential">Essential Care</option>
                     <option value="wellness">Wellness Shield</option>
                     <option value="consult">Consult + Care</option>
+                    <option value="radiant">Radiant Health</option>
+                    <option value="lifeline">LifeLine Plus</option>
+                    <option value="evercare">EverCare Infinity</option>
+                    <option value="platinum">Platinum Horizon</option>
+
+
                   </select>
 
                   <div className="plans-grid">
@@ -594,6 +600,68 @@ useEffect(() => {
                         </button>
                       </div>
                     )}
+
+
+                     
+                    {OPDValue === "radiant" && (
+                      <div className="plan-card">
+                        <h4>Radiant Health</h4>
+                        <p>Total Coverage: ₹23,000</p>
+                        <p>Annual Premium: ₹7,250</p>
+                        <button
+                          onClick={(e) => handleSubmit(e)}>
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
+
+
+                    {OPDValue === "lifeline" && (
+                      <div className="plan-card">
+                        <h4>Lifeline Plus</h4>
+                        <p>Total Coverage: ₹35,000</p>
+                        <p>Annual Premium: ₹15,670</p>
+                        <button
+                          onClick={(e) => handleSubmit(e)}>
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
+
+                     
+                    {OPDValue === "evercare" && (
+                      <div className="plan-card">
+                        <h4>Lifeline Plus</h4>
+                        <p>Total Coverage: ₹37,000</p>
+                        <p>Annual Premium: ₹17,170</p>
+                        <button
+                          onClick={(e) => handleSubmit(e)}>
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
+
+
+                     {OPDValue === "platinum" && (
+                      <div className="plan-card">
+                        <h4>Lifeline Plus</h4>
+                        <p>Total Coverage: ₹50,000</p>
+                        <p>Annual Premium: ₹21,625</p>
+                        <button
+                          onClick={(e) => handleSubmit(e)}>
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
+
+
+
+
+
+
+
+
+
                   </div>
                 </>
               )}
