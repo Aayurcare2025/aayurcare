@@ -35,13 +35,14 @@ function Services() {
   const handleDependantChange = (index, field, value) => {
   const updated = [...dependants];
   if (field === "age") {
-    updated[index][field] = Number(value); // convert to number
+    updated[index][field] = Number(value); 
   } else {
     updated[index][field] = value;
   }
   setDependants(updated);
 };
 
+//de
   const addDependant = () => {
     setDependants([...dependants, { name: "", dob: "", age: "", relation: "" }]);
   };
@@ -52,9 +53,6 @@ function Services() {
     setDependants(updated);
   };
 
-
-
- 
 
   //
   // proposer / self / nominee details
@@ -84,10 +82,6 @@ function Services() {
       [section]: { ...formData[section], [field]: value },
     });
   };
-
-
-
-
 
   //data has to be given:--
 
@@ -314,6 +308,7 @@ useEffect(() => {
 
       if (insured === "Myself") {
         if (product === "ipd-accident") {
+          
           if (!IPDValue || !AccidentValue) return;
           url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${selfAge}`;
         } else if (product === "opd-ipd-accident") {
@@ -375,17 +370,10 @@ useEffect(() => {
               // }
               setStep(2);
 
+              //data has to be given:--
+
             }}
-
-
-
-
-
           >
-
-
-
-
             {/* <option value="ipd-accident"> IPD & Accident</option>
               <option value="opd-ipd-accident">OPD & IPD & Accident</option>
               <option value="accident">Accident</option> */}
@@ -558,9 +546,8 @@ useEffect(() => {
                     <option value="lifeline">LifeLine Plus</option>
                     <option value="evercare">EverCare Infinity</option>
                     <option value="platinum">Platinum Horizon</option>
-
-
                   </select>
+
 
                   <div className="plans-grid">
                     {OPDValue === "essential" && (
@@ -574,7 +561,7 @@ useEffect(() => {
                         </button>
                       </div>
                     )}
-
+ 
                     {OPDValue === "wellness" && (
                       <div className="plan-card">
                         <h4>Wellness Shield</h4>
@@ -743,9 +730,7 @@ useEffect(() => {
                         <p>Total Coverage: ₹1000000</p>
                         <p>Annual Premium: ₹1000</p>
                         <button
-
                           onClick={(e) => handleSubmit(e)}>
-
                           Buy Now
                         </button>
                       </div>
@@ -878,6 +863,10 @@ annual premium :- accordance to age and data:-
                     <option value="essential">Essential Care</option>
                     <option value="wellness">Wellness Shield</option>
                     <option value="consult">Consult + Care</option>
+                     <option value="radiant">Radiant Health</option>
+                    <option value="lifeline">LifeLine Plus</option>
+                    <option value="evercare">EverCare Infinity</option>
+                    <option value="platinum">Platinum Horizon</option>
                   </select>
 
                   <div className="plans-grid">
@@ -918,6 +907,59 @@ annual premium :- accordance to age and data:-
                         </button>
                       </div>
                     )}
+
+
+                      {OPDValue === "radiant" && (
+                      <div className="plan-card">
+                        <h4>Radiant Health</h4>
+                        <p>Total Coverage: ₹23,000</p>
+                        <p>Annual Premium: ₹7,250</p>
+                        <button
+                          onClick={(e) => handleSubmit(e)}>
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
+
+
+                    {OPDValue === "lifeline" && (
+                      <div className="plan-card">
+                        <h4>Lifeline Plus</h4>
+                        <p>Total Coverage: ₹35,000</p>
+                        <p>Annual Premium: ₹15,670</p>
+                        <button
+                          onClick={(e) => handleSubmit(e)}>
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
+
+                     
+                    {OPDValue === "evercare" && (
+                      <div className="plan-card">
+                        <h4>Lifeline Plus</h4>
+                        <p>Total Coverage: ₹37,000</p>
+                        <p>Annual Premium: ₹17,170</p>
+                        <button
+                          onClick={(e) => handleSubmit(e)}>
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
+
+
+                     {OPDValue === "platinum" && (
+                      <div className="plan-card">
+                        <h4>Lifeline Plus</h4>
+                        <p>Total Coverage: ₹50,000</p>
+                        <p>Annual Premium: ₹21,625</p>
+                        <button
+                          onClick={(e) => handleSubmit(e)}>
+                          Buy Now
+                        </button>
+                      </div>
+                    )}
+
                   </div>
                 </>
               )}
@@ -1013,20 +1055,9 @@ annual premium :- accordance to age and data:-
                         <button>Get a Quote</button>
                       </div>
                     )}
-
-
-
-
-
                   </div>
                 </>
               )}
-
-
-
-
-
-
 
               {/* OPD Dropdown */}
               {["opd-ipd", "opd-ipd-accident"].includes(product) && (
@@ -1271,8 +1302,7 @@ annual premium :- accordance to age and data:-
             <button onClick={() => setStep(3)} className="back-btn">← Back</button>
             <h3>Dependant Details</h3>
 
-            
-
+          
             {dependants.map((dep, index) => (
               <div key={index} className="dependant-card">
                 <input
@@ -1317,13 +1347,6 @@ annual premium :- accordance to age and data:-
         
 
         {/* Step 5 – Buy */}
-
-
-
-
-
-
-
 
 
 
