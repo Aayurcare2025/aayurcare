@@ -32,6 +32,27 @@ function Services() {
   // };
 
 
+const [selectedConditions, setSelectedConditions] = useState([]);
+const [otherCondition, setOtherCondition] = useState("");
+const [surgery, setSurgery] = useState("");
+const [surgeryDetails, setSurgeryDetails] = useState("");
+const [medication, setMedication] = useState("");
+const [medicationDetails, setMedicationDetails] = useState("");
+const [supervision, setSupervision] = useState("");
+
+const handleConditionChange = (e) => {
+  const { value, checked } = e.target;
+  if (checked) {
+    setSelectedConditions((prev) => [...prev, value]);
+  } else {
+    setSelectedConditions((prev) => prev.filter((item) => item !== value));
+  }
+};
+
+
+
+
+
   const handleDependantChange = (index, field, value) => {
   const updated = [...dependants];
   if (field === "age") {
@@ -54,7 +75,48 @@ function Services() {
   };
 
 
-  //
+
+  // Add this helper function to calculate OPD values based on family members
+const calculateOPDValues = (planType, numberOfMembers) => {
+  const basePlans = {
+    essential: { coverage: 5000, premium: 1399 },
+    wellness: { coverage: 10000, premium: 2499 },
+    consult: { coverage: 15000, premium: 3799 },
+    radiant: { coverage: 23000, premium: 7250 },
+    lifeline: { coverage: 35000, premium: 15670 },
+    evercare: { coverage: 37000, premium: 17170 },
+    platinum: { coverage: 50000, premium: 21625 }
+  };
+
+  const basePlan = basePlans[planType];
+  if (!basePlan) return { coverage: 0, premium: 0 };
+
+  // For "Myself" - use base values
+  if (numberOfMembers === 1) {
+    return basePlan;
+  }
+
+  // For "Myself and my family" or "Family"
+  // Multiplier = total number of members
+  const multiplier = numberOfMembers;
+  
+  return {
+    coverage: basePlan.coverage * multiplier,
+    premium: basePlan.premium * multiplier
+  };
+};
+
+// Use this in your component
+const getTotalFamilyMembers = () => {
+  if (insured === "Myself") {
+    return 1;
+  } else if (insured === "Myself and my family") {
+    return 1 + dependants.length; // self + dependents
+  } else if (insured === "Family") {
+    return dependants.length; // only dependents
+  }
+  return 1;
+};
   // proposer / self / nominee details
   const [formData, setFormData] = useState({
     proposer: {
@@ -82,6 +144,8 @@ function Services() {
       [section]: { ...formData[section], [field]: value },
     });
   };
+
+
 
   //data has to be given:--
 
@@ -121,10 +185,6 @@ function Services() {
   //     alert("Something went wrong!");
   //   }
   // };
-
-
-
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -308,7 +368,6 @@ useEffect(() => {
 
       if (insured === "Myself") {
         if (product === "ipd-accident") {
-          
           if (!IPDValue || !AccidentValue) return;
           url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${selfAge}`;
         } else if (product === "opd-ipd-accident") {
@@ -416,11 +475,9 @@ useEffect(() => {
               <option>Family</option>
             </select>
 
-
             {/* <label>My pincode is {setPincode}</label>
             
             <input type="text" placeholder="Enter pincode" /> */}
-
 
 
             <label>My pincode </label>
@@ -430,7 +487,6 @@ useEffect(() => {
               onChange={(e) => setPincode(e.target.value)}
               placeholder="Enter pincode"
             />
-
 
 
             <label>I am</label>
@@ -508,6 +564,7 @@ useEffect(() => {
                 Yes
               </label>
               <label>
+          
                 <input
                   type="radio"
                   name="disease"
@@ -527,6 +584,8 @@ useEffect(() => {
         )}
 
         {/* Step 6 - Buy Page */}
+        
+
         {step === 6 && insured === "Myself" && (() => {
           
           return (
@@ -534,6 +593,7 @@ useEffect(() => {
               <button onClick={() => setStep(4)} className="back-btn">
                 ← Back
               </button>
+
 
               {product === "opd" && (
                 <>
@@ -568,9 +628,7 @@ useEffect(() => {
                         <p>Total Coverage: ₹10,000</p>
                         <p>Annual Premium: ₹2,499</p>
                         <button
-
                           onClick={(e) => handleSubmit(e)}>
-
                           Buy Now
                         </button>
                       </div>
@@ -642,13 +700,6 @@ useEffect(() => {
                     )}
 
 
-
-
-
-
-
-
-
                   </div>
                 </>
               )}
@@ -675,11 +726,8 @@ useEffect(() => {
                         <p>Annual Premium: ₹172</p>
                         <button
                           onClick={(e) => handleSubmit(e)}>
-
                           Buy Now
                         </button>
-
-
                       </div>
                     )}
 
@@ -688,11 +736,7 @@ useEffect(() => {
                         <p>Total Coverage:₹400000</p>
                         <p>Annual Premium:₹411</p>
                         <button
-
-
-
                           onClick={(e) => handleSubmit(e)}>
-
                           Buy Now
                         </button>
                       </div>
@@ -716,9 +760,7 @@ useEffect(() => {
                         <p>Total Coverage: ₹800000</p>
                         <p>Annual Premium: ₹700</p>
                         <button
-
                           onClick={(e) => handleSubmit(e)}>
-
                           Buy Now
                         </button>
                       </div>
@@ -736,25 +778,14 @@ useEffect(() => {
                       </div>
                     )}
 
-
                     {AccidentValue === "20lakhs" && (
                       <div className="plan-card">
                         <button>Get a Quote</button>
                       </div>
                     )}
-
-
-
-
-
                   </div>
                 </>
               )}
-
-
-
-
-
 
 
               {/* OPD Dropdown */}
@@ -839,6 +870,52 @@ useEffect(() => {
           );
         })()}
 
+
+
+
+
+
+{step === 7 && (insured === "Myself and my family" || insured === "Family") && (() => {
+  const totalMembers = getTotalFamilyMembers();
+  const opdValues = calculateOPDValues(OPDValue, totalMembers);
+  
+  return (
+    <div className="form-container">
+      <button onClick={() => setStep(4)} className="back-btn">
+        ← Back
+      </button>
+
+      {/* <p>Total Family Members: {totalMembers}</p> */}
+
+      <select value={OPDValue} onChange={(e) => setOPDValue(e.target.value)}>
+        <option value="">Select OPD Plan</option>
+        <option value="essential">Essential Care</option>
+        <option value="wellness">Wellness Shield</option>
+        <option value="consult">Consult + Care</option>
+        <option value="radiant">Radiant Health</option>
+        <option value="lifeline">LifeLine Plus</option>
+        <option value="evercare">EverCare Infinity</option>
+        <option value="platinum">Platinum Horizon</option>
+      </select>
+
+      {OPDValue && (
+        <div className="plans-grid">
+          <div className="plan-card">
+            <h4>{OPDValue.charAt(0).toUpperCase() + OPDValue.slice(1)}</h4>
+            <p>Total Coverage: ₹{opdValues.coverage.toLocaleString()}</p>
+            <p>Annual Premium: ₹{opdValues.premium.toLocaleString()}</p>
+            {/* <p className="plan-breakdown">
+              ({totalMembers} member{totalMembers > 1 ? 's' : ''} × Base Plan)
+            </p> */}
+            <button onClick={(e) => handleSubmit(e)}>
+              Buy Now
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+})()}
 
         {/* Step 6 - Buy Page */}
 
@@ -848,308 +925,182 @@ annual premium :- accordance to age and data:-
 //data wise:-
  */}
 
-         {step === 6 && insured === "Myself and my family" && (() => {
-          
-          return (
-            <div className="form-container">
-              <button onClick={() => setStep(4)} className="back-btn">
-                ← Back
-              </button>
+       
 
-              {product === "opd" && (
-                <>
-                  <select value={OPDValue} onChange={(e) => setOPDValue(e.target.value)}>
-                    <option value="">Select OPD Plan</option>
-                    <option value="essential">Essential Care</option>
-                    <option value="wellness">Wellness Shield</option>
-                    <option value="consult">Consult + Care</option>
-                     <option value="radiant">Radiant Health</option>
-                    <option value="lifeline">LifeLine Plus</option>
-                    <option value="evercare">EverCare Infinity</option>
-                    <option value="platinum">Platinum Horizon</option>
-                  </select>
-
-                  <div className="plans-grid">
-                    {OPDValue === "essential" && (
-                      <div className="plan-card">
-                        <h4>Essential Care</h4>
-                        <p>Total Coverage: ₹5,000</p>
-                        <p>Annual Premium: ₹1,399</p>
-                        <button
-                          onClick={(e) => handleSubmit(e)}>
-                          Buy Now
-                        </button>
-                      </div>
-                    )}
-
-                    {OPDValue === "wellness" && (
-                      <div className="plan-card">
-                        <h4>Wellness Shield</h4>
-                        <p>Total Coverage: ₹10,000</p>
-                        <p>Annual Premium: ₹2,499</p>
-                        <button
-
-                          onClick={(e) => handleSubmit(e)}>
-
-                          Buy Now
-                        </button>
-                      </div>
-                    )}
-
-                    {OPDValue === "consult" && (
-                      <div className="plan-card">
-                        <h4>Consult + Care</h4>
-                        <p>Total Coverage: ₹15,000</p>
-                        <p>Annual Premium: ₹3,799</p>
-                        <button
-                          onClick={(e) => handleSubmit(e)}>
-                          Buy Now
-                        </button>
-                      </div>
-                    )}
-
-
-                      {OPDValue === "radiant" && (
-                      <div className="plan-card">
-                        <h4>Radiant Health</h4>
-                        <p>Total Coverage: ₹23,000</p>
-                        <p>Annual Premium: ₹7,250</p>
-                        <button
-                          onClick={(e) => handleSubmit(e)}>
-                          Buy Now
-                        </button>
-                      </div>
-                    )}
-
-
-                    {OPDValue === "lifeline" && (
-                      <div className="plan-card">
-                        <h4>Lifeline Plus</h4>
-                        <p>Total Coverage: ₹35,000</p>
-                        <p>Annual Premium: ₹15,670</p>
-                        <button
-                          onClick={(e) => handleSubmit(e)}>
-                          Buy Now
-                        </button>
-                      </div>
-                    )}
-
-                     
-                    {OPDValue === "evercare" && (
-                      <div className="plan-card">
-                        <h4>Lifeline Plus</h4>
-                        <p>Total Coverage: ₹37,000</p>
-                        <p>Annual Premium: ₹17,170</p>
-                        <button
-                          onClick={(e) => handleSubmit(e)}>
-                          Buy Now
-                        </button>
-                      </div>
-                    )}
-
-
-                     {OPDValue === "platinum" && (
-                      <div className="plan-card">
-                        <h4>Lifeline Plus</h4>
-                        <p>Total Coverage: ₹50,000</p>
-                        <p>Annual Premium: ₹21,625</p>
-                        <button
-                          onClick={(e) => handleSubmit(e)}>
-                          Buy Now
-                        </button>
-                      </div>
-                    )}
-
-                  </div>
-                </>
-              )}
-
-
-
-              {product === "accident" && (
-                <>
-                  <select value={AccidentValue} onChange={(e) => setAccidentValue(e.target.value)}>
-                    <option value="">Select Accident Plan</option>
-                    <option value="2lakhs">200000</option>
-                    <option value="4lakhs">400000</option>
-                    <option value="6lakhs">600000</option>
-                    <option value="8lakhs">800000</option>
-                    <option value="10lakhs">1000000</option>
-                    <option value="20lakhs">2000000</option>
-                    <option value="25lakhs">2500000</option>
-                  </select>
-
-                  <div className="plans-grid">
-                    {AccidentValue === "2lakhs" && (
-                      <div className="plan-card">
-                        <p>Total Coverage: ₹200000</p>
-                        <p>Annual Premium: ₹172</p>
-                        <button
-                          onClick={(e) => handleSubmit(e)}>
-
-                          Buy Now
-                        </button>
-
-
-                      </div>
-                    )}
-
-                    {AccidentValue === "4lakhs" && (
-                      <div className="plan-card">
-                        <p>Total Coverage:₹400000</p>
-                        <p>Annual Premium:₹411</p>
-                        <button
-
-
-
-                          onClick={(e) => handleSubmit(e)}>
-
-                          Buy Now
-                        </button>
-                      </div>
-                    )}
-
-                    {AccidentValue === "6lakhs" && (
-                      <div className="plan-card">
-                        <p>Total Coverage: ₹600000</p>
-                        <p>Annual Premium: ₹521</p>
-                        <button
-
-                          onClick={(e) => handleSubmit(e)}>
-
-                          Buy Now
-                        </button>
-                      </div>
-                    )}
-
-                    {AccidentValue === "8lakhs" && (
-                      <div className="plan-card">
-                        <p>Total Coverage: ₹800000</p>
-                        <p>Annual Premium: ₹700</p>
-                        <button
-
-                          onClick={(e) => handleSubmit(e)}>
-
-                          Buy Now
-                        </button>
-                      </div>
-                    )}
-
-
-                    {AccidentValue === "10lakhs" && (
-                      <div className="plan-card">
-                        <p>Total Coverage: ₹1000000</p>
-                        <p>Annual Premium: ₹1000</p>
-                        <button
-
-                          onClick={(e) => handleSubmit(e)}>
-
-                          Buy Now
-                        </button>
-                      </div>
-                    )}
-
-
-                    {AccidentValue === "20lakhs" && (
-                      <div className="plan-card">
-                        <button>Get a Quote</button>
-                      </div>
-                    )}
-                  </div>
-                </>
-              )}
-
-              {/* OPD Dropdown */}
-              {["opd-ipd", "opd-ipd-accident"].includes(product) && (
-                <select value={OPDValue} onChange={(e) => setOPDValue(e.target.value)}>
-                  <option value="">Select OPD Value</option>
-                  <option value="5000">5,000</option>
-                </select>
-              )}
-
-              {/* IPD Dropdown */}
-              {["opd-ipd", "opd-ipd-accident", "ipd-accident"].includes(product) && (
-                <select value={IPDValue} onChange={(e) => setIPDValue(e.target.value)}>
-                  <option value="">Select IPD Value</option>
-                  <option value="100000">1,00,000 </option>
-                  <option value="150000">1,50,000 </option>
-                  <option value="200000">2,00,000 </option>
-                  <option value="250000">2,50,000 </option>
-                  <option value="300000">3,00,000 </option>
-                  <option value="350000">3,50,000 </option>
-                  <option value="400000">4,00,000 </option>
-                  <option value="450000">4,50,000 </option>
-                  <option value="500000">5,00,000 </option>
-                  {/* <option value="1000000">10,00,000 </option> */}
-                </select>
-              )}
-
-              {/* Accident Dropdown */}
-
-
-              {["opd-ipd-accident", "ipd-accident"].includes(product) && (
-                <select
-                  value={AccidentValue}
-                  onChange={(e) => setAccidentValue(e.target.value)}
-                >
-                  <option value="">Select Accident Value</option>
-                  <option value="200000">2,00,000 </option>
-                  <option value="400000">4,00,000 </option>
-                  <option value="600000">6,00,000 </option>
-                  <option value="800000">8,00,000 </option>
-                  <option value="1000000">10,00,000 </option>
-                </select>
-              )}
-
-
-
-
-              <div className="plans-grid">
-                {product !== "opd" && product !== "accident" && (
-                  <div className="plan-card">
-                    <h4>Medi Coverage</h4>
-                    <p>
-                      Total Coverage: ₹
-                      {totalSumInsured
-                        ? totalSumInsured.toLocaleString()
-                        : "Select values to calculate"}
-                    </p>
-
-                    <p>
-                      Annual Premium:{" "}
-                      {premium
-                        ? `₹${premium.toLocaleString()}`
-                        : "Select values to calculate"}
-                    </p>
-
-                    {/* ---------------------------testing----------------------- */}
-                    <button
-                      disabled={!premium}
-                      // onClick={() => alert("Proceed to Payment")}
-                      // onClick={(handleSubmit)}
-
-
-                      onClick={(e) => handleSubmit(e)}>
-
-
-                      Buy Now
-                    </button>
-                  </div>
-                )}
-              </div>
-            </div>
-          );
-        })()}
-
-
-
-        
-   
-
+{/* if prexisting disease is no then we can show conditions: */}
 
         {/* Step 3 - Proposal */}
-        {step === 3 && insured === "Myself" && preExisting === "no" && (
-          <div className="form-container">
+
+
+
+     {/* {step === 3 && insured === "Myself" && preExisting === "yes" && (
+      <div className="form-container">
+        <button onClick={() => setStep(2)} className="back-btn">
+          ← Back  
+          </button>
+          </div>
+
+     )} */}
+
+
+
+
+     {step === 3 && (insured === "Myself" || insured === "Myself and my family" ||insured ==="Family")  && preExisting === "yes" && (
+  <div className="form-container">
+    <button onClick={() => setStep(2)} className="back-btn">
+      ← Back
+    </button>
+
+    <h3>Have you ever been diagnosed or treated for any of the following conditions?</h3>
+    <p>(Select all that apply)</p>
+
+    <div className="checkbox-group">
+      {[
+        "Diabetes (Type 1 / Type 2)",
+        "Hypertension / High Blood Pressure",
+        "Heart Disease or Heart-Related Problems",
+        "Asthma / Chronic Respiratory Disorders",
+        "Thyroid Disorders (Hyperthyroidism / Hypothyroidism)",
+        "Kidney Disease / Renal Disorders",
+        "Liver Disease / Hepatitis / Cirrhosis",
+        "Cancer / Tumour / Growth",
+        "Neurological Disorders (Epilepsy, Parkinson’s, etc.)",
+        "Mental Health Conditions (Depression, Anxiety, Bipolar, etc.)",
+        "HIV / AIDS or any Immunodeficiency Disorder",
+        "Arthritis / Joint Disorders",
+        "Gastrointestinal Disorders (Ulcer, IBS, GERD, etc.)",
+        "Any Genetic / Congenital Disease",
+      ].map((condition, index) => (
+        <label key={index}>
+          <input
+            type="checkbox"
+            value={condition}
+            checked={selectedConditions.includes(condition)}
+            onChange={(e) => handleConditionChange(e)}
+          />
+          {condition}
+        </label>
+      ))}
+
+      {/* "Others" option */}
+      <label>
+        <input
+          type="checkbox"
+          value="Others"
+          checked={selectedConditions.includes("Others")}
+          onChange={(e) => handleConditionChange(e)}
+        />
+        Others (please specify):
+        {selectedConditions.includes("Others") && (
+          <input
+            type="text"
+            placeholder="Please specify"
+            value={otherCondition}
+            onChange={(e) => setOtherCondition(e.target.value)}
+          />
+        )}
+      </label>
+    </div>
+
+    <br />
+
+    <h3>Have you undergone any surgery, operation, or hospitalization in the past 5 years?</h3>
+    <label>
+      <input
+        type="radio"
+        name="surgery"
+        value="yes"
+        checked={surgery === "yes"}
+        onChange={() => setSurgery("yes")}
+      />{" "}
+      Yes
+    </label>
+    <label>
+      <input
+        type="radio"
+        name="surgery"
+        value="no"
+        checked={surgery === "no"}
+        onChange={() => setSurgery("no")}
+      />{" "}
+      No
+    </label>
+    {surgery === "yes" && (
+      <input
+        type="text"
+        placeholder="Mention details"
+        value={surgeryDetails}
+        onChange={(e) => setSurgeryDetails(e.target.value)}
+      />
+    )}
+
+    <br />
+
+    <h3>Are you currently taking any regular or long-term medication prescribed by a doctor?</h3>
+    <label>
+      <input
+        type="radio"
+        name="medication"
+        value="yes"
+        checked={medication === "yes"}
+        onChange={() => setMedication("yes")}
+      />{" "}
+      Yes
+    </label>
+    <label>
+      <input
+        type="radio"
+        name="medication"
+        value="no"
+        checked={medication === "no"}
+        onChange={() => setMedication("no")}
+      />{" "}
+      No
+    </label>
+    {medication === "yes" && (
+      <input
+        type="text"
+        placeholder="Mention medicine names"
+        value={medicationDetails}
+        onChange={(e) => setMedicationDetails(e.target.value)}
+      />
+    )}
+
+    <br />
+
+    <h3>Have you ever been advised long-term follow-up or continuous medical supervision?</h3>
+    <label>
+      <input
+        type="radio"
+        name="supervision"
+        value="yes"
+        checked={supervision === "yes"}
+        onChange={() => setSupervision("yes")}
+      />{" "}
+      Yes
+    </label>
+    <label>
+      <input
+        type="radio"
+        name="supervision"
+        value="no"
+        checked={supervision === "no"}
+        onChange={() => setSupervision("no")}
+      />{" "}
+      No
+    </label>
+
+    <br />
+    <button onClick={() => setStep(4)} className="submit-btn">
+              Next →
+            </button>
+  </div>
+)}
+
+         
+     
+        {step === 3 &&  insured === "Myself"  && preExisting === "no" && (
+          <div className="form-container"> 
             <button onClick={() => setStep(2)} className="back-btn">
               ← Back
             </button>
@@ -1224,11 +1175,12 @@ annual premium :- accordance to age and data:-
 
 
 
-        {/* Step 3 – Proposal Details (Family flow) */}
         
-        {step === 3 && insured === "Myself and my family" && preExisting === "no" && (
-          <div className="form-container">
-            <button onClick={() => setStep(2)} className="back-btn">← Back</button>
+        {step === 4 && (insured === "Myself" || insured ==="Myself and my family" ||insured ==="Family") && preExisting === "yes" && (
+          <div className="form-container"> 
+            <button onClick={() => setStep(2)} className="back-btn">
+              ← Back
+            </button>
             <h3>Proposer Details</h3>
             <input
               type="text"
@@ -1246,8 +1198,6 @@ annual premium :- accordance to age and data:-
                 handleChange("proposer", "lastName", e.target.value)
               }
             />
-
-
 
             <label>I am</label>
             <div className="radio-group">
@@ -1292,17 +1242,125 @@ annual premium :- accordance to age and data:-
               onChange={(e) => setSelectedFile(e.target.files[0])}
             />
 
+
+            <button onClick={() => setStep(5)} className="submit-btn">
+              Next →
+            </button>
+          </div>
+        )}
+
+
+ {step ===5 && (insured === "Myself" ||insured ==="Myself and my family" ||insured ==="Family") && preExisting === "yes" && (
+          <div className="form-container">
+            <button onClick={() => setStep(3)} className="back-btn">
+              ← Back
+            </button>
+            <h3>Self Details</h3>
+            <input
+              type="text"
+              placeholder="Height (cm)"
+              value={formData.self.height}
+              onChange={(e) => handleChange("self", "height", e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Weight (kg)"
+              value={formData.self.weight}
+              onChange={(e) => handleChange("self", "weight", e.target.value)}
+            />
+            {/* <button onClick={() => setStep(4)} className="back-btn">
+              ← Back
+            </button> */}
+            <button onClick={() => setStep(6)} className="submit-btn">
+              Next →
+            </button>
+          </div>
+        )}
+
+
+
+
+
+
+
+
+        {/* Step 3 – Proposal Details (Family flow) */}
+        
+        {step === 3 && insured === "Myself and my family" && preExisting === "no" && (
+          <div className="form-container">
+            <button onClick={() => setStep(2)} className="back-btn">← Back</button>
+            <h3>Proposer Details</h3>
+            <input
+              type="text"
+              placeholder="First Name"
+              value={formData.proposer.firstName}
+              onChange={(e) =>
+                handleChange("proposer", "firstName", e.target.value)
+              }
+            />
+            <input
+              type="text"
+              placeholder="Last Name"
+              value={formData.proposer.lastName}
+              onChange={(e) =>
+                handleChange("proposer", "lastName", e.target.value)
+              }
+            />
+
+
+
+            <label>I am</label>
+            <div className="radio-group">
+              <label>
+                <input type="radio" name="gender" /> Male
+              </label>
+              <label>
+                <input type="radio" name="gender" /> Female
+              </label>
+              <label>
+                <input type="radio" name="gender" /> Others
+              </label>
+            </div>
+
+    
+            <input
+              type="date"
+              placeholder="Enter Date of Birth"
+              value={formData.proposer.dob}
+              onChange={(e) => handleChange("proposer", "dob", e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Mobile Number"
+              value={formData.proposer.mobile}
+              onChange={(e) => handleChange("proposer", "mobile", e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Occupation"
+              value={formData.proposer.occupation}
+              onChange={(e) =>
+                handleChange("proposer", "occupation", e.target.value)
+              }
+            />
+            <label>Upload Documents</label>
+            <input
+              type="file"
+              onChange={(e) => setSelectedFile(e.target.files[0])}
+            />
+
             <button onClick={() => setStep(4)} className="submit-btn">Next →</button>
           </div>
         )}
 
         {/* Step 4 – Dependants */}
-        {step === 4 && insured === "Myself and my family" && preExisting === "no" && (
+        
+
+        {step === 6 && (insured === "Myself and my family" || insured ==="Family") && (
           <div className="form-container">
             <button onClick={() => setStep(3)} className="back-btn">← Back</button>
             <h3>Dependant Details</h3>
 
-          
             {dependants.map((dep, index) => (
               <div key={index} className="dependant-card">
                 <input
@@ -1337,20 +1395,13 @@ annual premium :- accordance to age and data:-
               </div>
             ))}
 
-            <button type="button" onClick={addDependant}>+ Add Dependant</button>
-            <button onClick={() => setStep(6)} className="submit-btn">Next →</button>
+            <button type="button"   onClick={addDependant}>+ Add Dependant</button>
+            <button onClick={() => setStep(7)} className="submit-btn">Next →</button>
           </div>
         )}
 
 
-
-        
-
         {/* Step 5 – Buy */}
-
-
-
-
         {/* Step 4 - Self Details */}
         {step === 4 && insured === "Myself" && preExisting === "no" && (
           <div className="form-container">
