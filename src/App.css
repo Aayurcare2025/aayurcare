@@ -1006,6 +1006,7 @@ color: #007bff;
   .form-container label {
     font-size: 15px;
     text-align: left;
+
   }
 
   .form-container input,
@@ -1340,6 +1341,10 @@ color: #007bff;
     border-radius: 6px;
     border: 1px solid #ccc;
   }
+  .form-container input::placeholder {
+    color: black;
+  }
+
 
   .radio-group {
     display: flex;
