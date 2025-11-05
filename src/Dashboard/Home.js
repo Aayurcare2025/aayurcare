@@ -33,6 +33,7 @@ import test8 from "../Images/atma_yoga.jpeg"
 import royal from "../Images/R6.png"
 import test9 from "../Images/clove.png"
 import sparsh from "../Images/sparsh.png"
+import pillo from "../Images/pillo.png"
 
 
 // import alllogo from "../Images/alllogo.jpg"
@@ -177,6 +178,7 @@ function Home() {
     <img src={test9} alt="partner10"/>
     {/* <img src={test10} alt="partner11"/> */}
     <img src={sparsh} alt="partner12"/>
+    <img src={pillo}alt="partner13"/>
 
 
   </div>

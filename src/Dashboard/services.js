@@ -796,6 +796,8 @@ useEffect(() => {
                 </select>
               )}
 
+
+
               {/* IPD Dropdown */}
               {["opd-ipd", "opd-ipd-accident", "ipd-accident"].includes(product) && (
                 <select value={IPDValue} onChange={(e) => setIPDValue(e.target.value)}>
@@ -970,6 +972,9 @@ annual premium :- accordance to age and data:-
         "Arthritis / Joint Disorders",
         "Gastrointestinal Disorders (Ulcer, IBS, GERD, etc.)",
         "Any Genetic / Congenital Disease",
+
+
+        
       ].map((condition, index) => (
         <label key={index}>
           <input
@@ -981,6 +986,9 @@ annual premium :- accordance to age and data:-
           {condition}
         </label>
       ))}
+      
+      
+
 
       {/* "Others" option */}
       <label>
@@ -1321,6 +1329,7 @@ annual premium :- accordance to age and data:-
                 <input type="radio" name="gender" /> Others
               </label>
             </div>
+
 
     
             <input
