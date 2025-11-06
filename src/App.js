@@ -183,7 +183,6 @@ import RefundAndCancellation from "./Dashboard/RefundPolicy";
 import ProtectedRoute from "./Dashboard/ProtectedRoute";
 // import CorporateOpd from  "./Dashboard/CorporateOpd"
 import PrivacyPolicy from "./Dashboard/Privacypolicy";
-
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -221,6 +220,10 @@ function App() {
   )}
 </li>
         <li onClick={() => navigate("/claims")}>OPD Claims</li>
+       {/* <li onClick={() => navigate("https://link.mypillo.in/kckszz")}>Medicine Delivery</li> */}
+       <li onClick={() => window.location.href = "https://link.mypillo.in/kckszz"}>
+  Medicine Delivery
+</li>
         <li onClick={() => navigate("/contact")}>Contact</li>
         {!isLoggedIn ? (
           <>
@@ -269,6 +272,7 @@ function App() {
       <Route path="/refundandcancellation" element={<RefundAndCancellation />} />
       {/* <Route path="/disclaimer" element={<Disclaimer />} />   */}
       <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>}/>
+       <Route path="https://link.mypillo.in/kckszz"  />
       </Routes>
 
       

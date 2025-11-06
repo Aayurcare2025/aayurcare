@@ -34,9 +34,8 @@ import royal from "../Images/R6.png"
 import test9 from "../Images/clove.png"
 import sparsh from "../Images/sparsh.png"
 import pillo from "../Images/pillo.png"
-
-
 // import alllogo from "../Images/alllogo.jpg"
+
 
 function Home() {
   const navigate=useNavigate();
@@ -118,7 +117,7 @@ function Home() {
           </div>
         </div>
       </section>
-
+       
       {/* Why Thousands Trust Us */}
       <section className="trust-section full-page">
         <h2>Why Thousands Trust Us</h2>
