@@ -221,9 +221,16 @@ function App() {
 </li>
         <li onClick={() => navigate("/claims")}>OPD Claims</li>
        {/* <li onClick={() => navigate("https://link.mypillo.in/kckszz")}>Medicine Delivery</li> */}
-       <li onClick={() => window.location.href = "https://link.mypillo.in/kckszz"}>
+       {/* <li onClick={() => window.location.href = "https://link.mypillo.in/kckszz"}>
+  Medicine Delivery
+</li> */}
+<li 
+  onClick={() => window.location.href = "https://link.mypillo.in/kckszz"} 
+  style={{ color: "blue", textDecoration: "underline", cursor: "pointer" }}
+>
   Medicine Delivery
 </li>
+
         <li onClick={() => navigate("/contact")}>Contact</li>
         {!isLoggedIn ? (
           <>
