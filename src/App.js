@@ -226,7 +226,7 @@ function App() {
 </li> */}
 <li 
   onClick={() => window.location.href = "https://link.mypillo.in/kckszz"} 
-  style={{ color: "blue", textDecoration: "underline", cursor: "pointer" }}
+  style={{ cursor: "pointer" }}
 >
   Medicine Delivery
 </li>
