@@ -35,6 +35,8 @@ import test9 from "../Images/clove.png"
 import sparsh from "../Images/sparsh.png"
 import pillo from "../Images/pillo.png"
 // import alllogo from "../Images/alllogo.jpg"
+import as from "../Images/Aster Logo.png"
+import ep from "../Images/Epitome.png"
 
 
 function Home() {
@@ -178,6 +180,9 @@ function Home() {
     {/* <img src={test10} alt="partner11"/> */}
     <img src={sparsh} alt="partner12"/>
     <img src={pillo}alt="partner13"/>
+    <img src={ep} alt="partner14"/>
+    <img src={as} alt="partner15"/>
+
 
 
   </div>

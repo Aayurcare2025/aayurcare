@@ -1691,7 +1691,7 @@ color: #007bff;
 
 .channel-page
 {
-  height: 50%;
+  height: 30%;
 }
 /* .channel-partners-section {
   margin-top: 15px;
@@ -1701,7 +1701,7 @@ color: #007bff;
 } */
 
 .channel-partners-section {
-  max-width: 1000px; /* limit the width of the section */
+  max-width: 2000px; /* limit the width of the section */
   margin: 0 auto; /* center it */
   padding: 20px;
   text-align: center;

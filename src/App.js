@@ -197,7 +197,7 @@ function App() {
          <img src={Aayurcareicon} alt="Aayur Care" />  </li>
         <li onClick={() => navigate("/")}>Home</li>
         <li onClick={() => navigate("/about")}>About</li>
-        {/* <li className="dropdown">
+          {/* <li className="dropdown">
           Services ▾
           <ul className="dropdown-menu">
             <li onClick={() => navigate("/services/individual")}>Individual</li>
