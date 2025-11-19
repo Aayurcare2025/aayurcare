@@ -250,20 +250,30 @@ function App() {
     path="/services/:type"
     // element={<Services/>}
     element={
-       <ProtectedRoute isLoggedIn={isLoggedIn}>
+      //  <ProtectedRoute isLoggedIn={isLoggedIn}>
         <Services />
-      </ProtectedRoute>
+      // </ProtectedRoute>
     }
-    // element={
-    //   <Services />  
-    // }
+
+  />
+
+
+  <Route
+    path="/services/:type"
+    // element={<Services/>}
+    element={
+      
+        <Services />
+    
+    }
+
   />
     <Route
     path="/claims"
     element={
-      <ProtectedRoute isLoggedIn={isLoggedIn}>
+      // <ProtectedRoute isLoggedIn={isLoggedIn}>
         <Claims />
-       </ProtectedRoute>
+      //  </ProtectedRoute>
     }
   />
         <Route path="/contact" element={<Contact />} />
