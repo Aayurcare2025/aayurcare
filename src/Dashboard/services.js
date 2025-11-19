@@ -619,6 +619,8 @@ useEffect(() => {
                           onClick={(e) => handleSubmit(e)}>
                           Buy Now
                         </button>
+
+                        
                       </div>
                     )}
  
@@ -1168,11 +1170,11 @@ annual premium :- accordance to age and data:-
 
 
 
-            <label>Upload Documents</label>
+            {/* <label>Upload Documents</label>
             <input
               type="file"
               onChange={(e) => setSelectedFile(e.target.files[0])}
-            />
+            /> */}
 
 
             <button onClick={() => setStep(4)} className="submit-btn">

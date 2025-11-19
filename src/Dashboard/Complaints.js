@@ -10,6 +10,10 @@ function Complaint() {
     if (complaint.trim() === "") return;
 
     setSubmitted(true);
+
+
+
+    
   };
 
   return (
