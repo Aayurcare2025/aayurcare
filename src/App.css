@@ -111,7 +111,7 @@
 
 /* Who We Are */
 .who-section {
-  background: #181e52;
+  background: white;
    /* background-image: url('Images/bk.jpg'); */
  text-align: center;
   padding: 20px 0px; /* increased top padding to move it up slightly */
@@ -127,7 +127,7 @@
 .who-section h1 {
   font-size: 3.2rem;
   margin-bottom: 25px;
-  color: white;
+  color:black;
 }
 .who-section h2{
   color:white;
@@ -136,21 +136,21 @@
 .who-section p {
   font-size: 1.3rem;
   line-height: 1.9;
-  color:white;
+  color:black;
 }
 
 /* Plans Section */
 .plans-section {
   /* background: #f5f5f5; */
    /* background: #003366; */
-    background: #181e52;
+    background:white;
   text-align: center;
     padding: 1px 0px;
 }
 .plans-section h2 {
   font-size: 2.5rem;
   margin-bottom: 40px;
-  color: white;
+  color:black;
 }
 .plans-grid {
   display: grid;
@@ -185,7 +185,7 @@
 .trust-section {
   /* background: #f9f9f9; */
   /* background: #003366; */
-   background: #181e52;
+   background: white;
   text-align: center;
   padding: 60px 20px;
 }
@@ -193,7 +193,7 @@
 .trust-section h2 {
   font-size: 2.5rem;
   margin-bottom: 40px;
-  color:white;
+  color:black;
 }
 
 .trust-grid {
@@ -247,7 +247,7 @@ color: #007bff;
 /* Steps */
 .steps-section {
  /* background: #003366; */
-  background: #181e52;
+  background: white;
   /* background: white; */
   text-align: center;
   padding: 60px 20px;
@@ -256,7 +256,7 @@ color: #007bff;
 .steps-section h2 {
   font-size: 2.5rem;
   margin-bottom: 40px;
-  color: white;
+  color: black;
 }
 
 .steps-grid {
@@ -315,7 +315,7 @@ color: #007bff;
 .testimonials-section {
   /* background:#f9f9f9 ; */
    /* background: #003366; */
-    background: #181e52;
+    background: white;
   text-align: center;
   padding: 0px 20px;
 }
@@ -323,7 +323,7 @@ color: #007bff;
   font-size: 2.5rem;
   margin-bottom: 40px;
   /* color: #003366; */
-  color:white;
+  color:black;
 }
 
 
@@ -350,8 +350,8 @@ color: #007bff;
 
 /* FAQ Section */
 .faq-section {
-  background: #181e52;/* Blue background */
-  color: white; /* White text */
+  background: white;/* Blue background */
+  color:black; /* White text */
   padding: 60px 20px;
 }
 
@@ -1935,7 +1935,7 @@ color: #007bff;
 .channel-partners-section h2 {
   font-size:40px;
   text-align: center;
-  color:#181e52
+  color:black
 }
 
 /* .channel-partners-section p{
