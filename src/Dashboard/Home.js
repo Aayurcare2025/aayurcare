@@ -1,7 +1,7 @@
 
 import React from "react";
 import "../App.css";
-import Family from "../Images/home-main.jpg";
+// import Family from "../Images/home-main.jpg";
 // import Signup from "./SignUp"
 // import D from "../Images/D.pdf";
 // import RC from "../Images/RC.pdf";
@@ -37,22 +37,45 @@ import pillo from "../Images/pillo.png"
 // import alllogo from "../Images/alllogo.jpg"
 import as from "../Images/Aster Logo.png"
 import ep from "../Images/Epitome.png"
-
-
+import home from "../Images/insuranceimg.png"
 function Home() {
   const navigate=useNavigate();
 
   return (
     <div className="main-page">
       {/* Hero Section */}
-      <section className="hero-section full-page">
+  
+    <div className="savm-container">
       
-        <img src={Family} alt="Family" className="hero-image" />
-        <button  onClick={()=>navigate("/signup")} class="overlay-button">Enroll Now</button>
+ <section className="hero-section">
+        <div className="hero-content">
+          <div className="hero-text">
+               <h1 className="hero-title">
+              Smart Medical Reimbursement  <br />
+              <span className="highlight">Plans </span>
+              <br />
+              For everyone
+            </h1>
+            <p className="hero-subtitle">
+              Get covered for your everyday healthcare needs.
+            </p>
+            <button 
+              className="cta-button" 
+              onClick={() => navigate("/signup")}
+            >
+              Click Here To enroll
+            </button>
+          </div>
+
+          <div className="hero-image">
+            <div className="image-wrapper">
+              <img src={home} alt="Hero" />  
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Who We Are */}
-      
+    </div>
       <section className="who-section full-page">
         <div className="who-content">
           <h1>Who We Are</h1>
