@@ -176,7 +176,7 @@
 .plan-box h3 {
   font-size: 1.5rem;
   margin-bottom: 15px;
-  color: #007bff;
+  color: #0047AB;
 }
 .plan-box p {
   font-size: 1rem;
@@ -219,7 +219,7 @@
   transition: transform 0.3s ease;
   font-size: 1.1rem;
   font-weight: 500;
-color: #007bff;
+color: #0047AB;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -234,7 +234,7 @@ color: #007bff;
 .back-btn {
   margin-top: 20px;
   padding: 10px 20px;
-  background: #007bff;
+  background: #0047AB;
   color: white;
   border: none;
   border-radius: 6px;
@@ -242,7 +242,7 @@ color: #007bff;
 }
 
 .back-btn:hover {
-  background: #0056b3;
+  background: #0047AB;
 }
 
 
@@ -289,7 +289,7 @@ color: #007bff;
 }
 
 .step-box h3 {
-  color: #007bff;
+  color: #0047AB;
   margin-bottom: 10px;
   font-size: 1.4rem;
 }
