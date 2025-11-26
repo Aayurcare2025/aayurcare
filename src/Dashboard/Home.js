@@ -51,8 +51,8 @@ function Home() {
         <div className="hero-content">
           <div className="hero-text">
                <h1 className="hero-title">
-              Smart Plan Medical Reimbursement  <br />
-              <span className="highlight">OPD Plans </span>
+              Smart OPD Plan Medical Reimbursement  <br />
+              <span className="highlight"> Plans </span>
               <br />
               For everyone
             </h1>
