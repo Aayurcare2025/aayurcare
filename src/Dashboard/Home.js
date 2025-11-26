@@ -108,7 +108,7 @@ function Home() {
     </div>
 
     <div className="network-item">
-      <h2>87%</h2>
+      <h2 >87%</h2>
       <h3>OPD Claim Settlement</h3>
     </div>
 
