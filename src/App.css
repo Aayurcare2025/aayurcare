@@ -1002,7 +1002,7 @@ color: #0047AB;
 
 
   .signup {
-    float:right;  
+    /* float:right;   */
     display: flex;
     flex-direction: column;
 
@@ -1012,10 +1012,12 @@ color: #0047AB;
     /* background-image:url("Images/signup.png"); */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 0px 10px 20px; 
+  margin-left:160px;
   }
 
   .signup h1 {
     font-size: 2rem;
+    margin-left:140px;
     margin-bottom: 20px;
     color: #181e52;
     font-weight: 600;
