@@ -313,7 +313,7 @@ import WebsiteTerms from "./Dashboard/webisteterms";
 import AayurcareTermsAndCondition from "./Dashboard/Aayurcareterms";    
 import RefundAndCancellation from "./Dashboard/RefundPolicy";     
 import PrivacyPolicy from "./Dashboard/Privacypolicy";
-
+import CorporateLogin from "./Dashboard/CorporateLogin";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -374,6 +374,8 @@ function App() {
         <li onClick={() => { navigate("/contact"); setMenuOpen(false); }}>
           Contact
         </li>
+
+        <li onClick={()=>{navigate("CorporateLogin"); setMenuOpen(false); }}>CorporateLogin</li>
         
         {!isLoggedIn ? (
           <>
@@ -404,6 +406,8 @@ function App() {
         <Route path="/aayurcaretermsandcondition" element={<AayurcareTermsAndCondition />} />
         <Route path="/refundandcancellation" element={<RefundAndCancellation />} />
         <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+        <Route path="/CorporateLogin" element={<CorporateLogin setIsLoggedIn={setIsLoggedIn} />} />
+
       </Routes>
     </div>
   );

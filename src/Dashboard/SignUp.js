@@ -11,6 +11,7 @@ function SignUp({ setPage }) {
     const [confirmPassword, setConfirmPassword] = useState("");
     // const[phonenumber,setPhonenumber]=useState("");
       const navigate = useNavigate();
+
     const handleSignup = async (e) => {
         e.preventDefault();
         
@@ -20,7 +21,13 @@ function SignUp({ setPage }) {
             alert("Passwords do not match!");
             return;
         }
-       
+
+
+        //data has been sent to backend:
+
+
+
+        
         
         try {
             const response = await fetch("http://localhost:2000/user/register", {
@@ -32,7 +39,7 @@ function SignUp({ setPage }) {
                     // mobile,
                     username,
                     password,
-                     confirmPassword, 
+                    confirmPassword, 
                 }),
             });
 
@@ -104,6 +111,10 @@ function SignUp({ setPage }) {
                 onChange={(e) => setPhonenumber(e.target.value)}
                 required
                 /> */}
+
+
+
+                
 
                
                
