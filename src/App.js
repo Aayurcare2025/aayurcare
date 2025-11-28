@@ -297,6 +297,8 @@
 //   );
 // }
 // export default App;
+
+
 import { Routes, Route, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import "./App.css";
@@ -375,6 +377,8 @@ function App() {
           Contact
         </li>
 
+
+
         <li onClick={()=>{navigate("CorporateLogin"); setMenuOpen(false); }}>Corporate Login</li>
         
         {!isLoggedIn ? (
@@ -396,8 +400,20 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/services/:type" element={<Services />} />
-        <Route path="/claims" element={<Claims />} />
+        <Route path="/services/:type" element={
+          <ProtectedRoute isLoggedIn={isLoggedIn}>
+          <Services />
+          </ProtectedRoute>
+          } />
+          <Route path="/services/:type" element={ 
+          <Services />} />
+
+        <Route path="/claims" element={
+          <ProtectedRoute isLoggedIn={isLoggedIn}>
+          <Claims />
+          </ProtectedRoute>
+          }
+           />
         <Route path="/contact" element={<Contact />} />
         <Route path="/groupmedical" element={<GroupMedical />} />
         <Route path="/signup" element={<SignUp setPage={setPage} />} />
