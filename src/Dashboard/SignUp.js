@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
+import signupImage from '../Images/signup.png'
+
 
 function SignUp({ setPage }) {
     const [fullName, setFullName] = useState("");
@@ -23,14 +25,10 @@ function SignUp({ setPage }) {
         }
 
 
-        //data has been sent to backend:
-
-
-
         
         
         try {
-            const response = await fetch("http://localhost:2000/user/register", {
+            const response = await fetch("https://api.aayurcare.com/user/register", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -75,13 +73,7 @@ function SignUp({ setPage }) {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                 />
-                {/* <input
-                    type="tel"
-                    placeholder="Mobile Number"
-                    value={mobile}
-                    onChange={(e) => setMobile(e.target.value)}
-                    required
-                /> */}
+               
                 <input
                     type="text"
                     placeholder="Username"
@@ -103,23 +95,13 @@ function SignUp({ setPage }) {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
                 />
-
-
-                {/* <input type="tel"
-                placeholder="Phone number"
-                value={phonenumber}
-                onChange={(e) => setPhonenumber(e.target.value)}
-                required
-                /> */}
-
-
-
-                
-
-               
                
                 <button type="submit">Sign Up</button>
             </form>
+
+<div className="signup-right">
+    <img src={signupImage} alt="img"></img>
+      </div>
         </section>
     );
 }
