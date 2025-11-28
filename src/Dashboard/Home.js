@@ -32,12 +32,13 @@ import test7 from "../Images/red_health_1.png"
 import test8 from "../Images/atma_yoga.jpeg"
 import royal from "../Images/R6.png"
 import test9 from "../Images/clove.png"
-import sparsh from "../Images/sparsh.png"
+import sparsh from "../Images/trial.png"
 import pillo from "../Images/pillo.png"
 // import alllogo from "../Images/alllogo.jpg"
 import as from "../Images/Aster Logo.png"
 import ep from "../Images/Epitome.png"
-import home from "../Images/insuranceimg.png"
+// import home from "../Images/insuranceimg.png"
+import splash from "../Images/trial5.png"
 function Home() {
   const navigate=useNavigate();
 
@@ -69,7 +70,7 @@ function Home() {
 
           <div className="hero-image">
             <div className="image-wrapper">
-              <img src={home} alt="Hero" />  
+              <img src={splash} alt="Hero" />  
             </div>
           </div>
         </div>
