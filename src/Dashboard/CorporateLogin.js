@@ -118,7 +118,7 @@ export default function CorporateLogin() {
               <CheckCircle2 style={{ width: '24px', height: '24px', flexShrink: 0, marginTop: '4px', color: '#86efac' }} />
               <div>
                 <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '4px' }}>
-                  Track Reimbursements Instantly
+                  Track Reimbursements Instantly.
                 </h3>
               </div>
             </div>
@@ -127,7 +127,7 @@ export default function CorporateLogin() {
               <CheckCircle2 style={{ width: '24px', height: '24px', flexShrink: 0, marginTop: '4px', color: '#86efac' }} />
               <div>
                 <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '4px' }}>
-                  Simplifying OPD Reimbursements for Corporates
+                  Simplifying OPD Reimbursements for Corporates.
                 </h3>
               </div>
             </div>
@@ -145,7 +145,7 @@ export default function CorporateLogin() {
               <CheckCircle2 style={{ width: '24px', height: '24px', flexShrink: 0, marginTop: '4px', color: '#86efac' }} />
               <div>
                 <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '4px' }}>
-            Transparent, Secure, Efficient
+            Transparent, Secure, Efficient.
                 </h3>
               </div>
             </div>
