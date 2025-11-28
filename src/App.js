@@ -375,7 +375,7 @@ function App() {
           Contact
         </li>
 
-        <li onClick={()=>{navigate("CorporateLogin"); setMenuOpen(false); }}>CorporateLogin</li>
+        <li onClick={()=>{navigate("CorporateLogin"); setMenuOpen(false); }}>Corporate Login</li>
         
         {!isLoggedIn ? (
           <>

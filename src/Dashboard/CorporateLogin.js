@@ -109,7 +109,7 @@ export default function CorporateLogin() {
             opacity: 0.9,
             lineHeight: '1.6'
           }}>
-            Secure access to your corporate health benefits platform
+            Secure Access to your Corporate Health Benefits Platform
           </p>
 
           {/* Features */}
@@ -127,7 +127,7 @@ export default function CorporateLogin() {
               <CheckCircle2 style={{ width: '24px', height: '24px', flexShrink: 0, marginTop: '4px', color: '#86efac' }} />
               <div>
                 <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '4px' }}>
-                  Simplifying OPD reimbursements for corporates
+                  Simplifying OPD Reimbursements for Corporates
                 </h3>
               </div>
             </div>
@@ -155,7 +155,7 @@ export default function CorporateLogin() {
               <CheckCircle2 style={{ width: '24px', height: '24px', flexShrink: 0, marginTop: '4px', color: '#86efac' }} />
               <div>
                 <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '4px' }}>
-                Empowering employee health & productivity.
+                Empowering Employee Health & Productivity.
                 </h3>
               </div>
             </div>
@@ -213,7 +213,7 @@ export default function CorporateLogin() {
                 Corporate Login
               </h1>
               <p style={{ fontSize: '15px', color: '#6b7280' }}>
-                Enter your credentials to access your account
+                Enter your credentials to Access Your Account
               </p>
             </div>
 
