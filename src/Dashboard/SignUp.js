@@ -9,6 +9,9 @@ export default function AayurcareSignup() {
     password: ''
   });
 
+
+
+  
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -16,10 +19,39 @@ export default function AayurcareSignup() {
     });
   };
 
-  const handleSubmit = () => {
-    console.log('Account created:', formData);
-    alert('Account created successfully!');
-  };
+  // const handleSubmit = () => {
+  //   console.log('Account created:', formData);
+  //   alert('Account created successfully!');
+  // };
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("http://localhost:8000/user/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.message || "Error registering user");
+      return;
+    }
+
+    alert("Registered Successfully!");
+    console.log(data);
+
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Something went wrong");
+  }
+};
+
 
   return (
     <div style={styles.container}>
@@ -64,13 +96,13 @@ export default function AayurcareSignup() {
             </div>
 
             <div style={styles.inputGroup}>
-              <label style={styles.label}>Email or Username</label>
+              <label style={styles.label}>Email</label>
               <input
                 type="text"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="Enter your email or username"
+                placeholder="Enter your email "
                 style={styles.input}
               />
             </div>
