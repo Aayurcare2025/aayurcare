@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, Heart, Shield, Users } from 'lucide-react';
+import { useNavigate } from "react-router-dom";
 
 export default function AayurcareSignup() {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
+    fullName: '',
     email: '',
     password: ''
   });
@@ -24,18 +25,21 @@ export default function AayurcareSignup() {
   //   alert('Account created successfully!');
   // };
 
+
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
   e.preventDefault();
 
   try {
-    const response = await fetch("http://localhost:8000/user/register", {
+    const response = await fetch("https://api.aayurcare.com/user/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(formData)
     });
-
+     
     const data = await response.json();
 
     if (!response.ok) {
@@ -45,6 +49,9 @@ export default function AayurcareSignup() {
 
     alert("Registered Successfully!");
     console.log(data);
+
+
+     navigate("/signin");
 
   } catch (error) {
     console.error("Error:", error);
@@ -87,8 +94,8 @@ export default function AayurcareSignup() {
               <label style={styles.label}>Full Name</label>
               <input
                 type="text"
-                name="name"
-                value={formData.name}
+                name="fullName"
+                value={formData.fullName}
                 onChange={handleChange}
                 placeholder="Enter your full name"
                 style={styles.input}
@@ -131,9 +138,9 @@ export default function AayurcareSignup() {
               Create Account
             </button>
 
-            <p style={styles.loginText}>
+            {/* <p style={styles.loginText}>
               Already have an account? <a href="#" style={styles.loginLink}>Log In</a>
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
