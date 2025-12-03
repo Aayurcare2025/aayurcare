@@ -273,8 +273,8 @@ workers to executives, as well as group membership plans for organizations.
 
   <div className="faq-item">
     <h3>4. What expenses are covered under Aayur Care?</h3>
-    <p>Aayur Care covers doctor consultations, diagnostic tests, medicines, preventive health
-check-ups, and select daycare procedures.</p>
+    <p>Aayur Care covers *doctor consultations, *diagnostic tests, *medicines, *preventive health
+check-ups, and *select daycare procedures.</p>
   </div>
 
   <div className="faq-item">
