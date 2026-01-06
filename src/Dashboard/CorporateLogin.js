@@ -7,44 +7,37 @@ export default function CorporateLogin() {
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSignin = async () => {
-    if (!username || !password) {
-      alert("Please fill in all fields");
-      return;
-    }
-    
-    setIsLoading(true);
-    
-    try {
-      const response = await fetch("http://localhost:2000/user/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        alert(data.message || "Login successful!");
-        if (data.token) {
-          // Store token in memory instead of localStorage
-          window.authToken = data.token;
-        }
-      } else {
-        alert(data.message || "Login failed");
-      }
-    } catch (err) {
-      alert("Login failed: " + err.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      handleSignin();
+  if (e.key === "Enter") {
+    handleSignin();
+  }
+};
+
+const handleSignin = () => {
+  if (!username || !password) {
+    alert("Please fill in all fields");
+    return;
+  }
+
+  setIsLoading(true);
+
+  const demoUsername = "nambiarkirthana23";
+  const demoPassword = "Kirthana@123";
+
+  setTimeout(() => {
+    if (username === demoUsername && password === demoPassword) {
+      alert("Login successful (Demo)");
+      window.authToken = "demo-token-123";
+    } else {
+      alert("Invalid username or password");
     }
-  };
+    setIsLoading(false);
+  }, 800);
+};
+
+
+
+  
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', background: '#f8fafc' }}>

@@ -317,6 +317,7 @@ import RefundAndCancellation from "./Dashboard/RefundPolicy";
 import PrivacyPolicy from "./Dashboard/Privacypolicy";
 import CorporateLogin from "./Dashboard/CorporateLogin";
 import ProtectedRoute from "./Dashboard/ProtectedRoute"
+// import Login from "./Dashboard/Login";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -381,6 +382,8 @@ function App() {
 
 
         <li onClick={()=>{navigate("CorporateLogin"); setMenuOpen(false); }}>Corporate Login</li>
+
+        {/* <li onClick={()=>{navigate("Login"); setMenuOpen(false); }}>Login</li> */}
         
         {!isLoggedIn ? (
           <>
@@ -396,6 +399,9 @@ function App() {
             Sign Out
           </li>
         )}
+
+        
+
       </ul>
 
       <Routes>
@@ -424,6 +430,7 @@ function App() {
         <Route path="/refundandcancellation" element={<RefundAndCancellation />} />
         <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
         <Route path="/CorporateLogin" element={<CorporateLogin setIsLoggedIn={setIsLoggedIn} />} />
+           {/* <Route path="/Login" element={<Login setIsLoggedIn={setIsLoggedIn} />} /> */}
 
       </Routes>
     </div>

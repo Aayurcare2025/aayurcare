@@ -30,7 +30,7 @@ import test5 from "../Images/a.png"
 import test6 from "../Images/cura.png"
 import test7 from "../Images/red_health_1.png"
 import test8 from "../Images/atma_yoga.jpeg"
-import royal from "../Images/R6.png"
+// import royal from "../Images/R6.png"
 import test9 from "../Images/clove.png"
 import sparsh from "../Images/sparsh.png"
 import pillo from "../Images/pillo.png"
@@ -41,6 +41,7 @@ import ep from "../Images/Epitome.png"
 import splash from "../Images/trial5.png"
 function Home() {
   const navigate=useNavigate();
+  
 
   return (
     <div className="main-page">
@@ -190,7 +191,7 @@ function Home() {
      <div className="channel-partners-section">
       <h2>Our Channel Partners</h2>
   <div className="scrolling-logos">
-     <img src={royal} alt="royal"/>
+     {/* <img src={royal} alt="royal"/> */}
     <img src={test} alt="partner1" />
     <img src={test1} alt="partner2" />
     <img src={test2} alt="partner3" />

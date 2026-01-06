@@ -1,73 +1,96 @@
 import React, { useState } from 'react';
-import { Eye, EyeOff, Heart, Shield, Users } from 'lucide-react';
+import { Heart, Shield, Users } from 'lucide-react';
 import { useNavigate } from "react-router-dom";
 
-export default function AayurcareSignup() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    password: ''
-  });
-
-
-
-  
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  // const handleSubmit = () => {
-  //   console.log('Account created:', formData);
-  //   alert('Account created successfully!');
-  // };
-
+export default function Login() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-  e.preventDefault();
+  const [phone, setPhone] = useState("");
+  const [otp, setOtp] = useState("");
+  const [step, setStep] = useState(1); // 1 = phone, 2 = otp
+  const [loading, setLoading] = useState(false);
 
-  try {
-    const response = await fetch("https://api.aayurcare.com/user/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(formData)
-    });
-     
-    const data = await response.json();
-
-    if (!response.ok) {
-      alert(data.message || "Error registering user");
+  // SEND OTP
+  const handleSendOtp = async () => {
+    if (!phone || phone.length < 10) {
+      alert("Enter valid phone number");
       return;
     }
 
-    alert("Registered Successfully!");
-    console.log(data);
+    setLoading(true);
+    try {
+      const response = await fetch("http://localhost:8000/user/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone })
+      });
 
+      const data = await response.json();
 
-     navigate("/signin");
+      if (!response.ok) {
+        alert(data.message || "Failed to send OTP");
+        return;
+      }
 
-  } catch (error) {
-    console.error("Error:", error);
-    alert("Something went wrong");
-  }
-};
+      alert("OTP sent successfully");
+      setStep(2);
+    } catch (error) {
+      alert("Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  // VERIFY OTP
+  const handleVerifyOtp = async () => {
+    if (!otp) {
+      alert("Enter OTP");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await fetch("http://localhost:8000/user/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone, otp })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message || "Invalid OTP");
+        return;
+      }
+
+      // Save login info
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      localStorage.setItem("phone", phone);
+
+      // Navigate
+      if (!data.user.isProfileCompleted) {
+        navigate("/complete-profile");
+      } else {
+        navigate("/profile");
+      }
+
+    } catch (error) {
+      alert("OTP verification failed");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div style={styles.container}>
-      {/* Left Side - Welcome Section */}
+      {/* Left Side */}
       <div style={styles.leftSection} className="left-section">
         <div style={styles.leftContent}>
           <h1 style={styles.welcomeTitle}>Welcome to Aayurcare</h1>
           <p style={styles.welcomeSubtitle}>Start Your Journey With Us.</p>
-          
+
           <div style={styles.featuresContainer}>
             <div style={styles.feature}>
               <Heart size={24} color="#fff" />
@@ -85,68 +108,77 @@ export default function AayurcareSignup() {
         </div>
       </div>
 
-      {/* Right Side - Form Section */}
+      {/* Right Side */}
       <div style={styles.rightSection} className="right-section">
         <div style={styles.formContainer}>
-          <h2 style={styles.formTitle}>Create Your Account</h2>
+          <h2 style={styles.formTitle}>Login</h2>
           <div style={styles.formDiv}>
-            <div style={styles.inputGroup}>
-              <label style={styles.label}>Full Name</label>
-              <input
-                type="text"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                placeholder="Enter your full name"
-                style={styles.input}
-              />
-            </div>
 
-            <div style={styles.inputGroup}>
-              <label style={styles.label}>Email</label>
-              <input
-                type="text"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Enter your email "
-                style={styles.input}
-              />
-            </div>
+            {/* STEP 1 – PHONE */}
+            {step === 1 && (
+              <>
+                <div style={styles.inputGroup}>
+                  <input
+                    type="text"
+                    placeholder="Enter your phone number"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    style={styles.input}
+                  />
+                </div>
 
-            <div style={styles.inputGroup}>
-              <label style={styles.label}>Password</label>
-              <div style={styles.passwordContainer}>
-                <input
-                  type={showPassword ? "text" : "password"}
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  placeholder="Enter your password"
-                  style={styles.passwordInput}
-                />
                 <button
-                  onClick={() => setShowPassword(!showPassword)}
-                  style={styles.eyeButton}
+                  onClick={handleSendOtp}
+                  style={styles.submitButton}
+                  disabled={loading}
                 >
-                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  {loading ? "Sending OTP..." : "Send OTP"}
                 </button>
-              </div>
-            </div>
+              </>
+            )}
 
-            <button onClick={handleSubmit} style={styles.submitButton}>
-              Create Account
-            </button>
+            {/* STEP 2 – OTP */}
+            {step === 2 && (
+              <>
+                <div style={styles.inputGroup}>
+                  <input
+                    type="text"
+                    placeholder="Enter OTP"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                    style={styles.input}
+                  />
+                </div>
 
-            {/* <p style={styles.loginText}>
-              Already have an account? <a href="#" style={styles.loginLink}>Log In</a>
-            </p> */}
+                <button
+                  onClick={handleVerifyOtp}
+                  style={styles.submitButton}
+                  disabled={loading}
+                >
+                  {loading ? "Verifying..." : "Verify OTP"}
+                </button>
+
+                <p
+                  style={{
+                    textAlign: "center",
+                    marginTop: "14px",
+                    color: "#0891b2",
+                    cursor: "pointer"
+                  }}
+                  onClick={() => setStep(1)}
+                >
+                  Change phone number
+                </p>
+              </>
+            )}
+
           </div>
         </div>
       </div>
     </div>
   );
 }
+
 
 const styles = {
   container: {
