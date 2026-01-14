@@ -69,6 +69,9 @@ function Home() {
             </button>
           </div>
 
+
+
+
           <div className="hero-image">
             <div className="image-wrapper">
               <img src={splash} alt="Hero" />  
@@ -182,6 +185,8 @@ function Home() {
             <h3>4. Submit Bills & Get Reimbursed</h3>
             <p>Upload your bills online and get reimbursed promptly.</p>
           </div>
+
+          
         </div>
       </section>
 
@@ -213,8 +218,6 @@ function Home() {
   </div>
 </div>
       </section>
-
-
 
 
 

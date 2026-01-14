@@ -1373,7 +1373,7 @@ const styles = {
   },
   submitBtnDisabled: {
     background: "#ccc",
-    cursor: "not-allowed",
+    cursor: "not-inputed",
     boxShadow: "none",
   },
 };
