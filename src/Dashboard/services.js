@@ -1594,14 +1594,15 @@
 
 //for payment integration incoming data should come valid
 
-import React, { useState, useEffect } from "react";
+
+import  { useState, useEffect } from "react";
 import "../App.css";
 // import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 function Services() {
   const navigate = useNavigate();
-  const { type } = useParams(); // "individual" or "corporate"
+  const { type } = useParams(); 
   const serviceType = type;
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [step, setStep] = useState(1);
@@ -1620,6 +1621,28 @@ function Services() {
   const [phonenumber, setPhoneno] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [dependants, setDependants] = useState([]);
+
+
+
+  
+
+
+
+   useEffect(() => {
+    if (product === "opd" && OPDValue) {
+      const opdPlans = {
+        essential: 1399,
+        wellness: 2499,
+        consult: 3799,
+        radiant: 7250,
+        lifeline: 15670,
+        evercare: 17170,
+        platinum: 21625,
+      };
+
+      setPremium(opdPlans[OPDValue]);
+    }
+  }, [product, OPDValue]);
 
   // const handleDependantChange = (index, field, value) => {
   //   const updated = [...dependants];
@@ -1644,12 +1667,42 @@ const [supervision, setSupervision] = useState("");
 //       type="button"
 //       disabled={disabled || !premium}
 //       className="buy-now-btn"
-//       onClick={handleSubmit}
+//       onClick={handleBuyNow}
 //     >
 //       Buy Now
 //     </button>
 //   );
 // };
+
+
+// const BuyNowButton = () => {
+//   return (
+//     <button
+//       type="button"
+//       disabled={!premium}
+//       className="buy-now-btn"
+//       onClick={handleBuyNow}
+//     >
+//       Buy Now
+//     </button>
+//   );
+// };
+
+const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+
+const BuyNowButton = () => {
+  return (
+    <button
+      type="button"
+      disabled={!premium || isProcessingPayment}
+      className="buy-now-btn"
+      onClick={handleBuyNow}
+    >
+      {isProcessingPayment ? "Processing..." : "Buy Now"}
+    </button>
+  );
+};
+
 
 
 
@@ -1694,52 +1747,304 @@ const [supervision, setSupervision] = useState("");
 // };
 
 
+
+
+// const handleBuyNow = async () => {
+//   try {
+//     const paymentPayload = {
+//       amount: premium,
+
+//       planType: product,                
+//       planName: OPDValue || AccidentValue,
+//       insuredType: insured,
+
+//       firstname: formData.proposer.firstName,
+//       lastname: formData.proposer.lastName,
+//       phone: phonenumber,
+//       email: email,
+//     };
+
+//     const res = await fetch("http://localhost:8000/payment/initiate", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify(paymentPayload),
+//     });
+//     console.log("res",res);
+
+//     const data = await res.json();
+//     console.log("data",data);
+
+//     const form = document.createElement("form");
+//     form.method = "POST";
+//     form.action = data.payuUrl;
+//     form.target = "_blank";
+
+//     Object.keys(data).forEach((key) => {
+//       const input = document.createElement("input");
+//       input.type = "hidden";
+//       input.name = key;
+//       input.value = data[key];
+//       form.appendChild(input);
+//     });
+
+//     document.body.appendChild(form);
+//     form.submit();
+//   } catch (err) {
+//     console.error("Payment error", err);
+//     alert("Payment failed");
+//   }
+// };
+
+
+// const handleBuyNow = async () => {
+//   if (!premium) {
+//     alert("Please select a plan");
+//     return;
+//   }
+
+//   if (!formData.proposer.firstName || !email || !phonenumber) {
+//     alert("Please fill proposer details");
+//     return;
+//   }
+
+//   try {
+//     const paymentPayload = {
+//       amount: premium,
+//       planType: product,
+//       planName: OPDValue || AccidentValue,
+//       insuredType: insured,
+//       firstname: formData.proposer.firstName,
+//       lastname: formData.proposer.lastName,
+//       phone: phonenumber,
+//       email: email,
+//     };
+
+//     const res = await fetch("http://localhost:8000/payment/initiate", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify(paymentPayload),
+//     });
+
+//     const data = await res.json();
+
+//     const form = document.createElement("form");
+//     form.method = "POST";
+//     form.action = data.payuUrl;
+//     form.target = "_blank";
+
+//     Object.keys(data).forEach((key) => {
+//       const input = document.createElement("input");
+//       input.type = "hidden";
+//       input.name = key;
+//       input.value = data[key];
+//       form.appendChild(input);
+//     });
+
+//     document.body.appendChild(form);
+//     form.submit();
+//   } catch (err) {
+//     console.error("Payment error", err);
+//     alert("Payment failed");
+//   }
+// };
+
+
+// const handleBuyNow = async () => {
+//   try {
+//     if (!premium) {
+//       alert("Please select a plan");
+//       return;
+//     }
+
+//     if (!formData?.proposer?.firstName) {
+//       alert("Please fill proposer details");
+//       return;
+//     }
+
+//     const paymentPayload = {
+//       amount: premium,
+//       productinfo: OPDValue || AccidentValue || product,
+//       firstname: formData.proposer.firstName,
+//       lastname: formData.proposer.lastName || "NA",
+//       phone: phonenumber,
+//       email: email,
+//     };
+
+//     console.log("PAYMENT PAYLOAD 👉", paymentPayload);
+
+//     const res = await fetch("http://localhost:8000/payment/initiate", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify(paymentPayload),
+//     });
+
+//     const data = await res.json();
+//     console.log("PAYU RESPONSE 👉", data);
+
+//     // 🔥 IMPORTANT FIX HERE
+//     // const payuUrl = data.payuUrl || data.url;
+// // const payuUrl = "https://secure.payu.in/_payment";
+
+// //     if (!payuUrl) {
+// //       alert("Payment gateway error: URL missing");
+// //       return;
+// //     }
+
+// //     const form = document.createElement("form");
+// //     form.method = "POST";
+// //     form.action = payuUrl;
+// //     form.target = "_self";
+
+// //     Object.keys(data).forEach((key) => {
+// //       if (key !== "payuUrl" && key !== "url") {
+// //         const input = document.createElement("input");
+// //         input.type = "hidden";
+// //         input.name = key;
+// //         input.value = data[key];
+// //         form.appendChild(input);
+// //       }
+// //     });
+// const payuUrl = "https://secure.payu.in/_payment";
+
+// const form = document.createElement("form");
+// form.method = "POST";
+// form.action = payuUrl;
+// form.target = "_blank";
+
+// const allowedFields = [
+//   "key",
+//   "txnid",
+//   "amount",
+//   "productinfo",
+//   "firstname",
+//   "email",
+//   "phone",
+//   "surl",
+//   "furl",
+//   "hash"
+// ];
+
+// allowedFields.forEach((field) => {
+//   const input = document.createElement("input");
+//   input.type = "hidden";
+//   input.name = field;
+//   input.value = data[field];
+//   form.appendChild(input);
+// });
+
+// document.body.appendChild(form);
+// form.submit();
+
+//     // document.body.appendChild(form);
+//     // form.submit();
+
+//   } catch (err) {
+//     console.error("Payment error", err);
+//     alert("Payment failed");
+//   }
+// };
+
 const handleBuyNow = async () => {
+  // Prevent double-click
+  if (isProcessingPayment) return;
+  
+  setIsProcessingPayment(true);
+  
   try {
+    // ✅ Validation
+    if (!premium) {
+      alert("Please select a plan");
+      setIsProcessingPayment(false); // ← Reset here
+      return;
+    }
+
+    if (!formData?.proposer?.firstName) {
+      alert("Please fill proposer details");
+      setIsProcessingPayment(false); // ← Reset here
+      return;
+    }
+
+    // ✅ Prepare payload
     const paymentPayload = {
       amount: premium,
-
-      planType: product,                 // opd / accident
-      planName: OPDValue || AccidentValue,
-      insuredType: insured,
-
+      productinfo: OPDValue || AccidentValue || product,
       firstname: formData.proposer.firstName,
-      lastname: formData.proposer.lastName,
+      lastname: formData.proposer.lastName || "NA",
       phone: phonenumber,
       email: email,
     };
 
-    const res = await fetch("http://localhost:5000/payment/initiate", {
+    console.log("PAYMENT PAYLOAD 👉", paymentPayload);
+
+    // ✅ Call backend
+    const res = await fetch("http://localhost:7000/payment/initiate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(paymentPayload),
     });
 
-    const data = await res.json();
+    if (!res.ok) {
+      const errorText = await res.text();
+      console.error("Backend error:", errorText);
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
 
+    const data = await res.json();
+    console.log("PAYU RESPONSE 👉", data);
+
+    // ✅ Validate response
+    if (!data.key || !data.hash) {
+      throw new Error("Payment gateway error: Invalid response");
+    }
+
+    // ✅ Create PayU form
+    const payuUrl = "https://secure.payu.in/_payment";
     const form = document.createElement("form");
     form.method = "POST";
-    form.action = data.payuUrl;
+    form.action = payuUrl;
     form.target = "_blank";
 
-    Object.keys(data).forEach((key) => {
-      const input = document.createElement("input");
-      input.type = "hidden";
-      input.name = key;
-      input.value = data[key];
-      form.appendChild(input);
+    // Only include required PayU fields
+    const allowedFields = [
+      "key",
+      "txnid",
+      "amount",
+      "productinfo",
+      "firstname",
+      "email",
+      "phone",
+      "surl",
+      "furl",
+      "hash"
+    ];
+
+    allowedFields.forEach((field) => {
+      if (data[field]) {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = field;
+        input.value = data[field];
+        form.appendChild(input);
+      }
     });
 
+    // Submit form
     document.body.appendChild(form);
     form.submit();
+    
+    // Clean up
+    setTimeout(() => {
+      document.body.removeChild(form);
+    }, 1000);
+
   } catch (err) {
-    console.error("Payment error", err);
-    alert("Payment failed");
+    console.error("Payment error:", err);
+    alert(`Payment failed: ${err.message || "Please try again."}`);
+  } finally {
+    // ✅ ALWAYS reset the button state
+    setIsProcessingPayment(false);
   }
 };
-
-
-
 
 const handleConditionChange = (e) => {
   const { value, checked } = e.target;
@@ -1788,6 +2093,7 @@ const calculateOPDValues = (planType, numberOfMembers) => {
     evercare: { coverage: 37000, premium: 17170 },
     platinum: { coverage: 50000, premium: 21625 }
   };
+  
 
   const basePlan = basePlans[planType];
   if (!basePlan) return { coverage: 0, premium: 0 };
@@ -1882,7 +2188,7 @@ const getTotalFamilyMembers = () => {
 
     try {
       //https://api.aayurcare.com
-      const response = await fetch("http://localhost:5000/health/apply", {
+      const response = await fetch("http://localhost:8000/health/apply", {
       //  const response = await fetch("http://localhost:5000/health/apply", {
         method: "POST",
         body: formDataObj,
@@ -1898,14 +2204,70 @@ const getTotalFamilyMembers = () => {
     }
   };
 
-useEffect(() => {
-  const fetchPremium = async () => {
-    if (!age) return;
+// useEffect(() => {
+//   const fetchPremium = async () => {
+//     if (!age) return;
     
 
+//     const selfAge = Number(age);
+//     const dependentsAges = dependants.map(dep => Number(dep.age)).filter(a => a > 0);
+//     const dependentsParam = dependentsAges.join(",");
+
+//     try {
+//       let url = "";
+
+//       if (insured === "Myself") {
+//         if (product === "ipd-accident") {
+//           if (!IPDValue || !AccidentValue) return;
+//           // url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${selfAge}`;
+//           url=`https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${selfAge}`; 
+          
+//         } else if (product === "opd-ipd-accident") {
+//           if (!IPDValue || !AccidentValue || !OPDValue) return;
+//           // url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${selfAge}`;
+//           url=`https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${selfAge}`;
+//         }
+        
+//       } else if (insured === "Myself and my family") {
+//         if (product === "ipd-accident") {
+//           if (!IPDValue || !AccidentValue) return;
+//           url = `https://api.aayurcare.com/user/insurance/combinedIpdAnAccident/${IPDValue}/${AccidentValue}/${selfAge}/${dependentsParam}`;
+//         } else if (product === "opd-ipd-accident") {
+//           if (!IPDValue || !AccidentValue || !OPDValue) return;
+//           url = `https://api.aayurcare.com/insurance/combined/${IPDValue}/${AccidentValue}/${OPDValue}/${selfAge}/${dependentsParam}`;
+//         }
+//       }
+
+//       const response = await fetch(url);
+//       if (!response.ok) throw new Error("Failed to fetch premium");
+
+//       const data = await response.json();
+//       console.log("Premium Data:", data);
+
+//       setPremium(data.total_annual_premium || data.premium);
+//       setTotalSumInsured(data.total_sum_insured);
+//     } catch (err) {
+//       console.error(err);
+//       setPremium(null);
+//       setTotalSumInsured(null);
+//     }
+//   };
+
+//   fetchPremium();
+// }, [product, IPDValue, AccidentValue, OPDValue, age, dependants, insured]);
+  
+
+
+useEffect(() => {
+  // ⛔ stop API call for OPD-only product
+  if (product === "opd") return;
+
+  const fetchPremium = async () => {
+    if (!age) return;
+
     const selfAge = Number(age);
-    const dependentsAges = dependants.map(dep => Number(dep.age)).filter(a => a > 0);
-    const dependentsParam = dependentsAges.join(",");
+    // const dependentsAges = dependants.map(dep => Number(dep.age)).filter(a => a > 0);
+    // const dependentsParam = dependentsAges.join(",");
 
     try {
       let url = "";
@@ -1914,26 +2276,15 @@ useEffect(() => {
         if (product === "ipd-accident") {
           if (!IPDValue || !AccidentValue) return;
           url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${selfAge}`;
-        } else if (product === "opd-ipd-accident") {
+        } 
+        else if (product === "opd-ipd-accident") {
           if (!IPDValue || !AccidentValue || !OPDValue) return;
           url = `https://api.aayurcare.com/user/insurance/${IPDValue}/${AccidentValue}/${OPDValue}/${selfAge}`;
-        }
-        
-      } else if (insured === "Myself and my family") {
-        if (product === "ipd-accident") {
-          if (!IPDValue || !AccidentValue) return;
-          url = `https://api.aayurcare.com/user/insurance/combinedIpdAnAccident/${IPDValue}/${AccidentValue}/${selfAge}/${dependentsParam}`;
-        } else if (product === "opd-ipd-accident") {
-          if (!IPDValue || !AccidentValue || !OPDValue) return;
-          url = `https://api.aayurcare.com/insurance/combined/${IPDValue}/${AccidentValue}/${OPDValue}/${selfAge}/${dependentsParam}`;
         }
       }
 
       const response = await fetch(url);
-      if (!response.ok) throw new Error("Failed to fetch premium");
-
       const data = await response.json();
-      console.log("Premium Data:", data);
 
       setPremium(data.total_annual_premium || data.premium);
       setTotalSumInsured(data.total_sum_insured);
@@ -1946,7 +2297,6 @@ useEffect(() => {
 
   fetchPremium();
 }, [product, IPDValue, AccidentValue, OPDValue, age, dependants, insured]);
-  
 
 
 
@@ -2909,6 +3259,8 @@ annual premium :- accordance to age and data:-
               type="file"
               onChange={(e) => setSelectedFile(e.target.files[0])}
             />
+
+
 
             <button onClick={() => setStep(4)} className="submit-btn">Next →</button>
           </div>

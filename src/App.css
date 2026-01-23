@@ -2279,3 +2279,23 @@ font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 {
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
+.payment-result {
+  text-align: center;
+  margin-top: 100px;
+  padding: 40px;
+  border-radius: 20px;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.payment-result.success {
+  background-color: #e7ffe7;
+  border: 2px solid #00c853;
+}
+
+.payment-result.failure {
+  background-color: #ffeaea;
+  border: 2px solid #ff5252;
+}

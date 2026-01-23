@@ -560,7 +560,7 @@ function SignIn({ setIsLoggedIn }) {
       const data = await response.json();
 
       if (response.ok) {
-        alert(data.message || "Login successful!");
+        // alert(data.message || "Login successful!");
 
         if (data.token) {
           localStorage.setItem("token", data.token);

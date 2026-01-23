@@ -317,6 +317,8 @@ import RefundAndCancellation from "./Dashboard/RefundPolicy";
 import PrivacyPolicy from "./Dashboard/Privacypolicy";
 import CorporateLogin from "./Dashboard/CorporateLogin";
 import ProtectedRoute from "./Dashboard/ProtectedRoute"
+import PaymentFailure from "./Dashboard/PaymentFailure";
+import PaymentSuccess from "./Dashboard/PaymentSuccess";
 // import Login from "./Dashboard/Login";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -431,7 +433,8 @@ function App() {
         <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
         <Route path="/CorporateLogin" element={<CorporateLogin setIsLoggedIn={setIsLoggedIn} />} />
            {/* <Route path="/Login" element={<Login setIsLoggedIn={setIsLoggedIn} />} /> */}
-
+          <Route path="/payment-success" element={<PaymentSuccess />} />
+        <Route path="/payment-failure" element={<PaymentFailure />} />
       </Routes>
     </div>
   );
