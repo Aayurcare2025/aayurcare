@@ -319,6 +319,8 @@ import CorporateLogin from "./Dashboard/CorporateLogin";
 import ProtectedRoute from "./Dashboard/ProtectedRoute"
 import PaymentFailure from "./Dashboard/PaymentFailure";
 import PaymentSuccess from "./Dashboard/PaymentSuccess";
+import CorporateHome from "./Dashboard/CorporateHome";
+import CorporateLoginClaims from "./Dashboard/CorporateLoginClaims";
 // import Login from "./Dashboard/Login";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -435,6 +437,8 @@ function App() {
            {/* <Route path="/Login" element={<Login setIsLoggedIn={setIsLoggedIn} />} /> */}
           <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="/payment-failure" element={<PaymentFailure />} />
+        <Route path="/corporate-home" element={<CorporateHome />} />
+        <Route path="/CorporateLoginClaims" element={<CorporateLoginClaims/>}/>
       </Routes>
     </div>
   );

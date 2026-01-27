@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Shield, User, Lock, ArrowRight, CheckCircle2 } from 'lucide-react';
-
+import { useNavigate } from "react-router-dom";
 export default function CorporateLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
+const navigate = useNavigate();
   const handleKeyPress = (e) => {
   if (e.key === "Enter") {
     handleSignin();
@@ -26,8 +26,10 @@ const handleSignin = () => {
 
   setTimeout(() => {
     if (username === demoUsername && password === demoPassword) {
-      alert("Login successful (Demo)");
-      window.authToken = "demo-token-123";
+      // alert("Login successful (Demo)");
+        localStorage.setItem("authToken", "demo-token-123");
+       navigate("/corporate-home");
+    
     } else {
       alert("Invalid username or password");
     }
