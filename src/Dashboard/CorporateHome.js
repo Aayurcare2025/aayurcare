@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { User, Home, Wallet, FileText, HelpCircle, TrendingUp } from "lucide-react";
+import { User, Home, Wallet, FileText, HelpCircle } from "lucide-react";
 import CorporateLoginClaims from "./CorporateLoginClaims";
 export default function CorporateHome() {
   const [activeMenu, setActiveMenu] = useState("Home");
@@ -387,9 +387,9 @@ const renderHome = () => {
     <div>
       {/* Welcome Banner */}
       <div style={styles.homeBanner}>
-        <h2 style={styles.bannerTitle}>Corporate Health Benefits Dashboard</h2>
+        <h2 style={styles.bannerTitle}>Corporate Health Benefits.</h2>
         <p style={styles.bannerSubtitle}>
-          Manage reimbursements, diagnostics bookings and employee wellness seamlessly.
+          Manage reimbursements, diagnostics and employee wellness seamlessly.
         </p>
       </div>
 
@@ -403,13 +403,13 @@ const renderHome = () => {
           <p>Submit and track employee medical claims easily.</p>
         </div>
 
-        <div style={styles.homeCard}>
+        {/* <div style={styles.homeCard}>
           <div style={styles.homeIcon}>
             <TrendingUp size={28} color="#10b981" />
           </div>
           <h3>Diagnostics Booking</h3>
           <p>Book lab tests and health checkups for employees.</p>
-        </div>
+        </div> */}
 
 
         <div style={styles.homeCard}>
