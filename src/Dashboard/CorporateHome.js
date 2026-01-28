@@ -383,6 +383,8 @@ export default function CorporateHome() {
     //   </div>
     // );
 const renderHome = () => {
+
+  //do chnages
   return (
     <div>
       {/* Welcome Banner */}
