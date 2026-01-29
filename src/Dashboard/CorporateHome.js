@@ -38,7 +38,7 @@ const handleFileUpload = (e, type) => {
 
 
 const data = [
-  { name: "Total Reimbursement", value: 1000 },
+  { name: " Reimbursement", value: 1000 },
   { name: "Usuage", value: 500 },
   { name: "Pending", value: 100 },
   
@@ -46,6 +46,9 @@ const data = [
 
 // Colors for each slice
 const COLORS = ["#0088FE", "#00FF00", "#Ff0000"];
+
+const data2=[{ name: "Total Wallet", value: 1000 }];
+const COLORS2=["#0088FE"]
 
   
 const renderContent = () => {
@@ -199,6 +202,9 @@ const renderClaims = () => {
         </div>
      
       </div>
+
+
+    
 
       <div style={styles.profileContainer}>
         {/* Quick Actions Section */}
@@ -373,208 +379,76 @@ const renderClaims = () => {
   );
 };
 
-//infor
 
- //profile rendering::-
 
-  // const renderProfile = () => {
+
+  // const renderWallet = () => {
   //   return (
-  //     <div>
-  //       <div style={styles.pageHeader}>
-  //         <div>
-  //           <h2 style={styles.pageTitle}>My Profile</h2>
-  //           <p style={styles.pageSubtitle}>Manage your personal information and settings</p>
-  //         </div>
-  //         <button style={styles.editBtn}>
-  //           <User size={20} />
-  //           <span>Edit Profile</span>
-  //         </button>
-  //       </div>
-      
-
-
-  //       <div style={styles.profileContainer}>
-  //         {/* Profile Header Card */}
-  //         <div style={styles.profileHeaderCard}>
-  //           <div style={styles.profileImageSection}>
-  //             <div style={styles.profileImageLarge}>K</div>
-  //             {/* <button style={styles.changePhotoBtn}>Change Photo</button> */}
-  //           </div>
-  //           <div style={styles.profileBasicInfo}>
-  //             <h2 style={styles.profileName}>Kirthana Nambiar</h2>
-  //             <p style={styles.profileRole}>Corporate Admin • Full Stack Developer</p>
-  //             <p style={styles.profileEmail}>kirthana.nambiar@aayurcare.com</p>
-  //             <div style={styles.profileBadge}>✓ Verified Account</div>
-  //           </div>
-  //         </div>
-
-  //         {/* Personal Information */}
-  //         <div style={styles.infoSection}>
-  //           <h3 style={styles.infoSectionTitle}>Personal Information</h3>
-  //           <div style={styles.infoGrid}>
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Full Name</p>
-  //               <p style={styles.infoValue}>Kirthana Nambiar</p>
-  //             </div>
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Employee ID</p>
-  //               <p style={styles.infoValue}>EMP2024001</p>
-                
-  //             </div>
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Email Address</p>
-  //               <p style={styles.infoValue}>kirthana.nambiar@aayurcare.com</p>
-  //             </div>
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Phone Number</p>
-  //               <p style={styles.infoValue}>+91 7057530253</p>
-  //             </div>
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Date of Birth</p>
-  //               <p style={styles.infoValue}>23 April 2000</p>
-  //             </div>
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Gender</p>
-  //               <p style={styles.infoValue}>Female</p>
-  //             </div>
-  //           </div>
-  //         </div>
-
-  //         {/* Employment Details */}
-  //         <div style={styles.infoSection}>
-  //           <h3 style={styles.infoSectionTitle}>Employment Details</h3>
-  //           <div style={styles.infoGrid}>
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Department</p>
-  //               <p style={styles.infoValue}>IT</p>
-  //             </div>
-
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Designation</p>
-  //               <p style={styles.infoValue}>Full Stack Developer</p>
-  //             </div>
-
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Date of Joining</p>
-  //               <p style={styles.infoValue}>08 September 2025</p>
-  //             </div>
-
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Office Location</p>
-  //               <p style={styles.infoValue}>Bangalore, Karnataka</p>
-  //             </div>
-
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Employee Type</p>
-  //               <p style={styles.infoValue}>Full Time - Permanent</p>
-  //             </div>
-
-          
-  //           </div>
-  //         </div>
-
-  //         {/* Health Benefits Information */}
+  //     <div style={{ width: "100%", height: 400 }}>
+  //     <h2 style={{ textAlign: "center" }}>Wallet Management</h2>
+  //     <ResponsiveContainer>
+  //       <PieChart>
+  //         {/* Pie component */}
+  //         <Pie
+  //           data={data}
+  //           cx="80%" // X position
+  //           cy="50%" // Y position
+  //           labelLine={false}
+  //           label={({ name, percent }) =>
+  //             `${name} ${(percent * 100).toFixed(0)}%`
+  //           }
+  //           outerRadius={150}
+  //           fill="#8884d8"
+  //           dataKey="value"
+  //         >
+  //           {data.map((entry, index) => (
+  //             <Cell
+  //               key={`cell-${index}`}
+  //               fill={COLORS[index % COLORS.length]}
+  //             />
+  //           ))}
+  //         </Pie>
+  //         {/* Tooltip on hover */}
+  //         <Tooltip />
+  //         {/* Legend */}
+  //         <Legend />
+  //       </PieChart>
+  //     </ResponsiveContainer>
 
 
 
-          
-  //         <div style={styles.infoSection}>
-  //           <h3 style={styles.infoSectionTitle}>Health Benefits Information</h3>
-  //           <div style={styles.infoGrid}>
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Membership Plan Number</p>
-  //               <p style={styles.infoValue}>AAYURCARE-CORP-2026-001234</p>
-  //             </div>
-  //             {/* <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Coverage Amount</p>
-  //               <p style={styles.infoValue}>₹5,00,000</p>
-  //             </div> */}
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Policy Start Date</p>
-  //               <p style={styles.infoValue}>01 April 2024</p>
-  //             </div>
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Policy End Date</p>
-  //               <p style={styles.infoValue}>31 March 2025</p>
-  //             </div>
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Dependents Covered</p>
-  //               <p style={styles.infoValue}>Self + Spouse + 1 Child</p>
-  //             </div>
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>OPD Limit (Annual)</p>
-  //               <p style={styles.infoValue}>₹15,000</p>
-  //             </div>
-  //           </div>
-  //         </div>
 
-  //         {/* Emergency Contact */}
-  //         <div style={styles.infoSection}>
-  //           <h3 style={styles.infoSectionTitle}>Emergency Contact</h3>
-  //           <div style={styles.infoGrid}>
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Contact Name</p>
-  //               <p style={styles.infoValue}>Shreejeet Nambiar</p>
-  //             </div>
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Relationship</p>
-  //               <p style={styles.infoValue}>Brother</p>
-  //             </div>
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Phone Number</p>
-  //               <p style={styles.infoValue}>+91 8308025459</p>
-  //             </div>
-  //             <div style={styles.infoItem}>
-  //               <p style={styles.infoLabel}>Email Address</p>
-  //               <p style={styles.infoValue}>nambiarshreejeet@gmail.com</p>
-  //             </div>
-  //           </div>
-  //         </div>
-
-
-          
-  //       </div>
-  //     </div>
+  //     <ResponsiveContainer>
+  //       <PieChart>
+  //         {/* Pie component */}
+  //         <Pie
+  //           data={data2}
+  //           cx="30%" // X position
+  //           cy="50%" // Y position
+  //           labelLine={false}
+  //           label={({ name, percent }) =>
+  //             `${name} ${(percent * 100).toFixed(0)}%`
+  //           }
+  //           outerRadius={150}
+  //           fill="#8884d8"
+  //           dataKey="value"
+  //         >
+  //           {data2.map((entry, index) => (
+  //             <Cell
+  //               key={`cell-${index}`}
+  //               fill={COLORS2[index % COLORS2.length]}
+  //             />
+  //           ))}
+  //         </Pie>
+  //         {/* Tooltip on hover */}
+  //         <Tooltip />
+  //         {/* Legend */}
+  //         <Legend />
+  //       </PieChart>
+  //     </ResponsiveContainer>
+  //   </div>
   //   );
   // };
-
-  const renderWallet = () => {
-    return (
-      <div style={{ width: "100%", height: 400 }}>
-      <h2 style={{ textAlign: "center" }}>Wallet Management</h2>
-      <ResponsiveContainer>
-        <PieChart>
-          {/* Pie component */}
-          <Pie
-            data={data}
-            cx="50%" // X position
-            cy="50%" // Y position
-            labelLine={false}
-            label={({ name, percent }) =>
-              `${name} ${(percent * 100).toFixed(0)}%`
-            }
-            outerRadius={150}
-            fill="#8884d8"
-            dataKey="value"
-          >
-            {data.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
-          </Pie>
-
-          {/* Tooltip on hover */}
-          <Tooltip />
-
-          {/* Legend */}
-          <Legend />
-        </PieChart>
-      </ResponsiveContainer>
-    </div>
-    );
-  };
 
  
 
@@ -582,6 +456,73 @@ const renderClaims = () => {
    
 
   
+  const renderWallet = () => {
+    return (
+      <div>
+        <h2 style={{ textAlign: "center", marginBottom: "30px" }}>Wallet Management</h2>
+        <div style={{ display: "flex", gap: "20px", width: "100%" }}>
+          {/* Left Pie Chart */}
+          <div style={{ flex: 1, height: 400 }}>
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={data2}
+                  cx="50%"
+                  cy="50%"
+                  labelLine={false}
+                  label={({ name, percent }) =>
+                    `${name} ${(percent * 100).toFixed(0)}%`
+                  }
+                  outerRadius={120}
+                  fill="#8884d8"
+                  dataKey="value"
+                >
+                  {data2.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS2[index % COLORS2.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+
+          {/* Right Pie Chart */}
+          <div style={{ flex: 1, height: 400 }}>
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={data}
+                  cx="50%"
+                  cy="50%"
+                  labelLine={false}
+                  label={({ name, percent }) =>
+                    `${name} ${(percent * 100).toFixed(0)}%`
+                  }
+                  outerRadius={120}
+                  fill="#8884d8"
+                  dataKey="value"
+                >
+                  {data.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+
 
 const renderHome = () => {
 
@@ -591,9 +532,9 @@ const renderHome = () => {
       {/* Welcome Banner */}
       <div style={styles.homeBanner}>
         <h2 style={styles.bannerTitle}>Corporate Health Benefits.</h2>
-        <p style={styles.bannerSubtitle}>
+        {/* <p style={styles.bannerSubtitle}>
           Manage reimbursements, diagnostics and employee wellness seamlessly.
-        </p>
+        </p> */}
       </div>
 
       {/* Feature Cards */}
