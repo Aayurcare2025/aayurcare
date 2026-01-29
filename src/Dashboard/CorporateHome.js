@@ -36,6 +36,46 @@ const handleFileUpload = (e, type) => {
 };
 
 
+const handleSubmit = async () => {
+  try {
+    const formData = new FormData();
+
+    // 👤 Name (required for backend)
+    formData.append("name", "Kirthana Nambiar");
+
+    let serviceIndex = 0;
+
+    Object.keys(uploadedFiles).forEach((docType) => {
+      const files = uploadedFiles[docType];
+
+      if (docType === "Bank Document") {
+        // Only one bank document expected
+        formData.append("bankDocument", files[0]);
+      } else {
+        files.forEach((file) => {
+          formData.append(`serviceFile_${serviceIndex}`, file);
+          formData.append(`serviceType_${serviceIndex}`, docType);
+          serviceIndex++;
+        });
+      }
+    });
+
+    const response = await fetch("http://localhost:8000/corporateclaims/apply", {
+      method: "POST",
+      body: formData,
+    });
+
+    const result = await response.json();
+    console.log("✅ Claim submitted:", result);
+    alert("Claim submitted successfully!");
+  } catch (error) {
+    console.error("❌ Error submitting claim:", error);
+    alert("Error submitting claim");
+  }
+};
+
+
+
 
 const data = [
   { name: " Reimbursement", value: 1000 },
@@ -66,6 +106,7 @@ const renderContent = () => {
     default:
       return renderHome();
   }
+  
 };
 
 
@@ -135,7 +176,7 @@ const renderClaims = () => {
               </div>
             ))}
           </div>
-          <button style={styles.submitButton}>Submit Claim</button>
+          <button style={styles.submitButton} onClick={handleSubmit}>Submit Claim</button>
         </div>
 
         {/* Claim Status Card */}
