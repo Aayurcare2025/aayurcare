@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import { User, Home, Wallet, FileText, HelpCircle } from "lucide-react";
 // import CorporateLoginClaims from "./CorporateLoginClaims";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  ResponsiveContainer
+} from "recharts";
 
 
 
@@ -26,6 +34,18 @@ const handleFileUpload = (e, type) => {
     [type]: files,
   }));
 };
+
+
+
+const data = [
+  { name: "Total Reimbursement", value: 1000 },
+  { name: "Usuage", value: 500 },
+  { name: "Pending", value: 100 },
+  
+];
+
+// Colors for each slice
+const COLORS = ["#0088FE", "#00FF00", "#Ff0000"];
 
   
 const renderContent = () => {
@@ -147,7 +167,7 @@ const renderClaims = () => {
 };
 
 
-  
+
  const renderSupport=()=>
  {
 
@@ -174,7 +194,7 @@ const renderClaims = () => {
     <div>
       <div style={styles.pageHeader}>
         <div>
-          <h2 style={styles.pageTitle}>My Profile</h2>
+          <h2>My Profile</h2>
           <p style={styles.pageSubtitle}>Manage your personal information</p>
         </div>
      
@@ -520,49 +540,39 @@ const renderClaims = () => {
 
   const renderWallet = () => {
     return (
-      <div>
-        <div style={styles.pageHeader}>
-          <div>
-            <h2 style={styles.pageTitle}>Wallet Management</h2>
-            <p style={styles.pageSubtitle}>Manage your corporate health benefits wallet</p>
-          </div>
-          {/* <button style={styles.addFundsBtn}>
-            <Wallet size={20} />
-            <span>Add Funds</span>
-          </button> */}
-        </div>
+      <div style={{ width: "100%", height: 400 }}>
+      <h2 style={{ textAlign: "center" }}>Wallet Management</h2>
+      <ResponsiveContainer>
+        <PieChart>
+          {/* Pie component */}
+          <Pie
+            data={data}
+            cx="50%" // X position
+            cy="50%" // Y position
+            labelLine={false}
+            label={({ name, percent }) =>
+              `${name} ${(percent * 100).toFixed(0)}%`
+            }
+            outerRadius={150}
+            fill="#8884d8"
+            dataKey="value"
+          >
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+              />
+            ))}
+          </Pie>
 
-        {/* Wallet Balance Card */}
-        <div style={styles.walletBalanceCard}>
-          <div style={styles.balanceHeader}>
-            <div>
-              <p style={styles.balanceLabel}>Available Balance</p>
-              <h1 style={styles.balanceAmount}>₹40,000</h1>
-              <p style={styles.balanceSubtext}>Last updated: Today</p>
-            </div>
-            <div style={styles.walletIconLarge}>
-              <Wallet size={48} color="#fff" />
-            </div>
-          </div>
-          
-          <div style={styles.balanceStats}>
-            <div style={styles.statItem}>
-              <p style={styles.statLabel}>Total Reimbursement Credited</p>
-              <p style={styles.statValue}>₹5000</p>
-            </div>
-            <div style={styles.statDivider}></div>
-            <div style={styles.statItem}>
-              <p style={styles.statLabel}>Plan Price</p>
-              <p style={styles.statValue}>₹15,000</p>
-            </div>
-            <div style={styles.statDivider}></div>
-            <div style={styles.statItem}>
-              <p style={styles.statLabel}>Expiry Date</p>
-              <p style={styles.statValue}>26 January 2027</p>
-            </div>
-          </div>
-        </div>
-      </div>
+          {/* Tooltip on hover */}
+          <Tooltip />
+
+          {/* Legend */}
+          <Legend />
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
     );
   };
 
@@ -952,6 +962,7 @@ const styles = {
     fontWeight: "700",
     color: "#1e293b",
     marginBottom: "4px",
+    alignItems:"center",
   },
 
   pageSubtitle: {
