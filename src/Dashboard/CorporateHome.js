@@ -47,7 +47,7 @@ const data = [
 // Colors for each slice
 const COLORS = ["#0088FE", "#00FF00", "#Ff0000"];
 
-const data2=[{ name: "Total Wallet", value: 1000 }];
+const data2=[{ name: "Total Wallet", value: 2000 }];
 const COLORS2=["#0088FE"]
 
   
@@ -87,7 +87,7 @@ const renderClaims = () => {
       {/* Top Row - Current Balance */}
       <div style={styles.claimBalanceCard}>
         <h3 style={styles.claimCardTitle}>Current Bill</h3>
-        <p style={styles.claimBalanceAmount}>₹40,000</p>
+        <p style={styles.claimBalanceAmount}>₹2,000</p>
       </div>
 
       {/* Main Grid - 2x2 Layout */}
@@ -151,19 +151,19 @@ const renderClaims = () => {
         <div style={styles.claimCardSmall}>
           <h3 style={styles.claimCardTitle}>Topup Balance</h3>
           <div style={styles.topupContent}>
-            <p style={styles.topupAmount}>₹10,000</p>
+            <p style={styles.topupAmount}>₹1000</p>
             {/* <p style={styles.topupText}>Available for use</p> */}
           </div>
         </div>
 
         {/* Plan Upgrade Option Card */}
-        <div style={styles.claimCardSmall}>
+        {/* <div style={styles.claimCardSmall}>
           <h3 style={styles.claimCardTitle}>Plan Upgrade Option</h3>
           <div style={styles.planButtons}>
             <button style={styles.planBtnActive}>Current Plan</button>
             <button style={styles.planBtnInactive}>Premium Plan</button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
@@ -316,7 +316,7 @@ const renderClaims = () => {
                 <p style={styles.fieldLabel}>Plan Name</p>
                 <input 
                   type="text" 
-                  value="Corporate Premium Plan" 
+                  value="Corporate Radiant Premium Plan" 
                   style={styles.fieldInput}
                   readOnly
                 />
@@ -326,7 +326,7 @@ const renderClaims = () => {
                 <p style={styles.fieldLabel}>Reimbursement Amount</p>
                 <input 
                   type="text" 
-                  value="₹40,000" 
+                  value="₹1,000" 
                   style={styles.fieldInput}
                   readOnly
                 />
@@ -336,7 +336,7 @@ const renderClaims = () => {
                 <p style={styles.fieldLabel}>Plan Amount</p>
                 <input 
                   type="text" 
-                  value="₹15,000" 
+                  value="₹7,250" 
                   style={styles.fieldInput}
                   readOnly
                 />
@@ -346,7 +346,7 @@ const renderClaims = () => {
                 <p style={styles.fieldLabel}>Start Date</p>
                 <input 
                   type="text" 
-                  value="01 April 2024" 
+                  value="01 Jan 2026" 
                   style={styles.fieldInput}
                   readOnly
                 />
@@ -356,7 +356,7 @@ const renderClaims = () => {
                 <p style={styles.fieldLabel}>End Date</p>
                 <input 
                   type="text" 
-                  value="31 March 2025" 
+                  value="01 Jan 2027" 
                   style={styles.fieldInput}
                   readOnly
                 />
