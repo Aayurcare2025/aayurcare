@@ -1,195 +1,522 @@
 import React, { useState } from "react";
 import { User, Home, Wallet, FileText, HelpCircle } from "lucide-react";
-import CorporateLoginClaims from "./CorporateLoginClaims";
+// import CorporateLoginClaims from "./CorporateLoginClaims";
+
+
+
 export default function CorporateHome() {
   const [activeMenu, setActiveMenu] = useState("Home");
+const [selectedDocs, setSelectedDocs] = useState([]);
+const [uploadedFiles, setUploadedFiles] = useState({});
+const handleDocChange = (type) => {
+  setSelectedDocs((prev) =>
+    prev.includes(type)
+      ? prev.filter((item) => item !== type)
+      : [...prev, type]
+  );
+};
 
-  const renderContent = () => {
-    switch(activeMenu) {
-      case "Home":
-        return renderHome();
-      case "Wallet":
-        return renderWallet();
-      case "My Profile":
-        return renderProfile();
-      // case "KYC":
-      //   return <div style={styles.comingSoon}>KYC - Coming Soon</div>;
-      // case "Claims":
-      //   return <div style={styles.comingSoon}>Claims Management - Coming Soon</div>;
-  //     case "Claims":
-  // return <Claims />;
-  case "Claims":
-  return <CorporateLoginClaims/>
 
-      case "Support":
+
+
+const handleFileUpload = (e, type) => {
+  const files = Array.from(e.target.files);
+  setUploadedFiles((prev) => ({
+    ...prev,
+    [type]: files,
+  }));
+};
+
+  
+const renderContent = () => {
+  switch (activeMenu) {
+    case "Home":
+      return renderHome();
+    case "Wallet":
+      return renderWallet();
+    case "My Profile":
+      return renderProfile();
+    case "Claims":
+      return renderClaims();
+    case "Support":
       return renderSupport();
-      default:
-        return renderHome();
-    }
-  };
+    default:
+      return renderHome();
+  }
+};
 
 
+
+const renderClaims = () => {
+  const docTypes = [
+    "Bank Document",
+    "Medicine Prescription",
+    "Radiology",
+    "Pathology",
+    "Consultation",
+    "Ambulance Service"
+  ];
+
+  return (
+    <div>
+      <h2 style={styles.pageTitle}>Claims Management</h2>
+
+      {/* Top Row - Current Balance */}
+      <div style={styles.claimBalanceCard}>
+        <h3 style={styles.claimCardTitle}>Current Bill</h3>
+        <p style={styles.claimBalanceAmount}>₹40,000</p>
+      </div>
+
+      {/* Main Grid - 2x2 Layout */}
+      <div style={styles.claimsGrid}>
+        {/* Claim Documents Card */}
+        <div style={styles.claimCardLarge}>
+          <h3 style={styles.claimCardTitle}>Claim Documents</h3>
+          <div style={styles.documentList}>
+            {docTypes.map((doc) => (
+              <div key={doc} style={styles.documentItem}>
+                <label style={styles.checkboxLabel}>
+                  <input
+                    type="checkbox"
+                    checked={selectedDocs.includes(doc)}
+                    onChange={() => handleDocChange(doc)}
+                    style={styles.checkbox}
+                  />
+                  <span>{doc}</span>
+                </label>
+
+                {selectedDocs.includes(doc) && (
+                  <div style={styles.uploadSection}>
+                    <input
+                      type="file"
+                      multiple
+                      onChange={(e) => handleFileUpload(e, doc)}
+                      style={styles.fileInput}
+                      id={`file-${doc}`}
+                    />
+                    <label htmlFor={`file-${doc}`} style={styles.uploadButton}>
+                      Choose Files
+                    </label>
+
+                    {uploadedFiles[doc] && (
+                      <div style={styles.fileList}>
+                        {uploadedFiles[doc].map((file, index) => (
+                          <div key={index} style={styles.fileName}>
+                            📄 {file.name}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <button style={styles.submitButton}>Submit Claim</button>
+        </div>
+
+        {/* Claim Status Card */}
+        <div style={styles.claimCardSmall}>
+          <h3 style={styles.claimCardTitle}>Claim Status</h3>
+          <div style={styles.statusContent}>
+            <div style={styles.statusBadge}>In Progress</div>
+            <p style={styles.statusText}>Your claim is being processed</p>
+          </div>
+        </div>
+
+        {/* Topup Balance Card */}
+        <div style={styles.claimCardSmall}>
+          <h3 style={styles.claimCardTitle}>Topup Balance</h3>
+          <div style={styles.topupContent}>
+            <p style={styles.topupAmount}>₹10,000</p>
+            {/* <p style={styles.topupText}>Available for use</p> */}
+          </div>
+        </div>
+
+        {/* Plan Upgrade Option Card */}
+        <div style={styles.claimCardSmall}>
+          <h3 style={styles.claimCardTitle}>Plan Upgrade Option</h3>
+          <div style={styles.planButtons}>
+            <button style={styles.planBtnActive}>Current Plan</button>
+            <button style={styles.planBtnInactive}>Premium Plan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
+  
  const renderSupport=()=>
  {
+
+  //doing changes here:--
+
   return(
+
   <div>
     <h2 style={styles.pageHeader}>Support & Helpdesk</h2>
     <div>
       <p style={{fontSize:"16px", color:"#475569"}}>For any assistance regarding your corporate health benefits, please reach out to our dedicated support team:</p>
-      <p>support@aayurcare.com                    </p>
+      <p>support@aayurcare.com</p>
       <p>7338146712</p>
     </div>
   </div>
+
+  
   );
  };
 
-  const renderProfile = () => {
-    return (
-      <div>
-        <div style={styles.pageHeader}>
-          <div>
-            <h2 style={styles.pageTitle}>My Profile</h2>
-            <p style={styles.pageSubtitle}>Manage your personal information and settings</p>
-          </div>
-          <button style={styles.editBtn}>
-            <User size={20} />
-            <span>Edit Profile</span>
-          </button>
+
+ const renderProfile = () => {
+  return (
+    <div>
+      <div style={styles.pageHeader}>
+        <div>
+          <h2 style={styles.pageTitle}>My Profile</h2>
+          <p style={styles.pageSubtitle}>Manage your personal information</p>
+        </div>
+     
+      </div>
+
+      <div style={styles.profileContainer}>
+        {/* Quick Actions Section */}
+        <div style={styles.quickActionsCard}>
+          <h3 style={styles.quickActionsTitle}>Quick Actions</h3>
+          {/* <div style={styles.quickActionsGrid}>
+            <button style={styles.actionBtn}>
+              <User size={20} />
+              <span>Update Profile</span>
+            </button>
+          
+  
+          </div> */}
         </div>
 
+        {/* Main Profile Grid - 2 columns */}
+        <div style={styles.profileMainGrid}>
+          {/* Left Column - Employee Profile */}
+          <div style={styles.profileCard}>
+            <h3 style={styles.profileCardTitle}>Employee Profile</h3>
+            <div style={styles.profileFieldsContainer}>
+              <div style={styles.profileField}>
+                <p style={styles.fieldLabel}>Employee Name</p>
+                <input 
+                  type="text" 
+                  value="Kirthana Nambiar" 
+                  style={styles.fieldInput}
+                  readOnly
+                />
+              </div>
 
+              <div style={styles.profileField}>
+                <p style={styles.fieldLabel}>Employee ID</p>
+                <input 
+                  type="text" 
+                  value="EMP2024001" 
+                  style={styles.fieldInput}
+                  readOnly
+                />
+              </div>
 
+              <div style={styles.profileField}>
+                <p style={styles.fieldLabel}>Corporate Mail</p>
+                <input 
+                  type="email" 
+                  value="kirthana.nambiar@aayurcare.com" 
+                  style={styles.fieldInput}
+                  readOnly
+                />
+              </div>
 
-        <div style={styles.profileContainer}>
-          {/* Profile Header Card */}
-          <div style={styles.profileHeaderCard}>
-            <div style={styles.profileImageSection}>
-              <div style={styles.profileImageLarge}>K</div>
-              {/* <button style={styles.changePhotoBtn}>Change Photo</button> */}
-            </div>
-            <div style={styles.profileBasicInfo}>
-              <h2 style={styles.profileName}>Kirthana Nambiar</h2>
-              <p style={styles.profileRole}>Corporate Admin • Full Stack Developer</p>
-              <p style={styles.profileEmail}>kirthana.nambiar@aayurcare.com</p>
-              <div style={styles.profileBadge}>✓ Verified Account</div>
-            </div>
-          </div>
+              <div style={styles.profileField}>
+                <p style={styles.fieldLabel}>Corporate Name</p>
+                <input 
+                  type="text" 
+                  value="Aayurcare" 
+                  style={styles.fieldInput}
+                  readOnly
+                />
+              </div>
 
-          {/* Personal Information */}
-          <div style={styles.infoSection}>
-            <h3 style={styles.infoSectionTitle}>Personal Information</h3>
-            <div style={styles.infoGrid}>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Full Name</p>
-                <p style={styles.infoValue}>Kirthana Nambiar</p>
+              <div style={styles.profileField}>
+                <p style={styles.fieldLabel}>Department</p>
+                <input 
+                  type="text" 
+                  value="Information Technology" 
+                  style={styles.fieldInput}
+                  readOnly
+                />
               </div>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Employee ID</p>
-                <p style={styles.infoValue}>EMP2024001</p>
-              </div>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Email Address</p>
-                <p style={styles.infoValue}>kirthana.nambiar@aayurcare.com</p>
-              </div>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Phone Number</p>
-                <p style={styles.infoValue}>+91 7057530253</p>
-              </div>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Date of Birth</p>
-                <p style={styles.infoValue}>23 April 2000</p>
-              </div>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Gender</p>
-                <p style={styles.infoValue}>Female</p>
-              </div>
-            </div>
-          </div>
 
-          {/* Employment Details */}
-          <div style={styles.infoSection}>
-            <h3 style={styles.infoSectionTitle}>Employment Details</h3>
-            <div style={styles.infoGrid}>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Department</p>
-                <p style={styles.infoValue}>IT</p>
+              <div style={styles.profileField}>
+                <p style={styles.fieldLabel}>Blood Group</p>
+                <input 
+                  type="text" 
+                  value="A+" 
+                  style={styles.fieldInput}
+                  readOnly
+                />
               </div>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Designation</p>
-                <p style={styles.infoValue}>Full Stack Developer</p>
-              </div>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Date of Joining</p>
-                <p style={styles.infoValue}>08 September 2025</p>
-              </div>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Office Location</p>
-                <p style={styles.infoValue}>Bangalore, Karnataka</p>
-              </div>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Employee Type</p>
-                <p style={styles.infoValue}>Full Time - Permanent</p>
-              </div>
-            </div>
-          </div>
 
-          {/* Health Benefits Information */}
-          <div style={styles.infoSection}>
-            <h3 style={styles.infoSectionTitle}>Health Benefits Information</h3>
-            <div style={styles.infoGrid}>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Membership Plan Number</p>
-                <p style={styles.infoValue}>AAYURCARE-CORP-2026-001234</p>
+              <div style={styles.profileField}>
+                <p style={styles.fieldLabel}>Date of Birth</p>
+                <input 
+                  type="text" 
+                  value="23 April 2000" 
+                  style={styles.fieldInput}
+                  readOnly
+                />
               </div>
-              {/* <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Coverage Amount</p>
-                <p style={styles.infoValue}>₹5,00,000</p>
-              </div> */}
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Policy Start Date</p>
-                <p style={styles.infoValue}>01 April 2024</p>
-              </div>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Policy End Date</p>
-                <p style={styles.infoValue}>31 March 2025</p>
-              </div>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Dependents Covered</p>
-                <p style={styles.infoValue}>Self + Spouse + 1 Child</p>
-              </div>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>OPD Limit (Annual)</p>
-                <p style={styles.infoValue}>₹15,000</p>
+
+              <div style={styles.profileField}>
+                <p style={styles.fieldLabel}>Gender</p>
+                <input 
+                  type="text" 
+                  value="Female" 
+                  style={styles.fieldInput}
+                  readOnly
+                />
               </div>
             </div>
           </div>
 
-          {/* Emergency Contact */}
-          <div style={styles.infoSection}>
-            <h3 style={styles.infoSectionTitle}>Emergency Contact</h3>
-            <div style={styles.infoGrid}>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Contact Name</p>
-                <p style={styles.infoValue}>Shreejeet Nambiar</p>
+          {/* Right Column - Plan & Membership Details */}
+          <div style={styles.profileCard}>
+            <h3 style={styles.profileCardTitle}>Plan & Membership Details</h3>
+            <div style={styles.profileFieldsContainer}>
+              <div style={styles.profileField}>
+                <p style={styles.fieldLabel}>Plan Name</p>
+                <input 
+                  type="text" 
+                  value="Corporate Premium Plan" 
+                  style={styles.fieldInput}
+                  readOnly
+                />
               </div>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Relationship</p>
-                <p style={styles.infoValue}>Brother</p>
+
+              <div style={styles.profileField}>
+                <p style={styles.fieldLabel}>Reimbursement Amount</p>
+                <input 
+                  type="text" 
+                  value="₹40,000" 
+                  style={styles.fieldInput}
+                  readOnly
+                />
               </div>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Phone Number</p>
-                <p style={styles.infoValue}>+91 8308025459</p>
+
+              <div style={styles.profileField}>
+                <p style={styles.fieldLabel}>Plan Amount</p>
+                <input 
+                  type="text" 
+                  value="₹15,000" 
+                  style={styles.fieldInput}
+                  readOnly
+                />
               </div>
-              <div style={styles.infoItem}>
-                <p style={styles.infoLabel}>Email Address</p>
-                <p style={styles.infoValue}>nambiarshreejeet@gmail.com</p>
+
+              <div style={styles.profileField}>
+                <p style={styles.fieldLabel}>Start Date</p>
+                <input 
+                  type="text" 
+                  value="01 April 2024" 
+                  style={styles.fieldInput}
+                  readOnly
+                />
+              </div>
+
+              <div style={styles.profileField}>
+                <p style={styles.fieldLabel}>End Date</p>
+                <input 
+                  type="text" 
+                  value="31 March 2025" 
+                  style={styles.fieldInput}
+                  readOnly
+                />
+              </div>
+
+              <div style={styles.profileField}>
+                <p style={styles.fieldLabel}>Membership ID</p>
+                <input 
+                  type="text" 
+                  value="AAYURCARE-CORP-2026-001234" 
+                  style={styles.fieldInput}
+                  readOnly
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
-    );
-  };
+    </div>
+  );
+};
+
+//infor
+
+ //profile rendering::-
+
+  // const renderProfile = () => {
+  //   return (
+  //     <div>
+  //       <div style={styles.pageHeader}>
+  //         <div>
+  //           <h2 style={styles.pageTitle}>My Profile</h2>
+  //           <p style={styles.pageSubtitle}>Manage your personal information and settings</p>
+  //         </div>
+  //         <button style={styles.editBtn}>
+  //           <User size={20} />
+  //           <span>Edit Profile</span>
+  //         </button>
+  //       </div>
+      
+
+
+  //       <div style={styles.profileContainer}>
+  //         {/* Profile Header Card */}
+  //         <div style={styles.profileHeaderCard}>
+  //           <div style={styles.profileImageSection}>
+  //             <div style={styles.profileImageLarge}>K</div>
+  //             {/* <button style={styles.changePhotoBtn}>Change Photo</button> */}
+  //           </div>
+  //           <div style={styles.profileBasicInfo}>
+  //             <h2 style={styles.profileName}>Kirthana Nambiar</h2>
+  //             <p style={styles.profileRole}>Corporate Admin • Full Stack Developer</p>
+  //             <p style={styles.profileEmail}>kirthana.nambiar@aayurcare.com</p>
+  //             <div style={styles.profileBadge}>✓ Verified Account</div>
+  //           </div>
+  //         </div>
+
+  //         {/* Personal Information */}
+  //         <div style={styles.infoSection}>
+  //           <h3 style={styles.infoSectionTitle}>Personal Information</h3>
+  //           <div style={styles.infoGrid}>
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Full Name</p>
+  //               <p style={styles.infoValue}>Kirthana Nambiar</p>
+  //             </div>
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Employee ID</p>
+  //               <p style={styles.infoValue}>EMP2024001</p>
+                
+  //             </div>
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Email Address</p>
+  //               <p style={styles.infoValue}>kirthana.nambiar@aayurcare.com</p>
+  //             </div>
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Phone Number</p>
+  //               <p style={styles.infoValue}>+91 7057530253</p>
+  //             </div>
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Date of Birth</p>
+  //               <p style={styles.infoValue}>23 April 2000</p>
+  //             </div>
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Gender</p>
+  //               <p style={styles.infoValue}>Female</p>
+  //             </div>
+  //           </div>
+  //         </div>
+
+  //         {/* Employment Details */}
+  //         <div style={styles.infoSection}>
+  //           <h3 style={styles.infoSectionTitle}>Employment Details</h3>
+  //           <div style={styles.infoGrid}>
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Department</p>
+  //               <p style={styles.infoValue}>IT</p>
+  //             </div>
+
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Designation</p>
+  //               <p style={styles.infoValue}>Full Stack Developer</p>
+  //             </div>
+
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Date of Joining</p>
+  //               <p style={styles.infoValue}>08 September 2025</p>
+  //             </div>
+
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Office Location</p>
+  //               <p style={styles.infoValue}>Bangalore, Karnataka</p>
+  //             </div>
+
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Employee Type</p>
+  //               <p style={styles.infoValue}>Full Time - Permanent</p>
+  //             </div>
+
+          
+  //           </div>
+  //         </div>
+
+  //         {/* Health Benefits Information */}
+
+
+
+          
+  //         <div style={styles.infoSection}>
+  //           <h3 style={styles.infoSectionTitle}>Health Benefits Information</h3>
+  //           <div style={styles.infoGrid}>
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Membership Plan Number</p>
+  //               <p style={styles.infoValue}>AAYURCARE-CORP-2026-001234</p>
+  //             </div>
+  //             {/* <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Coverage Amount</p>
+  //               <p style={styles.infoValue}>₹5,00,000</p>
+  //             </div> */}
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Policy Start Date</p>
+  //               <p style={styles.infoValue}>01 April 2024</p>
+  //             </div>
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Policy End Date</p>
+  //               <p style={styles.infoValue}>31 March 2025</p>
+  //             </div>
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Dependents Covered</p>
+  //               <p style={styles.infoValue}>Self + Spouse + 1 Child</p>
+  //             </div>
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>OPD Limit (Annual)</p>
+  //               <p style={styles.infoValue}>₹15,000</p>
+  //             </div>
+  //           </div>
+  //         </div>
+
+  //         {/* Emergency Contact */}
+  //         <div style={styles.infoSection}>
+  //           <h3 style={styles.infoSectionTitle}>Emergency Contact</h3>
+  //           <div style={styles.infoGrid}>
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Contact Name</p>
+  //               <p style={styles.infoValue}>Shreejeet Nambiar</p>
+  //             </div>
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Relationship</p>
+  //               <p style={styles.infoValue}>Brother</p>
+  //             </div>
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Phone Number</p>
+  //               <p style={styles.infoValue}>+91 8308025459</p>
+  //             </div>
+  //             <div style={styles.infoItem}>
+  //               <p style={styles.infoLabel}>Email Address</p>
+  //               <p style={styles.infoValue}>nambiarshreejeet@gmail.com</p>
+  //             </div>
+  //           </div>
+  //         </div>
+
+
+          
+  //       </div>
+  //     </div>
+  //   );
+  // };
 
   const renderWallet = () => {
     return (
@@ -232,156 +559,20 @@ export default function CorporateHome() {
             <div style={styles.statItem}>
               <p style={styles.statLabel}>Expiry Date</p>
               <p style={styles.statValue}>26 January 2027</p>
-            </div>2
+            </div>
           </div>
         </div>
-
-        {/* Transaction History */}
-      
-          
-        
-
-           
-
-          
-           
-
-          
-        
-       
       </div>
     );
   };
 
  
-    // return (
-    //   <div>
-    //     {/* Dashboard Cards */}
-    //     <div style={styles.cardsContainer}>
-    //       <div style={{...styles.card, ...styles.cardBlue}}>
-    //         <div style={styles.cardIcon}>
-    //           <User size={24} color="#3b82f6" />
-    //         </div>
-    //         <h3 style={styles.cardTitle}>Total Employees</h3>
-    //         <p style={styles.cardValue}>120</p>
-    //         <p style={styles.cardSubtext}>Active members</p>
-    //       </div>
 
-    //       <div style={{...styles.card, ...styles.cardGreen}}>
-    //         <div style={styles.cardIcon}>
-    //           <Wallet size={24} color="#10b981" />
-    //         </div>
-    //         <h3 style={styles.cardTitle}>Wallet Balance</h3>
-    //         <p style={styles.cardValue}>₹45,000</p>
-    //         <p style={styles.cardSubtext}>Available for reimbursements</p>
-    //       </div>
 
-    //       <div style={{...styles.card, ...styles.cardOrange}}>
-    //         <div style={styles.cardIcon}>
-    //           <Clock size={24} color="#f59e0b" />
-    //         </div>
-    //         <h3 style={styles.cardTitle}>Pending Claims</h3>
-    //         <p style={styles.cardValue}>8</p>
-    //         <p style={styles.cardSubtext}>Awaiting approval</p>
-    //       </div>
+   
 
-    //       <div style={{...styles.card, ...styles.cardPurple}}>
-    //         <div style={styles.cardIcon}>
-    //           <TrendingUp size={24} color="#8b5cf6" />
-    //         </div>
-    //         <h3 style={styles.cardTitle}>This Month</h3>
-    //         <p style={styles.cardValue}>₹12,450</p>
-    //         <p style={styles.cardSubtext}>Total reimbursements</p>
-    //       </div>
-    //     </div>
+  
 
-    //     {/* Recent Activity Section */}
-    //     <div style={styles.activitySection}>
-    //       <h3 style={styles.sectionTitle}>Recent Claims Activity</h3>
-          
-    //       <div style={styles.activityList}>
-    //         <div style={styles.activityItem}>
-    //           <div style={{...styles.activityIcon, backgroundColor: "#dcfce7"}}>
-    //             <CheckCircle size={20} color="#16a34a" />
-    //           </div>
-    //           <div style={styles.activityDetails}>
-    //             <p style={styles.activityTitle}>OPD Claim - Rajesh Kumar</p>
-    //             <p style={styles.activityDesc}>Consultation fee reimbursement approved</p>
-    //           </div>
-    //           <div style={styles.activityAmount}>
-    //             <p style={styles.amountApproved}>₹850</p>
-    //             <p style={styles.activityTime}>2 hours ago</p>
-    //           </div>
-    //         </div>
-
-    //         <div style={styles.activityItem}>
-    //           <div style={{...styles.activityIcon, backgroundColor: "#fef3c7"}}>
-    //             <Clock size={20} color="#d97706" />
-    //           </div>
-    //           <div style={styles.activityDetails}>
-    //             <p style={styles.activityTitle}>Pharmacy Claim - Priya Sharma</p>
-    //             <p style={styles.activityDesc}>Medicine purchase pending review</p>
-    //           </div>
-    //           <div style={styles.activityAmount}>
-    //             <p style={styles.amountPending}>₹1,200</p>
-    //             <p style={styles.activityTime}>5 hours ago</p>
-    //           </div>
-    //         </div>
-
-    //         <div style={styles.activityItem}>
-    //           <div style={{...styles.activityIcon, backgroundColor: "#dcfce7"}}>
-    //             <CheckCircle size={20} color="#16a34a" />
-    //           </div>
-    //           <div style={styles.activityDetails}>
-    //             <p style={styles.activityTitle}>Diagnostic Test - Amit Patel</p>
-    //             <p style={styles.activityDesc}>Blood test reimbursement processed</p>
-    //           </div>
-    //           <div style={styles.activityAmount}>
-    //             <p style={styles.amountApproved}>₹650</p>
-    //             <p style={styles.activityTime}>1 day ago</p>
-    //           </div>
-    //         </div>
-
-    //         <div style={styles.activityItem}>
-    //           <div style={{...styles.activityIcon, backgroundColor: "#fee2e2"}}>
-    //             <XCircle size={20} color="#dc2626" />
-    //           </div>
-    //           <div style={styles.activityDetails}>
-    //             <p style={styles.activityTitle}>OPD Claim - Sneha Reddy</p>
-    //             <p style={styles.activityDesc}>Incomplete documentation</p>
-    //           </div>
-    //           <div style={styles.activityAmount}>
-    //             <p style={styles.amountRejected}>₹900</p>
-    //             <p style={styles.activityTime}>2 days ago</p>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-
-    //     {/* Quick Actions */}
-    //     <div style={styles.quickActions}>
-    //       <h3 style={styles.sectionTitle}>Quick Actions</h3>
-    //       <div style={styles.actionButtons}>
-    //         <button style={styles.actionButton}>
-    //           <FileText size={20} />
-    //           <span>Review Claims</span>
-    //         </button>
-    //         <button style={styles.actionButton}>
-    //           <Wallet size={20} />
-    //           <span>Add Funds</span>
-    //         </button>
-    //         <button style={styles.actionButton}>
-    //           <User size={20} />
-    //           <span>Manage Employees</span>
-    //         </button>
-    //         <button style={styles.actionButton}>
-    //           <TrendingUp size={20} />
-    //           <span>View Reports</span>
-    //         </button>
-    //       </div>
-    //     </div>
-    //   </div>
-    // );
 const renderHome = () => {
 
   //do chnages
@@ -405,13 +596,7 @@ const renderHome = () => {
           <p>Submit and track employee medical claims easily.</p>
         </div>
 
-        {/* <div style={styles.homeCard}>
-          <div style={styles.homeIcon}>
-            <TrendingUp size={28} color="#10b981" />
-          </div>
-          <h3>Diagnostics Booking</h3>
-          <p>Book lab tests and health checkups for employees.</p>
-        </div> */}
+      
 
 
         <div style={styles.homeCard}>
@@ -446,12 +631,7 @@ const renderHome = () => {
           >
             <User size={18}/> My Profile
           </div>
-          {/* <div 
-            style={{...styles.menuItem, ...(activeMenu === "KYC" ? styles.activeMenuItem : {})}}
-            onClick={() => setActiveMenu("KYC")}
-          >
-            <Shield size={18}/> KYC
-          </div> */}
+        
           <div 
             style={{...styles.menuItem, ...(activeMenu === "Wallet" ? styles.activeMenuItem : {})}}
             onClick={() => setActiveMenu("Wallet")}
@@ -840,6 +1020,7 @@ const styles = {
     justifyContent: "center",
   },
 
+
   balanceStats: {
     display: "grid",
     gridTemplateColumns: "1fr auto 1fr auto 1fr",
@@ -847,6 +1028,8 @@ const styles = {
     paddingTop: "24px",
     borderTop: "1px solid rgba(255, 255, 255, 0.2)",
   },
+
+
 
   statItem: {
     textAlign: "center",
@@ -866,10 +1049,6 @@ const styles = {
     margin: "0",
   },
 
-  statDivider: {
-    width: "1px",
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
-  },
 
   transactionSection: {
     backgroundColor: "#fff",
@@ -885,6 +1064,7 @@ const styles = {
     gap: "12px",
   },
 
+  
   transactionItem: {
     display: "flex",
     alignItems: "center",
@@ -905,9 +1085,13 @@ const styles = {
     flexShrink: 0,
   },
 
+
+
   transactionDetails: {
     flex: 1,
   },
+
+
 
   transactionTitle: {
     fontSize: "14px",
@@ -931,6 +1115,7 @@ const styles = {
     textAlign: "right",
   },
 
+
   creditAmount: {
     fontSize: "18px",
     fontWeight: "700",
@@ -945,6 +1130,7 @@ const styles = {
     margin: "0",
   },
 
+
   comingSoon: {
     backgroundColor: "#fff",
     padding: "60px",
@@ -956,27 +1142,40 @@ const styles = {
     border: "1px solid #e2e8f0",
   },
 
+  claimGrid: {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+  gap: "20px",
+  marginTop: "30px",
+},
+
+claimCard: {
+  backgroundColor: "#fff",
+  padding: "24px",
+  borderRadius: "16px",
+  boxShadow: "0 1px 3px rgba(0,0,0,0.08)",
+  border: "1px solid #e2e8f0",
+},
+
+planBtn: {
+  padding: "10px 18px",
+  borderRadius: "8px",
+  border: "none",
+  backgroundColor: "#3b82f6",
+  color: "#fff",
+  fontWeight: "600",
+  cursor: "pointer",
+},
+
   // Profile Page Styles
-  editBtn: {
-    display: "flex",
-    alignItems: "center",
-    gap: "10px",
-    padding: "12px 24px",
-    backgroundColor: "#3b82f6",
-    color: "#fff",
-    border: "none",
-    borderRadius: "10px",
-    fontSize: "14px",
-    fontWeight: "600",
-    cursor: "pointer",
-    transition: "all 0.2s",
-  },
+ 
 
   profileContainer: {
     display: "flex",
     flexDirection: "column",
     gap: "24px",
   },
+
 
   profileHeaderCard: {
     backgroundColor: "#fff",
@@ -989,11 +1188,14 @@ const styles = {
     alignItems: "center",
   },
 
-  profileImageSection: {
+
+  //dat ahwihc ib n
+
+  profileImageSection: { 
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    gap: "16px",
+    alignItems:"center",
+    gap:"16px",
   },
 
   profileImageLarge: {
@@ -1009,6 +1211,9 @@ const styles = {
     fontWeight: "700",
     boxShadow: "0 8px 24px rgba(59, 130, 246, 0.3)",
   },
+
+
+  
 
   changePhotoBtn: {
     padding: "8px 16px",
@@ -1092,9 +1297,349 @@ const styles = {
     letterSpacing: "0.5px",
   },
 
+  
   infoValue: {
     fontSize: "15px",
     fontWeight: "600",
     color: "#1e293b",
   },
+// Add these to your existing styles object:
+
+claimBalanceCard: {
+  backgroundColor: "#fff",
+  padding: "24px",
+  borderRadius: "16px",
+  boxShadow: "0 1px 3px rgba(0,0,0,0.08)",
+  border: "1px solid #e2e8f0",
+  marginBottom: "24px",
+  textAlign: "center",
+},
+
+claimBalanceAmount: {
+  fontSize: "42px",
+  fontWeight: "700",
+  color: "#3b82f6",
+  margin: "8px 0 0 0",
+},
+
+claimsGrid: {
+  display: "grid",
+  gridTemplateColumns: "2fr 1fr",
+  gap: "20px",
+  gridTemplateRows: "auto auto",
+},
+
+claimCardLarge: {
+  backgroundColor: "#fff",
+  padding: "28px",
+  borderRadius: "16px",
+  boxShadow: "0 1px 3px rgba(0,0,0,0.08)",
+  border: "1px solid #e2e8f0",
+  gridRow: "span 2",
+},
+
+claimCardSmall: {
+  backgroundColor: "#fff",
+  padding: "24px",
+  borderRadius: "16px",
+  boxShadow: "0 1px 3px rgba(0,0,0,0.08)",
+  border: "1px solid #e2e8f0",
+},
+
+claimCardTitle: {
+  fontSize: "18px",
+  fontWeight: "600",
+  color: "#1e293b",
+  marginBottom: "20px",
+  paddingBottom: "12px",
+  borderBottom: "2px solid #f1f5f9",
+},
+
+documentList: {
+  display: "flex",
+  flexDirection: "column",
+  gap: "16px",
+  marginBottom: "24px",
+},
+
+documentItem: {
+  display: "flex",
+  flexDirection: "column",
+  gap: "12px",
+},
+
+checkboxLabel: {
+  display: "flex",
+  alignItems: "center",
+  gap: "10px",
+  fontSize: "14px",
+  fontWeight: "500",
+  color: "#1e293b",
+  cursor: "pointer",
+},
+
+checkbox: {
+  width: "18px",
+  height: "18px",
+  cursor: "pointer",
+},
+
+uploadSection: {
+  marginLeft: "28px",
+  display: "flex",
+  flexDirection: "column",
+  gap: "10px",
+},
+
+fileInput: {
+  display: "none",
+},
+
+uploadButton: {
+  display: "inline-block",
+  padding: "8px 16px",
+  backgroundColor: "#f1f5f9",
+  border: "1px solid #e2e8f0",
+  borderRadius: "8px",
+  fontSize: "13px",
+  fontWeight: "500",
+  color: "#475569",
+  cursor: "pointer",
+  transition: "all 0.2s",
+  textAlign: "center",
+  width: "fit-content",
+},
+
+fileList: {
+  display: "flex",
+  flexDirection: "column",
+  gap: "6px",
+},
+
+fileName: {
+  fontSize: "13px",
+  color: "#64748b",
+  padding: "6px 10px",
+  backgroundColor: "#f8fafc",
+  borderRadius: "6px",
+},
+
+submitButton: {
+  width: "100%",
+  padding: "14px",
+  backgroundColor: "#3b82f6",
+  color: "#fff",
+  border: "none",
+  borderRadius: "10px",
+  fontSize: "15px",
+  fontWeight: "600",
+  cursor: "pointer",
+  transition: "all 0.2s",
+},
+
+statusContent: {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: "12px",
+  paddingTop: "10px",
+},
+
+statusBadge: {
+  padding: "8px 16px",
+  backgroundColor: "#fef3c7",
+  color: "#d97706",
+  borderRadius: "8px",
+  fontSize: "14px",
+  fontWeight: "600",
+},
+
+statusText: {
+  fontSize: "13px",
+  color: "#64748b",
+  textAlign: "center",
+},
+
+topupContent: {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  paddingTop: "10px",
+},
+
+topupAmount: {
+  fontSize: "32px",
+  fontWeight: "700",
+  color: "#16a34a",
+  margin: "0 0 8px 0",
+},
+
+topupText: {
+  fontSize: "13px",
+  color: "#64748b",
+},
+
+planButtons: {
+  display: "flex",
+  flexDirection: "column",
+  gap: "12px",
+  paddingTop: "10px",
+},
+
+planBtnActive: {
+  padding: "12px 18px",
+  borderRadius: "8px",
+  border: "2px solid #3b82f6",
+  backgroundColor: "#3b82f6",
+  color: "#fff",
+  fontWeight: "600",
+  fontSize: "14px",
+  cursor: "pointer",
+  transition: "all 0.2s",
+},
+
+planBtnInactive: {
+  padding: "12px 18px",
+  borderRadius: "8px",
+  border: "2px solid #e2e8f0",
+  backgroundColor: "#fff",
+  color: "#64748b",
+  fontWeight: "600",
+  fontSize: "14px",
+  cursor: "pointer",
+  transition: "all 0.2s",
+},
+// Replace profile-related styles with these:
+
+quickActionsCard: {
+  backgroundColor: "#fff",
+  padding: "24px",
+  borderRadius: "16px",
+  boxShadow: "0 1px 3px rgba(0,0,0,0.08)",
+  border: "1px solid #e2e8f0",
+  marginBottom: "24px",
+},
+
+quickActionsTitle: {
+  fontSize: "18px",
+  fontWeight: "600",
+  color: "#1e293b",
+  marginBottom: "20px",
+},
+
+quickActionsGrid: {
+  display: "grid",
+  gridTemplateColumns: "repeat(3, 1fr)",
+  gap: "16px",
+},
+
+actionBtn: {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "10px",
+  padding: "14px 20px",
+  backgroundColor: "#f8fafc",
+  border: "2px solid #e2e8f0",
+  borderRadius: "10px",
+  fontSize: "14px",
+  fontWeight: "500",
+  color: "#1e293b",
+  cursor: "pointer",
+  transition: "all 0.2s",
+},
+
+
+
+profileMainGrid: {
+  display: "grid",
+  gridTemplateColumns: "1fr 1fr",
+  gap: "24px",
+},
+
+profileCard: {
+  backgroundColor: "#fff",
+  padding: "28px",
+  borderRadius: "16px",
+  boxShadow: "0 1px 3px rgba(0,0,0,0.08)",
+  border: "1px solid #e2e8f0",
+},
+
+profileCardTitle: {
+  fontSize: "18px",
+  fontWeight: "600",
+  color: "#1e293b",
+  marginBottom: "24px",
+  paddingBottom: "12px",
+  borderBottom: "2px solid #f1f5f9",
+},
+
+profileFieldsContainer: {
+  display: "flex",
+  flexDirection: "column",
+  gap: "20px",
+  marginBottom: "24px",
+},
+
+profileField: {
+  display: "flex",
+  flexDirection: "column",
+  gap: "8px",
+},
+
+fieldLabel: {
+  fontSize: "13px",
+  fontWeight: "600",
+  color: "#64748b",
+  textTransform: "uppercase",
+  letterSpacing: "0.5px",
+  margin: "0",
+},
+
+fieldInput: {
+  padding: "12px 16px",
+  fontSize: "15px",
+  fontWeight: "500",
+  color: "#1e293b",
+  backgroundColor: "#f8fafc",
+  border: "1px solid #e2e8f0",
+  borderRadius: "8px",
+  outline: "none",
+},
+
+secureLoginBtn: {
+  width: "100%",
+  padding: "14px",
+  backgroundColor: "#10b981",
+  color: "#fff",
+  border: "none",
+  borderRadius: "10px",
+  fontSize: "15px",
+  fontWeight: "600",
+  cursor: "pointer",
+  transition: "all 0.2s",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "8px",
+},
+editBtn: {
+  display: "flex",
+  alignItems: "center",
+  gap: "10px",
+  padding: "12px 24px",
+  backgroundColor: "#3b82f6",
+  color: "#fff",
+  border: "none",
+  borderRadius: "10px",
+  fontSize: "14px",
+  fontWeight: "600",
+  cursor: "pointer",
+  transition: "all 0.2s",
+},
+
+// Keep the editBtn style (used in pageHeader)
+
+
+
 };

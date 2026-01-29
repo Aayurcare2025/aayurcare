@@ -34,14 +34,13 @@ import test8 from "../Images/atma_yoga.jpeg"
 import test9 from "../Images/clove.png"
 import sparsh from "../Images/sparsh.png"
 import pillo from "../Images/pillo.png"
-// import alllogo from "../Images/alllogo.jpg"
+// import alllogo from "../Images/alllogo.jpg"  
 import as from "../Images/Aster Logo.png"
 import ep from "../Images/Epitome.png"
 // import home from "../Images/insuranceimg.png"
 import splash from "../Images/trial5.png"
 function Home() {
   const navigate=useNavigate();
-  
 
   return (
     <div className="main-page">
@@ -64,6 +63,7 @@ function Home() {
             <button 
               className="cta-button" 
               onClick={() => navigate("/signup")}
+              
             >
               Click Here To enroll
             </button>

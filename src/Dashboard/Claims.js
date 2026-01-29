@@ -839,6 +839,9 @@
 
 // export default Claims;
 
+//we can track webiste by which status is approved or rejected:
+
+
 
 import React, { useState } from "react";
 
@@ -891,6 +894,8 @@ function Claims() {
     updated[index].type = value;
     setServices(updated);
   };
+
+  
 
   const updateServiceFile = (index, file) => {
     const updated = [...services];
@@ -949,7 +954,7 @@ function Claims() {
       if (!res.ok) throw new Error("Failed to submit claim");
 
       const result = await res.json();
-      console.log("✅ Claim submitted:", result);
+      console.log(" Claim submitted:", result);
       alert("Claim submitted successfully!");
 
       // Reset form
