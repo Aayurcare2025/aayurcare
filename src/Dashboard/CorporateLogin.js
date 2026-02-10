@@ -6,6 +6,7 @@ export default function CorporateLogin() {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  
 const navigate = useNavigate();
   const handleKeyPress = (e) => {
   if (e.key === "Enter") {

@@ -1977,7 +1977,7 @@ const handleBuyNow = async () => {
     console.log("PAYMENT PAYLOAD 👉", paymentPayload);
 
     // ✅ Call backend
-    const res = await fetch("http://localhost:7000/payment/initiate", {
+    const res = await fetch("http://localhost:8000/payment/initiate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(paymentPayload),
@@ -3397,6 +3397,7 @@ annual premium :- accordance to age and data:-
               </button>
             </div>
           )}
+
 
 
         </div>

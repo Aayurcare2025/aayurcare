@@ -12,10 +12,25 @@ import {
 
 
 
+
 export default function CorporateHome() {
   const [activeMenu, setActiveMenu] = useState("Home");
 const [selectedDocs, setSelectedDocs] = useState([]);
 const [uploadedFiles, setUploadedFiles] = useState({});
+
+const [bankDetails, setBankDetails] = useState({
+  accountHolderName: "",
+  bankAccountNumber: "",
+  reEnterAccountNumber: "",
+  IFSCCode: "",
+  BankName: "",
+  BankBranchName:  ""
+});
+
+
+//upload bank details as requiered
+
+
 const handleDocChange = (type) => {
   setSelectedDocs((prev) =>
     prev.includes(type)
@@ -23,7 +38,6 @@ const handleDocChange = (type) => {
       : [...prev, type]
   );
 };
-
 
 
 
@@ -36,17 +50,39 @@ const handleFileUpload = (e, type) => {
 };
 
 
+
+const handleBankDetailsChange = (field, value) => {
+  setBankDetails(prev => ({
+    ...prev,
+    [field]: value
+  }));
+};
+
+
 const handleSubmit = async () => {
   try {
+
+
+    if(bankDetails.bankAccountNumber!==bankDetails.reEnterAccountNumber)
+    {
+      alert("Bank Account number dont match");
+      return ;
+    }
     const formData = new FormData();
 
     // 👤 Name (required for backend)
     formData.append("name", "Kirthana Nambiar");
-
+    formData.append("accountHolderName",bankDetails.accountHolderName);
+    formData.append("bankAccountNumber",bankDetails.bankAccountNumber);
+    formData.append("reEnterAccountNumber",bankDetails.bankReEnterAccountNumber);
+    formData.append("IFSCCode",bankDetails.IFSCCode);
+    formData.append("BankName",bankDetails.BankName);
+    formData.append("BankBranchName",bankDetails.BankBranchName)
     let serviceIndex = 0;
 
     Object.keys(uploadedFiles).forEach((docType) => {
       const files = uploadedFiles[docType];
+      
 
       if (docType === "Bank Document") {
         // Only one bank document expected
@@ -65,15 +101,34 @@ const handleSubmit = async () => {
       body: formData,
     });
 
+
+
+
     const result = await response.json();
     console.log("✅ Claim submitted:", result);
     alert("Claim submitted successfully!");
+
+     setSelectedDocs([]);
+    setUploadedFiles({});
+    setBankDetails({	
+      accountHolderName: "",
+      bankAccountNumber: "",
+      reEnterAccountNumber: "",
+      IFSCCode: "",
+      BankName: "",
+      BankBranchName: ""
+    });
+
   } catch (error) {
     console.error("❌ Error submitting claim:", error);
     alert("Error submitting claim");
   }
 };
 
+
+
+
+//error submitting
 
 
 
@@ -108,6 +163,144 @@ const renderContent = () => {
   }
   
 };
+
+
+
+// const renderClaims = () => {
+//   const docTypes = [
+//     "Bank Document",
+//     "Medicine Prescription",
+//     "Radiology",
+//     "Pathology",
+//     "Consultation",
+//     "Ambulance Service"
+//   ];
+
+//   return (
+//     <div>
+//       <h2 style={styles.pageTitle}>Claims Management</h2>
+
+//       {/* Top Row - Current Balance */}
+//       <div style={styles.claimBalanceCard}>
+//         <h3 style={styles.claimCardTitle}>Current Bill</h3>
+//         <p style={styles.claimBalanceAmount}>₹2,000</p>
+//       </div>
+
+//       {/* Main Grid - 2x2 Layout */}
+//       <div style={styles.claimsGrid}>
+//         {/* Claim Documents Card */}
+//         <div style={styles.claimCardLarge}>
+//           <h3 style={styles.claimCardTitle}>Claim Documents</h3>
+//           <div style={styles.documentList}>
+//             {docTypes.map((doc) => (
+//               <div key={doc} style={styles.documentItem}>
+//                 <label style={styles.checkboxLabel}>
+//                   <input
+//                     type="checkbox"
+//                     checked={selectedDocs.includes(doc)}
+//                     onChange={() => handleDocChange(doc)}
+//                     style={styles.checkbox}
+//                   />
+//                   <span>{doc}</span>
+//                 </label>
+
+
+
+
+
+
+
+                
+
+//                 {selectedDocs.includes(doc) && (
+//                   <div style={styles.uploadSection}>
+//                     <input
+//                       type="file"
+//                       multiple
+//                       onChange={(e) => handleFileUpload(e, doc)}
+//                       style={styles.fileInput}
+//                       id={`file-${doc}`}
+//                     />
+//                     <label htmlFor={`file-${doc}`} style={styles.uploadButton}>
+//                       Choose Files
+//                     </label>
+
+//                     {uploadedFiles[doc] && (
+//                       <div style={styles.fileList}>
+//                         {uploadedFiles[doc].map((file, index) => (
+//                           <div key={index} style={styles.fileName}>
+//                             📄 {file.name}
+//                           </div>
+//                         ))}
+//                       </div>
+//                     )}
+//                   </div>
+//                 )}
+//               </div>
+//             ))}
+//           </div>
+//           <button style={styles.submitButton} onClick={handleSubmit}>Submit Claim</button>
+//         </div>
+
+//         {/* Claim Status Card */}
+//         <div style={styles.claimCardSmall}>
+//           <h3 style={styles.claimCardTitle}>Claim Status</h3>
+//           <div style={styles.statusContent}>
+//             <div style={styles.statusBadge}>In Progress</div>
+//             <p style={styles.statusText}>Your claim is being processed</p>
+//           </div>
+//         </div>
+
+//         {/* Topup Balance Card */}
+//         <div style={styles.claimCardSmall}>
+//           <h3 style={styles.claimCardTitle}>Topup Balance</h3>
+//           <div style={styles.topupContent}>
+//             <p style={styles.topupAmount}>₹1000</p>
+//             {/* <p style={styles.topupText}>Available for use</p> */}
+//           </div>
+//         </div>
+
+//         {/* Plan Upgrade Option Card */}
+//         {/* <div style={styles.claimCardSmall}>
+//           <h3 style={styles.claimCardTitle}>Plan Upgrade Option</h3>
+//           <div style={styles.planButtons}>
+//             <button style={styles.planBtnActive}>Current Plan</button>
+//             <button style={styles.planBtnInactive}>Premium Plan</button>
+//           </div>
+//         </div> */}
+
+
+
+//         <div>
+
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+
+
+//  const renderSupport=()=>
+//  {
+
+//   //doing changes here:--
+
+//   return(
+
+//   <div>
+//     <h2 style={styles.pageHeader}>Support & Helpdesk</h2>
+//     <div>
+//       <p style={{fontSize:"16px", color:"#475569"}}>For any assistance regarding your corporate health benefits, please reach out to our dedicated support team:</p>
+//       <p>support@aayurcare.com</p>
+//       <p>7338146712</p>
+//     </div>
+//   </div>
+
+  
+//   );
+//  };
+
 
 
 
@@ -151,6 +344,111 @@ const renderClaims = () => {
 
                 {selectedDocs.includes(doc) && (
                   <div style={styles.uploadSection}>
+                    {/* Bank Details Form - Only show for Bank Document */}
+                    {doc === "Bank Document" && (
+                      <div style={styles.bankDetailsForm}>
+                        <div style={styles.bankFieldRow}>
+                          <div style={styles.bankField}>
+                            <label style={styles.bankLabel}>Account Holder Name *</label>
+                            <input
+                              type="text"
+                              value={bankDetails.accountHolderName}
+                              onChange={(e) => handleBankDetailsChange('accountHolderName', e.target.value)}
+                              placeholder="Enter account holder name"
+                              style={styles.bankInput}
+                              required
+                            />
+                            <br></br>
+                            <br></br>
+                          
+                          </div>
+                        </div>
+
+                        <div style={styles.bankFieldRow}>
+                          <div style={styles.bankField}>
+                            <label style={styles.bankLabel}>Bank Account Number *</label>
+                            <input
+                              type="text"
+                              value={bankDetails.bankAccountNumber}
+                              onChange={(e) => handleBankDetailsChange('bankAccountNumber', e.target.value)}
+                              placeholder="Enter account number"
+                              style={styles.bankInput}
+                              required
+                            />
+                            <br></br>
+                            <br></br>
+                          </div>
+                        </div>
+
+                        <div style={styles.bankFieldRow}>
+                          <div style={styles.bankField}>
+                            <label style={styles.bankLabel}>Re-enter Account Number *</label>
+                            <input
+                              type="text"
+                              value={bankDetails.reEnterAccountNumber}
+                              onChange={(e) => handleBankDetailsChange('reEnterAccountNumber', e.target.value)}
+                              placeholder="Re-enter account number"
+                              style={styles.bankInput}
+                              required
+                            />
+                              <br></br>
+                          <br></br>
+                          </div>
+                         
+                        </div>
+
+                        <div style={styles.bankFieldRow}>
+                          <div style={styles.bankField}>
+                            <label style={styles.bankLabel}>IFSC Code *</label>
+                            <input
+                              type="text"
+                              value={bankDetails.IFSCCode}
+                              onChange={(e) => handleBankDetailsChange('IFSCCode', e.target.value)}
+                              placeholder="Enter IFSC code"
+                              style={styles.bankInput}
+                              required
+                            />
+                            <br></br>
+                            <br></br>
+                          </div>
+                          
+                        </div>
+
+                        <div style={styles.bankFieldRow}>
+                          <div style={styles.bankField}>
+                            <label style={styles.bankLabel}>Bank Name *</label>
+                            <input
+                              type="text"
+                              value={bankDetails.BankName}
+                              onChange={(e) => handleBankDetailsChange('BankName', e.target.value)}
+                              placeholder="Enter bank name"
+                              style={styles.bankInput}
+                              required
+                            />
+                            <br></br>
+                            <br></br>
+                          </div>
+                        </div>
+
+                        <div style={styles.bankFieldRow}>
+                          <div style={styles.bankField}>
+                            <label style={styles.bankLabel}>Bank Branch Name *</label>
+                            <input
+                              type="text"
+                              value={bankDetails.BankBranchName}
+                              onChange={(e) => handleBankDetailsChange('BankBranchName', e.target.value)}
+                              placeholder="Enter branch name"
+                              style={styles.bankInput}
+                              required
+                            />
+                            <br></br>
+                            <br></br>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* File Upload Section */}
                     <input
                       type="file"
                       multiple
@@ -231,7 +529,6 @@ const renderClaims = () => {
   
   );
  };
-
 
  const renderProfile = () => {
   return (
@@ -357,7 +654,7 @@ const renderClaims = () => {
                 <p style={styles.fieldLabel}>Plan Name</p>
                 <input 
                   type="text" 
-                  value="Corporate Radiant Premium Plan" 
+                  value="Corporate Radiant Health Plan" 
                   style={styles.fieldInput}
                   readOnly
                 />
@@ -455,6 +752,8 @@ const renderClaims = () => {
   //         <Legend />
   //       </PieChart>
   //     </ResponsiveContainer>
+
+
 
 
 
@@ -603,6 +902,8 @@ const renderHome = () => {
     </div>
   );
 };
+
+
 
   return (
     <div style={styles.container}>

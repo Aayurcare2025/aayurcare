@@ -307,7 +307,7 @@ import About from "./Dashboard/About";
 import Services from "./Dashboard/services";
 import SignUp from "./Dashboard/SignUp";    
 import SignIn from "./Dashboard/SignIn"; 
-import Aayurcareicon from "./Images/logo.png";      
+import Aayurcareicon from "./Images/Aayurcarelogo.png";      
 import Contact from "./Dashboard/Contact";
 import Claims from "./Dashboard/Claims";
 import GroupMedical from "./Dashboard/GroupMedical";    
@@ -331,6 +331,7 @@ function App() {
   
   console.log("Current page:", page);
 
+  //data has been processing:-
   return (
     <div className="App">
       <ul className={`navbar ${menuOpen ? 'active' : ''}`}>
@@ -348,10 +349,17 @@ function App() {
         <li onClick={() => { navigate("/"); setMenuOpen(false); }}>
           Home
         </li>
+
+
+
+        
+
+
         
         <li onClick={() => { navigate("/about"); setMenuOpen(false); }}>
           About
         </li>
+
         
         <li
           className="dropdown"
@@ -383,9 +391,10 @@ function App() {
           Contact
         </li>
 
-
-
         <li onClick={()=>{navigate("CorporateLogin"); setMenuOpen(false); }}>Corporate Login</li>
+
+
+        <li onClick={()=>{navigate("Medi Insights");setMenuOpen(false);}}>Medi Insights</li>
 
         {/* <li onClick={()=>{navigate("Login"); setMenuOpen(false); }}>Login</li> */}
         
@@ -416,8 +425,8 @@ function App() {
           <Services />
           </ProtectedRoute>
           } />
-          <Route path="/services/:type" element={ 
-          <Services />} />
+          {/* <Route path="/services/:type" element={ 
+          <Services />} /> */}
 
         <Route path="/claims" element={
           <ProtectedRoute isLoggedIn={isLoggedIn}>
