@@ -328,7 +328,7 @@ const renderClaims = () => {
       <div style={styles.claimsGrid}>
         {/* Claim Documents Card */}
         <div style={styles.claimCardLarge}>
-          <h3 style={styles.claimCardTitle}>Claim Documents</h3>
+          <h3 style={styles.claimCardTitle}>Claim </h3>
           <div style={styles.documentList}>
             {docTypes.map((doc) => (
               <div key={doc} style={styles.documentItem}>

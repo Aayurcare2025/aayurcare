@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 
+
 function CorporateLoginClaims() {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -285,7 +286,7 @@ function CorporateLoginClaims() {
               onChange={handleChange}
               placeholder="Enter account number"
             />
-
+m
             <label style={styles.label}>Re-enter Bank Account Number *</label>
             <input
               style={styles.input}
