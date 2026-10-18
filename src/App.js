@@ -305,8 +305,6 @@ import "./App.css";
 import Home from "./Dashboard/Home";  
 import About from "./Dashboard/About";
 import Services from "./Dashboard/services";
-import SignUp from "./Dashboard/SignUp";    
-import SignIn from "./Dashboard/SignIn"; 
 import Aayurcareicon from "./Images/Aayurcarelogo.png";      
 import Contact from "./Dashboard/Contact";
 import Claims from "./Dashboard/Claims";
@@ -322,11 +320,21 @@ import PaymentSuccess from "./Dashboard/PaymentSuccess";
 import CorporateHome from "./Dashboard/CorporateHome";
 import CorporateLoginClaims from "./Dashboard/CorporateLoginClaims";
 // import Login from "./Dashboard/Login";
+
+const DASHBOARD_URL = "https://dashboard.aayurcare.com";
+
+function DashboardRedirect() {
+  React.useEffect(() => {
+    window.location.replace(DASHBOARD_URL);
+  }, []);
+  return null;
+}
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [page, setPage] = useState("home");
+  const [page] = useState("home");
   const navigate = useNavigate();
   
   console.log("Current page:", page);
@@ -400,10 +408,10 @@ function App() {
         
         {!isLoggedIn ? (
           <>
-            <li onClick={() => { navigate("/signin"); setMenuOpen(false); }}>
+            <li onClick={() => { window.location.href = DASHBOARD_URL; setMenuOpen(false); }}>
               Sign In
             </li>
-            <li onClick={() => { navigate("/signup"); setMenuOpen(false); }}>
+            <li onClick={() => { window.location.href = DASHBOARD_URL; setMenuOpen(false); }}>
               Sign Up
             </li>
           </>
@@ -436,8 +444,8 @@ function App() {
            />
         <Route path="/contact" element={<Contact />} />
         <Route path="/groupmedical" element={<GroupMedical />} />
-        <Route path="/signup" element={<SignUp setPage={setPage} />} />
-        <Route path="/signin" element={<SignIn setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/signup" element={<DashboardRedirect />} />
+        <Route path="/signin" element={<DashboardRedirect />} />
         <Route path="/websiteterms" element={<WebsiteTerms />} />
         <Route path="/aayurcaretermsandcondition" element={<AayurcareTermsAndCondition />} />
         <Route path="/refundandcancellation" element={<RefundAndCancellation />} />
