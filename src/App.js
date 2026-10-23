@@ -332,7 +332,6 @@ function DashboardRedirect() {
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [page] = useState("home");
   const navigate = useNavigate();
@@ -368,25 +367,6 @@ function App() {
           About
         </li>
 
-        
-        <li
-          className="dropdown"
-          onMouseEnter={() => setShowDropdown(true)}
-          onMouseLeave={() => setShowDropdown(false)}
-        >
-          Services ▾
-          {showDropdown && (
-            <ul className="dropdown-menu">
-              <li onClick={() => { navigate("/services/individual"); setMenuOpen(false); setShowDropdown(false); }}>
-                Individual
-              </li>
-            </ul>
-          )}
-        </li>
-        
-        <li onClick={() => { navigate("/claims"); setMenuOpen(false); }}>
-          OPD Claims
-        </li>
         
         <li 
           onClick={() => { window.location.href = "https://link.mypillo.in/kckszz"; setMenuOpen(false); }}
