@@ -2586,3 +2586,52 @@ font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 .ayurcare-select-field option:disabled {
   color: #a0aec0;
 }
+
+.app-policy {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+  text-align: left;
+  color: #222;
+  line-height: 1.7;
+}
+
+.app-policy h1 {
+  margin: 4px 0 8px;
+  font-size: 2rem;
+}
+
+.app-policy h2 {
+  margin: 32px 0 10px;
+  font-size: 1.25rem;
+}
+
+.app-policy h3 {
+  margin: 20px 0 8px;
+  font-size: 1.05rem;
+}
+
+.app-policy ul {
+  padding-left: 24px;
+}
+
+.app-policy li {
+  margin-bottom: 6px;
+}
+
+.app-policy a {
+  overflow-wrap: anywhere;
+}
+
+.app-policy-brand {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #555;
+}
+
+.app-policy-meta {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+}
