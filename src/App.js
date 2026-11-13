@@ -320,6 +320,7 @@ import PaymentSuccess from "./Dashboard/PaymentSuccess";
 import CorporateHome from "./Dashboard/CorporateHome";
 import CorporateLoginClaims from "./Dashboard/CorporateLoginClaims";
 import AppPolicy from "./Dashboard/AppPolicy";
+import DeleteAccount from "./Dashboard/DeleteAccount";
 // import Login from "./Dashboard/Login";
 
 const DASHBOARD_URL = "https://dashboard.aayurcare.com";
@@ -437,6 +438,7 @@ function App() {
         <Route path="/payment-failure" element={<PaymentFailure />} />
         <Route path="/corporate-home" element={<CorporateHome />} />
         <Route path="/CorporateLoginClaims" element={<CorporateLoginClaims/>}/>
+        <Route path="/app/delete-account" element={<DeleteAccount />} />
         <Route path="/app/:slug" element={<AppPolicy />} />
       </Routes>
     </div>

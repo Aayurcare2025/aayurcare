@@ -2635,3 +2635,70 @@ font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
   color: #666;
   font-size: 0.95rem;
 }
+
+.delete-account-form {
+  margin: 28px 0;
+}
+
+.delete-account-confirm {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 18px;
+  cursor: pointer;
+}
+
+.delete-account-confirm input {
+  margin-top: 6px;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.delete-account-button {
+  background: #c62828;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.delete-account-button:hover:not(:disabled) {
+  background: #a31f1f;
+}
+
+.delete-account-button:disabled {
+  background: #d9a3a3;
+  cursor: not-allowed;
+}
+
+.delete-account-notice {
+  margin: 24px 0;
+  padding: 16px 20px;
+  border-radius: 10px;
+  background: #f3f6fb;
+  border: 1px solid #dbe3f0;
+}
+
+.delete-account-notice h2 {
+  margin-top: 0;
+}
+
+.delete-account-notice p:last-child {
+  margin-bottom: 0;
+}
+
+.delete-account-error {
+  margin: 0 0 18px;
+  background: #fdecea;
+  border-color: #f5c2bd;
+  color: #8a1c1c;
+}
+
+.delete-account-success {
+  background: #edf7ee;
+  border-color: #c3e4c6;
+}
